@@ -99,6 +99,11 @@ nav {
 .pp-n { font-size:12px; color:#777; flex-shrink:0; padding-top:2px; }
 .pp-t { font-size:13px; color:#aaa; line-height:1.75; }
 
+/* Checkboxes for project points */
+.proj-point input[type="checkbox"], .pp-cb { width:18px; height:18px; margin:0; margin-top:2px; accent-color:#C0392B; cursor:pointer; }
+.proj-point label { display:flex; gap:12px; align-items:flex-start; cursor:pointer; }
+.proj-points.checklist .pp-t { display:block; }
+
 .proj-colors { padding-top:20px; border-top:1px solid #1a1a1a; }
 .colors-label { font-size:11px; letter-spacing:.14em; color:#777; margin-bottom:10px; }
 .swatches { display:flex; gap:8px; }
@@ -196,10 +201,10 @@ nav {
         <div class="kv-row"><span class="kv-k">ROLE</span><span class="kv-v">Design Direction</span></div>
         <div class="kv-row"><span class="kv-k">YEAR</span><span class="kv-v">2023</span></div>
       </div>
-      <div class="proj-points">
-        <div class="proj-point"><span class="pp-n">01</span><span class="pp-t">레드/블랙 대비를 활용한 레이아웃 설계 및 그래픽 요소 배치</span></div>
-        <div class="proj-point"><span class="pp-n">02</span><span class="pp-t">핸드드로잉 텍스트와 그래픽으로 에디토리얼 감성 강조</span></div>
-        <div class="proj-point"><span class="pp-n">03</span><span class="pp-t">페이드 인·아웃 전환 효과로 스크롤 몰입감 강화</span></div>
+      <div class="proj-points checklist">
+        <label class="proj-point"><input type="checkbox" class="pp-cb"><span class="pp-t">레드/블랙 대비를 활용한 레이아웃 설계 및 그래픽 요소 배치</span></label>
+        <label class="proj-point"><input type="checkbox" class="pp-cb"><span class="pp-t">핸드드로잉 텍스트와 그래픽으로 에디토리얼 감성 강조</span></label>
+        <label class="proj-point"><input type="checkbox" class="pp-cb"><span class="pp-t">페이드 인·아웃 전환 효과로 스크롤 몰입감 강화</span></label>
       </div>
       <div class="proj-colors">
         <p class="colors-label">COLOR</p>
