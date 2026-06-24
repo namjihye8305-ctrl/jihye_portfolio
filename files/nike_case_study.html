@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nike Editorial — 릴체리의 봄</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #f8f8f6; color: #1a1a1a; }
+
+  .page { max-width: 960px; margin: 0 auto; padding: 60px 40px; }
+
+  /* Header */
+  .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid #e0e0e0; }
+  .header-left h1 { font-size: 28px; font-weight: 400; letter-spacing: -0.02em; margin-bottom: 6px; }
+  .header-left p { font-size: 13px; color: #888; letter-spacing: 0.04em; }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; margin-top: 4px; }
+  .tag { font-size: 11px; border: 1px solid #ccc; padding: 4px 12px; border-radius: 20px; color: #666; letter-spacing: 0.06em; }
+
+  /* Section */
+  .section { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid #e0e0e0; }
+  .section:last-child { border-bottom: none; }
+  .section-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #aaa; margin-bottom: 20px; }
+
+  /* Overview grid */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .overview-text { font-size: 14px; line-height: 1.85; color: #444; }
+
+  /* KV table */
+  .kv { width: 100%; }
+  .kv-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #ebebeb; font-size: 13px; }
+  .kv-row:last-child { border-bottom: none; }
+  .kv-key { color: #999; }
+  .kv-val { font-weight: 500; color: #1a1a1a; }
+
+  /* Color palette */
+  .palette-wrap { display: flex; gap: 40px; align-items: center; }
+  .palette-group p { font-size: 11px; color: #aaa; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .swatches { display: flex; gap: 8px; }
+  .swatch { width: 32px; height: 32px; border-radius: 50%; }
+  .mood-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+  .chip { font-size: 11px; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.04em; }
+  .chip-dark { background: #1a0000; color: #f87171; }
+  .chip-light { background: #f0f0ee; color: #666; }
+
+  /* Design direction */
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  .point-block { padding: 20px 0; border-bottom: 1px solid #ebebeb; }
+  .point-num { font-size: 36px; font-weight: 300; color: #1a1a1a; opacity: 0.08; line-height: 1; margin-bottom: 8px; }
+  .point-title { font-size: 13px; font-weight: 600; margin-bottom: 8px; color: #1a1a1a; letter-spacing: 0.01em; }
+  .point-body { font-size: 12px; color: #777; line-height: 1.75; }
+
+  /* Image section */
+  .img-note { font-size: 12px; color: #bbb; text-align: center; padding: 60px 20px; background: #f0f0ee; border-radius: 8px; letter-spacing: 0.04em; }
+  .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .img-box { background: #f0f0ee; border-radius: 8px; overflow: hidden; }
+  .img-box img { width: 100%; height: 200px; object-fit: cover; display: block; }
+  .img-caption { font-size: 11px; color: #aaa; padding: 8px 12px; letter-spacing: 0.04em; }
+
+  /* Footer */
+  .footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid #e0e0e0; display: flex; justify-content: space-between; align-items: center; }
+  .footer-name { font-size: 12px; color: #999; letter-spacing: 0.08em; }
+  .footer-year { font-size: 12px; color: #ccc; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <h1>Nike Editorial — 릴체리의 봄</h1>
+      <p>SP23 Nike Editorial with Lil Cherry &nbsp;·&nbsp; by W Concept</p>
+    </div>
+    <div class="tags">
+      <span class="tag">Web Design</span>
+      <span class="tag">Editorial</span>
+      <span class="tag">Fashion</span>
+    </div>
+  </div>
+
+  <!-- Overview + Info -->
+  <div class="section">
+    <p class="section-label">Project Overview</p>
+    <div class="grid-2">
+      <div>
+        <p class="overview-text">나이키의 스포티한 아이덴티티와 아티스트 릴체리의 힙하고 자유로운 무드를 결합해 독창적인 에디토리얼 비주얼을 구현한 프로젝트. 화보의 실험적인 감성을 유지하면서도 상품 디테일이 소비자의 구매 욕구를 자극할 수 있도록 레이아웃을 설계했다.</p>
+      </div>
+      <div>
+        <div class="kv">
+          <div class="kv-row"><span class="kv-key">Client</span><span class="kv-val">W Concept × Nike</span></div>
+          <div class="kv-row"><span class="kv-key">Category</span><span class="kv-val">Fashion Editorial</span></div>
+          <div class="kv-row"><span class="kv-key">Season</span><span class="kv-val">SP23</span></div>
+          <div class="kv-row"><span class="kv-key">Role</span><span class="kv-val">Design Direction</span></div>
+          <div class="kv-row"><span class="kv-key">Year</span><span class="kv-val">2023</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Color System -->
+  <div class="section">
+    <p class="section-label">Color System</p>
+    <div class="palette-wrap">
+      <div class="palette-group">
+        <p>MAIN</p>
+        <div class="swatches">
+          <div class="swatch" style="background:#C0392B;" title="Red"></div>
+          <div class="swatch" style="background:#1a1a1a;" title="Black"></div>
+          <div class="swatch" style="background:#F5F5F0; border:1px solid #e0e0e0;" title="Off-white"></div>
+        </div>
+      </div>
+      <div class="palette-group">
+        <p>ACCENT</p>
+        <div class="swatches">
+          <div class="swatch" style="background:#4A90D9;" title="Blue"></div>
+          <div class="swatch" style="background:#B0B0B0;" title="Gray"></div>
+        </div>
+      </div>
+      <div class="palette-group" style="margin-left:auto;">
+        <p>MOOD</p>
+        <div class="mood-chips">
+          <span class="chip chip-dark">Bold</span>
+          <span class="chip chip-light">Experimental</span>
+          <span class="chip chip-light">Editorial</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design Direction -->
+  <div class="section">
+    <p class="section-label">Design Direction</p>
+    <div class="grid-3">
+      <div class="point-block">
+        <div class="point-num">01</div>
+        <div class="point-title">컬러 대비 레이아웃</div>
+        <p class="point-body">강렬한 레드/블랙 대비를 기반으로 화보 컷의 에너지를 극대화한 레이아웃 설계 및 그래픽 요소 배치</p>
+      </div>
+      <div class="point-block">
+        <div class="point-num">02</div>
+        <div class="point-title">핸드드로잉 타이포</div>
+        <p class="point-body">릴체리 특유의 자유로운 무드를 살리기 위해 핸드드로잉 텍스트와 그래픽을 레이아웃과 유기적으로 결합</p>
+      </div>
+      <div class="point-block">
+        <div class="point-num">03</div>
+        <div class="point-title">스크롤 인터랙션</div>
+        <p class="point-body">주요 이미지 영역에 페이드 인·아웃 및 전환 효과를 적용, 스크롤 흐름에 따른 몰입감 강화</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visual -->
+  <div class="section">
+    <p class="section-label">Visual Preview</p>
+    <div class="img-grid">
+      <div class="img-box">
+        <div class="img-note">이미지를 여기에 배치하세요<br><span style="font-size:10px;">상단 화보 컷</span></div>
+        <div class="img-caption">Top Section — 릴체리 메인 화보</div>
+      </div>
+      <div class="img-box">
+        <div class="img-note">이미지를 여기에 배치하세요<br><span style="font-size:10px;">중단 레이아웃</span></div>
+        <div class="img-caption">Mid Section — 타이포그래피 레이아웃</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span class="footer-name">Web Publisher / Content Designer</span>
+    <span class="footer-year">2023</span>
+  </div>
+
+</div>
+</body>
+</html>
