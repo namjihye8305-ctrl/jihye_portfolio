@@ -96,16 +96,8 @@ nav {
 
 .proj-points { display:flex; flex-direction:column; gap:12px; margin-bottom:24px; }
 .proj-point { display:flex; gap:12px; }
-.pp-n { font-size:12px; color:#777; flex-shrink:0; padding-top:2px; }
+.pp-n { font-size:12px; color:#fff; flex-shrink:0; padding-top:2px; }
 .pp-t { font-size:13px; color:#aaa; line-height:1.75; }
-
-/* Checkboxes for project points (white check only, no box) */
-.pp-cb { -webkit-appearance:none; appearance:none; width:18px; height:18px; margin:0; margin-top:2px; background:transparent; border:none; position:relative; cursor:pointer; }
-.pp-cb:focus { outline:none; }
-.pp-cb::after { content:''; position:absolute; left:3px; top:0px; width:10px; height:18px; border: solid transparent; border-width:0 2px 2px 0; transform: rotate(45deg); opacity:0; transition:opacity .12s ease, border-color .12s ease; }
-.pp-cb:checked::after { border-color:#fff; opacity:1; }
-.proj-point label { display:flex; gap:12px; align-items:flex-start; cursor:pointer; }
-.proj-points.checklist .pp-t { display:block; }
 
 .proj-colors { padding-top:20px; border-top:1px solid #1a1a1a; }
 .colors-label { font-size:11px; letter-spacing:.14em; color:#777; margin-bottom:10px; }
@@ -204,10 +196,10 @@ nav {
         <div class="kv-row"><span class="kv-k">ROLE</span><span class="kv-v">Design Direction</span></div>
         <div class="kv-row"><span class="kv-k">YEAR</span><span class="kv-v">2023</span></div>
       </div>
-      <div class="proj-points checklist">
-        <label class="proj-point"><input type="checkbox" class="pp-cb" checked><span class="pp-t">레드/블랙 대비를 활용한 레이아웃 설계 및 그래픽 요소 배치</span></label>
-        <label class="proj-point"><input type="checkbox" class="pp-cb" checked><span class="pp-t">핸드드로잉 텍스트와 그래픽으로 에디토리얼 감성 강조</span></label>
-        <label class="proj-point"><input type="checkbox" class="pp-cb" checked><span class="pp-t">페이드 인·아웃 전환 효과로 스크롤 몰입감 강화</span></label>
+      <div class="proj-points">
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">레드/블랙 대비를 활용한 레이아웃 설계 및 그래픽 요소 배치</span></div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">핸드드로잉 텍스트와 그래픽으로 에디토리얼 감성 강조</span></div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">페이드 인·아웃 전환 효과로 스크롤 몰입감 강화</span></div>
       </div>
       <div class="proj-colors">
         <p class="colors-label">COLOR</p>
