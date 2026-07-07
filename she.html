@@ -1,0 +1,1262 @@
+﻿<style>
+/* ===== 1. 怨듯넻 ?ㅼ젙 ===== */
+* { box-sizing: border-box; }
+
+.pc-only { display: block !important; }
+.mo-only { display: none !important; }
+
+@media (max-width: 768px) {
+    .pc-only { display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important; }
+    .mo-only { display: block !important; }
+}
+
+/* ===== PC ?꾩껜 ?섑띁: 1920px 以묒븰 ?뺣젹 ===== */
+.pc-only {
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    line-height: 0;
+    font-size: 0;
+}
+.pc-only > * {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+@media (min-width: 769px) {
+    .pc-only img {
+        display: block;
+        max-width: 1920px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* MO ?꾩껜 媛?대뜲 ?뺣젹 */
+.mo-only {
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+.mo-only img {
+    display: block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.visual-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    font-size: 0;
+    max-width: 1920px;
+    margin: 0 auto !important;
+    padding: 0 !important;
+}
+.visual-wrap a { display: block; width: 100%; line-height: 0; cursor: pointer; margin: 0 !important; padding: 0 !important; }
+.visual-wrap img { display: block; margin: 0 !important; padding: 0 !important; border: 0; }
+.bg-img { width: 100%; display: block; height: auto; border: 0; }
+
+/* ===== 2. ?곷떒 ?먮룞 ?먮쫫 ?щ씪?대뜑 (Infinite Loop) ===== */
+.auto-section .c24-slider { position: absolute; z-index: 100; overflow: hidden; }
+.auto-section .viewport { width: 100%; height: 100%; overflow: hidden; position: relative; }
+
+.auto-section .track {
+    display: flex;
+    width: 400%;
+    height: 100%;
+    animation: infiniteScroll 10s linear infinite;
+    will-change: transform;
+}
+.auto-section .slide { flex: 0 0 25%; height: 100%; }
+.auto-section .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+@keyframes infiniteScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.pc-inner-slider.pos-02 .viewport {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8px, black calc(100% - 8px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 8px, black calc(100% - 8px), transparent 100%);
+}
+
+.pc-inner-slider {
+    left:   calc((var(--pc-s-x) / var(--pc-bg-w)) * 100%);
+    top:    calc((var(--pc-s-y) / var(--pc-bg-h)) * 100%);
+    width:  calc((var(--pc-s-w) / var(--pc-bg-w)) * 100%);
+    height: calc((var(--pc-s-h) / var(--pc-bg-h)) * 100%);
+}
+.pc-inner-slider.pos-02 { --pc-bg-w:1920; --pc-bg-h:1000; --pc-s-x:952; --pc-s-y:0; --pc-s-w:980; --pc-s-h:1000; }
+
+.mo-inner-slider {
+    left:   calc((var(--mo-s-x) / var(--mo-bg-w)) * 100%);
+    top:    calc((var(--mo-s-y) / var(--mo-bg-h)) * 100%);
+    width:  calc((var(--mo-s-w) / var(--mo-bg-w)) * 100%);
+    height: calc((var(--mo-s-h) / var(--mo-bg-h)) * 100%);
+}
+.mo-inner-slider.pos-mo-02 { --mo-bg-w:750; --mo-bg-h:1000; --mo-s-x:375; --mo-s-y:0; --mo-s-w:375; --mo-s-h:1000; }
+
+/* ===== 3. ?꾪듃 ?щ씪?대뜑 ???щ줈?ㅽ럹?대뱶 ?꾪솚 ===== */
+.snap-section { position: relative; }
+
+/* radio ?④? */
+.pc-only .snap-section input[type="radio"],
+.mo-only .snap-section input[type="radio"] { display: none !important; }
+
+/* PC: 利됱떆 ?꾪솚 */
+.pc-only .snap-section .viewport { width: 100%; position: relative; line-height: 0; font-size: 0; }
+.pc-only .snap-section .track { display: block; position: relative; }
+.pc-only .snap-section .slide {
+    display: none;
+    width: 100%;
+}
+.pc-only .snap-section .slide.is-active {
+    display: block;
+}
+.pc-only .snap-section .slide img { width: 100%; height: auto; display: block; border: 0; }
+
+/* MO: 利됱떆 ?꾪솚 */
+.mo-only .snap-section .viewport { width: 100%; position: relative; line-height: 0; font-size: 0; }
+.mo-only .snap-section .track { display: block; position: relative; }
+.mo-only .snap-section .slide {
+    display: none;
+    width: 100%;
+}
+.mo-only .snap-section .slide.is-active {
+    display: block;
+}
+.mo-only .snap-section .slide img { width: 100%; height: auto; display: block; border: 0; }
+
+/* ===================================================
+   ???ㅻ퉬 而щ윭 而ㅼ뒪?곕쭏?댁쭠 蹂??(?ш린?쒕쭔 ?섏젙)
+   =================================================== */
+:root {
+    /* 湲곕낯(鍮꾪솢?? 踰꾪듉 : ?щ챸 諛곌꼍 + 釉붾옓 ?뚮몢由?+ 釉붾옓 ?띿뒪??*/
+    --nav-default-bg       : transparent;  /* 湲곕낯 諛곌꼍         */
+    --nav-default-border   : #000000;      /* 湲곕낯 ?뚮몢由?      */
+    --nav-default-color    : #000000;      /* 湲곕낯 ?띿뒪??      */
+
+    /* ?몃쾭 : 釉붾옓 諛곌꼍 + ?곗깋 ?띿뒪??*/
+    --nav-hover-bg         : #000000;      /* ?몃쾭 諛곌꼍         */
+    --nav-hover-border     : #000000;      /* ?몃쾭 ?뚮몢由?      */
+    --nav-hover-color      : #ffffff;      /* ?몃쾭 ?띿뒪??      */
+
+    /* ?쒖꽦(?대┃/?좏깮) : 釉붾옓 諛곌꼍 + ?곗깋 ?띿뒪??*/
+    --nav-active-bg        : #000000;      /* ?쒖꽦 諛곌꼍         */
+    --nav-active-border    : #000000;      /* ?쒖꽦 ?뚮몢由?      */
+    --nav-active-color     : #ffffff;      /* ?쒖꽦 ?띿뒪??      */
+
+    /* -----------------------------------------------
+       ???ㅻ퉬 ?꾩튂 而ㅼ뒪?곕쭏?댁쭠 (?ш린?쒕쭔 ?섏젙)
+       top / bottom 以??섎굹留??ъ슜, ?섎㉧吏??auto
+       top 媛?以꾩씠硫??꾨줈 / ?섎━硫??꾨옒濡?
+       bottom 媛?以꾩씠硫??꾨줈 / ?섎━硫??꾨옒濡?
+    ----------------------------------------------- */
+    --nav-pc-top    : 30px;   /* ??PC: ?대?吏 ?곷떒 湲곗? (?섎떒 湲곗? ????auto) */
+    --nav-pc-bottom : auto;   /* ??PC: ?대?吏 ?섎떒 湲곗? (?곷떒 湲곗? ????auto) */
+
+    --nav-mo-top    : 20px;   /* ??MO: ?대?吏 ?곷떒 湲곗? (?섎떒 湲곗? ????auto) */
+    --nav-mo-bottom : auto;   /* ??MO: ?대?吏 ?섎떒 湲곗? (?곷떒 湲곗? ????auto) */
+
+    /* 踰꾪듉 ?덈퉬 : ??踰꾪듉 ?숈씪 怨좎젙媛?*/
+    --nav-pc-width  : 200px;  /* ??PC 踰꾪듉 ?덈퉬 */
+    --nav-mo-width  : 200px;  /* ??MO 踰꾪듉 ?덈퉬 */
+
+    /* ??bs-nav 踰꾪듉 PC ?ъ씠利?*/
+    --bs-nav-pc-width  : 240px;
+    --bs-nav-pc-height : 60px;
+    --bs-nav-pc-font   : 24px;
+    --bs-nav-pc-gap    : 10px;
+    --bs-nav-pc-padding: 30px 0 40px;
+
+    /* ??bs-nav 踰꾪듉 MO ?ъ씠利?*/
+    --bs-nav-mo-width  : 128px;
+    --bs-nav-mo-height : 38px;
+    --bs-nav-mo-font   : 16px;
+    --bs-nav-mo-gap    : 6px;
+    --bs-nav-mo-padding: 18px 0 25px;
+
+    /* ??bs-right padding PC/MO 媛곴컖 */
+    --bs-right-pc-padding: 48px 48px 130px;  /* ??PC */
+    --bs-right-mo-padding: 24px 16px 60px;  /* ??MO */
+}
+
+/* ===== ?ㅻえ ?ㅻ퉬 (?щ씪?대뱶 ???ㅻ쾭?덉씠) ===== */
+.snap-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+/* PC: ?대?吏 ???덈? ?ㅻ쾭?덉씠 */
+.pc-only .snap-nav {
+    position: absolute;
+    top:    var(--nav-pc-top);
+    bottom: var(--nav-pc-bottom);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    gap: 6px;
+    padding: 0;
+    background: none;
+}
+/* PC 踰꾪듉 */
+.pc-only .snap-nav .nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--nav-pc-width);
+    height: 36px;
+    padding: 0;
+    background: var(--nav-default-bg);
+    border: 1px solid var(--nav-default-border);
+    cursor: pointer;
+    transition: none;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--nav-default-color);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+.pc-only .snap-nav .nav-btn:hover {
+    background: var(--nav-hover-bg);
+    border-color: var(--nav-hover-border);
+    color: var(--nav-hover-color);
+}
+.pc-only .snap-nav .nav-btn.is-active {
+    background: var(--nav-active-bg);
+    border-color: var(--nav-active-border);
+    color: var(--nav-active-color);
+}
+
+/* MO: ?대?吏 ???덈? ?ㅻ쾭?덉씠 */
+.mo-only .main-visual-wrap .viewport-wrap { position: relative; }
+.mo-only .snap-nav {
+    position: absolute;
+    top:    var(--nav-mo-top);
+    bottom: var(--nav-mo-bottom);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    gap: 5px;
+    padding: 0;
+    background: none;
+}
+/* MO 踰꾪듉 */
+.mo-only .snap-nav .nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--nav-mo-width);
+    height: 26px;
+    padding: 0;
+    background: var(--nav-default-bg);
+    border: 1px solid var(--nav-default-border);
+    cursor: pointer;
+    transition: none;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--nav-default-color);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+.mo-only .snap-nav .nav-btn:hover {
+    background: var(--nav-hover-bg);
+    border-color: var(--nav-hover-border);
+    color: var(--nav-hover-color);
+}
+.mo-only .snap-nav .nav-btn.is-active {
+    background: var(--nav-active-bg);
+    border-color: var(--nav-active-border);
+    color: var(--nav-active-color);
+}
+
+/* ===== c24-slider three ===== */
+.c24-slider {
+    position: relative;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    --hit-prev: 36%;
+    --hit-next: 36%;
+}
+	
+/* ===== c24-slider input ?ъ빱???ㅽ겕濡??꾩쟾 李⑤떒 ===== */
+.c24-slider input[type="radio"] {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 1px !important;
+    height: 1px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    z-index: -1 !important;
+}
+	
+.c24-slider .viewport { position: relative; width: 100%; overflow: hidden; }
+.c24-slider .track { display: flex; align-items: flex-start; transition: transform 0.35s ease; }
+.c24-slider .slide { position: relative; flex: 0 0 100%; width: 100% !important; float: none !important; box-sizing: border-box; }
+.c24-slider .slide img { width: 100%; height: auto; display: block; border: 0; }
+.c24-slider .slide .slide-link {
+    position: absolute; top: 0; bottom: 0;
+    left: var(--hit-prev); right: var(--hit-next);
+    display: block; z-index: 4;
+}
+
+.c24-slider.three .track { transform: translateX(0); }
+.c24-slider.three input[id$="-2"]:checked ~ .viewport .track { transform: translateX(-100%); }
+.c24-slider.three input[id$="-3"]:checked ~ .viewport .track { transform: translateX(-200%); }
+
+.c24-slider .hit {
+    position: absolute; inset: 0;
+    pointer-events: none; z-index: 5;
+}
+.c24-slider .hit .prev,
+.c24-slider .hit .next {
+    position: absolute; top: 0; bottom: 0;
+    background: transparent; cursor: pointer;
+    pointer-events: auto; display: none;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none; touch-action: manipulation;
+}
+.c24-slider .hit .prev { left: 0; width: var(--hit-prev); }
+.c24-slider .hit .next { right: 0; width: var(--hit-next); }
+
+.c24-slider.three input[id$="-1"]:checked ~ .hit .prev-1,
+.c24-slider.three input[id$="-1"]:checked ~ .hit .next-1,
+.c24-slider.three input[id$="-2"]:checked ~ .hit .prev-2,
+.c24-slider.three input[id$="-2"]:checked ~ .hit .next-2,
+.c24-slider.three input[id$="-3"]:checked ~ .hit .prev-3,
+.c24-slider.three input[id$="-3"]:checked ~ .hit .next-3 { display: block; }
+
+@media (max-width: 768px) {
+    .c24-slider { --hit-prev: 10%; --hit-next: 10%; }
+    .c24-slider .slide .slide-link { left: 0; right: 0; width: 100%; }
+}
+
+/* ===== 釉붾윭 reveal + ?꾪듃 ?щ씪?대뜑 ?듯빀 ===== */
+.main-visual-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    line-height: 0;
+    font-size: 0;
+}
+
+.main-visual-wrap .viewport-wrap {
+    position: relative;
+    width: 100%;
+    line-height: 0;
+    font-size: 0;
+}
+
+.main-visual-wrap .title-container { display: none !important; }
+
+/* ===== ?ㅽ겕濡?紐⑥뀡 ===== */
+.coupon-reveal-wrap { position: relative; }
+
+/* bg-img: 釉붾윭 ???좊챸 */
+.coupon-reveal-wrap .bg-img {
+    filter: blur(16px);
+    transform: scale(1.03);
+    transition: filter 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.coupon-reveal-wrap.on .bg-img {
+    filter: blur(0px);
+    transform: scale(1);
+}
+
+.coupon-reveal-wrap .png-obj {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: auto;
+    z-index: 20;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    pointer-events: none;
+}
+.coupon-reveal-wrap.on .png-obj {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+    .coupon-reveal-wrap .png-obj { transform: translateY(50px); }
+}
+
+
+	
+/* ===== 釉뚮옖???쇱??댁뒪 ===== */
+.brand-showcase {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    background: #fffcfd;
+    font-size: 14px;
+}
+
+/* ?ㅻ퉬 */
+.bs-nav {
+    display: flex;
+    justify-content: center;
+    gap: var(--bs-nav-pc-gap);
+    border-bottom: none;
+    padding: var(--bs-nav-pc-padding);
+    background: none;
+}
+.bs-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--bs-nav-pc-width);
+    height: var(--bs-nav-pc-height);
+    padding: 0;
+    font-size: var(--bs-nav-pc-font);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--nav-default-color);
+    background: var(--nav-default-bg);
+    border: 1.5px solid var(--nav-default-border);
+    cursor: pointer;
+    transition: none;
+    white-space: nowrap;
+    font-family: var(--bs-nav-font);
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+.bs-nav-btn:hover {
+    background: var(--nav-hover-bg);
+    border-color: var(--nav-hover-border);
+    color: var(--nav-hover-color);
+}
+.bs-nav-btn.is-active {
+    background: var(--nav-active-bg);
+    border-color: var(--nav-active-border);
+    color: var(--nav-active-color);
+}
+
+/* ?⑤꼸 */
+.bs-panel { display: none; }
+.bs-panel.is-active { display: block; }
+
+/* ?⑤꼸 諛붾뵒 - PC: 醫뚯슦 2??*/
+.bs-body {
+    display: flex;
+    gap: 0;
+    height: var(--bs-pc-height);
+}
+.bs-left {
+    flex: 0 0 42%;
+    max-width: 42%;
+    height: 100%;
+    line-height: 0;
+    overflow: hidden;
+}
+.bs-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    max-width: none !important; /* pc-only img override */
+}
+.bs-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--bs-right-pc-padding);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/* PC bg ?대?吏 (MO???꾨옒 .mo-bs ?뱀뀡?먯꽌 蹂꾨룄 ?ㅼ젙) */
+.bs-panel[data-panel="0"] .bs-right { background-image: url('https://idfmall.cafe24.com/design/260515_36th/pc_sbg.jpg'); }
+.bs-panel[data-panel="1"] .bs-right { background-image: url('https://idfmall.cafe24.com/design/260515_36th/pc_tbg.jpg'); }
+.bs-panel[data-panel="2"] .bs-right { background-image: url('https://idfmall.cafe24.com/design/260515_36th/pc_abg.jpg'); }
+
+/* ?띿뒪???뺣낫 */
+.bs-info { margin-bottom: 32px; }
+.bs-num {
+    display: block;
+    font-size: 12px;
+    color: #999;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+}
+/* ===================================================
+   ??釉뚮옖???쇱??댁뒪 ?고듃 而ㅼ뒪?곕쭏?댁쭠 (?ш린?쒕쭔 ?섏젙)
+   ?고듃 ?덉떆:
+   - 怨좊뵓 怨꾩뿴 : 'Noto Sans KR', sans-serif
+   - ?몃━??怨꾩뿴: 'Nanum Myeongjo', serif
+   - ?곷Ц ?꾩슜  : 'Playfair Display', serif
+   - ?쒖뒪??湲곕낯: inherit
+   =================================================== */
+:root {
+    --bs-title-font   : Pretendard;   /* ????댄? ?고듃 */
+    --bs-desc-font    : Pretendard;   /* ???ㅻ챸 ?고듃   */
+    --bs-nav-font     : Pretendard;   /* ???ㅻ퉬 ?고듃   */
+
+    /* -----------------------------------------------
+       ???쇱??댁뒪 ?믪씠 而ㅼ뒪?곕쭏?댁쭠
+       ?レ옄留?諛붽씀硫?PC/MO ?믪씠 媛곴컖 議곗젙?⑸땲??
+       醫뚯륫 ?대?吏媛 ???믪씠??留욎떠 ?섎젮??梨꾩썙吏묐땲??
+    ----------------------------------------------- */
+    --bs-pc-height : 1020px;  /* ??PC ?꾩껜 ?믪씠 */
+    --bs-mo-height : 1020px;  /* ??MO ?꾩껜 ?믪씠 */
+}
+
+.bs-title {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: #000;
+    margin: 0 0 14px;
+    line-height: 1.1;
+    /* 移댄럹24 h2 湲곕낯 ?ㅽ???珥덇린??*/
+    text-shadow: none !important;
+    box-shadow: none !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    font-family: var(--bs-title-font);
+}
+.bs-desc {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+    margin: 0;
+    font-family: var(--bs-desc-font);
+}
+
+/* ?몃꽕???щ씪?대뜑 */
+.bs-thumb-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+.bs-thumb-viewport {
+    flex: 1;
+    overflow: hidden;
+}
+.bs-thumb-track {
+    display: flex;
+    gap: 4px;
+    transition: transform 0.35s ease;
+}
+.bs-thumb {
+    flex: 0 0 calc(25% - 6px);
+    line-height: 0;
+    display: block;
+    overflow: hidden;
+}
+.bs-thumb img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+    max-width: none !important;
+}
+
+/* ?붿궡??*/
+.bs-arrow {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: none;
+    font-size: 40px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    transition: none;
+}
+.bs-arrow:hover { background: none; color: #000; border-color: none; }
+
+/* ===== MO 釉뚮옖???쇱??댁뒪 ===== */
+.mo-bs .bs-nav { gap: var(--bs-nav-mo-gap); 
+    padding: var(--bs-nav-mo-padding);
+    padding-left: 20px;   /* ??異붽? */
+    padding-right: 20px;  /* ??異붽? */
+}
+.mo-bs .bs-nav-btn { width: var(--bs-nav-mo-width); height: var(--bs-nav-mo-height); font-size: var(--bs-nav-mo-font); padding: 1px 0 0 0; line-height: 1; border-width: 0.9px;}
+.mo-bs .bs-panel { display: none; }
+.mo-bs .bs-panel.is-active { display: block; }
+.mo-bs .bs-body { display: block; height: auto; }
+.mo-bs .bs-left { max-width: 100%; flex: none; height: auto; overflow: visible; }
+.mo-bs .bs-left img { width: 100%; height: auto; object-fit: unset; display: block; }
+.mo-bs .bs-right {
+    aspect-ratio: 750 / 645;  /* ??bg ?대?吏 ?먮낯 鍮꾩쑉 湲곗?, ?섎┝ 諛⑹? */
+    padding: var(--bs-right-mo-padding);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; }
+	
+	
+/* MO bg ?대?吏 (蹂꾨룄 寃쎈줈濡?援먯껜 媛?? */
+.mo-bs .bs-panel[data-panel="0"] .bs-right { background-image: url('https://idfmall.cafe24.com/design/260515_36th/mo_08-1.jpg'); }
+.mo-bs .bs-panel[data-panel="1"] .bs-right { background-image: url('https://idfmall.cafe24.com/design/260515_36th/mo_08-2.jpg'); }
+.mo-bs .bs-panel[data-panel="2"] .bs-right { background-image: url('https://idfmall.cafe24.com/design/260515_36th/mo_08-3.jpg'); }
+	
+	
+.mo-bs .bs-title { font-size: 20px; margin-bottom: 8px; }
+.mo-bs .bs-desc { font-size: 12px; }
+.mo-bs .bs-thumb { flex: 0 0 calc(25% - 2px); }
+.mo-bs .bs-arrow { width: 18px; height: 18px; font-size: 26px; border: none; background: none; color: #000; }
+
+	
+/* ===== 臾댄븳猷⑦봽 留덊??щ씪?대뜑 ===== */
+.marquee-wrap {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    font-size: 0;
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 0;
+    animation: marqueeScroll 30s linear infinite;  /* ??湲곕낯 ?띾룄 */
+    will-change: transform;
+}
+/* ???곹뭹 留덊??띾룄 (mo2_01) */
+.marquee-product .marquee-track { animation-duration: 10s; }
+/* ???섎떒 留덊??띾룄 (pc_17) */
+.marquee-bottom .marquee-track  { animation-duration: 30s; }
+	
+@keyframes marqueeScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+
+/* ===== MO ?곗튂 PNG ?щ씪?대뜑 ===== */
+.mo-png-slider {
+    position: relative;
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    /* bg ?대?吏: 750x1066px */
+    background-image: url('https://idfmall.cafe24.com/design/260515_36th/mo_04r.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    aspect-ratio: 750 / 1066;
+}
+.mo-png-slider-track {
+    display: flex;
+    gap: 10px;
+    transition: transform 0.35s ease;
+    width: 100%;
+    height: 100%;
+    align-items: flex-start;  /* center ??flex-start */
+    padding-top:44px;       /* ????媛믪쑝濡??꾩튂 議곗젅, 以꾩씠硫??꾨줈 */
+}
+.mo-png-slide {
+    flex: 0 0 calc(100% - 70px);
+    box-sizing: border-box;
+    /* PNG ?대?吏 鍮꾩쑉: 620x826px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.mo-png-slide:first-child { margin-left: 25px; }
+.mo-png-slide:last-child  { margin-right: 25px; }
+.mo-png-slide img {
+    width: 100%;
+    aspect-ratio: 620 / 826;
+    object-fit: cover;
+    display: block;
+    border-radius: 20px;
+    max-width: none !important;
+}
+
+/* 留덊??대? a/img: visual-wrap 洹쒖튃 ??뼱?곌린 */
+.marquee-track a {
+    display: block;
+    width: auto !important;
+    flex-shrink: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 0;
+    font-size: 0;
+}
+.marquee-track img {
+    display: block;
+    width: auto !important;
+    max-width: none !important;
+    height: auto;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex-shrink: 0;
+}
+@media (max-width: 768px) {
+    /* ?곹뭹 留덊?(mo2_01) */
+    .marquee-track img { width: 100vw !important; }
+    /* ?섎떒 留덊?(pc_17) */
+    .marquee-bottom .marquee-track img { width: 280vw !important; }
+}
+
+
+/* ===== PC ?곸긽 ?ㅽ뀒?댁? ===== */
+.pc-stage {
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    margin: 0 auto;
+    background: url('https://idfmall.cafe24.com/design/260619_go/pc_05.jpg') no-repeat center / cover;
+}
+.pc-stage iframe {
+    position: absolute;
+    border: none;
+    z-index: 10;
+}
+/* ?곸긽 495x840 / bg 1920x1080 ?뺢??대뜲 : left=(1920-495)/2=712.5 top=(1080-840)/2=120 */
+	#pc-v0 { width: 1920px; height: 1080px; left: 0px; top: 0px; }
+
+#pc-v1 { width: 495px; height: 840px; left: 713px; top: 120px; }
+
+	
+	
+	
+	
+/* ===== MO ?곸긽 ?덉뼱濡?===== */
+.mo-hero {
+    position: relative;
+    width: 100%;
+    max-width: 750px;
+    aspect-ratio: 750 / 1080;
+    margin: 0 auto;
+    background: url('https://idfmall.cafe24.com/design/260619_go/mo1_05.jpg') no-repeat 0 0 / 100% 100%;
+    overflow: hidden;
+}
+.mo-hero iframe {
+    position: absolute;
+    border: 0;
+    z-index: 10;
+}
+
+/* mo-v0: 750x1080 ??ъ씠利?*/
+#mo-v0 { width: 100%; height: 100%; left: 0; top: 0; }
+
+/* mo-v1: 495x840 ?뺢??대뜲 (bg 750x1080 湲곗?) */
+#mo-v1 {
+    width:  calc(495 / 750 * 100%);
+    height: calc(840 / 1080 * 100%);
+    left:   calc((100% - (495 / 750 * 100%)) / 2);
+    top:    calc((100% - (840 / 1080 * 100%)) / 2);
+}
+
+/* ===== LINE-UP ?ㅻ퉬 ?뱀뀡 ===== */
+.lineup-nav-section {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    position: relative;
+    line-height: 0;
+    font-size: 0;
+
+    /* ???먮낯 ?대?吏 ?ъ씠利?(諛섏쓳??怨꾩궛 湲곗?) */
+    --lw: 1920;   /* ?대?吏 ?먮낯 ?덈퉬 px */
+    --lh: 937;    /* ???대?吏 ?먮낯 ?믪씠 px ???ㅼ젣 ?믪씠濡?蹂寃?*/
+
+    /* ???ㅻ퉬 諛뺤뒪 ?꾩튂/?ш린 (?붿옄???먮낯 px 湲곗?) */
+    --nav-x1: 104;   /* 泥?踰덉㎏ 諛뺤뒪 left */
+    --nav-gap: 10;   /* 諛뺤뒪 媛??щ갚 */
+    --nav-bw: 334;   /* 諛뺤뒪 ?덈퉬 */
+    --nav-bh: 486;   /* 諛뺤뒪 ?믪씠 */
+    --nav-top: 272;  /* 諛뺤뒪 top */
+}
+.lineup-nav-section .lineup-bg {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 0;
+}
+.lineup-nav-grid {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+}
+.lineup-nav-item {
+    position: absolute;
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    pointer-events: auto;
+    width:  calc(var(--nav-bw) / var(--lw) * 100%);
+    height: calc(var(--nav-bh) / var(--lh) * 100%);
+    top:    calc(var(--nav-top) / var(--lh) * 100%);
+    
+}
+/* PC: 媛?諛뺤뒪 left ?꾩튂 = 104 + (334+10) * n */
+.lineup-nav-item:nth-child(1) { left: calc((var(--nav-x1))                                         / var(--lw) * 100%); }
+.lineup-nav-item:nth-child(2) { left: calc((var(--nav-x1) + (var(--nav-bw) + var(--nav-gap)) * 1)  / var(--lw) * 100%); }
+.lineup-nav-item:nth-child(3) { left: calc((var(--nav-x1) + (var(--nav-bw) + var(--nav-gap)) * 2)  / var(--lw) * 100%); }
+.lineup-nav-item:nth-child(4) { left: calc((var(--nav-x1) + (var(--nav-bw) + var(--nav-gap)) * 3)  / var(--lw) * 100%); }
+.lineup-nav-item:nth-child(5) { left: calc((var(--nav-x1) + (var(--nav-bw) + var(--nav-gap)) * 4)  / var(--lw) * 100%); }
+
+/* ===== MO LINE-UP ?ㅻ퉬 (750x995, 媛?202x294) ===== */
+/* ?곷떒 3媛? top=272 / ?섎떒 2媛? top=585 */
+.mo-only .lineup-nav-section {
+    --lw: 750;
+    --lh: 995;
+}
+.mo-only .lineup-nav-item {
+    width:  calc(202 / 750 * 100%);
+    height: calc(294 / 995 * 100%);
+}
+.mo-only .lineup-nav-item:nth-child(1) { left: calc(56  / 750 * 100%); top: calc(272 / 995 * 100%); }
+.mo-only .lineup-nav-item:nth-child(2) { left: calc(278 / 750 * 100%); top: calc(272 / 995 * 100%); }
+.mo-only .lineup-nav-item:nth-child(3) { left: calc(500 / 750 * 100%); top: calc(272 / 995 * 100%); }
+.mo-only .lineup-nav-item:nth-child(4) { left: calc(165 / 750 * 100%); top: calc(585 / 995 * 100%); }
+.mo-only .lineup-nav-item:nth-child(5) { left: calc(387 / 750 * 100%); top: calc(585 / 995 * 100%); }
+
+
+/* ===== PC 페이드 인/아웃 이미지 전환 슬라이더 (최대 3장) ===== */
+.pc-fade-slider {
+    position: relative;
+    width: 100%;
+    line-height: 0;
+    font-size: 0;
+}
+.pc-fade-slider img {
+    display: block;
+    width: 100%;
+    border: 0;
+    opacity: 0;
+    transition: opacity 1.6s ease-in-out;
+}
+.pc-fade-slider img:first-child { position: relative; }
+.pc-fade-slider img:not(:first-child) { position: absolute; top: 0; left: 0; }
+.pc-fade-slider img.is-active { opacity: 1; z-index: 1; }
+
+</style>
+
+
+
+
+<!-- ===== PC ===== -->
+<div class="pc-only">
+	
+
+			 <div class="visual-wrap">
+            <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/pc_02.jpg">
+    </div>
+	
+			 <div class="visual-wrap">
+        <!-- 천천히 페이드인/아웃 이미지 전환 영역 (최대 3장) -->
+        <div class="pc-fade-slider">
+            <img class="is-active" loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/pc_03.jpg" alt="">
+            <!-- 이미지를 추가하려면 아래 주석을 해제하고 src만 교체하세요 (최대 3장) -->
+            <!-- <img loading="lazy" src="두번째_이미지_주소.jpg" alt=""> -->
+            <!-- <img loading="lazy" src="세번째_이미지_주소.jpg" alt=""> -->
+        </div>
+    </div>
+	
+
+	
+
+    <!-- ===== PC ?곸긽 ?곸뿭 ===== -->
+    <div class="visual-wrap" style="overflow:hidden;">
+        <div class="pc-stage">
+            <iframe id="pc-v1" src="https://player.charlla.io/x5cdp6vqcw7" allow="autoplay; fullscreen; encrypted-media" loading="lazy"></iframe>
+        </div>
+    </div>
+	
+    <!-- ===== /PC ?곸긽 ?곸뿭 ===== -->
+
+	
+	
+	
+
+
+
+
+    <div class="visual-wrap">
+        <a href="https://idfmall.co.kr/product/list.html?cate_no=615&brand=SHESMISS" target="_blank">
+        <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/pc_18.jpg">
+        </a>
+    </div>
+
+	
+
+	
+			 <div class="visual-wrap">
+            <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/pc_19.jpg">
+    </div>
+	
+	
+	
+	
+</div>
+
+<!-- ===== /PC ===== -->
+
+
+		
+		
+		
+<!-- ===== MO ===== -->
+<div class="mo-only">
+
+	
+	    <div class="visual-wrap">
+        <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo1_02.jpg" alt="">
+    </div>
+	
+		
+	    <div class="visual-wrap">
+        <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo1_03.jpg" alt="">
+    </div>
+	
+	
+    <!-- LINE-UP ?ㅻ퉬 (MO) -->
+    <div class="lineup-nav-section">
+        <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo1_04.jpg" class="lineup-bg" alt="">
+        <div class="lineup-nav-grid">
+            <a class="lineup-nav-item" href="#" data-anchor="mo-section-01"></a>
+            <a class="lineup-nav-item" href="#" data-anchor="mo-section-02"></a>
+            <a class="lineup-nav-item" href="#" data-anchor="mo-section-03"></a>
+            <a class="lineup-nav-item" href="#" data-anchor="mo-section-04"></a>
+            <a class="lineup-nav-item" href="#" data-anchor="mo-section-05"></a>
+        </div>
+    </div>
+
+
+    <!-- MO ?곸긽 ?곸뿭 -->
+    <div class="visual-wrap" style="max-width:750px; overflow:hidden;">
+        <div class="mo-hero">
+            <iframe id="mo-v1" src="https://player.charlla.io/x5cdp6vqcw7" allow="autoplay; fullscreen; encrypted-media" loading="lazy"></iframe>
+        </div>
+    </div>
+
+
+	
+    <!-- 移댄뀒怨좊━ ?쒕뵫 ?뱀뀡 01~05 -->
+   <div class="visual-wrap" id="mo-section-01">
+	  <a href="https://idfmall.co.kr/product/detail.html?product_no=6385" target="_blank">
+			  <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo1_06.jpg" alt=""> </a>
+
+	  <a href="https://idfmall.co.kr/product/detail.html?product_no=6384" target="_blank">
+			  <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo1_07.jpg" alt=""> </a>
+
+  </div>
+
+        <div class="visual-wrap" id="mo-section-02">
+		  <a href="https://idfmall.co.kr/product/detail.html?product_no=6390" target="_blank">
+				  <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo1_08.jpg" alt=""> </a>
+
+		  <a href="https://idfmall.co.kr/product/detail.html?product_no=6451" target="_blank">
+				  <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo1_09.jpg" alt=""> </a>
+
+			<img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo1_10.jpg" alt="">
+    </div>
+    <div class="visual-wrap" id="mo-section-03">
+	  <a href="https://idfmall.co.kr/product/detail.html?product_no=6381" target="_blank">
+			<img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo1_11.jpg" alt=""> </a>
+		
+		
+    <div class="marquee-wrap marquee-product">
+        <div class="marquee-track">
+		  <a href="https://idfmall.co.kr/product/detail.html?product_no=6382" target="_blank">
+				  <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo2_01-1.jpg" alt=""> </a>
+           <a href="https://idfmall.co.kr/product/detail.html?product_no=6382" target="_blank">
+				  <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo2_01-2.jpg" alt=""> </a>
+           <a href="https://idfmall.co.kr/product/detail.html?product_no=6382" target="_blank">
+				  <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo2_01-1.jpg" alt=""> </a>
+           <a href="https://idfmall.co.kr/product/detail.html?product_no=6382" target="_blank">
+				  <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo2_01-2.jpg" alt=""> </a>
+				  
+        </div>
+    </div>
+		
+		
+	  <a href="https://idfmall.co.kr/product/detail.html?product_no=6382" target="_blank">
+			  <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo2_02.jpg" alt=""> </a>
+		
+			
+	  <a href="https://idfmall.co.kr/product/detail.html?product_no=6450" target="_blank">
+			<img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo2_03.jpg" alt=""></a>
+		
+		<img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo2_04.jpg" alt="">
+		
+    </div>
+
+
+	
+    <div id="mo-section-04" style="height:0;overflow:hidden;"></div>
+    <div id="mo-section-05" style="height:0;overflow:hidden;"></div>
+     <div class="visual-wrap">
+        <a href="https://idfmall.co.kr/product/detail.html?product_no=6391" target="_blank">
+            <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo2_05.jpg" alt="">
+        </a>
+		 
+		 
+		 <a href="https://idfmall.co.kr/product/detail.html?product_no=6386" target="_blank">
+            <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo2_06.jpg" alt="">
+        </a>
+		 
+		 <a href="https://idfmall.co.kr/product/detail.html?product_no=6417" target="_blank">
+            <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo2_07.jpg" alt="">
+        </a>
+		 
+		 <a href="https://idfmall.co.kr/product/detail.html?product_no=6383" target="_blank">
+            <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo2_08.jpg" alt="">
+        </a>
+		 
+        <a href="https://idfmall.co.kr/product/detail.html?product_no=6391" target="_blank">
+            <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo2_09.jpg" alt="">
+        </a>
+		 
+		 
+		 <a href="https://idfmall.co.kr/product/detail.html?product_no=6386" target="_blank">
+            <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo2_10.jpg" alt="">
+        </a>
+		 
+		 <a href="https://idfmall.co.kr/product/detail.html?product_no=6417" target="_blank">
+            <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo2_11.jpg" alt="">
+        </a>
+		 
+		 <a href="https://idfmall.co.kr/product/detail.html?product_no=6383" target="_blank">
+            <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo2_12.jpg" alt="">
+        </a>
+
+		 
+		 
+		 
+		 
+    </div>
+	
+	
+	
+	
+	
+  <!-- ===== 臾댄븳猷⑦봽 留덊??щ씪?대뜑 ===== -->
+    <div class="marquee-wrap marquee-bottom">
+        <div class="marquee-track">
+            <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/pc_17.jpg" alt="">
+            <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/pc_17.jpg" alt="">
+            <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/pc_17.jpg" alt="">
+            <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/pc_17.jpg" alt="">
+        </div>
+    </div>
+
+
+    <div class="visual-wrap">
+        <a href="https://idfmall.co.kr/product/list.html?cate_no=615&brand=SHESMISS" target="_blank">
+            <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo2_14.jpg" alt="">
+        </a>
+    </div>
+
+	
+    <div class="visual-wrap">
+        <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo2_15.jpg" alt="">
+    </div>
+
+</div>
+
+<!-- ===== /MO ===== -->
+
+
+<iframe name="couponFrame" style="display:none"></iframe>
+
+<script>
+window.addEventListener('load', function() {
+
+// ===== 荑좏룿 ?ㅽ겕濡?紐⑥뀡 =====
+function checkCoupon() {
+    var couponSections = document.querySelectorAll('.coupon-reveal-wrap');
+    couponSections.forEach(function(section) {
+        var sectionTop = section.getBoundingClientRect().top;
+        var windowHeight = window.innerHeight;
+        if (sectionTop < windowHeight) {
+            section.classList.add('on');
+        }
+    });
+}
+window.addEventListener('scroll', checkCoupon);
+checkCoupon();
+
+// ===== 釉뚮옖???쇱??댁뒪 珥덇린??=====
+function initBrandShowcase(navId, panelSelector) {
+    var navBtns = document.querySelectorAll('#' + navId + ' .bs-nav-btn');
+    var panels  = document.querySelectorAll(panelSelector);
+    var current = 0;
+
+    // ?몃꽕???щ씪?대뜑 ?곹깭 (?몃옓 ID蹂?
+    var thumbState = {};
+
+    function goPanel(idx) {
+        panels[current].classList.remove('is-active');
+        navBtns[current].classList.remove('is-active');
+        current = idx;
+        panels[current].classList.add('is-active');
+        navBtns[current].classList.add('is-active');
+    }
+
+    navBtns.forEach(function(btn, idx) {
+        btn.addEventListener('click', function() {
+            if (idx === current) return;
+            goPanel(idx);
+        });
+    });
+
+    // ?몃꽕???щ씪?대뜑 - ?붿궡??醫뚯슦 臾댄븳 猷⑦봽
+    var isMo = navId.indexOf('mo') === 0;
+    var visibleCount = 4;
+
+    document.querySelectorAll(panelSelector + ' .bs-arrow').forEach(function(arrow) {
+        arrow.addEventListener('click', function() {
+            var target  = this.getAttribute('data-target');
+            var trackId = (isMo ? 'mo' : 'pc') + '-thumb-track-' + target.replace('mo-', '');
+            var trackEl = document.getElementById(trackId);
+            if (!trackEl) return;
+
+            var thumbs  = trackEl.querySelectorAll('.bs-thumb');
+            var total   = thumbs.length;
+            var maxStep = total - visibleCount;
+            if (maxStep < 0) maxStep = 0;
+
+            if (!thumbState[target]) thumbState[target] = 0;
+
+            var step = thumbState[target];
+            if (this.classList.contains('bs-next')) {
+                step = (step >= maxStep) ? 0 : step + 1;
+            } else {
+                step = (step <= 0) ? maxStep : step - 1;
+            }
+            thumbState[target] = step;
+
+            var thumbW = trackEl.querySelector('.bs-thumb').offsetWidth + 8;
+            trackEl.style.transform = 'translateX(-' + (thumbW * step) + 'px)';
+        });
+    });
+}
+
+// PC 珥덇린??
+initBrandShowcase('pc-bs-nav', '#pc-brand-showcase .bs-panel');
+
+// MO 珥덇린??
+initBrandShowcase('mo-bs-nav', '#mo-brand-showcase .bs-panel');
+
+// ===== MO ?곗튂 PNG ?щ씪?대뜑 =====
+(function() {
+    var slider  = document.getElementById('mo-png-slider');
+    var track   = document.getElementById('mo-png-slider-track');
+    if (!slider || !track) return;
+
+    var slides  = track.querySelectorAll('.mo-png-slide');
+    var total   = slides.length;
+    var current = 0;
+    var startX  = 0;
+    var threshold = 40; // ?ㅼ??댄봽 ?몄떇 理쒖냼 px
+
+    function goTo(idx) {
+        if (idx < 0) idx = 0;
+        if (idx > total - 1) idx = total - 1;
+        current = idx;
+        var slideW = slides[0].offsetWidth + 10; // gap 10px ?ы븿
+        track.style.transform = 'translateX(-' + (slideW * current) + 'px)';
+    }
+
+    slider.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', function(e) {
+        var diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > threshold) {
+            goTo(diff > 0 ? current + 1 : current - 1);
+        }
+    }, { passive: true });
+})();
+
+
+// ===== PC ?щ씪?대뜑 hit ?곸뿭 ?대┃ ???ㅽ겕濡?諛⑹? =====
+document.querySelectorAll('.pc-only .c24-slider .hit label').forEach(function(label) {
+    label.addEventListener('click', function(e) {
+        e.preventDefault();
+        var forId = this.getAttribute('for');
+        var radio = document.getElementById(forId);
+        if (radio) {
+            radio.checked = true;
+            radio.dispatchEvent(new Event('change'));
+        }
+    });
+});
+
+// ===== LINE-UP ?ㅻ퉬 smooth scroll =====
+document.querySelectorAll('.lineup-nav-item[data-anchor]').forEach(function(item) {
+    item.addEventListener('click', function(e) {
+        e.preventDefault();
+        var anchorId = this.getAttribute('data-anchor');
+        var target = document.getElementById(anchorId);
+        if (target) {
+            var offset = target.getBoundingClientRect().top + window.pageYOffset - 0;
+            window.scrollTo({ top: offset, behavior: 'smooth' });
+        }
+    });
+});
+
+
+// ===== PC 페이드 인/아웃 이미지 자동 전환 =====
+(function() {
+    var slider = document.querySelector('.pc-only .pc-fade-slider');
+    if (!slider) return;
+    var imgs = slider.querySelectorAll('img');
+    if (imgs.length < 2) return;
+
+    var idx = 0;
+    var DISPLAY_MS = 4000;
+    setInterval(function() {
+        imgs[idx].classList.remove('is-active');
+        idx = (idx + 1) % imgs.length;
+        imgs[idx].classList.add('is-active');
+    }, DISPLAY_MS);
+})();
+
+}); // window load end
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
