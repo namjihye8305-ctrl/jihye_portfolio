@@ -858,6 +858,24 @@
 .pc-fade-slider img:not(:first-child) { position: absolute; top: 0; left: 0; }
 .pc-fade-slider img.is-active { opacity: 1; z-index: 1; }
 
+/* ===== MO 페이드 인/아웃 이미지 전환 슬라이더 (최대 3장) ===== */
+.mo-fade-slider {
+    position: relative;
+    width: 100%;
+    line-height: 0;
+    font-size: 0;
+}
+.mo-fade-slider img {
+    display: block;
+    width: 100%;
+    border: 0;
+    opacity: 0;
+    transition: opacity 1.6s ease-in-out;
+}
+.mo-fade-slider img:first-child { position: relative; }
+.mo-fade-slider img:not(:first-child) { position: absolute; top: 0; left: 0; }
+.mo-fade-slider img.is-active { opacity: 1; z-index: 1; }
+
 </style>
 
 
@@ -874,10 +892,11 @@
 			 <div class="visual-wrap">
         <!-- 천천히 페이드인/아웃 이미지 전환 영역 (최대 3장) -->
         <div class="pc-fade-slider">
-            <img class="is-active" loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/pc_03.jpg" alt="">
+            <img class="is-active" loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/pc_02.jpg" alt="">
             <!-- 이미지를 추가하려면 아래 주석을 해제하고 src만 교체하세요 (최대 3장) -->
-            <!-- <img loading="lazy" src="두번째_이미지_주소.jpg" alt=""> -->
-            <!-- <img loading="lazy" src="세번째_이미지_주소.jpg" alt=""> -->
+            <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/pc_03.jpg" alt=""> 
+            <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/pc_04.jpg" alt=""> 
+
         </div>
     </div>
 	
@@ -934,7 +953,13 @@
 	
 		
 	    <div class="visual-wrap">
-        <img loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo1_03.jpg" alt="">
+        <!-- 천천히 페이드인/아웃 이미지 전환 영역 (최대 3장) -->
+        <div class="mo-fade-slider">
+            <img class="is-active" loading="lazy" src="https://idfmall.cafe24.com/design/260619_go/mo1_03.jpg" alt="">
+            <!-- 이미지를 추가하려면 아래 src만 실제 주소로 교체하세요 (최대 3장) -->
+            <!-- <img loading="lazy" src="두번째_이미지_주소.jpg" alt=""> -->
+            <!-- <img loading="lazy" src="세번째_이미지_주소.jpg" alt=""> -->
+        </div>
     </div>
 	
 	
@@ -1235,7 +1260,24 @@ document.querySelectorAll('.lineup-nav-item[data-anchor]').forEach(function(item
     if (imgs.length < 2) return;
 
     var idx = 0;
-    var DISPLAY_MS = 4000;
+    var DISPLAY_MS = 2500;
+    setInterval(function() {
+        imgs[idx].classList.remove('is-active');
+        idx = (idx + 1) % imgs.length;
+        imgs[idx].classList.add('is-active');
+    }, DISPLAY_MS);
+})();
+
+
+// ===== MO 페이드 인/아웃 이미지 자동 전환 =====
+(function() {
+    var slider = document.querySelector('.mo-only .mo-fade-slider');
+    if (!slider) return;
+    var imgs = slider.querySelectorAll('img');
+    if (imgs.length < 2) return;
+
+    var idx = 0;
+    var DISPLAY_MS = 2500;
     setInterval(function() {
         imgs[idx].classList.remove('is-active');
         idx = (idx + 1) % imgs.length;
