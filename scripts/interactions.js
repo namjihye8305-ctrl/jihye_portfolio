@@ -16,7 +16,7 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     if (!inner) return;
     tag.addEventListener('mouseenter', () => {
       const angle = Math.random() * Math.PI * 2;
-      const dist = 50 + Math.random() * 50;
+      const dist = 12 + Math.random() * 10;
       const dx = Math.round(Math.cos(angle) * dist);
       const dy = Math.round(Math.sin(angle) * dist);
       inner.style.transform = `translate(${dx}px, ${dy}px) translateZ(0)`;
