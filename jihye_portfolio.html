@@ -196,14 +196,10 @@ nav {
   90% { opacity:1; transform:translateY(0); }
   90.77%, 100% { opacity:0; transform:translateY(10px); }
 }
-@keyframes heroSkillMobileIn {
-  0% { opacity:0; transform:translateY(10px); }
-  100% { opacity:1; transform:translateY(0); }
-}
 .hero-skill.hs-1 { top:10%; left:18%; animation-name:heroSkillLoop1; }
 .hero-skill.hs-2 { top:28%; right:1%;  animation-name:heroSkillLoop2; }
-.hero-skill.hs-3 { top:45%; left:74%; animation-name:heroSkillLoop3; }
-.hero-skill.hs-4 { top:60%; left:55%;animation-name:heroSkillLoop4; }
+.hero-skill.hs-3 { top:45%; left:75%; animation-name:heroSkillLoop3; }
+.hero-skill.hs-4 { top:66%; left:55%;animation-name:heroSkillLoop4; }
 .hero-skill.hs-5 { top:88%; left:82%; animation-name:heroSkillLoop5; }
 .hero-skill.hs-6 { top:12%; left:65%;animation-name:heroSkillLoop6; }
 .hero-skill.hs-7 { top:39%; left:-3%;animation-name:heroSkillLoop7; }
@@ -392,17 +388,9 @@ nav {
   }
   .hero-skill {
     position:static;
-    opacity:0;
-    animation:heroSkillMobileIn .5s ease-out forwards;
+    opacity:1;
+    animation:none;
   }
-  .hero-skill:nth-child(1) { animation-delay:0s; }
-  .hero-skill:nth-child(2) { animation-delay:.08s; }
-  .hero-skill:nth-child(3) { animation-delay:.16s; }
-  .hero-skill:nth-child(4) { animation-delay:.28s; }
-  .hero-skill:nth-child(5) { animation-delay:.36s; }
-  .hero-skill:nth-child(6) { animation-delay:.44s; }
-  .hero-skill:nth-child(7) { animation-delay:.56s; }
-  .hero-skill:nth-child(8) { animation-delay:.64s; }
   .hero-skill .hs-inner {
     display:block;
     transform:none;
