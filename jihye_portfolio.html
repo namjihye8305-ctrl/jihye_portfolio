@@ -236,7 +236,16 @@ nav {
 .v-pc img { width:100%; max-width:1122px; display:block; border-radius:2px; }
 .v-mo img { width:100%; max-width:400px; display:block; border-radius:2px; }
 .proj-video-frame { width:100%; max-width:1122px; height:900px; background:#e9e9e9; display:flex; align-items:center; justify-content:center; border-radius:2px; overflow:hidden; }
-.proj-video-frame video { max-width:80%; max-height:80%; display:block; border-radius:14px; }
+.proj-video-wrap { position:relative; width:80%; height:80%; }
+.proj-video-wrap video { display:block; width:100%; height:100%; object-fit:contain; border-radius:14px; }
+.proj-video-wrap video.blur-overlay {
+  position:absolute;
+  inset:0;
+  filter:blur(12px);
+  mask-image:radial-gradient(circle at center, transparent 55%, black 100%);
+  -webkit-mask-image:radial-gradient(circle at center, transparent 55%, black 100%);
+  pointer-events:none;
+}
 
 .proj-info { margin-top:27px; }
 .proj-desc { font-size:14px; color:#aaa; line-height:1.85; margin-bottom:24px; }
@@ -725,7 +734,10 @@ nav {
         <div class="v-pc">
           <p class="v-label">PROTOTYPE</p>
           <div class="proj-video-frame">
-            <video src="04/mo.mp4" autoplay loop muted playsinline></video>
+            <div class="proj-video-wrap">
+              <video src="04/mo.mp4" autoplay loop muted playsinline></video>
+              <video class="blur-overlay" src="04/mo.mp4" autoplay loop muted playsinline></video>
+            </div>
           </div>
         </div>
         <div class="v-mo">
