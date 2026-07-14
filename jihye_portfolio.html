@@ -111,6 +111,7 @@ nav {
   animation-iteration-count:infinite;
   will-change:transform, opacity;
   backface-visibility:hidden;
+  isolation:isolate;
 }
 .hero-skill .hs-inner {
   display:inline-block;
@@ -119,12 +120,12 @@ nav {
   letter-spacing:.04em;
   color:#aaa;
   background:#0d0d0d;
-  border:1px solid #666;
+  border:none;
+  box-shadow:inset 0 0 0 1px #666;
   border-radius:2px;
   padding:6px 16px 8px;
   font-family:'Inter','Helvetica Neue',Arial,sans-serif;
   white-space:nowrap;
-  box-shadow:none;
   transition:transform .35s cubic-bezier(.34,1.56,.64,1);
   will-change:transform;
   backface-visibility:hidden;
@@ -699,8 +700,69 @@ nav {
   </div>
 </section>
 
-<!-- 04~06 placeholder -->
-<div class="proj-ph full-line-b"><div class="ph-left"><span class="ph-num">04</span><span class="ph-title">프로젝트 추가 예정</span></div><span class="ph-right">이미지 + 정보 전달 시 추가</span></div>
+<!-- 04 -->
+<section class="project full-line-b">
+  <div class="proj-top full-line-b">
+    <span class="proj-num">04.</span>
+    <h2 class="proj-title">[프로젝트명] &nbsp;<span style="font-weight:300; color:#aaa;">[부제목]</span></h2>
+    <div class="proj-meta">
+      <span class="proj-meta-title">📂 Selected Projects 04</span>
+      <span class="proj-meta-sep"></span>
+      <span class="proj-meta-desc"><strong>[핵심 키워드]</strong>를 반영한 주요 프로젝트</span>
+    </div>
+  </div>
+  <div class="proj-grid">
+    <div class="proj-visual">
+      <div class="device-wrap">
+        <div class="v-pc">
+          <p class="v-label">PC</p>
+          <img src="04/99특가_목업.png" alt="[프로젝트명] PC 01">
+        </div>
+        <div class="v-mo">
+          <p class="v-label">MO</p>
+          <img src="04/99특가_개인작업.png" alt="[프로젝트명] MO 01">
+        </div>
+      </div>
+    </div>
+    <div class="proj-info">
+      <div class="proj-kv">
+        <div class="kv-row"><span class="kv-k">CLIENT</span><span class="kv-v">[클라이언트]</span></div>
+        <div class="kv-row"><span class="kv-k">CATEGORY</span><span class="kv-v">[카테고리]</span></div>
+        <div class="kv-row"><span class="kv-k">BUILT WITH</span><span class="kv-v">HTML/CSS</span></div>
+        <div class="kv-row"><span class="kv-k">ROLE</span><span class="kv-v">Design Development</span></div>
+
+      </div>
+      <div class="proj-points">
+        <div class="pp-section-title">🎯 프로젝트 목적</div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">[목적 1]</span></div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">[목적 2]</span></div>
+
+        <div class="pp-section-title">🛠️ 담당 역할 및 기여도</div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">[기여도 내용]</span></div>
+
+        <div class="pp-section-title">💡 체크 포인트</div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">[체크 포인트 1]</span></div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">[체크 포인트 2]</span></div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">[체크 포인트 3]</span></div>
+      </div>
+
+      <div class="proj-colors">
+        <p class="colors-label">COLOR</p>
+        <div class="swatches">
+          <div class="sw-wrap"><div class="sw" style="background:#C0392B;"></div><div class="sw-name">[색상명]</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div><div class="sw-name">[색상명]</div></div>
+        </div>
+        <p class="colors-label tool-label">TOOL</p>
+        <div class="tool-icons">
+          <div class="tool-icon ps" title="Photoshop">Ps</div>
+          <div class="tool-icon dw" title="Dreamweaver">Dw</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05~06 placeholder -->
 <div class="proj-ph full-line-b"><div class="ph-left"><span class="ph-num">05</span><span class="ph-title">프로젝트 추가 예정</span></div><span class="ph-right">이미지 + 정보 전달 시 추가</span></div>
 <div class="proj-ph full-line-b"><div class="ph-left"><span class="ph-num">06</span><span class="ph-title">프로젝트 추가 예정</span></div><span class="ph-right">이미지 + 정보 전달 시 추가</span></div>
 
