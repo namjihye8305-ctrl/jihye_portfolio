@@ -9,24 +9,6 @@ document.querySelectorAll('.works-head-r').forEach(el => {
   el.textContent = count + (count === 1 ? ' PROJECT' : ' PROJECTS');
 });
 
-// 0-1. HERO SKILL TAG "DODGE" HOVER (마우스가 다가가면 도망가는 효과, 실제 마우스 기기에서만)
-if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-  document.querySelectorAll('.hero-skill').forEach(tag => {
-    const inner = tag.querySelector('.hs-inner');
-    if (!inner) return;
-    tag.addEventListener('mouseenter', () => {
-      const angle = Math.random() * Math.PI * 2;
-      const dist = 12 + Math.random() * 10;
-      const dx = Math.round(Math.cos(angle) * dist);
-      const dy = Math.round(Math.sin(angle) * dist);
-      inner.style.transform = `translate(${dx}px, ${dy}px) translateZ(0)`;
-    });
-    tag.addEventListener('mouseleave', () => {
-      inner.style.transform = '';
-    });
-  });
-}
-
 // 1. SMOOTH SCROLL
 document.addEventListener('click', function(e) {
   const link = e.target.closest('a[href^="#"]');
