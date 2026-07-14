@@ -87,20 +87,14 @@ nav {
   100% { opacity:1; transform: translateY(0) rotate(0) scale(1); }
 }
 @keyframes letterWiggle {
-  0%, 58%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-  60% { transform: translateY(-1px) rotate(-4deg) scale(1); }
-  63% { transform: translateY(1px) rotate(4deg) scale(1); }
-  66% { transform: translateY(-1px) rotate(-3deg) scale(1); }
-  69% { transform: translateY(1px) rotate(3deg) scale(1); }
-  72% { transform: translateY(0) rotate(-1.5deg) scale(1); }
-  75% { transform: translateY(0) rotate(1.5deg) scale(1); }
-  78% { transform: translateY(0) rotate(0deg) scale(1); }
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  50% { transform: translateY(-1.5px) rotate(.8deg) scale(1.012); }
 }
 .hero-left h1 .letter {
   display:inline-block;
   opacity:0;
   animation: titleLetterIn .7s cubic-bezier(.34,1.56,.64,1) var(--ld,0ms) forwards,
-             letterWiggle 4s linear calc(var(--ld,0ms) + 900ms) infinite;
+             letterWiggle 1.8s ease-in-out calc(var(--ld,0ms) + 700ms) infinite;
 }
 .hero-star {
   display:inline-block;
