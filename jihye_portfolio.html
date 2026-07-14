@@ -88,29 +88,29 @@ nav {
 }
 @keyframes letterWiggle {
   0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-  50% { transform: translateY(-2px) rotate(1.1deg) scale(1.018); }
+  50% { transform: translateY(-1.2px) rotate(.6deg) scale(1.01); }
 }
 .hero-left h1 .letter {
   display:inline-block;
   opacity:0;
   animation: titleLetterIn .7s cubic-bezier(.34,1.56,.64,1) var(--ld,0ms) forwards,
-             letterWiggle 1.8s ease-in-out 2.2s infinite;
+             letterWiggle 1.8s ease-in-out calc(var(--ld,0ms) + 700ms) infinite;
 }
 .hero-left h1 .letter:nth-child(4n+1) {
   animation: titleLetterIn .7s cubic-bezier(.34,1.56,.64,1) var(--ld,0ms) forwards,
-             letterWiggle 1.7s ease-in-out 2.15s infinite;
+             letterWiggle 1.7s ease-in-out calc(var(--ld,0ms) + 700ms) infinite;
 }
 .hero-left h1 .letter:nth-child(4n+2) {
   animation: titleLetterIn .7s cubic-bezier(.34,1.56,.64,1) var(--ld,0ms) forwards,
-             letterWiggle 2.05s ease-in-out 2.4s infinite;
+             letterWiggle 2.05s ease-in-out calc(var(--ld,0ms) + 700ms) infinite;
 }
 .hero-left h1 .letter:nth-child(4n+3) {
   animation: titleLetterIn .7s cubic-bezier(.34,1.56,.64,1) var(--ld,0ms) forwards,
-             letterWiggle 1.55s ease-in-out 2.55s infinite;
+             letterWiggle 1.55s ease-in-out calc(var(--ld,0ms) + 700ms) infinite;
 }
 .hero-left h1 .letter:nth-child(4n) {
   animation: titleLetterIn .7s cubic-bezier(.34,1.56,.64,1) var(--ld,0ms) forwards,
-             letterWiggle 1.9s ease-in-out 2.3s infinite;
+             letterWiggle 1.9s ease-in-out calc(var(--ld,0ms) + 700ms) infinite;
 }
 .hero-star {
   display:inline-block;
