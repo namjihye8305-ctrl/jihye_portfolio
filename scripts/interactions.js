@@ -75,16 +75,6 @@ document.querySelectorAll('.proj-ph').forEach((ph, index) => {
   });
 });
 
-// 6. PARALLAX EFFECT ON SCROLL
-window.addEventListener('scroll', function() {
-  const scrollY = window.scrollY;
-  const hero = document.querySelector('.hero');
-  
-  if (hero) {
-    hero.style.transform = `translateY(${scrollY * 0.3}px)`;
-  }
-});
-
 // 7. SMOOTH FADE-IN ON PAGE LOAD
 window.addEventListener('load', function() {
   const wrap = document.querySelector('.wrap');
@@ -137,7 +127,7 @@ if (!document.querySelector('style[data-interactions]')) {
 // 9. DEVICE IMAGE INTERACTION
 // pc/mo 이미지의 원본 표현을 유지하기 위해 hover 밝기 효과를 제거했습니다.
 document.querySelectorAll('.v-pc img, .v-mo img').forEach(img => {
-  img.style.cursor = 'default';
+  img.style.cursor = img.closest('a') ? 'pointer' : 'default';
 });
 
 // 10. COLOR SWATCH INTERACTION
@@ -209,5 +199,22 @@ document.addEventListener('touchend', function(e) {
     e.target.style.opacity = '1';
   }
 }, false);
+
+// 14. STAT HIGHLIGHT SWEEP (scroll-triggered, plays once)
+const statHighlights = document.querySelectorAll('.stat-highlight');
+if (statHighlights.length && 'IntersectionObserver' in window) {
+  const statObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.6 });
+
+  statHighlights.forEach(el => statObserver.observe(el));
+} else {
+  statHighlights.forEach(el => el.classList.add('is-visible'));
+}
 
 console.log('✓ Portfolio interactions loaded');
