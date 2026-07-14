@@ -106,7 +106,7 @@ nav {
   position:absolute;
   pointer-events:auto;
   opacity:0;
-  animation-duration:10s;
+  animation-duration:6.5s;
   animation-timing-function:ease-in-out;
   animation-iteration-count:infinite;
   will-change:transform, opacity;
@@ -139,54 +139,54 @@ nav {
   width:6px; height:6px;
   background:#e8e8e4;
 }
-/* 순서대로 등장 → 다같이 3초 유지 → 등장한 순서 그대로 하나씩 사라짐 → 대기 후 반복 (10s 주기, 8개 박스) */
+/* 하나씩 순식간에 등장(샤라락) → 다같이 3초 유지 → 등장한 순서 그대로 순식간에 사라짐 → 대기 후 반복 (6.5s 주기, 8개 박스) */
 @keyframes heroSkillLoop1 {
   0% { opacity:0; transform:translateY(3px); }
-  .5% { opacity:1; transform:translateY(0); }
-  61% { opacity:1; transform:translateY(0); }
-  61.5%, 100% { opacity:0; transform:translateY(3px); }
+  .77% { opacity:1; transform:translateY(0); }
+  68.46% { opacity:1; transform:translateY(0); }
+  69.23%, 100% { opacity:0; transform:translateY(3px); }
 }
 @keyframes heroSkillLoop2 {
-  0%, 4% { opacity:0; transform:translateY(3px); }
-  4.5% { opacity:1; transform:translateY(0); }
-  65% { opacity:1; transform:translateY(0); }
-  65.5%, 100% { opacity:0; transform:translateY(3px); }
+  0%, 3.08% { opacity:0; transform:translateY(3px); }
+  3.85% { opacity:1; transform:translateY(0); }
+  71.54% { opacity:1; transform:translateY(0); }
+  72.31%, 100% { opacity:0; transform:translateY(3px); }
 }
 @keyframes heroSkillLoop3 {
-  0%, 8% { opacity:0; transform:translateY(3px); }
-  8.5% { opacity:1; transform:translateY(0); }
-  69% { opacity:1; transform:translateY(0); }
-  69.5%, 100% { opacity:0; transform:translateY(3px); }
+  0%, 6.15% { opacity:0; transform:translateY(3px); }
+  6.92% { opacity:1; transform:translateY(0); }
+  74.62% { opacity:1; transform:translateY(0); }
+  75.38%, 100% { opacity:0; transform:translateY(3px); }
 }
 @keyframes heroSkillLoop4 {
-  0%, 12% { opacity:0; transform:translateY(3px); }
-  12.5% { opacity:1; transform:translateY(0); }
-  73% { opacity:1; transform:translateY(0); }
-  73.5%, 100% { opacity:0; transform:translateY(3px); }
+  0%, 9.23% { opacity:0; transform:translateY(3px); }
+  10% { opacity:1; transform:translateY(0); }
+  77.69% { opacity:1; transform:translateY(0); }
+  78.46%, 100% { opacity:0; transform:translateY(3px); }
 }
 @keyframes heroSkillLoop5 {
-  0%, 16% { opacity:0; transform:translateY(3px); }
-  16.5% { opacity:1; transform:translateY(0); }
-  77% { opacity:1; transform:translateY(0); }
-  77.5%, 100% { opacity:0; transform:translateY(3px); }
+  0%, 12.31% { opacity:0; transform:translateY(3px); }
+  13.08% { opacity:1; transform:translateY(0); }
+  80.77% { opacity:1; transform:translateY(0); }
+  81.54%, 100% { opacity:0; transform:translateY(3px); }
 }
 @keyframes heroSkillLoop6 {
-  0%, 20% { opacity:0; transform:translateY(3px); }
-  20.5% { opacity:1; transform:translateY(0); }
-  81% { opacity:1; transform:translateY(0); }
-  81.5%, 100% { opacity:0; transform:translateY(3px); }
+  0%, 15.38% { opacity:0; transform:translateY(3px); }
+  16.15% { opacity:1; transform:translateY(0); }
+  83.85% { opacity:1; transform:translateY(0); }
+  84.62%, 100% { opacity:0; transform:translateY(3px); }
 }
 @keyframes heroSkillLoop7 {
-  0%, 24% { opacity:0; transform:translateY(3px); }
-  24.5% { opacity:1; transform:translateY(0); }
-  85% { opacity:1; transform:translateY(0); }
-  85.5%, 100% { opacity:0; transform:translateY(3px); }
+  0%, 18.46% { opacity:0; transform:translateY(3px); }
+  19.23% { opacity:1; transform:translateY(0); }
+  86.92% { opacity:1; transform:translateY(0); }
+  87.69%, 100% { opacity:0; transform:translateY(3px); }
 }
 @keyframes heroSkillLoop8 {
-  0%, 28% { opacity:0; transform:translateY(3px); }
-  28.5% { opacity:1; transform:translateY(0); }
-  89% { opacity:1; transform:translateY(0); }
-  89.5%, 100% { opacity:0; transform:translateY(3px); }
+  0%, 21.54% { opacity:0; transform:translateY(3px); }
+  22.31% { opacity:1; transform:translateY(0); }
+  90% { opacity:1; transform:translateY(0); }
+  90.77%, 100% { opacity:0; transform:translateY(3px); }
 }
 .hero-skill.hs-1 { top:10%; left:18%; animation-name:heroSkillLoop1; }
 .hero-skill.hs-2 { top:28%; right:1%;  animation-name:heroSkillLoop2; }
@@ -195,7 +195,7 @@ nav {
 .hero-skill.hs-5 { top:88%; left:82%; animation-name:heroSkillLoop5; }
 .hero-skill.hs-6 { top:12%; left:65%;animation-name:heroSkillLoop6; }
 .hero-skill.hs-7 { top:38%; left:-4%;animation-name:heroSkillLoop7; }
-.hero-skill.hs-8 { top:88%; left:29%; animation-name:heroSkillLoop8; }
+.hero-skill.hs-8 { top:84%; left:34%; animation-name:heroSkillLoop8; }
 .hero-year { font-size:13px; color:#777 !important; color:#555; letter-spacing:.1em; line-height:2; }
 
 /* ── WORKS HEADER ── */
