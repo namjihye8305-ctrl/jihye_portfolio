@@ -19,7 +19,7 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       const dist = 50 + Math.random() * 50;
       const dx = Math.round(Math.cos(angle) * dist);
       const dy = Math.round(Math.sin(angle) * dist);
-      inner.style.transform = `translate(${dx}px, ${dy}px)`;
+      inner.style.transform = `translate(${dx}px, ${dy}px) translateZ(0)`;
     });
     tag.addEventListener('mouseleave', () => {
       inner.style.transform = '';

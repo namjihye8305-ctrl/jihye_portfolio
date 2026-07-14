@@ -109,6 +109,8 @@ nav {
   animation-duration:10s;
   animation-timing-function:ease-in-out;
   animation-iteration-count:infinite;
+  will-change:transform, opacity;
+  backface-visibility:hidden;
 }
 .hero-skill .hs-inner {
   display:inline-block;
@@ -122,7 +124,11 @@ nav {
   padding:6px 16px 8px;
   font-family:'Inter','Helvetica Neue',Arial,sans-serif;
   white-space:nowrap;
+  box-shadow:none;
   transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+  will-change:transform;
+  backface-visibility:hidden;
+  transform:translateZ(0);
 }
 .hero-skill .hs-inner::before {
   content:'';
