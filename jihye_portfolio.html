@@ -104,6 +104,15 @@ nav {
 .hero-skills { display:block; margin-bottom:24px; }
 .hero-skill {
   position:absolute;
+  pointer-events:auto;
+  opacity:0;
+  animation-duration:11s;
+  animation-timing-function:ease-in-out;
+  animation-iteration-count:infinite;
+}
+.hero-skill .hs-inner {
+  display:inline-block;
+  position:relative;
   font-size:14px;
   letter-spacing:.04em;
   color:#aaa;
@@ -112,77 +121,76 @@ nav {
   border-radius:2px;
   padding:6px 16px 8px;
   font-family:'Inter','Helvetica Neue',Arial,sans-serif;
-  pointer-events:none;
-  opacity:0;
   white-space:nowrap;
-  animation-duration:9s;
-  animation-timing-function:ease-in-out;
-  animation-iteration-count:infinite;
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1);
 }
-.hero-skill::before {
+.hero-skill:hover .hs-inner {
+  transform:scale(1.06) rotate(-2deg);
+}
+.hero-skill .hs-inner::before {
   content:'';
   position:absolute;
   top:-4px; left:-4px;
   width:6px; height:6px;
   background:#e8e8e4;
 }
-/* 순서대로 등장 → 다같이 2초 유지 → 등장한 순서 그대로 하나씩 사라짐 → 대기 후 반복 (9s 주기, 8개 박스) */
+/* 순서대로 등장 → 다같이 4초 유지 → 등장한 순서 그대로 하나씩 사라짐 → 대기 후 반복 (11s 주기, 8개 박스) */
 @keyframes heroSkillLoop1 {
   0% { opacity:0; transform:translateY(3px); }
-  3.33% { opacity:1; transform:translateY(0); }
-  56.67% { opacity:1; transform:translateY(0); }
-  60%, 100% { opacity:0; transform:translateY(3px); }
+  2.73% { opacity:1; transform:translateY(0); }
+  64.55% { opacity:1; transform:translateY(0); }
+  67.27%, 100% { opacity:0; transform:translateY(3px); }
 }
 @keyframes heroSkillLoop2 {
-  0%, 4.44% { opacity:0; transform:translateY(3px); }
-  7.78% { opacity:1; transform:translateY(0); }
-  61.11% { opacity:1; transform:translateY(0); }
-  64.44%, 100% { opacity:0; transform:translateY(3px); }
+  0%, 3.64% { opacity:0; transform:translateY(3px); }
+  6.36% { opacity:1; transform:translateY(0); }
+  68.18% { opacity:1; transform:translateY(0); }
+  70.91%, 100% { opacity:0; transform:translateY(3px); }
 }
 @keyframes heroSkillLoop3 {
-  0%, 8.89% { opacity:0; transform:translateY(3px); }
-  12.22% { opacity:1; transform:translateY(0); }
-  65.56% { opacity:1; transform:translateY(0); }
-  68.89%, 100% { opacity:0; transform:translateY(3px); }
+  0%, 7.27% { opacity:0; transform:translateY(3px); }
+  10% { opacity:1; transform:translateY(0); }
+  71.82% { opacity:1; transform:translateY(0); }
+  74.55%, 100% { opacity:0; transform:translateY(3px); }
 }
 @keyframes heroSkillLoop4 {
-  0%, 13.33% { opacity:0; transform:translateY(3px); }
-  16.67% { opacity:1; transform:translateY(0); }
-  70% { opacity:1; transform:translateY(0); }
-  73.33%, 100% { opacity:0; transform:translateY(3px); }
+  0%, 10.91% { opacity:0; transform:translateY(3px); }
+  13.64% { opacity:1; transform:translateY(0); }
+  75.45% { opacity:1; transform:translateY(0); }
+  78.18%, 100% { opacity:0; transform:translateY(3px); }
 }
 @keyframes heroSkillLoop5 {
-  0%, 17.78% { opacity:0; transform:translateY(3px); }
-  21.11% { opacity:1; transform:translateY(0); }
-  74.44% { opacity:1; transform:translateY(0); }
-  77.78%, 100% { opacity:0; transform:translateY(3px); }
+  0%, 14.55% { opacity:0; transform:translateY(3px); }
+  17.27% { opacity:1; transform:translateY(0); }
+  79.09% { opacity:1; transform:translateY(0); }
+  81.82%, 100% { opacity:0; transform:translateY(3px); }
 }
 @keyframes heroSkillLoop6 {
-  0%, 22.22% { opacity:0; transform:translateY(3px); }
-  25.56% { opacity:1; transform:translateY(0); }
-  78.89% { opacity:1; transform:translateY(0); }
-  82.22%, 100% { opacity:0; transform:translateY(3px); }
+  0%, 18.18% { opacity:0; transform:translateY(3px); }
+  20.91% { opacity:1; transform:translateY(0); }
+  82.73% { opacity:1; transform:translateY(0); }
+  85.45%, 100% { opacity:0; transform:translateY(3px); }
 }
 @keyframes heroSkillLoop7 {
-  0%, 26.67% { opacity:0; transform:translateY(3px); }
-  30% { opacity:1; transform:translateY(0); }
-  83.33% { opacity:1; transform:translateY(0); }
-  86.67%, 100% { opacity:0; transform:translateY(3px); }
+  0%, 21.82% { opacity:0; transform:translateY(3px); }
+  24.55% { opacity:1; transform:translateY(0); }
+  86.36% { opacity:1; transform:translateY(0); }
+  89.09%, 100% { opacity:0; transform:translateY(3px); }
 }
 @keyframes heroSkillLoop8 {
-  0%, 31.11% { opacity:0; transform:translateY(3px); }
-  34.44% { opacity:1; transform:translateY(0); }
-  87.78% { opacity:1; transform:translateY(0); }
-  91.11%, 100% { opacity:0; transform:translateY(3px); }
+  0%, 25.45% { opacity:0; transform:translateY(3px); }
+  28.18% { opacity:1; transform:translateY(0); }
+  90% { opacity:1; transform:translateY(0); }
+  92.73%, 100% { opacity:0; transform:translateY(3px); }
 }
-.hero-skill.hs-1 { top:11%; left:12%; animation-name:heroSkillLoop1; }
-.hero-skill.hs-2 { top:28%; right:2%;  animation-name:heroSkillLoop2; }
-.hero-skill.hs-3 { top:54%; left:65%; animation-name:heroSkillLoop3; }
-.hero-skill.hs-4 { top:74%; left:46%; animation-name:heroSkillLoop4; }
-.hero-skill.hs-5 { top:86%; left:76%; animation-name:heroSkillLoop5; }
-.hero-skill.hs-6 { top:10%; left:70%;animation-name:heroSkillLoop6; }
-.hero-skill.hs-7 { top:44%; left:15%; animation-name:heroSkillLoop7; }
-.hero-skill.hs-8 { top:88%; left:24%; animation-name:heroSkillLoop8; }
+.hero-skill.hs-1 { top:10%; left:12%; animation-name:heroSkillLoop1; }
+.hero-skill.hs-2 { top:28%; right:1%;  animation-name:heroSkillLoop2; }
+.hero-skill.hs-3 { top:45%; left:74%; animation-name:heroSkillLoop3; }
+.hero-skill.hs-4 { top:72%; left:52%;animation-name:heroSkillLoop4; }
+.hero-skill.hs-5 { top:88%; left:82%; animation-name:heroSkillLoop5; }
+.hero-skill.hs-6 { top:12%; left:65%;animation-name:heroSkillLoop6; }
+.hero-skill.hs-7 { top:38%; left:-4%;animation-name:heroSkillLoop7; }
+.hero-skill.hs-8 { top:88%; left:29%; animation-name:heroSkillLoop8; }
 .hero-year { font-size:13px; color:#777 !important; color:#555; letter-spacing:.1em; line-height:2; }
 
 /* ── WORKS HEADER ── */
@@ -353,6 +361,9 @@ nav {
     position:static;
     opacity:1;
     animation:none;
+  }
+  .hero-skill .hs-inner {
+    display:block;
     transform:none;
     background:transparent;
     color:#aaa;
@@ -364,7 +375,10 @@ nav {
     box-shadow:none;
     white-space:normal;
   }
-  .hero-skill::before {
+  .hero-skill:hover .hs-inner {
+    transform:none;
+  }
+  .hero-skill .hs-inner::before {
     display:none;
   }
   .portfolio-links {
@@ -450,14 +464,14 @@ nav {
   </div>
   <div class="hero-right">
     <div class="hero-skills">
-      <span class="hero-skill hs-1">Editorial Design</span>
-      <span class="hero-skill hs-2">Web Publishing</span>
-      <span class="hero-skill hs-3">Branding</span>
-      <span class="hero-skill hs-4">Social Media</span>
-      <span class="hero-skill hs-5">Graphic Design</span>
-      <span class="hero-skill hs-6">Interaction</span>
-      <span class="hero-skill hs-7">Motion Design</span>
-      <span class="hero-skill hs-8">AI Design</span>
+      <span class="hero-skill hs-1"><span class="hs-inner">Editorial Design</span></span>
+      <span class="hero-skill hs-2"><span class="hs-inner">Branding</span></span>
+      <span class="hero-skill hs-3"><span class="hs-inner">Web Publishing</span></span>
+      <span class="hero-skill hs-4"><span class="hs-inner">Graphic Design</span></span>
+      <span class="hero-skill hs-5"><span class="hs-inner">Social Media</span></span>
+      <span class="hero-skill hs-6"><span class="hs-inner">Interaction</span></span>
+      <span class="hero-skill hs-7"><span class="hs-inner">Motion Design</span></span>
+      <span class="hero-skill hs-8"><span class="hs-inner">AI Design</span></span>
     </div>
     <div class="hero-year">2021 — 2026</div>
   </div>
