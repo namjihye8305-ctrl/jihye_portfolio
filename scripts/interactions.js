@@ -3,6 +3,12 @@
    Current structure preserved · JS-only interactions
    ───────────────────────────────────────────────────────── */
 
+// 0. AUTO PROJECT COUNT (.proj-ph 플레이스홀더는 제외하고 실제 .project만 카운트)
+document.querySelectorAll('.works-head-r').forEach(el => {
+  const count = document.querySelectorAll('.project').length;
+  el.textContent = count + (count === 1 ? ' PROJECT' : ' PROJECTS');
+});
+
 // 1. SMOOTH SCROLL
 document.addEventListener('click', function(e) {
   const link = e.target.closest('a[href^="#"]');
