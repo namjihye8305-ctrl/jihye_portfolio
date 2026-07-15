@@ -223,4 +223,16 @@ if (statHighlights.length && 'IntersectionObserver' in window) {
   statHighlights.forEach(el => el.classList.add('is-visible'));
 }
 
+// 15. RESUME HERO LETTER WIGGLE AFTER RETURNING FROM A BACKGROUND TAB
+// (일부 브라우저가 백그라운드 탭에서 CSS 애니메이션 렌더링을 멈춘 뒤,
+//  복귀 시 제대로 재개하지 않는 경우가 있어 강제로 nudge 해줌)
+document.addEventListener('visibilitychange', function() {
+  if (document.hidden) return;
+  document.querySelectorAll('.hero-left h1 .letter').forEach(function(el) {
+    el.style.animationPlayState = 'paused';
+    void el.offsetWidth;
+    el.style.animationPlayState = 'running';
+  });
+});
+
 console.log('✓ Portfolio interactions loaded');

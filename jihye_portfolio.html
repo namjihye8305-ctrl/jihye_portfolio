@@ -74,7 +74,7 @@ nav {
   color:#e8e8e4; margin-bottom:32px;
   font-family: 'DK Crayon Crumble', cursive;
 }
-.hero-left .hero-title { font-size:clamp(68px,6.6vw,144px);   display: block;
+.hero-left .hero-title { font-size:clamp(76px,7.2vw,156px);   display: block;
   position: relative;
   left: -6px; letter-spacing: 0.01em;
   font-family: 'DK Crayon Crumble', cursive; line-height: 0.7;}
@@ -94,23 +94,7 @@ nav {
   display:inline-block;
   opacity:0;
   animation: titleLetterIn .7s cubic-bezier(.34,1.56,.64,1) var(--ld,0ms) forwards,
-             letterWiggle 1.8s ease-in-out calc(var(--ld,0ms) + 700ms) infinite;
-}
-.hero-left h1 .letter:nth-child(4n+1) {
-  animation: titleLetterIn .7s cubic-bezier(.34,1.56,.64,1) var(--ld,0ms) forwards,
-             letterWiggle 1.7s ease-in-out calc(var(--ld,0ms) + 700ms) infinite;
-}
-.hero-left h1 .letter:nth-child(4n+2) {
-  animation: titleLetterIn .7s cubic-bezier(.34,1.56,.64,1) var(--ld,0ms) forwards,
-             letterWiggle 2.05s ease-in-out calc(var(--ld,0ms) + 700ms) infinite;
-}
-.hero-left h1 .letter:nth-child(4n+3) {
-  animation: titleLetterIn .7s cubic-bezier(.34,1.56,.64,1) var(--ld,0ms) forwards,
-             letterWiggle 1.55s ease-in-out calc(var(--ld,0ms) + 700ms) infinite;
-}
-.hero-left h1 .letter:nth-child(4n) {
-  animation: titleLetterIn .7s cubic-bezier(.34,1.56,.64,1) var(--ld,0ms) forwards,
-             letterWiggle 1.9s ease-in-out calc(var(--ld,0ms) + 700ms) infinite;
+             letterWiggle calc(1.55s + (var(--ld,0ms) * .35)) ease-in-out calc(var(--ld,0ms) + 700ms) infinite;
 }
 .hero-star {
   display:inline-block;
@@ -220,11 +204,11 @@ nav {
 .hero-skill.hs-1 { top:08%; left:18%; animation-name:heroSkillLoop1; }
 .hero-skill.hs-2 { top:28%; right:2%; animation-name:heroSkillLoop2; }
 .hero-skill.hs-3 { top:45%; left:75%; animation-name:heroSkillLoop3; }
-.hero-skill.hs-4 { top:66%; left:55%;animation-name:heroSkillLoop4; }
-.hero-skill.hs-5 { top:88%; left:82%; animation-name:heroSkillLoop5; }
+.hero-skill.hs-4 { top:65%; left:55%;animation-name:heroSkillLoop4; }
+.hero-skill.hs-5 { top:88%; left:72%; animation-name:heroSkillLoop5; }
 .hero-skill.hs-6 { top:12%; left:66%;animation-name:heroSkillLoop6; }
-.hero-skill.hs-7 { top:39%; left:-2%;animation-name:heroSkillLoop7; }
-.hero-skill.hs-8 { top:84%; left:34%; animation-name:heroSkillLoop8; }
+.hero-skill.hs-7 { top:40%; left:2%;animation-name:heroSkillLoop7; }
+.hero-skill.hs-8 { top:84%; left:35%; animation-name:heroSkillLoop8; }
 .hero-year { font-size:13px; color:#777 !important; color:#555; letter-spacing:.1em; line-height:2; }
 
 /* ── WORKS HEADER ── */
@@ -313,7 +297,7 @@ nav {
   background-image:linear-gradient(rgba(192,57,43,.62), rgba(192,57,43,.62));
 }
 .stat-highlight.stat-highlight-pink {
-  background-image:linear-gradient(rgba(242,168,201,.62), rgba(242,168,201,.62));
+  background-image:linear-gradient(rgba(235,71,150,.62), rgba(235,71,150,.62));
 }
 @keyframes highlightSweep {
   0% { background-size:0% 55%; }
@@ -390,7 +374,7 @@ nav {
     font-size:clamp(37px,10.6vw,54px);
   }
   .hero-left .hero-title {
-    font-size:clamp(43px,11.6vw,62px);
+    font-size:clamp(47px,12.4vw,68px);
   }
   .hero-left .hero-line2 {
     font-size:clamp(37px,10.6vw,54px);
