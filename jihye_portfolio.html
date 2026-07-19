@@ -60,13 +60,18 @@ nav {
 .full-line-b::after { bottom:0; border-bottom:1px solid #555; }
 .full-line-t::before { top:0; border-top:1px solid #555; }
 .hero.full-line-b::after { border-bottom-color:#7a7a77; }
+.portfolio-links.full-line-b::after,
+.works-head.full-line-b::after,
+#proj01-top-divider.full-line-b::after { border-bottom-color:#444; }
+section.project.full-line-b::after,
+.proj-ph.full-line-b::after { border-bottom-color:#7a7a77; }
 .hero {
   padding:100px 48px 80px;
   display:flex; justify-content:space-between; align-items:flex-end; gap:40px;
 }
 
 .sub-text {
-  font-size: 13px;
+  font-size: 15px;
   color: #aaa;
 }
 .hero-left h1 {
@@ -80,7 +85,7 @@ nav {
   left: -6px; letter-spacing: 0.01em;
   font-family: 'DK Crayon Crumble', cursive; line-height: 0.7;}
 .hero-left .hero-line2 { display:inline-block; font-size:clamp(62px,6.2vw,132px); position:relative; top:0px; }
-.hero-left p { font-size:14px; color:#e8e8e4; line-height:2; letter-spacing:.02em; max-width:none; }
+.hero-left p { font-size:15px; color:#e8e8e4; line-height:2; letter-spacing:.02em; max-width:none; }
 @keyframes titleLetterIn {
   0% { opacity:0; transform: translateY(28px) rotate(-6deg) scale(.7); }
   55% { opacity:1; transform: translateY(-10px) rotate(3deg) scale(1.08); }
@@ -231,18 +236,18 @@ nav {
 .works-head-r { font-size:12px; letter-spacing:.1em; color:#fff; }
 
 /* ── PROJECT ── */
-.project { padding:56px 48px; }
+.project { padding:76px 48px; }
 
 .proj-top {
   display:flex; align-items:baseline; gap:20px;
   margin-bottom:36px; padding-bottom:20px;
 }
-.proj-num { font-size:31px; letter-spacing:.12em; color:#e8e8e4; flex-shrink:0; font-weight:700; font-family:'DK Crayon Crumble', cursive; }
-.proj-title { font-size:clamp(18px,2vw,26px); font-weight:500; letter-spacing:-.02em; color:#e8e8e4; flex:1; }
+.proj-num { font-size:33px; letter-spacing:.12em; color:#e8e8e4; flex-shrink:0; font-weight:700; font-family:'DK Crayon Crumble', cursive; }
+.proj-title { font-size:clamp(20px,2vw,28px); font-weight:500; letter-spacing:-.02em; color:#e8e8e4; flex:1; }
 .proj-tags { display:flex; gap:6px; flex-shrink:0; }
 .proj-tag { font-size:12px; letter-spacing:.07em; color:#888; border:1px solid #333; padding:3px 10px; border-radius:20px; }
 .proj-meta { flex-shrink:1; min-width:0; text-align:right; display:flex; align-items:center; gap:16px; flex-wrap:wrap; justify-content:flex-end; }
-.proj-meta-title, .proj-meta-desc { font-size:13px; letter-spacing:.1em; color:#e8e8e4; font-weight:400; }
+.proj-meta-title, .proj-meta-desc { font-size:14px; letter-spacing:.1em; color:#e8e8e4; font-weight:400; }
 .proj-meta-desc { color:#e8e8e4; letter-spacing:.04em; }
 .proj-meta-sep { display:inline-block; width:1px; height:14px; background:#555; }
 .proj-meta-desc strong { font-weight:400; }
@@ -584,7 +589,7 @@ nav {
 
 <!-- 01 Nike Editorial -->
 <section class="project full-line-b">
-  <div class="proj-top full-line-b">
+  <div class="proj-top full-line-b" id="proj01-top-divider">
     <span class="proj-num">01.</span>
     <h2 class="proj-title">Nike Editorial &nbsp;<span style="font-weight:300; color:#aaa;">릴체리의 봄</span></h2>
     <div class="proj-meta">
