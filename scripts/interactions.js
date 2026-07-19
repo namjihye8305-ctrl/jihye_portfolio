@@ -33,15 +33,20 @@ document.querySelectorAll('.project, .about, .proj-ph').forEach(el => {
 });
 
 // 3. PROJECT HOVER EFFECTS
+// 아주 긴 이미지(05프로젝트 mo_1, .img-link-tall)는 같은 확대율이라도 절대 픽셀 이동량이 커서
+// 과하게 느껴지므로 확대폭을 작게 유지하고, 나머지 랜딩 이미지(.img-link)는 더 크게 확대합니다.
 document.querySelectorAll('.project').forEach(project => {
   project.addEventListener('mouseenter', function() {
     const images = this.querySelectorAll('img');
     images.forEach(img => {
-      img.style.transform = 'scale(1.02)';
+      let scale = '1.02';
+      if (img.closest('.img-link-tall')) scale = '1.015';
+      else if (img.closest('.img-link')) scale = '1.05';
+      img.style.transform = `scale(${scale})`;
       img.style.transition = 'transform 0.4s ease-out';
     });
   });
-  
+
   project.addEventListener('mouseleave', function() {
     const images = this.querySelectorAll('img');
     images.forEach(img => {
@@ -233,6 +238,29 @@ document.addEventListener('visibilitychange', function() {
     void el.offsetWidth;
     el.style.animationPlayState = 'running';
   });
+});
+
+// 16. ALIGN "CASE 02" TEXT BLOCK WITH THE MATCHING DIVIDER IN THE IMAGE COLUMN
+// (텍스트/이미지 컬럼의 실제 렌더링 높이가 이미지 비율에 따라 달라지므로
+//  고정 margin 대신 실제 위치를 측정해서 맞춥니다.)
+const CASE02_EXTRA_OFFSET = 20; // 정확히 맞춘 위치에서 추가로 더 내리는 여백
+
+function alignCase02Divider() {
+  const left = document.getElementById('case02-divider-left');
+  const right = document.getElementById('case02-divider-right');
+  if (!left || !right) return;
+
+  right.style.marginTop = '';
+  const leftTop = left.getBoundingClientRect().top + window.scrollY;
+  const rightTop = right.getBoundingClientRect().top + window.scrollY;
+  const diff = leftTop - rightTop;
+  right.style.marginTop = (Math.max(diff, 0) + CASE02_EXTRA_OFFSET) + 'px';
+}
+
+window.addEventListener('load', alignCase02Divider);
+window.addEventListener('resize', alignCase02Divider);
+document.querySelectorAll('.v-pc img').forEach(img => {
+  if (!img.complete) img.addEventListener('load', alignCase02Divider);
 });
 
 console.log('✓ Portfolio interactions loaded');
