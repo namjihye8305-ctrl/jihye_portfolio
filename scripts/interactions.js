@@ -37,7 +37,7 @@ document.querySelectorAll('.project, .about, .proj-ph').forEach(el => {
 // 과하게 느껴지므로 확대폭을 작게 유지하고, 나머지 랜딩 이미지(.img-link)는 더 크게 확대합니다.
 document.querySelectorAll('.project').forEach(project => {
   project.addEventListener('mouseenter', function() {
-    const images = this.querySelectorAll('img');
+    const images = this.querySelectorAll('.v-pc img, .v-mo img');
     images.forEach(img => {
       let scale = '1.02';
       if (img.closest('.img-link-tall')) scale = '1.015';
@@ -48,7 +48,7 @@ document.querySelectorAll('.project').forEach(project => {
   });
 
   project.addEventListener('mouseleave', function() {
-    const images = this.querySelectorAll('img');
+    const images = this.querySelectorAll('.v-pc img, .v-mo img');
     images.forEach(img => {
       img.style.transform = 'scale(1)';
     });
