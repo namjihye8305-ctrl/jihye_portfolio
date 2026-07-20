@@ -263,4 +263,31 @@ document.querySelectorAll('.v-pc img').forEach(img => {
   if (!img.complete) img.addEventListener('load', alignCase02Divider);
 });
 
+// 17. MOBILE: MOVE SITE-TOOLS INTO HERO (REPLACING THE "2021 - 2026" DATE)
+// 모바일에서는 인트로 영역 공간이 부족하므로, 히어로의 "2021 - 2026" 텍스트를 숨기고
+// 그 자리에 Full Portfolio Links 옆에 있던 툴 아이콘을 옮겨서 보여줍니다.
+function placeSiteToolsForViewport() {
+  const tools = document.querySelector('.site-tools');
+  const heroYear = document.querySelector('.hero-year');
+  const heroRight = document.querySelector('.hero-right');
+  const linksTop = document.querySelector('.portfolio-links-top');
+  if (!tools || !heroYear || !heroRight || !linksTop) return;
+
+  const isMobile = window.matchMedia('(max-width: 820px)').matches;
+  if (isMobile) {
+    heroYear.style.display = 'none';
+    if (tools.parentElement !== heroRight) {
+      heroRight.appendChild(tools);
+    }
+  } else {
+    heroYear.style.display = '';
+    if (tools.parentElement !== linksTop) {
+      linksTop.appendChild(tools);
+    }
+  }
+}
+
+window.addEventListener('load', placeSiteToolsForViewport);
+window.addEventListener('resize', placeSiteToolsForViewport);
+
 console.log('✓ Portfolio interactions loaded');
