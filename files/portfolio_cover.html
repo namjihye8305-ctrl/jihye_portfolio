@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Cover – Byun Da Ye</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Noto+Sans+KR:wght@300;400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #e8e6e1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: sans-serif;
+    }
+
+    .cover {
+      width: 580px;
+      background: #faf9f6;
+      border: 1px solid #d8d4cc;
+      position: relative;
+      padding: 32px 44px 38px;
+    }
+
+    .tag {
+      position: absolute;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 8px;
+      letter-spacing: 0.08em;
+      color: #1a1a1a;
+      background: #faf9f6;
+      border: 0.5px solid #aaa;
+      padding: 4px 9px 4px 7px;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .tag-sq {
+      width: 5px;
+      height: 5px;
+      flex-shrink: 0;
+    }
+    .t-ed  { top: 62px;    left: 14px; }
+    .t-sm  { top: 128px;   left: 82px; }
+    .t-br  { top: 62px;    right: 44px; }
+    .t-ev  { bottom: 90px; right: 14px; }
+
+    .top { text-align: center; margin-bottom: 14px; }
+    .top .line1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 9.5px;
+      letter-spacing: 0.22em;
+      color: #1a1a1a;
+      font-weight: 400;
+    }
+    .top .line2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 8px;
+      letter-spacing: 0.28em;
+      color: #777;
+      margin-top: 3px;
+      font-weight: 300;
+    }
+
+    .photo-wrap { display: flex; justify-content: center; margin-bottom: 8px; }
+    .photo { width: 62px; height: 76px; overflow: hidden; }
+    .photo svg { width: 100%; height: 100%; }
+
+    .title-wrap { text-align: center; white-space: nowrap; }
+    .title-text {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 72px;
+      color: #111;
+      display: inline-block;
+      white-space: nowrap;
+      filter: url(#roughen);
+    }
+
+    .name-wrap { text-align: center; margin-top: 14px; }
+    .name-en {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      font-weight: 500;
+      color: #111;
+    }
+    .name-kr {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 9.5px;
+      color: #444;
+      font-weight: 300;
+      line-height: 1.9;
+      margin-top: 2px;
+    }
+    .year {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      color: #666;
+      margin-top: 3px;
+    }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute;">
+  <defs>
+    <filter id="roughen" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="2" seed="3" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<div class="cover">
+
+  <span class="tag t-ed"><span class="tag-sq" style="background:#d94f2b;"></span>Editorial Design</span>
+  <span class="tag t-sm"><span class="tag-sq" style="background:#2f6fd4;"></span>Social Media</span>
+  <span class="tag t-br"><span class="tag-sq" style="background:#e8a800;"></span>Branding</span>
+  <span class="tag t-ev"><span class="tag-sq" style="background:#333;"></span>Event Graphics</span>
+
+  <div class="top">
+    <div class="line1">TURNING IDEAS INTO VISUALS.</div>
+    <div class="line2">GRAPHIC DESIGNER</div>
+  </div>
+
+  <div class="photo-wrap">
+    <div class="photo">
+      <svg viewBox="0 0 62 76" xmlns="http://www.w3.org/2000/svg">
+        <rect width="62" height="76" fill="#b8b0a4"/>
+        <rect x="11" y="38" width="40" height="38" fill="#2a2520" rx="3"/>
+        <ellipse cx="31" cy="32" rx="14" ry="16" fill="#2a2520"/>
+        <ellipse cx="31" cy="30" rx="11" ry="13" fill="#8a7e75"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="title-wrap">
+    <span class="title-text">✳PORT FOLIO✳</span>
+  </div>
+
+  <div class="name-wrap">
+    <div class="name-en">BYUN DA YE</div>
+    <div class="name-kr">그래픽 디자이너<br>변다예</div>
+    <div class="year">2026</div>
+  </div>
+
+</div>
+
+</body>
+</html>
