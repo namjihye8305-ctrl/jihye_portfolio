@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>남지혜 포트폴리오</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+@font-face {
+  font-family: 'DK Crayon Crumble';
+  src: url('https://raw.githubusercontent.com/namjihye8305-ctrl/jihye_portfolio/master/DK%20Crayon%20Crumble.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  background: #888;
+  color: #c8c8c4;
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  min-height: 100vh;
+}
+
+/* ── PDF PAGE BASE ── */
+.pdf-page {
+  width: min(297mm, calc(100vw - 40px));
+  aspect-ratio: 297 / 210;
+  background: #111;
+  box-shadow: 0 24px 64px rgba(0,0,0,.55);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  container-type: inline-size;
+}
+
+/* ═══════════════════════════════
+   PAGE 1 — COVER
+═══════════════════════════════ */
+.cover-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2cqi 4.5cqi;
+  border-bottom: 1px solid #1c1c1c;
+  flex-shrink: 0;
+}
+.cover-nav span {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(7px, 1.05cqi, 11px);
+  letter-spacing: .14em;
+  color: #888;
+}
+
+.cover-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 54% 46%;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.cover-left {
+  padding: 4cqi 4.5cqi;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid #1c1c1c;
+}
+
+.cover-title {
+  font-family: 'DK Crayon Crumble', cursive;
+  color: #e8e8e4;
+  line-height: 0.88;
+  margin-bottom: 3cqi;
+  letter-spacing: 0.01em;
+}
+.cover-title .t1 { font-size: clamp(36px, 8.2cqi, 92px); display: block; }
+.cover-title .t2 { font-size: clamp(26px, 5.8cqi, 66px); display: block; color: #e8e8e4; }
+
+.cover-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(8px, 1.1cqi, 12px);
+  color: #aaa;
+  line-height: 2;
+  letter-spacing: .03em;
+}
+.cover-desc .sub {
+  display: block;
+  font-size: clamp(7px, 0.95cqi, 10px);
+  color: #777;
+  margin-top: 2px;
+  letter-spacing: .05em;
+}
+
+.cover-right {
+  padding: 4cqi 4cqi;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.5cqi;
+}
+
+.cover-skills { display: flex; flex-direction: column; gap: .75cqi; }
+.cover-skill {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(7px, 0.95cqi, 10px);
+  letter-spacing: .1em;
+  color: #aaa;
+  border: 1px solid #333;
+  padding: .55cqi 1.3cqi;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.cover-year {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(7px, 0.95cqi, 10px);
+  color: #777;
+  letter-spacing: .12em;
+}
+
+.cover-exp {
+  padding-top: 2cqi;
+  border-top: 1px solid #1e1e1e;
+}
+.cover-exp-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(6px, .85cqi, 9px);
+  letter-spacing: .2em;
+  color: #555;
+  margin-bottom: .8cqi;
+}
+.cover-exp-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(7px, .95cqi, 10px);
+  color: #888;
+  line-height: 1.9;
+  letter-spacing: .03em;
+}
+
+.cover-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1.4cqi 4.5cqi;
+  border-top: 1px solid #1e1e1e;
+  flex-shrink: 0;
+}
+.cover-name {
+  font-size: clamp(16px, 3cqi, 34px);
+  font-weight: 300;
+  letter-spacing: -.04em;
+  color: #444;
+  line-height: .9;
+}
+.cover-contacts { display: flex; gap: 2cqi; align-items: flex-end; }
+.cover-contacts a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(7px, .95cqi, 10px);
+  letter-spacing: .08em;
+  color: #aaa;
+  border-bottom: 1px solid #333;
+  padding-bottom: 2px;
+  text-decoration: none;
+}
+
+/* ═══════════════════════════════
+   PAGE A — 이미지 전용 페이지
+═══════════════════════════════ */
+.vis-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.3cqi 4cqi;
+  border-bottom: 1px solid #1c1c1c;
+  flex-shrink: 0;
+}
+.vis-header-l { display: flex; align-items: baseline; gap: 1.5cqi; }
+.vis-num {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(7px, .95cqi, 10px);
+  letter-spacing: .12em;
+  color: #aaa;
+  font-weight: 700;
+}
+.vis-title {
+  font-size: clamp(11px, 1.6cqi, 18px);
+  font-weight: 500;
+  letter-spacing: -.02em;
+  color: #e8e8e4;
+}
+.vis-title .sub { font-weight: 300; color: #aaa; }
+.vis-label-works {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(6px, .82cqi, 9px);
+  letter-spacing: .18em;
+  color: #444;
+}
+
+.vis-body {
+  flex: 1;
+  display: flex;
+  gap: 1cqi;
+  padding: 1cqi 1.2cqi;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* PC 이미지 영역 */
+.vis-pc {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+  gap: .5cqi;
+}
+/* MO 이미지 영역 */
+.vis-mo {
+  width: 22%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+  gap: .5cqi;
+}
+
+.vis-col-lbl {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(6px, .85cqi, 9px);
+  letter-spacing: .12em;
+  color: #aaa;
+  flex-shrink: 0;
+}
+
+.vis-imgs {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  min-height: 0;
+  gap: 1cqi;
+}
+/* PC & MO 공통: 가로 나열, 상단부터 크롭 */
+.vis-imgs img {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* ═══════════════════════════════
+   PAGE B — 텍스트 정보 페이지
+═══════════════════════════════ */
+.info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.3cqi 4cqi;
+  border-bottom: 1px solid #1c1c1c;
+  flex-shrink: 0;
+}
+.info-header-l { display: flex; align-items: baseline; gap: 1.5cqi; }
+.info-num {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(7px, .95cqi, 10px);
+  letter-spacing: .12em;
+  color: #aaa;
+  font-weight: 700;
+}
+.info-title {
+  font-size: clamp(12px, 1.8cqi, 20px);
+  font-weight: 500;
+  letter-spacing: -.02em;
+  color: #e8e8e4;
+}
+.info-title .sub { font-weight: 300; color: #aaa; }
+.info-tags { display: flex; gap: .5cqi; }
+.info-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(6px, .8cqi, 9px);
+  color: #888;
+  border: 1px solid #333;
+  padding: .3cqi .8cqi;
+  border-radius: 20px;
+  letter-spacing: .07em;
+}
+
+/* 이미지 연속 + 텍스트 스플릿 */
+.info-split {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  overflow: hidden;
+  min-height: 0;
+}
+.info-imgs-cont {
+  display: flex;
+  gap: 1cqi;
+  padding: 1cqi 1cqi 1cqi 1.2cqi;
+  border-right: 1px solid #1c1c1c;
+  overflow: hidden;
+  min-height: 0;
+}
+.info-img-pc {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 1cqi;
+  overflow: hidden;
+  min-height: 0;
+}
+.info-img-mo {
+  width: 22%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 1cqi;
+  overflow: hidden;
+  min-height: 0;
+}
+.info-imgs-cont img {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.info-body {
+  display: flex;
+  flex-direction: column;
+  padding: 2.5cqi 3cqi;
+  gap: 2cqi;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.info-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(9px, 1.2cqi, 14px);
+  color: #aaa;
+  line-height: 1.85;
+  flex-shrink: 0;
+}
+
+.info-main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4cqi;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.kv-row {
+  display: flex;
+  justify-content: space-between;
+  padding: .85cqi 0;
+  border-bottom: 1px solid #1a1a1a;
+  font-size: clamp(9px, 1.1cqi, 13px);
+}
+.kv-row:last-child { border-bottom: none; }
+.kv-k { font-family: 'DM Sans', sans-serif; color: #aaa; letter-spacing: .04em; }
+.kv-v { font-family: 'DM Sans', sans-serif; color: #bbb; text-align: right; }
+
+.info-pts { display: flex; flex-direction: column; gap: 1.1cqi; }
+.info-pt { display: flex; gap: 1cqi; }
+.pt-n {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(9px, 1.1cqi, 13px);
+  color: #fff;
+  flex-shrink: 0;
+}
+.pt-t {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(9px, 1.1cqi, 13px);
+  color: #aaa;
+  line-height: 1.65;
+}
+
+.info-colors {
+  padding-top: 2cqi;
+  border-top: 1px solid #1a1a1a;
+  flex-shrink: 0;
+}
+.color-lbl {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(7px, .9cqi, 10px);
+  letter-spacing: .16em;
+  color: #777;
+  margin-bottom: .8cqi;
+}
+.swatches { display: flex; gap: 1.2cqi; }
+.sw-wrap { text-align: center; }
+.sw {
+  width: clamp(14px, 2cqi, 24px);
+  height: clamp(14px, 2cqi, 24px);
+  border-radius: 50%;
+  margin: 0 auto .4cqi;
+}
+.sw-name { font-family: 'DM Sans', sans-serif; font-size: clamp(7px, .88cqi, 10px); color: #aaa; }
+
+/* ═══════════════════════════════
+   PAGE — PLACEHOLDER 02–06
+═══════════════════════════════ */
+.page-ph {
+  justify-content: center;
+  align-items: center;
+  gap: 1.5cqi;
+}
+.ph-nums {
+  font-size: clamp(48px, 13cqi, 148px);
+  font-weight: 700;
+  color: #1e1e1e;
+  letter-spacing: -.04em;
+  line-height: 1;
+}
+.ph-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(8px, 1.1cqi, 12px);
+  color: #555;
+  letter-spacing: .15em;
+}
+
+/* ── Print ── */
+@media print {
+  @page { size: A4 landscape; margin: 0; }
+  body { background: transparent; }
+  .wrap { padding: 0; gap: 0; }
+  .pdf-page {
+    width: 100%;
+    aspect-ratio: unset;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+    page-break-after: always;
+    break-after: page;
+  }
+  .pdf-page:last-child { page-break-after: auto; break-after: auto; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ── PAGE 1: COVER ── -->
+  <div class="pdf-page page-cover">
+    <div class="cover-nav">
+      <span>NAM JI HYE</span>
+      <span>CONTENTS WEB DESIGNER</span>
+    </div>
+    <div class="cover-body">
+      <div class="cover-left">
+        <div class="cover-title">
+          <span class="t1">Contents</span>
+          <span class="t2">Web Designer.</span>
+        </div>
+        <p class="cover-desc">
+          트렌드한 고감도 비주얼, 성과에 기여하는 컨텐츠 디자이너
+          <span class="sub">Editorial · Branding · Social · Event Graphics</span>
+        </p>
+      </div>
+      <div class="cover-right">
+        <div class="cover-skills">
+          <span class="cover-skill">Web Publishing</span>
+          <span class="cover-skill">Editorial Design</span>
+          <span class="cover-skill">Branding</span>
+          <span class="cover-skill">Social Media</span>
+          <span class="cover-skill">Event Graphics</span>
+        </div>
+        <div class="cover-year">2020 — 2026</div>
+        <div class="cover-exp">
+          <p class="cover-exp-label">EXPERIENCE</p>
+          <p class="cover-exp-text">
+            Fashion e-Commerce 15y+<br>
+            IDF Mall · W Concept · SSG
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="cover-footer">
+      <div class="cover-name">Nam<br>Ji Hye.</div>
+      <div class="cover-contacts">
+        <a href="mailto:your@email.com">Email</a>
+        <a href="#">Instagram</a>
+        <a href="#">Notion</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PROJECT 01: Nike Editorial
+       Page A (이미지) + Page B (정보)
+  ══════════════════════════════════ -->
+
+  <!-- Page A: 이미지 -->
+  <div class="pdf-page page-visual">
+    <div class="vis-header">
+      <div class="vis-header-l">
+        <span class="vis-num">01</span>
+        <span class="vis-title">Nike Editorial &nbsp;<span class="sub">릴체리의 봄</span></span>
+      </div>
+      <span class="vis-label-works">SELECTED WORKS</span>
+    </div>
+    <div class="vis-body">
+      <div class="vis-pc">
+        <span class="vis-col-lbl">PC</span>
+        <div class="vis-imgs">
+          <img src="pc_01.jpg" alt="Nike Editorial PC 01">
+          <img src="pc_02.jpg" alt="Nike Editorial PC 02">
+        </div>
+      </div>
+      <div class="vis-mo">
+        <span class="vis-col-lbl">MO</span>
+        <div class="vis-imgs">
+          <img src="01.jpg" alt="MO 01">
+          <img src="02.jpg" alt="MO 02">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page B: 이미지 하단 연속 + 정보 -->
+  <div class="pdf-page page-info">
+    <div class="info-header">
+      <div class="info-header-l">
+        <span class="info-num">01</span>
+        <h2 class="info-title">Nike Editorial &nbsp;<span class="sub">릴체리의 봄</span></h2>
+      </div>
+      <div class="info-tags">
+        <span class="info-tag">Web Design</span>
+        <span class="info-tag">Editorial</span>
+        <span class="info-tag">SP23</span>
+      </div>
+    </div>
+    <div class="info-split">
+      <!-- 이미지 하단 연속 (Page A에서 잘린 부분) -->
+      <div class="info-imgs-cont">
+        <div class="info-img-pc">
+          <img src="pc_01.jpg" alt="Nike Editorial PC 01">
+          <img src="pc_02.jpg" alt="Nike Editorial PC 02">
+        </div>
+        <div class="info-img-mo">
+          <img src="01.jpg" alt="MO 01">
+          <img src="02.jpg" alt="MO 02">
+        </div>
+      </div>
+      <!-- 텍스트 정보 -->
+      <div class="info-body">
+        <p class="info-desc">나이키의 스포티한 아이덴티티와 아티스트 릴체리의 힙하고 자유로운 무드를 결합해 독창적인 에디토리얼 비주얼을 구현.</p>
+        <div class="info-main">
+          <div class="info-kv">
+            <div class="kv-row"><span class="kv-k">CLIENT</span><span class="kv-v">W Concept × Nike</span></div>
+            <div class="kv-row"><span class="kv-k">CATEGORY</span><span class="kv-v">Fashion Editorial</span></div>
+            <div class="kv-row"><span class="kv-k">SEASON</span><span class="kv-v">SP23</span></div>
+            <div class="kv-row"><span class="kv-k">ROLE</span><span class="kv-v">Design Direction</span></div>
+          </div>
+          <div class="info-pts">
+            <div class="info-pt"><span class="pt-n">✓</span><span class="pt-t">레드/블랙 대비를 활용한 레이아웃 설계 및 그래픽 요소 배치</span></div>
+            <div class="info-pt"><span class="pt-n">✓</span><span class="pt-t">핸드드로잉 텍스트와 그래픽으로 에디토리얼 감성 강조</span></div>
+            <div class="info-pt"><span class="pt-n">✓</span><span class="pt-t">페이드 인·아웃 전환 효과로 스크롤 몰입감 강화</span></div>
+          </div>
+        </div>
+        <div class="info-colors">
+          <p class="color-lbl">COLOR</p>
+          <div class="swatches">
+            <div class="sw-wrap"><div class="sw" style="background:#C0392B;"></div><div class="sw-name">Red</div></div>
+            <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div><div class="sw-name">Black</div></div>
+            <div class="sw-wrap"><div class="sw" style="background:#F5F5F0;border:1px solid #444;"></div><div class="sw-name">White</div></div>
+            <div class="sw-wrap"><div class="sw" style="background:#4A90D9;"></div><div class="sw-name">Blue</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PROJECT 02 — 예시 구조
+       아래를 복사해서 프로젝트 추가
+  ══════════════════════════════════ -->
+  <!--
+  <div class="pdf-page page-visual">
+    <div class="vis-header">
+      <div class="vis-header-l">
+        <span class="vis-num">02</span>
+        <span class="vis-title">프로젝트 제목 &nbsp;<span class="sub">부제</span></span>
+      </div>
+      <span class="vis-label-works">SELECTED WORKS</span>
+    </div>
+    <div class="vis-body">
+      <div class="vis-pc">
+        <span class="vis-col-lbl">PC</span>
+        <div class="vis-imgs">
+          <img src="이미지경로.jpg" alt="">
+          <img src="이미지경로.jpg" alt="">
+        </div>
+      </div>
+      <div class="vis-mo">
+        <span class="vis-col-lbl">MO</span>
+        <div class="vis-imgs">
+          <img src="이미지경로.jpg" alt="">
+          <img src="이미지경로.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pdf-page page-info">
+    <div class="info-header">
+      <div class="info-header-l">
+        <span class="info-num">02</span>
+        <h2 class="info-title">프로젝트 제목 &nbsp;<span class="sub">부제</span></h2>
+      </div>
+      <div class="info-tags">
+        <span class="info-tag">태그1</span>
+        <span class="info-tag">태그2</span>
+      </div>
+    </div>
+    <div class="info-body">
+      <p class="info-desc">프로젝트 설명 텍스트</p>
+      <div class="info-main">
+        <div class="info-kv">
+          <div class="kv-row"><span class="kv-k">CLIENT</span><span class="kv-v">클라이언트명</span></div>
+          <div class="kv-row"><span class="kv-k">CATEGORY</span><span class="kv-v">카테고리</span></div>
+          <div class="kv-row"><span class="kv-k">SEASON</span><span class="kv-v">시즌</span></div>
+          <div class="kv-row"><span class="kv-k">ROLE</span><span class="kv-v">역할</span></div>
+        </div>
+        <div class="info-pts">
+          <div class="info-pt"><span class="pt-n">✓</span><span class="pt-t">포인트 1</span></div>
+          <div class="info-pt"><span class="pt-n">✓</span><span class="pt-t">포인트 2</span></div>
+          <div class="info-pt"><span class="pt-n">✓</span><span class="pt-t">포인트 3</span></div>
+        </div>
+      </div>
+      <div class="info-colors">
+        <p class="color-lbl">COLOR</p>
+        <div class="swatches">
+          <div class="sw-wrap"><div class="sw" style="background:#색상코드;"></div><div class="sw-name">색상명</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <!-- ── PLACEHOLDER ── -->
+  <div class="pdf-page page-ph">
+    <div class="ph-nums">02 — 06</div>
+    <div class="ph-label">이미지 + 정보 전달 시 추가 예정</div>
+  </div>
+
+</div>
+<script src="scripts/interactions.js"></script>
+</body>
+</html>
