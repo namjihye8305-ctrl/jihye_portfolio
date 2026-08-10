@@ -290,4 +290,46 @@ function placeSiteToolsForViewport() {
 window.addEventListener('load', placeSiteToolsForViewport);
 window.addEventListener('resize', placeSiteToolsForViewport);
 
+// 18. IMAGE LIGHTBOX (click a project image to view it at full size)
+// 외부 링크(.img-link)로 감싸진 이미지는 기존 클릭-이동 동작을 그대로 유지하고,
+// 나머지 프로젝트 이미지에만 라이트박스를 적용합니다.
+(function setupLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.getElementById('lightbox-close');
+  if (!lightbox || !lightboxImg || !closeBtn) return;
+
+  function openLightbox(img) {
+    lightboxImg.src = img.currentSrc || img.src;
+    lightboxImg.alt = img.alt || '';
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+  }
+
+  document.querySelectorAll('.v-pc img, .v-mo img').forEach(img => {
+    if (img.closest('a')) return;
+    img.classList.add('lightbox-zoomable');
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function() {
+      openLightbox(this);
+    });
+  });
+
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightboxImg) { closeLightbox(); return; }
+    if (e.target === lightbox) closeLightbox();
+  });
+  closeBtn.addEventListener('click', closeLightbox);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+  });
+})();
+
 console.log('✓ Portfolio interactions loaded');

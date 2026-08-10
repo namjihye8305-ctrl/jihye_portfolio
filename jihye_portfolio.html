@@ -265,6 +265,35 @@ section.project.full-line-b::after,
 .v-pc img { width:100%; max-width:1122px; display:block; border-radius:2px; }
 .v-mo img { width:100%; max-width:400px; display:block; border-radius:2px; }
 
+/* ── IMAGE LIGHTBOX ── */
+.lightbox-zoomable { cursor:zoom-in; }
+.lightbox {
+  position:fixed; inset:0; z-index:1000;
+  display:flex; align-items:center; justify-content:center;
+  padding:32px;
+  background:rgba(0,0,0,.88);
+  opacity:0; visibility:hidden;
+  transition:opacity .25s ease;
+}
+.lightbox.is-open { opacity:1; visibility:visible; }
+.lightbox img {
+  max-width:100%; max-height:100%;
+  width:auto; height:auto;
+  border-radius:2px;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+  cursor:zoom-out;
+}
+.lightbox-close {
+  position:fixed; top:20px; right:28px;
+  width:40px; height:40px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:24px; line-height:1; color:#e8e8e4;
+  background:rgba(255,255,255,.08);
+  border-radius:50%; cursor:pointer;
+  transition:background .2s ease;
+}
+.lightbox-close:hover { background:rgba(255,255,255,.18); }
+
 .img-link { position:relative; display:block; }
 .img-link img { transform-origin:top; }
 .img-link .click-sticky {
@@ -1702,6 +1731,11 @@ section.project.full-line-b::after,
 
 </div><!-- /wrap -->
 
-<script src="scripts/interactions.js?v=20260721"></script>
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-close" id="lightbox-close">&times;</div>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script src="scripts/interactions.js?v=20260722"></script>
 </body>
 </html>
