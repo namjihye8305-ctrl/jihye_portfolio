@@ -265,6 +265,16 @@ section.project.full-line-b::after,
 .v-pc img { width:100%; max-width:1122px; display:block; border-radius:2px; }
 .v-mo img { width:100%; max-width:400px; display:block; border-radius:2px; }
 
+/* ── PROJECT 09 · AI REDESIGN CASE GRID ──
+   Desktop: original two-column grouping (01/03/04 left, 02 right).
+   Mobile: all four cases fall back into one column in source order (01→02→03→04). */
+.ai09-cases { display:grid; grid-template-columns:1fr 400px; column-gap:20px; row-gap:16px; align-items:start; }
+.ai09-case-01 { grid-column:1; grid-row:1; }
+.ai09-case-03 { grid-column:1; grid-row:2; }
+.ai09-case-04 { grid-column:1; grid-row:3; }
+.ai09-case-02 { grid-column:2; grid-row:1; }
+.ai09-case-02 .case-divider { margin-top:28px; padding-top:0; border-top:none; }
+
 /* ── IMAGE LIGHTBOX ── */
 .lightbox-zoomable { cursor:zoom-in; }
 .lightbox {
@@ -584,6 +594,22 @@ section.project.full-line-b::after,
     flex-direction:column;
     gap:12px;
     width:100%;
+  }
+  .ai09-cases {
+    grid-template-columns:1fr;
+    row-gap:12px;
+  }
+  .ai09-case-01,
+  .ai09-case-02,
+  .ai09-case-03,
+  .ai09-case-04 {
+    grid-column:1;
+    grid-row:auto;
+  }
+  .ai09-case-02 .case-divider {
+    margin-top:28px;
+    padding-top:20px;
+    border-top:1px solid #333;
   }
   .v-mo,
   .v-pc,
@@ -1502,38 +1528,58 @@ section.project.full-line-b::after,
   <div class="proj-grid">
     <div class="proj-visual">
       <div class="device-wrap" style="flex-direction:column;">
-        <div class="v-pc">
-          <p class="case-divider" style="margin-top:28px; padding-top:0; border-top:none;">Case 01 · 번아웃 세일 (Burnout Sale)</p>
-          <p class="v-label">PROMOTION KEY VISUAL</p>
-          <div style="position:relative; overflow:hidden; padding:0;">
-            <video src="09/번아웃세일/pc_번아웃세일.mp4" autoplay loop muted playsinline style="width:100%; max-width:1122px; display:block; border-radius:2px;"></video>
-            <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">01. 번아웃 세일</span>
+        <div class="ai09-cases">
+          <div class="ai09-case ai09-case-01 v-pc">
+            <p class="case-divider" style="margin-top:28px; padding-top:0; border-top:none;">Case 01 · 번아웃 세일 (Burnout Sale)</p>
+            <p class="v-label">PROMOTION KEY VISUAL</p>
+            <div style="position:relative; overflow:hidden; padding:0;">
+              <video autoplay loop muted playsinline style="width:100%; max-width:1122px; display:block; border-radius:2px;">
+                <source src="09/번아웃세일/pc_번아웃세일_hq.mp4" media="(min-width:821px)">
+                <source src="09/번아웃세일/pc_번아웃세일.mp4">
+              </video>
+              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">01. 번아웃 세일</span>
+            </div>
           </div>
 
-          <p class="case-divider">Case 02 · 쉬즈미스 스프링컬렉션</p>
-          <p class="v-label">PROMOTION KEY VISUAL</p>
-          <div style="position:relative; overflow:hidden; padding:0;">
-            <video src="09/쉬즈미스스프링컬렉션/mo_쉬즈미스스프링컬렉션.mp4" autoplay loop muted playsinline style="width:100%; max-width:400px; display:block; border-radius:2px;"></video>
-            <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">02. 쉬즈미스 스프링컬렉션</span>
+          <div class="ai09-case ai09-case-02 v-mo">
+            <p class="case-divider">Case 02 · 쉬즈미스 스프링컬렉션</p>
+            <p class="v-label">PROMOTION KEY VISUAL</p>
+            <div style="position:relative; overflow:hidden; padding:0;">
+              <video autoplay loop muted playsinline style="width:100%; max-width:400px; display:block; border-radius:2px;">
+                <source src="09/쉬즈미스스프링컬렉션/mo_쉬즈미스스프링컬렉션_hq.mp4" media="(min-width:821px)">
+                <source src="09/쉬즈미스스프링컬렉션/mo_쉬즈미스스프링컬렉션.mp4">
+              </video>
+              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">02. 쉬즈미스 스프링컬렉션</span>
+            </div>
           </div>
 
-          <p class="case-divider">Case 03 · 아카이브 세일 Ver.1 (Neon Hologram)</p>
-          <p class="v-label">PROMOTION KEY VISUAL</p>
-          <div style="position:relative; overflow:hidden; padding:0;">
-            <video src="09/아카이브세일/pc_아카이브세일_v1.mp4" autoplay loop muted playsinline style="width:100%; max-width:1122px; display:block; border-radius:2px;"></video>
-            <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">03. 아카이브 세일 Ver.1</span>
-          </div>
-          <p class="v-label">DETAIL PAGE</p>
-          <div style="position:relative; overflow:hidden; padding:0;">
-            <img src="09/아카이브세일/pc_아카이브세일_v1.jpg" alt="Archive Sale Ver.1 Detail Page" style="width:100%; max-width:1122px; display:block; border-radius:2px;">
-            <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">03. 아카이브 세일 Ver.1 Detail Page</span>
+          <div class="ai09-case ai09-case-03 v-pc">
+            <p class="case-divider">Case 03 · 아카이브 세일 Ver.1 (Neon Hologram)</p>
+            <p class="v-label">PROMOTION KEY VISUAL</p>
+            <div style="position:relative; overflow:hidden; padding:0;">
+              <video autoplay loop muted playsinline style="width:100%; max-width:1122px; display:block; border-radius:2px;">
+                <source src="09/아카이브세일/pc_아카이브세일_v1_hq.mp4" media="(min-width:821px)">
+                <source src="09/아카이브세일/pc_아카이브세일_v1.mp4">
+              </video>
+              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">03. 아카이브 세일 Ver.1</span>
+            </div>
+            <p class="v-label">DETAIL PAGE</p>
+            <div style="position:relative; overflow:hidden; padding:0;">
+              <img src="09/아카이브세일/pc_아카이브세일_v1.jpg" alt="Archive Sale Ver.1 Detail Page" style="width:100%; max-width:1122px; display:block; border-radius:2px;">
+              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">03. 아카이브 세일 Ver.1 Detail Page</span>
+            </div>
           </div>
 
-          <p class="case-divider">Case 04 · 아카이브 세일 Ver.2 (Archive File Concept)</p>
-          <p class="v-label">DETAIL PAGE</p>
-          <div style="position:relative; overflow:hidden; padding:0;">
-            <img src="09/아카이브세일/pc_아카이브세일_v2.gif" alt="Archive Sale Ver.2 Detail Page" style="width:100%; max-width:1122px; display:block; border-radius:2px;">
-            <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">04. 아카이브 세일 Ver.2</span>
+          <div class="ai09-case ai09-case-04 v-pc">
+            <p class="case-divider">Case 04 · 아카이브 세일 Ver.2 (Archive File Concept)</p>
+            <p class="v-label">DETAIL PAGE</p>
+            <div style="position:relative; overflow:hidden; padding:0;">
+              <picture style="display:block;">
+                <source srcset="09/아카이브세일/pc_아카이브세일_v2_hq.gif" media="(min-width:821px)">
+                <img src="09/아카이브세일/pc_아카이브세일_v2.gif" alt="Archive Sale Ver.2 Detail Page" style="width:100%; max-width:1122px; display:block; border-radius:2px;">
+              </picture>
+              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">04. 아카이브 세일 Ver.2</span>
+            </div>
           </div>
         </div>
         <div style="width:100%; text-align:center; padding:50px 20px 30px; border-top:1px solid #333; margin-top:40px;">
