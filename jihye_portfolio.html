@@ -266,14 +266,14 @@ section.project.full-line-b::after,
 .v-mo img { width:100%; max-width:400px; display:block; border-radius:2px; }
 
 /* ── PROJECT 09 · AI REDESIGN CASE GRID ──
-   Desktop: original two-column grouping (01/03/04 left, 02 right).
-   Mobile: all four cases fall back into one column in source order (01→02→03→04). */
+   Desktop: Case 01 spans the full row (enlarged/centered), 02 left of row 2 with 03 to its right, 04/05 stacked below.
+   Mobile: all cases fall back into one column in source order (01→02→03→04→05). */
 .ai09-cases { display:grid; grid-template-columns:1fr 400px; column-gap:20px; row-gap:16px; align-items:start; }
-.ai09-case-01 { grid-column:1; grid-row:1; }
-.ai09-case-03 { grid-column:1; grid-row:2; }
+.ai09-case-01 { grid-column:1 / -1; grid-row:1; align-items:center; }
+.ai09-case-02 { grid-column:1; grid-row:2; }
 .ai09-case-04 { grid-column:1; grid-row:3; }
-.ai09-case-02 { grid-column:2; grid-row:1; }
-.ai09-case-02 .case-divider { margin-top:28px; padding-top:0; border-top:none; }
+.ai09-case-05 { grid-column:1; grid-row:4; }
+.ai09-case-03 { grid-column:2; grid-row:2; }
 
 /* ── IMAGE LIGHTBOX ── */
 .lightbox-zoomable { cursor:zoom-in; }
@@ -602,14 +602,10 @@ section.project.full-line-b::after,
   .ai09-case-01,
   .ai09-case-02,
   .ai09-case-03,
-  .ai09-case-04 {
+  .ai09-case-04,
+  .ai09-case-05 {
     grid-column:1;
     grid-row:auto;
-  }
-  .ai09-case-02 .case-divider {
-    margin-top:28px;
-    padding-top:20px;
-    border-top:1px solid #333;
   }
   .v-mo,
   .v-pc,
@@ -1530,55 +1526,66 @@ section.project.full-line-b::after,
       <div class="device-wrap" style="flex-direction:column;">
         <div class="ai09-cases">
           <div class="ai09-case ai09-case-01 v-pc">
-            <p class="case-divider" style="margin-top:28px; padding-top:0; border-top:none;">Case 01 · 번아웃 세일 (Burnout Sale)</p>
+            <p class="case-divider" style="margin-top:28px; padding-top:0; border-top:none;">Case 01 · Peachy Den (EQL 콜렉트)</p>
+            <p class="v-label" style="max-width:1400px; margin-left:auto; margin-right:auto;">PROMOTION KEY VISUAL</p>
+            <div style="position:relative; overflow:hidden; padding:0; max-width:1400px; width:100%; margin:0 auto;">
+              <video autoplay loop muted playsinline style="width:100%; display:block; border-radius:2px;">
+                <source src="09/피치덴/pc_피치덴.mp4">
+              </video>
+              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">01. Peachy Den</span>
+            </div>
+          </div>
+
+          <div class="ai09-case ai09-case-02 v-pc">
+            <p class="case-divider">Case 02 · 번아웃 세일 (Burnout Sale)</p>
             <p class="v-label">PROMOTION KEY VISUAL</p>
             <div style="position:relative; overflow:hidden; padding:0;">
               <video autoplay loop muted playsinline style="width:100%; max-width:1122px; display:block; border-radius:2px;">
                 <source src="09/번아웃세일/pc_번아웃세일_hq.mp4" media="(min-width:821px)">
                 <source src="09/번아웃세일/pc_번아웃세일.mp4">
               </video>
-              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">01. 번아웃 세일</span>
+              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">02. 번아웃 세일</span>
             </div>
           </div>
 
-          <div class="ai09-case ai09-case-02 v-mo">
-            <p class="case-divider">Case 02 · 쉬즈미스 스프링컬렉션</p>
+          <div class="ai09-case ai09-case-03 v-mo">
+            <p class="case-divider">Case 03 · 쉬즈미스 스프링컬렉션</p>
             <p class="v-label">PROMOTION KEY VISUAL</p>
             <div style="position:relative; overflow:hidden; padding:0;">
               <video autoplay loop muted playsinline style="width:100%; max-width:400px; display:block; border-radius:2px;">
                 <source src="09/쉬즈미스스프링컬렉션/mo_쉬즈미스스프링컬렉션_hq.mp4" media="(min-width:821px)">
                 <source src="09/쉬즈미스스프링컬렉션/mo_쉬즈미스스프링컬렉션.mp4">
               </video>
-              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">02. 쉬즈미스 스프링컬렉션</span>
+              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">03. 쉬즈미스 스프링컬렉션</span>
             </div>
           </div>
 
-          <div class="ai09-case ai09-case-03 v-pc">
-            <p class="case-divider">Case 03 · 아카이브 세일 Ver.1 (Neon Hologram)</p>
+          <div class="ai09-case ai09-case-04 v-pc">
+            <p class="case-divider">Case 04 · 아카이브 세일 Ver.1 (Neon Hologram)</p>
             <p class="v-label">PROMOTION KEY VISUAL</p>
             <div style="position:relative; overflow:hidden; padding:0;">
               <video autoplay loop muted playsinline style="width:100%; max-width:1122px; display:block; border-radius:2px;">
                 <source src="09/아카이브세일/pc_아카이브세일_v1_hq.mp4" media="(min-width:821px)">
                 <source src="09/아카이브세일/pc_아카이브세일_v1.mp4">
               </video>
-              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">03. 아카이브 세일 Ver.1</span>
+              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">04. 아카이브 세일 Ver.1</span>
             </div>
             <p class="v-label">DETAIL PAGE</p>
             <div style="position:relative; overflow:hidden; padding:0;">
               <img src="09/아카이브세일/pc_아카이브세일_v1.jpg" alt="Archive Sale Ver.1 Detail Page" style="width:100%; max-width:1122px; display:block; border-radius:2px;">
-              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">03. 아카이브 세일 Ver.1 Detail Page</span>
+              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">04. 아카이브 세일 Ver.1 Detail Page</span>
             </div>
           </div>
 
-          <div class="ai09-case ai09-case-04 v-pc">
-            <p class="case-divider">Case 04 · 아카이브 세일 Ver.2 (Archive File Concept)</p>
+          <div class="ai09-case ai09-case-05 v-pc">
+            <p class="case-divider">Case 05 · 아카이브 세일 Ver.2 (Archive File Concept)</p>
             <p class="v-label">DETAIL PAGE</p>
             <div style="position:relative; overflow:hidden; padding:0;">
               <picture style="display:block;">
                 <source srcset="09/아카이브세일/pc_아카이브세일_v2_hq.gif" media="(min-width:821px)">
                 <img src="09/아카이브세일/pc_아카이브세일_v2.gif" alt="Archive Sale Ver.2 Detail Page" style="width:100%; max-width:1122px; display:block; border-radius:2px;">
               </picture>
-              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">04. 아카이브 세일 Ver.2</span>
+              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">05. 아카이브 세일 Ver.2</span>
             </div>
           </div>
         </div>
@@ -1588,6 +1595,43 @@ section.project.full-line-b::after,
       </div>
     </div>
     <div class="proj-info">
+      <div class="proj-kv">
+        <div class="kv-row"><span class="kv-k">CLIENT</span><span class="kv-v">Peachy Den (EQL 콜렉트 입점)</span></div>
+        <div class="kv-row"><span class="kv-k">CATEGORY</span><span class="kv-v">Brand Promotion Key Visual · Peachy Den</span></div>
+        <div class="kv-row"><span class="kv-k">BUILT WITH</span><span class="kv-v">ChatGPT · Kling · Photoshop</span></div>
+        <div class="kv-row"><span class="kv-k">ROLE</span><span class="kv-v">AI Generation &amp; Design</span></div>
+
+      </div>
+      <div class="proj-points">
+        <div class="pp-section-title">🎯 프로젝트 목적</div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">2019년 런던을 기반으로 시작된 여성복 브랜드 'Peachy Den'의 EQL 콜렉트 입점을 알리는 상단 프로모션 키비주얼 제작</span></div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">브릿 걸 특유의 페미닌하고 자유로운 브랜드 감성을 빈티지 포토부스 컨셉으로 재해석해 신규 유입 유도</span></div>
+
+        <div class="pp-section-title">🛠️ 담당 역할 및 기여도</div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">AI 모델 컷 생성부터 포토부스 오브제 합성, 타이포그래피 배치, 모션 편집까지 상단 키비주얼 전 과정 기획 및 제작</span></div>
+
+        <div class="pp-section-title">💡 체크 포인트</div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">레드 포토부스에서 <strong><span class="stat-highlight stat-highlight-red">흑백 필름 스트립이 인화되는 연출</span></strong>로 'NEW ARRIVAL' 신상 발매 소식을 위트 있게 전달</span></div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">별무늬 배경 속 블랙 룩 모델 컷으로 다양한 체형을 고려한 편안한 실루엣이라는 브랜드 메시지를 자연스럽게 노출</span></div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t"><strong><span class="stat-highlight stat-highlight-red">'신상 발매 + 10% 쿠폰'</span></strong> 카피로 콜렉트 단독 혜택을 자연스럽게 안내해 구매 동기 부여</span></div>
+      </div>
+
+      <div class="proj-colors">
+        <p class="colors-label">COLOR</p>
+        <div class="swatches">
+          <div class="sw-wrap"><div class="sw" style="background:#B8241F;"></div><div class="sw-name">Vintage Red</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div><div class="sw-name">Black</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#EDE8DD;border:1px solid #444;"></div><div class="sw-name">Ivory</div></div>
+        </div>
+        <p class="colors-label tool-label">TOOL</p>
+        <div class="tool-icons">
+          <div class="tool-icon gpt" title="ChatGPT"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5152 2.9004A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.0202 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4947 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.5963 3.8558L13.1038 8.3945l2.0201-1.1638a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.3927-.6879zm2.0107-3.0231-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.0201-1.1638a.0708.0708 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.4592a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.6069 1.4997-2.602-1.4997Z"/></svg></div>
+          <div class="tool-icon kling" title="Kling">Kl</div>
+          <div class="tool-icon ps" title="Photoshop">Ps</div>
+        </div>
+      </div>
+
+      <p class="case-divider">Case 02 · 번아웃 세일 (Burnout Sale)</p>
       <div class="proj-kv">
         <div class="kv-row"><span class="kv-k">CLIENT</span><span class="kv-v">Personal Project</span></div>
         <div class="kv-row"><span class="kv-k">CATEGORY</span><span class="kv-v">Promotion Key Visual · Burnout Sale</span></div>
@@ -1625,7 +1669,7 @@ section.project.full-line-b::after,
         </div>
       </div>
 
-      <p class="case-divider">Case 02 · 쉬즈미스 스프링컬렉션</p>
+      <p class="case-divider">Case 03 · 쉬즈미스 스프링컬렉션</p>
       <div class="proj-kv">
         <div class="kv-row"><span class="kv-k">CLIENT</span><span class="kv-v">SHESMISS (개인 리디자인 프로젝트)</span></div>
         <div class="kv-row"><span class="kv-k">CATEGORY</span><span class="kv-v">Spring Collection Key Visual</span></div>
@@ -1662,7 +1706,7 @@ section.project.full-line-b::after,
         </div>
       </div>
 
-      <p class="case-divider">Case 03 · 아카이브 세일 Ver.1 (Neon Hologram)</p>
+      <p class="case-divider">Case 04 · 아카이브 세일 Ver.1 (Neon Hologram)</p>
       <div class="proj-kv">
         <div class="kv-row"><span class="kv-k">CLIENT</span><span class="kv-v">Personal Project</span></div>
         <div class="kv-row"><span class="kv-k">CATEGORY</span><span class="kv-v">Event Detail Page · Archive Sale</span></div>
@@ -1699,7 +1743,7 @@ section.project.full-line-b::after,
         </div>
       </div>
 
-      <p class="case-divider">Case 04 · 아카이브 세일 Ver.2 (Archive File Concept)</p>
+      <p class="case-divider">Case 05 · 아카이브 세일 Ver.2 (Archive File Concept)</p>
       <div class="proj-kv">
         <div class="kv-row"><span class="kv-k">CLIENT</span><span class="kv-v">Personal Project</span></div>
         <div class="kv-row"><span class="kv-k">CATEGORY</span><span class="kv-v">Event Detail Page · Archive Sale</span></div>
@@ -1735,6 +1779,7 @@ section.project.full-line-b::after,
           <div class="tool-icon ps" title="Photoshop">Ps</div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
