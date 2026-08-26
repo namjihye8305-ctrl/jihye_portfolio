@@ -334,13 +334,26 @@ window.addEventListener('resize', placeSiteToolsForViewport);
 
 // 19. CASE 01 (Peachy Den) VIDEO: UNMUTE ONLY WHILE SCROLLED INTO VIEW
 // 자동재생 정책 때문에 muted로 시작하고, 화면에 절반 이상 보일 때만 소리를 켭니다.
+// 브라우저가 음소거 해제 재생을 막으면서 영상 자체를 정지시키는 경우가 있어,
+// play()가 실패하면 다시 muted로 되돌려 영상만이라도 계속 재생되게 합니다.
 (function setupCase01VideoSound() {
   const video = document.getElementById('case01-video');
   if (!video || !('IntersectionObserver' in window)) return;
 
+  function keepPlaying() {
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(function() {
+        video.muted = true;
+        video.play().catch(function() {});
+      });
+    }
+  }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       video.muted = !entry.isIntersecting;
+      keepPlaying();
     });
   }, { threshold: 0.6 });
 
