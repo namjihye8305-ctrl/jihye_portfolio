@@ -61,7 +61,7 @@ nav {
 .full-line-b::after { bottom:0; border-bottom:1px solid #555; }
 .full-line-t::before { top:0; border-top:1px solid #555; }
 .hero.full-line-b::after { border-bottom-color:#7a7a77; }
-.portfolio-links.full-line-b::after,
+.portfolio-links.full-line-b::after { border-bottom-color:#7a7a77; }
 .works-head.full-line-b::after { border-bottom-color:#444; }
 section.project.full-line-b::after,
 .proj-ph.full-line-b::after { border-bottom-color:#444; }
@@ -237,11 +237,13 @@ section.project.full-line-b::after,
 .works-head-r { font-size:12px; letter-spacing:.1em; color:#fff; }
 
 /* ── WORKS NAV (PC only) ── */
-.works-nav { display:flex; padding:0 48px; border-bottom:1px solid #333; }
+.works-nav { display:flex; padding:0 48px; background:#0d0d0d; }
+.works-nav.full-line-b::after { border-bottom-color:#7a7a77; }
 .works-nav-tab {
   flex:1; text-align:center; padding:14px 6px;
   font-family:'Inter','Helvetica Neue',Arial,sans-serif;
-  font-size:12px; letter-spacing:.08em; color:#999;
+  font-size:12px; font-weight:500; letter-spacing:.08em; color:#e8e8e4;
+  background:#0d0d0d;
   text-decoration:none; border-left:1px solid #262626;
   transition:background .2s ease, color .2s ease;
 }
@@ -715,16 +717,16 @@ section.project.full-line-b::after,
 </div>
 
 <!-- WORKS NAV (PC only) -->
-<nav class="works-nav">
-  <a href="#proj01" class="works-nav-tab" title="Nike Editorial">01</a>
-  <a href="#proj02" class="works-nav-tab" title="Coupon · Curation · Benefit">02</a>
-  <a href="#proj03" class="works-nav-tab" title="Promotion Event">03</a>
-  <a href="#proj04" class="works-nav-tab" title="Brand Promotion">04</a>
-  <a href="#proj05" class="works-nav-tab" title="99 Special Price">05</a>
-  <a href="#proj06" class="works-nav-tab" title="Template Guide">06</a>
-  <a href="#proj07" class="works-nav-tab" title="Brand Campaign">07</a>
-  <a href="#proj08" class="works-nav-tab" title="Weekly Style Curation">08</a>
-  <a href="#proj09" class="works-nav-tab" title="AI Redesign">09</a>
+<nav class="works-nav full-line-b">
+  <a href="#proj01" class="works-nav-tab">Nike Editorial</a>
+  <a href="#proj02" class="works-nav-tab">Coupon · Curation · Benefit</a>
+  <a href="#proj03" class="works-nav-tab">Promotion Event</a>
+  <a href="#proj04" class="works-nav-tab">Brand Promotion</a>
+  <a href="#proj05" class="works-nav-tab">99 Special Price</a>
+  <a href="#proj06" class="works-nav-tab">Template Guide</a>
+  <a href="#proj07" class="works-nav-tab">Brand Campaign</a>
+  <a href="#proj08" class="works-nav-tab">Weekly Style Curation</a>
+  <a href="#proj09" class="works-nav-tab">AI Redesign</a>
 </nav>
 
 <!-- WORKS HEADER -->
@@ -1593,8 +1595,7 @@ section.project.full-line-b::after,
             <p class="v-label" style="max-width:1400px; margin-left:auto; margin-right:auto;">PROMOTION KEY VISUAL</p>
             <div style="position:relative; overflow:hidden; padding:0; max-width:1400px; width:100%; margin:0 auto;">
               <video autoplay loop muted playsinline style="width:100%; display:block; border-radius:2px;">
-                <source src="09/아카이브세일/pc_아카이브세일_v1_hq.mp4" media="(min-width:821px)">
-                <source src="09/아카이브세일/pc_아카이브세일_v1.mp4">
+                <source src="09/아카이브세일/04. 아카이브 세일_ver.1.mp4">
               </video>
               <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">04. 아카이브 세일 Ver.1</span>
             </div>
