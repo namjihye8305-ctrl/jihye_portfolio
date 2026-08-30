@@ -360,4 +360,19 @@ window.addEventListener('resize', placeSiteToolsForViewport);
   observer.observe(video);
 })();
 
+// 20. WORKS NAV: CLICKED TAB STAYS IN HOVER COLOR
+// 클릭한 탭에 .active를 줘서 마우스가 떠나도 호버 색상이 유지되게 하고,
+// 다른 탭을 클릭하면 이전 active를 지워 한 번에 하나만 활성화되게 합니다.
+(function setupWorksNavActiveState() {
+  const tabs = document.querySelectorAll('.works-nav-tab');
+  if (!tabs.length) return;
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+})();
+
 console.log('✓ Portfolio interactions loaded');

@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html, body { overflow-x:hidden; }
+html { overflow-x:hidden; }
 html { scroll-behavior:smooth; }
 body {
   background:#0d0d0d;
@@ -32,14 +32,6 @@ body {
 }
 
 /* ── NAV ── */
-nav {
-  display:none;
-  display:flex; justify-content:space-between; align-items:center;
-  padding:22px 48px;
-  background:rgba(17,17,17,.92);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid #333;
-}
 .nav-name { font-size:14px; letter-spacing:.12em; color:#888; font-weight:400; font-family:'Inter',sans-serif; }
 .nav-role { font-size:14px; letter-spacing:.1em; color:#aaa; font-weight:400; font-family:'Inter',sans-serif; }
 
@@ -78,7 +70,7 @@ section.project.full-line-b::after,
 .hero-left h1 {
   font-size:clamp(50px,6vw,114px);
   font-weight:330; letter-spacing: 0em; line-height:1;
-  color:#e8e8e4; margin-bottom:32px;
+  color:#fff; margin-bottom:32px;
   font-family: 'DK Crayon Crumble', cursive;
 }
 .hero-left .hero-title { font-size:clamp(76px,7.2vw,156px);   display: block;
@@ -110,7 +102,7 @@ section.project.full-line-b::after,
 }
 .hero-star.star-left { transform:rotate(-10deg); }
 .hero-star.star-right { transform:rotate(10deg) translateY(4px); }
-.crayon-star-img { height:0.85em; width:auto; display:block; }
+.crayon-star-img { height:0.85em; width:auto; display:block; filter:brightness(0) invert(1); }
 .hero-star.star-right .crayon-star-img { height:0.8em; }
 .hero-right { text-align:right; flex-shrink:0; }
 .hero-skills { display:block; margin-bottom:24px; }
@@ -238,26 +230,31 @@ section.project.full-line-b::after,
 
 /* ── WORKS NAV (PC only) ── */
 .works-nav {
-  display:flex;
   width:100vw; margin-left:calc(50% - 50vw);
   position:sticky; top:0; z-index:100;
-  background:#0d0d0d;
+  margin-bottom:50px;
+  background:#fff;
+}
+.works-nav-inner {
+  display:flex;
+  max-width:1920px; margin:0 auto;
+  padding:0 48px;
 }
 .works-nav-tab {
   flex:1; display:flex; justify-content:space-between; align-items:center;
   text-align:left; padding:14px 20px;
   font-family:'Inter','Helvetica Neue',Arial,sans-serif;
-  font-size:12px; letter-spacing:.08em; color:#111;
-  background:#e8e8e4;
+  font-size:12px; letter-spacing:.08em; color:#111; font-weight:500;
+  background:#fff;
   text-decoration:none; border-left:1px solid #7a7a77;
   transition:background .2s ease, color .2s ease;
 }
 .works-nav-tab:first-child { border-left:none; }
-.works-nav-arrow { font-family:'DK Crayon Crumble', cursive; font-size:16px; }
+.works-nav-arrow { font-family:'DK Crayon Crumble', cursive; font-size:12px; line-height:1; font-weight:600; }
 @media (min-width: 821px) {
   .portfolio-links.full-line-b::after { display:none; }
 }
-.works-nav-tab:hover { background:#0d0d0d; color:#e8e8e4; }
+.works-nav-tab:hover, .works-nav-tab.active { background:#0d0d0d; color:#fff; }
 
 /* ── PROJECT ── */
 .project { padding:76px 48px; scroll-margin-top:24px; }
@@ -290,14 +287,15 @@ section.project.full-line-b::after,
 .v-mo img { width:100%; max-width:400px; display:block; border-radius:2px; }
 
 /* ── PROJECT 09 · AI REDESIGN CASE GRID ──
-   Desktop: Case 01 spans the full row (enlarged/centered), 02 left of row 2 with 03 to its right, 04/05 stacked below.
-   Mobile: all cases fall back into one column in source order (01→02→03→04→05). */
-.ai09-cases { display:grid; grid-template-columns:1fr 400px; column-gap:20px; row-gap:16px; align-items:start; }
+   Desktop: Case 01/02/03/04 full width, 05+06 paired (heights matched via fixed px columns).
+   Mobile: all cases fall back into one column in source order (01→02→03→04→05→06). */
+.ai09-cases { display:grid; grid-template-columns:955px 405px; column-gap:20px; row-gap:66px; align-items:start; max-width:1400px; margin:0 auto; }
 .ai09-case-01 { grid-column:1 / -1; grid-row:1; align-items:center; }
-.ai09-case-02 { grid-column:1; grid-row:2; }
-.ai09-case-04 { grid-column:1 / -1; grid-row:3; align-items:center; }
-.ai09-case-05 { grid-column:1 / -1; grid-row:4; align-items:center; }
-.ai09-case-03 { grid-column:2; grid-row:2; }
+.ai09-case-02 { grid-column:1 / -1; grid-row:2; align-items:center; }
+.ai09-case-03 { grid-column:1 / -1; grid-row:3; align-items:center; }
+.ai09-case-04 { grid-column:1 / -1; grid-row:4; align-items:center; }
+.ai09-case-05 { grid-column:1; grid-row:5; }
+.ai09-case-06 { grid-column:2; grid-row:5; }
 
 /* ── IMAGE LIGHTBOX ── */
 .lightbox-zoomable { cursor:zoom-in; }
@@ -468,6 +466,7 @@ section.project.full-line-b::after,
 .tool-icon.seedance { background:#101820; color:#00D9C0; }
 .tool-icon.kling { background:#12122b; color:#6C8CFF; }
 .tool-icon.mj { background:#000; color:#fff; }
+.tool-icon.pollo { background:#1a0f2e; color:#B98CFF; }
 .mo-break { display:none; }
 
 /* ── ABOUT ── */
@@ -630,7 +629,8 @@ section.project.full-line-b::after,
   .ai09-case-02,
   .ai09-case-03,
   .ai09-case-04,
-  .ai09-case-05 {
+  .ai09-case-05,
+  .ai09-case-06 {
     grid-column:1;
     grid-row:auto;
   }
@@ -727,15 +727,17 @@ section.project.full-line-b::after,
 
 <!-- WORKS NAV (PC only) -->
 <nav class="works-nav">
-  <a href="#proj01" class="works-nav-tab">01. Nike Editorial<span class="works-nav-arrow">→</span></a>
-  <a href="#proj02" class="works-nav-tab">02. Renewal Template Guide<span class="works-nav-arrow">→</span></a>
-  <a href="#proj03" class="works-nav-tab">03. Promotion Event<span class="works-nav-arrow">→</span></a>
-  <a href="#proj04" class="works-nav-tab">04. Brand Promotion<span class="works-nav-arrow">→</span></a>
-  <a href="#proj05" class="works-nav-tab">05. 99 Special Price<span class="works-nav-arrow">→</span></a>
-  <a href="#proj06" class="works-nav-tab">06. Template Guide<span class="works-nav-arrow">→</span></a>
-  <a href="#proj07" class="works-nav-tab">07. Brand Campaign<span class="works-nav-arrow">→</span></a>
-  <a href="#proj08" class="works-nav-tab">08. Weekly Style Curation<span class="works-nav-arrow">→</span></a>
-  <a href="#proj09" class="works-nav-tab">09. AI Redesign<span class="works-nav-arrow">→</span></a>
+<div class="works-nav-inner">
+  <a href="#proj01" class="works-nav-tab">01. Nike Editorial<span class="works-nav-arrow">&gt;</span></a>
+  <a href="#proj02" class="works-nav-tab">02. Renewal Guide<span class="works-nav-arrow">&gt;</span></a>
+  <a href="#proj03" class="works-nav-tab">03. Promotion Event<span class="works-nav-arrow">&gt;</span></a>
+  <a href="#proj04" class="works-nav-tab">04. Brand Promotion<span class="works-nav-arrow">&gt;</span></a>
+  <a href="#proj05" class="works-nav-tab">05. 99 Special Price<span class="works-nav-arrow">&gt;</span></a>
+  <a href="#proj06" class="works-nav-tab">06. Template Guide<span class="works-nav-arrow">&gt;</span></a>
+  <a href="#proj07" class="works-nav-tab">07. Brand Campaign<span class="works-nav-arrow">&gt;</span></a>
+  <a href="#proj08" class="works-nav-tab">08. Style Curation<span class="works-nav-arrow">&gt;</span></a>
+  <a href="#proj09" class="works-nav-tab">09. AI Redesign<span class="works-nav-arrow">&gt;</span></a>
+</div>
 </nav>
 
 <!-- WORKS HEADER -->
@@ -1576,54 +1578,59 @@ section.project.full-line-b::after,
           </div>
 
           <div class="ai09-case ai09-case-02 v-pc">
-            <p class="case-divider">Case 02 · 번아웃 세일 (Burnout Sale)</p>
-            <p class="v-label">PROMOTION KEY VISUAL</p>
-            <div style="position:relative; overflow:hidden; padding:0;">
-              <video autoplay loop muted playsinline style="width:100%; max-width:1122px; display:block; border-radius:2px;">
-                <source src="09/번아웃세일/pc_번아웃세일_hq.mp4" media="(min-width:821px)">
-                <source src="09/번아웃세일/pc_번아웃세일.mp4">
+            <p class="case-divider">Case 02 · Wake Make (Re:Nude)</p>
+            <p class="v-label" style="max-width:690px; margin-left:auto; margin-right:auto;">PROMOTION KEY VISUAL</p>
+            <div style="position:relative; overflow:hidden; padding:0; max-width:690px; margin:0 auto;">
+              <video autoplay loop muted playsinline style="width:100%; display:block; border-radius:2px;">
+                <source src="AI/06/뷰티 리디자인.mp4">
               </video>
-              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">02. 번아웃 세일</span>
+              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">02. Wake Make (Re:Nude)</span>
             </div>
           </div>
 
-          <div class="ai09-case ai09-case-03 v-mo">
-            <p class="case-divider">Case 03 · 쉬즈미스 스프링컬렉션</p>
-            <p class="v-label">PROMOTION KEY VISUAL</p>
-            <div style="position:relative; overflow:hidden; padding:0;">
-              <video autoplay loop muted playsinline style="width:100%; max-width:400px; display:block; border-radius:2px;">
-                <source src="09/쉬즈미스스프링컬렉션/mo_쉬즈미스스프링컬렉션_hq.mp4" media="(min-width:821px)">
-                <source src="09/쉬즈미스스프링컬렉션/mo_쉬즈미스스프링컬렉션.mp4">
+          <div class="ai09-case ai09-case-03 v-pc">
+            <p class="case-divider" style="margin-top:28px;">Case 03 · 아카이브 세일 Ver.1 (Neon Hologram)</p>
+            <p class="v-label" style="max-width:1400px; margin-left:auto; margin-right:auto;">PROMOTION KEY VISUAL</p>
+            <div style="position:relative; overflow:hidden; padding:0; max-width:1400px; width:100%; margin:0 auto;">
+              <video autoplay loop muted playsinline style="width:100%; display:block; border-radius:2px;">
+                <source src="AI/04/pc_01r.mp4">
               </video>
-              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">03. 쉬즈미스 스프링컬렉션</span>
+              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">03. 아카이브 세일 Ver.1</span>
             </div>
           </div>
 
           <div class="ai09-case ai09-case-04 v-pc">
-            <p class="case-divider">Case 04 · 아카이브 세일 Ver.1 (Neon Hologram)</p>
+            <p class="case-divider" style="margin-top:28px;">Case 04 · 아카이브 세일 Ver.2 (Archive File Concept)</p>
             <p class="v-label" style="max-width:1400px; margin-left:auto; margin-right:auto;">PROMOTION KEY VISUAL</p>
             <div style="position:relative; overflow:hidden; padding:0; max-width:1400px; width:100%; margin:0 auto;">
               <video autoplay loop muted playsinline style="width:100%; display:block; border-radius:2px;">
-                <source src="09/아카이브세일/04. 아카이브 세일_ver.1.mp4">
+                <source src="AI/04/pc2_r.mp4">
               </video>
-              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">04. 아카이브 세일 Ver.1</span>
-            </div>
-            <p class="v-label" style="max-width:1400px; margin-left:auto; margin-right:auto;">DETAIL PAGE</p>
-            <div style="position:relative; overflow:hidden; padding:0; max-width:1400px; width:100%; margin:0 auto;">
-              <img src="09/아카이브세일/pc_아카이브세일_v1.jpg" alt="Archive Sale Ver.1 Detail Page" style="width:100%; max-width:1400px; display:block; border-radius:2px; margin:0 auto;">
-              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">04. 아카이브 세일 Ver.1 Detail Page</span>
+              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">04. 아카이브 세일 Ver.2</span>
             </div>
           </div>
 
           <div class="ai09-case ai09-case-05 v-pc">
-            <p class="case-divider">Case 05 · 아카이브 세일 Ver.2 (Archive File Concept)</p>
-            <p class="v-label" style="max-width:1400px; margin-left:auto; margin-right:auto;">DETAIL PAGE</p>
-            <div style="position:relative; overflow:hidden; padding:0; max-width:1400px; width:100%; margin:0 auto;">
-              <picture style="display:block;">
-                <source srcset="09/아카이브세일/pc_아카이브세일_v2_hq.gif" media="(min-width:821px)">
-                <img src="09/아카이브세일/pc_아카이브세일_v2.gif" alt="Archive Sale Ver.2 Detail Page" style="width:100%; max-width:1400px; display:block; border-radius:2px; margin:0 auto;">
-              </picture>
-              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">05. 아카이브 세일 Ver.2</span>
+            <p class="case-divider" style="margin-top:28px;">Case 05 · 번아웃 세일 (Burnout Sale)</p>
+            <p class="v-label">PROMOTION KEY VISUAL</p>
+            <div style="position:relative; overflow:hidden; padding:0;">
+              <video autoplay loop muted playsinline style="width:100%; display:block; border-radius:2px;">
+                <source src="09/번아웃세일/pc_번아웃세일_hq.mp4" media="(min-width:821px)">
+                <source src="09/번아웃세일/pc_번아웃세일.mp4">
+              </video>
+              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">05. 번아웃 세일</span>
+            </div>
+          </div>
+
+          <div class="ai09-case ai09-case-06 v-mo">
+            <p class="case-divider">Case 06 · 쉬즈미스 스프링컬렉션</p>
+            <p class="v-label">PROMOTION KEY VISUAL</p>
+            <div style="position:relative; overflow:hidden; padding:0;">
+              <video autoplay loop muted playsinline style="width:100%; display:block; border-radius:2px;">
+                <source src="09/쉬즈미스스프링컬렉션/mo_쉬즈미스스프링컬렉션_hq.mp4" media="(min-width:821px)">
+                <source src="09/쉬즈미스스프링컬렉션/mo_쉬즈미스스프링컬렉션.mp4">
+              </video>
+              <span style="position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.72); color:#fff; padding:4px 8px; font-size:10px; line-height:1.3; border-radius:3px;">06. 쉬즈미스 스프링컬렉션</span>
             </div>
           </div>
         </div>
@@ -1669,7 +1676,118 @@ section.project.full-line-b::after,
         </div>
       </div>
 
-      <p class="case-divider">Case 02 · 번아웃 세일 (Burnout Sale)</p>
+      <p class="case-divider">Case 02 · Wake Make (Re:Nude)</p>
+      <div class="proj-kv">
+        <div class="kv-row"><span class="kv-k">CLIENT</span><span class="kv-v">Personal Project · 리디자인 제안</span></div>
+        <div class="kv-row"><span class="kv-k">CATEGORY</span><span class="kv-v">Beauty Promotion Key Visual · WAKEMAKE Healthy Glow Balm</span></div>
+        <div class="kv-row"><span class="kv-k">BUILT WITH</span><span class="kv-v">Photoshop · ChatGPT · Pollo AI 에이전트</span></div>
+        <div class="kv-row"><span class="kv-k">ROLE</span><span class="kv-v">AI Generation &amp; Design</span></div>
+
+      </div>
+      <div class="proj-points">
+        <div class="pp-section-title">🎯 프로젝트 목적</div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">웨이크메이크 '헬시 글로우 밤 스틱' Nude Standard Edition을 알리는 'Re:Nude' 캠페인 프로모션 키비주얼 리디자인 제안</span></div>
+
+        <div class="pp-section-title">🛠️ 담당 역할 및 기여도</div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">AI 인물 클로즈업 컷 생성부터 합성, 세리프 타이포그래피 배치까지 세로형 키비주얼 전 과정 기획 및 제작</span></div>
+
+        <div class="pp-section-title">💡 체크 포인트</div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">눈가·입술 클로즈업 매크로 컷 전환으로 <strong><span class="stat-highlight stat-highlight-red">뉴트럴 톤 텍스처와 광택감</span></strong>을 감각적으로 강조</span></div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">중앙 대형 세리프 타이포 <strong><span class="stat-highlight stat-highlight-red">'Re:Nude'</span></strong>로 브랜드의 뉴 톤 리뉴얼 메시지를 임팩트 있게 전달</span></div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">하단에 PEACH SHOWER · ALMOND NUDE 등 14가지 셰이드 네이밍을 나열해 다양한 톤 선택지를 한눈에 안내</span></div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t"><strong><span class="stat-highlight stat-highlight-red">세로형(9:16) 포맷</span></strong>으로 제작해 모바일 프로모션 배너·SNS 채널에 바로 활용 가능하도록 구성</span></div>
+      </div>
+
+      <div class="proj-colors">
+        <p class="colors-label">COLOR</p>
+        <div class="swatches">
+          <div class="sw-wrap"><div class="sw" style="background:#B97A66;"></div><div class="sw-name">Nude Rose</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#E4D2B8;"></div><div class="sw-name">Warm Beige</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div><div class="sw-name">Black</div></div>
+        </div>
+        <p class="colors-label tool-label">TOOL</p>
+        <div class="tool-icons">
+          <div class="tool-icon gpt" title="ChatGPT"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5152 2.9004A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.0202 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4947 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.5963 3.8558L13.1038 8.3945l2.0201-1.1638a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.3927-.6879zm2.0107-3.0231-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.0201-1.1638a.0708.0708 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.4592a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.6069 1.4997-2.602-1.4997Z"/></svg></div>
+          <div class="tool-icon pollo" title="Pollo AI">Po</div>
+          <div class="tool-icon ps" title="Photoshop">Ps</div>
+        </div>
+      </div>
+
+      <p class="case-divider">Case 03 · 아카이브 세일 Ver.1 (Neon Hologram)</p>
+      <div class="proj-kv">
+        <div class="kv-row"><span class="kv-k">CLIENT</span><span class="kv-v">Personal Project · 리디자인 제안</span></div>
+        <div class="kv-row"><span class="kv-k">CATEGORY</span><span class="kv-v">Event Detail Page · Archive Sale</span></div>
+        <div class="kv-row"><span class="kv-k">BUILT WITH</span><span class="kv-v">Claude Code · ChatGPT · Photoshop</span></div>
+        <div class="kv-row"><span class="kv-k">ROLE</span><span class="kv-v">AI Generation &amp; Design</span></div>
+
+      </div>
+      <div class="proj-points">
+        <div class="pp-section-title">🎯 프로젝트 목적</div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">'여름 베스트 마지막 세일'을 알리는 시즌 아카이브 세일 상세페이지를 생성형 AI로 빠르게 제작하는 실험</span></div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">홀로그램·크로마틱 아베레이션 그래픽으로 눈에 띄는 톤앤매너의 이벤트 상세페이지 시안 제안</span></div>
+
+        <div class="pp-section-title">🛠️ 담당 역할 및 기여도</div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">AI 이미지·모델 컷 생성부터 리퀴드 그래픽 합성, 혜택 구간별 레이아웃 설계까지 상세페이지 전 과정 기획 및 제작</span></div>
+
+        <div class="pp-section-title">💡 체크 포인트</div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">라벤더 블루 배경 위 <strong><span class="stat-highlight stat-highlight-yellow">홀로그램 크로마틱 아베레이션 타이틀 'ARCHIVE SALE'</span></strong>과 리퀴드 블롭 오브제로 여름 세일의 산뜻한 무드 강조</span></div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t"><strong><span class="stat-highlight stat-highlight-yellow">2개 이상 10% · 3개 이상 15% · 5개 이상 20%</span></strong> 담을수록 커지는 즉시 할인 구조를 라임 컬러 배너로 단계별 시각화</span></div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">블랙 배경 BENEFIT 2 섹션으로 15% 베스트 아이템 쿠폰을 대비감 있게 배치해 시선 집중도 강화</span></div>
+      </div>
+
+      <div class="proj-colors">
+        <p class="colors-label">COLOR</p>
+        <div class="swatches">
+          <div class="sw-wrap"><div class="sw" style="background:#DCE6F2;border:1px solid #444;"></div><div class="sw-name">Lavender Blue</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#C9E11F;"></div><div class="sw-name">Lime</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div><div class="sw-name">Black</div></div>
+        </div>
+        <p class="colors-label tool-label">TOOL</p>
+        <div class="tool-icons">
+          <div class="tool-icon claude" title="Claude Code"><img src="소스/클로드.webp" alt="Claude Code"></div>
+          <div class="tool-icon gpt" title="ChatGPT"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5152 2.9004A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.0202 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4947 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.5963 3.8558L13.1038 8.3945l2.0201-1.1638a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.3927-.6879zm2.0107-3.0231-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.0201-1.1638a.0708.0708 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.4592a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.6069 1.4997-2.602-1.4997Z"/></svg></div>
+          <div class="tool-icon ps" title="Photoshop">Ps</div>
+        </div>
+      </div>
+
+      <p class="case-divider">Case 04 · 아카이브 세일 Ver.2 (Archive File Concept)</p>
+      <div class="proj-kv">
+        <div class="kv-row"><span class="kv-k">CLIENT</span><span class="kv-v">Personal Project · 리디자인 제안</span></div>
+        <div class="kv-row"><span class="kv-k">CATEGORY</span><span class="kv-v">Event Detail Page · Archive Sale</span></div>
+        <div class="kv-row"><span class="kv-k">BUILT WITH</span><span class="kv-v">Claude Code · ChatGPT · Photoshop</span></div>
+        <div class="kv-row"><span class="kv-k">ROLE</span><span class="kv-v">AI Generation &amp; Design</span></div>
+
+      </div>
+      <div class="proj-points">
+        <div class="pp-section-title">🎯 프로젝트 목적</div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">동일한 '아카이브 세일' 컨셉을 완전히 다른 톤앤매너로 풀어낸 세컨드 시안으로, AI 리디자인의 다양한 확장 가능성을 실험</span></div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">'기록 보관함'이라는 아카이브의 의미를 파일철·바코드 라벨 등 오브제로 시각화한 컨셉 상세페이지 제안</span></div>
+
+        <div class="pp-section-title">🛠️ 담당 역할 및 기여도</div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">AI 모델 컷 생성 및 아카이브 파일 오브제 합성, 픽셀 타이포그래피 배치까지 무빙 상세페이지 기획 및 제작</span></div>
+
+        <div class="pp-section-title">💡 체크 포인트</div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">다크 차콜 배경 위 <strong><span class="stat-highlight stat-highlight-blue">픽셀 폰트 타이틀</span></strong>과 <strong><span class="stat-highlight stat-highlight-blue">클립·바코드 라벨로 고정된 파일철 폴라로이드</span></strong>로 '아카이브' 컨셉을 직관적으로 표현</span></div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">폴라로이드 속 모델 컷이 자연스럽게 전환되는 <strong><span class="stat-highlight stat-highlight-blue">움직이는(GIF) 상세페이지</span></strong>로 페이지 체류 시간과 주목도를 높이는 구성</span></div>
+        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">Ver.1과 동일한 혜택 구조를 스카이블루·베이지 톤 배지로 재배치해 브랜드 확장성 검증</span></div>
+      </div>
+
+      <div class="proj-colors">
+        <p class="colors-label">COLOR</p>
+        <div class="swatches">
+          <div class="sw-wrap"><div class="sw" style="background:#2A2825;border:1px solid #333;"></div><div class="sw-name">Charcoal</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#BEE6F5;"></div><div class="sw-name">Sky Blue</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#D9C9B0;"></div><div class="sw-name">Beige</div></div>
+        </div>
+        <p class="colors-label tool-label">TOOL</p>
+        <div class="tool-icons">
+          <div class="tool-icon claude" title="Claude Code"><img src="소스/클로드.webp" alt="Claude Code"></div>
+          <div class="tool-icon gpt" title="ChatGPT"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5152 2.9004A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.0202 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4947 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.5963 3.8558L13.1038 8.3945l2.0201-1.1638a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.3927-.6879zm2.0107-3.0231-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.0201-1.1638a.0708.0708 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.4592a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.6069 1.4997-2.602-1.4997Z"/></svg></div>
+          <div class="tool-icon ps" title="Photoshop">Ps</div>
+        </div>
+      </div>
+
+      <p class="case-divider">Case 05 · 번아웃 세일 (Burnout Sale)</p>
       <div class="proj-kv">
         <div class="kv-row"><span class="kv-k">CLIENT</span><span class="kv-v">Personal Project</span></div>
         <div class="kv-row"><span class="kv-k">CATEGORY</span><span class="kv-v">Promotion Key Visual · Burnout Sale</span></div>
@@ -1707,7 +1825,7 @@ section.project.full-line-b::after,
         </div>
       </div>
 
-      <p class="case-divider">Case 03 · 쉬즈미스 스프링컬렉션</p>
+      <p class="case-divider">Case 06 · 쉬즈미스 스프링컬렉션</p>
       <div class="proj-kv">
         <div class="kv-row"><span class="kv-k">CLIENT</span><span class="kv-v">Personal Project · 리디자인 제안</span></div>
         <div class="kv-row"><span class="kv-k">CATEGORY</span><span class="kv-v">Spring Collection Key Visual</span></div>
@@ -1740,80 +1858,6 @@ section.project.full-line-b::after,
         <div class="tool-icons">
           <div class="tool-icon gpt" title="ChatGPT"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5152 2.9004A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.0202 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4947 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.5963 3.8558L13.1038 8.3945l2.0201-1.1638a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.3927-.6879zm2.0107-3.0231-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.0201-1.1638a.0708.0708 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.4592a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.6069 1.4997-2.602-1.4997Z"/></svg></div>
           <div class="tool-icon mj" title="Midjourney">Mj</div>
-          <div class="tool-icon ps" title="Photoshop">Ps</div>
-        </div>
-      </div>
-
-      <p class="case-divider">Case 04 · 아카이브 세일 Ver.1 (Neon Hologram)</p>
-      <div class="proj-kv">
-        <div class="kv-row"><span class="kv-k">CLIENT</span><span class="kv-v">Personal Project · 리디자인 제안</span></div>
-        <div class="kv-row"><span class="kv-k">CATEGORY</span><span class="kv-v">Event Detail Page · Archive Sale</span></div>
-        <div class="kv-row"><span class="kv-k">BUILT WITH</span><span class="kv-v">Claude Code · ChatGPT · Photoshop</span></div>
-        <div class="kv-row"><span class="kv-k">ROLE</span><span class="kv-v">AI Generation &amp; Design</span></div>
-
-      </div>
-      <div class="proj-points">
-        <div class="pp-section-title">🎯 프로젝트 목적</div>
-        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">'여름 베스트 마지막 세일'을 알리는 시즌 아카이브 세일 상세페이지를 생성형 AI로 빠르게 제작하는 실험</span></div>
-        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">홀로그램·크로마틱 아베레이션 그래픽으로 눈에 띄는 톤앤매너의 이벤트 상세페이지 시안 제안</span></div>
-
-        <div class="pp-section-title">🛠️ 담당 역할 및 기여도</div>
-        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">AI 이미지·모델 컷 생성부터 리퀴드 그래픽 합성, 혜택 구간별 레이아웃 설계까지 상세페이지 전 과정 기획 및 제작</span></div>
-
-        <div class="pp-section-title">💡 체크 포인트</div>
-        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">라벤더 블루 배경 위 <strong><span class="stat-highlight stat-highlight-yellow">홀로그램 크로마틱 아베레이션 타이틀 'ARCHIVE SALE'</span></strong>과 리퀴드 블롭 오브제로 여름 세일의 산뜻한 무드 강조</span></div>
-        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t"><strong><span class="stat-highlight stat-highlight-yellow">2개 이상 10% · 3개 이상 15% · 5개 이상 20%</span></strong> 담을수록 커지는 즉시 할인 구조를 라임 컬러 배너로 단계별 시각화</span></div>
-        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">블랙 배경 BENEFIT 2 섹션으로 15% 베스트 아이템 쿠폰을 대비감 있게 배치해 시선 집중도 강화</span></div>
-      </div>
-
-      <div class="proj-colors">
-        <p class="colors-label">COLOR</p>
-        <div class="swatches">
-          <div class="sw-wrap"><div class="sw" style="background:#DCE6F2;border:1px solid #444;"></div><div class="sw-name">Lavender Blue</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#C9E11F;"></div><div class="sw-name">Lime</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div><div class="sw-name">Black</div></div>
-        </div>
-        <p class="colors-label tool-label">TOOL</p>
-        <div class="tool-icons">
-          <div class="tool-icon claude" title="Claude Code"><img src="소스/클로드.webp" alt="Claude Code"></div>
-          <div class="tool-icon gpt" title="ChatGPT"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5152 2.9004A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.0202 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4947 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.5963 3.8558L13.1038 8.3945l2.0201-1.1638a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.3927-.6879zm2.0107-3.0231-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.0201-1.1638a.0708.0708 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.4592a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.6069 1.4997-2.602-1.4997Z"/></svg></div>
-          <div class="tool-icon ps" title="Photoshop">Ps</div>
-        </div>
-      </div>
-
-      <p class="case-divider">Case 05 · 아카이브 세일 Ver.2 (Archive File Concept)</p>
-      <div class="proj-kv">
-        <div class="kv-row"><span class="kv-k">CLIENT</span><span class="kv-v">Personal Project · 리디자인 제안</span></div>
-        <div class="kv-row"><span class="kv-k">CATEGORY</span><span class="kv-v">Event Detail Page · Archive Sale</span></div>
-        <div class="kv-row"><span class="kv-k">BUILT WITH</span><span class="kv-v">Claude Code · ChatGPT · Photoshop</span></div>
-        <div class="kv-row"><span class="kv-k">ROLE</span><span class="kv-v">AI Generation &amp; Design</span></div>
-
-      </div>
-      <div class="proj-points">
-        <div class="pp-section-title">🎯 프로젝트 목적</div>
-        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">동일한 '아카이브 세일' 컨셉을 완전히 다른 톤앤매너로 풀어낸 세컨드 시안으로, AI 리디자인의 다양한 확장 가능성을 실험</span></div>
-        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">'기록 보관함'이라는 아카이브의 의미를 파일철·바코드 라벨 등 오브제로 시각화한 컨셉 상세페이지 제안</span></div>
-
-        <div class="pp-section-title">🛠️ 담당 역할 및 기여도</div>
-        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">AI 모델 컷 생성 및 아카이브 파일 오브제 합성, 픽셀 타이포그래피 배치까지 무빙 상세페이지 기획 및 제작</span></div>
-
-        <div class="pp-section-title">💡 체크 포인트</div>
-        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">다크 차콜 배경 위 <strong><span class="stat-highlight stat-highlight-blue">픽셀 폰트 타이틀</span></strong>과 <strong><span class="stat-highlight stat-highlight-blue">클립·바코드 라벨로 고정된 파일철 폴라로이드</span></strong>로 '아카이브' 컨셉을 직관적으로 표현</span></div>
-        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">폴라로이드 속 모델 컷이 자연스럽게 전환되는 <strong><span class="stat-highlight stat-highlight-blue">움직이는(GIF) 상세페이지</span></strong>로 페이지 체류 시간과 주목도를 높이는 구성</span></div>
-        <div class="proj-point"><span class="pp-n">✓</span><span class="pp-t">Ver.1과 동일한 혜택 구조를 스카이블루·베이지 톤 배지로 재배치해 브랜드 확장성 검증</span></div>
-      </div>
-
-      <div class="proj-colors">
-        <p class="colors-label">COLOR</p>
-        <div class="swatches">
-          <div class="sw-wrap"><div class="sw" style="background:#2A2825;border:1px solid #333;"></div><div class="sw-name">Charcoal</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#BEE6F5;"></div><div class="sw-name">Sky Blue</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#D9C9B0;"></div><div class="sw-name">Beige</div></div>
-        </div>
-        <p class="colors-label tool-label">TOOL</p>
-        <div class="tool-icons">
-          <div class="tool-icon claude" title="Claude Code"><img src="소스/클로드.webp" alt="Claude Code"></div>
-          <div class="tool-icon gpt" title="ChatGPT"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5152 2.9004A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.0202 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4947 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.5963 3.8558L13.1038 8.3945l2.0201-1.1638a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.3927-.6879zm2.0107-3.0231-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.0201-1.1638a.0708.0708 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.4592a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.6069 1.4997-2.602-1.4997Z"/></svg></div>
           <div class="tool-icon ps" title="Photoshop">Ps</div>
         </div>
       </div>
@@ -1865,6 +1909,6 @@ section.project.full-line-b::after,
   <img id="lightbox-img" src="" alt="">
 </div>
 
-<script src="scripts/interactions.js?v=20260827b"></script>
+<script src="scripts/interactions.js?v=20260831a"></script>
 </body>
 </html>
