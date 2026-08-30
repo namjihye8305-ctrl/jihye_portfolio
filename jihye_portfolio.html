@@ -15,6 +15,7 @@
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html, body { overflow-x:hidden; }
+html { scroll-behavior:smooth; }
 body {
   background:#0d0d0d;
   color:#c8c8c4;
@@ -235,8 +236,20 @@ section.project.full-line-b::after,
 .works-head-l { font-size:12px; letter-spacing:.18em; color:#fff; }
 .works-head-r { font-size:12px; letter-spacing:.1em; color:#fff; }
 
+/* ── WORKS NAV (PC only) ── */
+.works-nav { display:flex; padding:0 48px; border-bottom:1px solid #333; }
+.works-nav-tab {
+  flex:1; text-align:center; padding:14px 6px;
+  font-family:'Inter','Helvetica Neue',Arial,sans-serif;
+  font-size:12px; letter-spacing:.08em; color:#999;
+  text-decoration:none; border-left:1px solid #262626;
+  transition:background .2s ease, color .2s ease;
+}
+.works-nav-tab:first-child { border-left:none; }
+.works-nav-tab:hover { background:#fff; color:#111; }
+
 /* ── PROJECT ── */
-.project { padding:76px 48px; }
+.project { padding:76px 48px; scroll-margin-top:24px; }
 
 .proj-top {
   display:flex; align-items:baseline; gap:20px;
@@ -460,6 +473,9 @@ section.project.full-line-b::after,
 
 /* --- Responsive: 모바일에서 PC/모바일 뷰가 세로로 쌓이도록 처리 --- */
 @media (max-width: 820px) {
+  .works-nav {
+    display:none;
+  }
   .wrap {
     padding:0 12px;
   }
@@ -698,6 +714,19 @@ section.project.full-line-b::after,
   </div>
 </div>
 
+<!-- WORKS NAV (PC only) -->
+<nav class="works-nav">
+  <a href="#proj01" class="works-nav-tab" title="Nike Editorial">01</a>
+  <a href="#proj02" class="works-nav-tab" title="Coupon · Curation · Benefit">02</a>
+  <a href="#proj03" class="works-nav-tab" title="Promotion Event">03</a>
+  <a href="#proj04" class="works-nav-tab" title="Brand Promotion">04</a>
+  <a href="#proj05" class="works-nav-tab" title="99 Special Price">05</a>
+  <a href="#proj06" class="works-nav-tab" title="Template Guide">06</a>
+  <a href="#proj07" class="works-nav-tab" title="Brand Campaign">07</a>
+  <a href="#proj08" class="works-nav-tab" title="Weekly Style Curation">08</a>
+  <a href="#proj09" class="works-nav-tab" title="AI Redesign">09</a>
+</nav>
+
 <!-- WORKS HEADER -->
 <div class="works-head full-line-b">
   <span class="works-head-l">SELECTED WORKS</span>
@@ -705,7 +734,7 @@ section.project.full-line-b::after,
 </div>
 
 <!-- 01 Nike Editorial -->
-<section class="project full-line-b">
+<section class="project full-line-b" id="proj01">
   <div class="proj-top full-line-b">
     <span class="proj-num">01.</span>
     <h2 class="proj-title">Nike Editorial &nbsp;<span style="font-weight:300; color:#aaa;">릴체리의 봄</span></h2>
@@ -771,7 +800,7 @@ section.project.full-line-b::after,
 </section>
 
 <!-- 02 -->
-<section class="project full-line-b">
+<section class="project full-line-b" id="proj02">
   <div class="proj-top full-line-b">
     <span class="proj-num">02.</span>
     <h2 class="proj-title">Coupon · Curation · Benefit &nbsp;<span style="font-weight:300; color:#aaa;">리뉴얼 템플릿 가이드 작업</span></h2>
@@ -995,7 +1024,7 @@ section.project.full-line-b::after,
 </section>
 
 <!-- 03 -->
-<section class="project full-line-b">
+<section class="project full-line-b" id="proj03">
   <div class="proj-top full-line-b">
     <span class="proj-num">03.</span>
     <h2 class="proj-title">Promotion Event &nbsp;<span style="font-weight:300; color:#aaa;">브랜드데이 홀리데이</span></h2>
@@ -1060,7 +1089,7 @@ section.project.full-line-b::after,
 </section>
 
 <!-- 04 -->
-<section class="project full-line-b">
+<section class="project full-line-b" id="proj04">
   <div class="proj-top full-line-b">
     <span class="proj-num">04.</span>
     <h2 class="proj-title">Brand Promotion &nbsp;<span style="font-weight:300; color:#aaa;">브랜드 라인업 10</span></h2>
@@ -1125,7 +1154,7 @@ section.project.full-line-b::after,
 </section>
 
 <!-- 05 -->
-<section class="project full-line-b">
+<section class="project full-line-b" id="proj05">
   <div class="proj-top full-line-b">
     <span class="proj-num">05.</span>
     <h2 class="proj-title">99 Special Price &nbsp;<span style="font-weight:300; color:#aaa;">99특가</span></h2>
@@ -1234,7 +1263,7 @@ section.project.full-line-b::after,
 </section>
 
 <!-- 06 -->
-<section class="project full-line-b">
+<section class="project full-line-b" id="proj06">
   <div class="proj-top full-line-b">
     <span class="proj-num">06.</span>
     <h2 class="proj-title">Template Guide &nbsp;<span style="font-weight:300; color:#aaa;">브랜드 기획전 템플릿 가이드</span></h2>
@@ -1346,7 +1375,7 @@ section.project.full-line-b::after,
 </section>
 
 <!-- 07 -->
-<section class="project full-line-b">
+<section class="project full-line-b" id="proj07">
   <div class="proj-top full-line-b">
     <span class="proj-num">07.</span>
     <h2 class="proj-title">Brand Campaign &nbsp;<span style="font-weight:300; color:#aaa;">더 오픈 프로덕트 · 오픈 와이와이</span></h2>
@@ -1445,7 +1474,7 @@ section.project.full-line-b::after,
 </section>
 
 <!-- 08 -->
-<section class="project full-line-b">
+<section class="project full-line-b" id="proj08">
   <div class="proj-top full-line-b">
     <span class="proj-num">08.</span>
     <h2 class="proj-title">Weekly Style Curation &nbsp;<span style="font-weight:300; color:#aaa;">이번주 출근룩</span></h2>
@@ -1510,7 +1539,7 @@ section.project.full-line-b::after,
 </section>
 
 <!-- 09 -->
-<section class="project full-line-b">
+<section class="project full-line-b" id="proj09">
   <div class="proj-top full-line-b">
     <span class="proj-num">09.</span>
     <h2 class="proj-title">AI Redesign &nbsp;<span style="font-weight:300; color:#aaa;">AI 리디자인</span></h2>
