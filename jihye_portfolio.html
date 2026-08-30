@@ -237,18 +237,27 @@ section.project.full-line-b::after,
 .works-head-r { font-size:12px; letter-spacing:.1em; color:#fff; }
 
 /* ── WORKS NAV (PC only) ── */
-.works-nav { display:flex; padding:0 48px; background:#0d0d0d; }
-.works-nav.full-line-b::after { border-bottom-color:#7a7a77; }
-.works-nav-tab {
-  flex:1; text-align:center; padding:14px 6px;
-  font-family:'Inter','Helvetica Neue',Arial,sans-serif;
-  font-size:12px; font-weight:500; letter-spacing:.08em; color:#e8e8e4;
+.works-nav {
+  display:flex;
+  width:100vw; margin-left:calc(50% - 50vw);
+  position:sticky; top:0; z-index:100;
   background:#0d0d0d;
-  text-decoration:none; border-left:1px solid #262626;
+}
+.works-nav-tab {
+  flex:1; display:flex; justify-content:space-between; align-items:center;
+  text-align:left; padding:14px 20px;
+  font-family:'Inter','Helvetica Neue',Arial,sans-serif;
+  font-size:12px; letter-spacing:.08em; color:#111;
+  background:#e8e8e4;
+  text-decoration:none; border-left:1px solid #7a7a77;
   transition:background .2s ease, color .2s ease;
 }
 .works-nav-tab:first-child { border-left:none; }
-.works-nav-tab:hover { background:#fff; color:#111; }
+.works-nav-arrow { font-family:'DK Crayon Crumble', cursive; font-size:16px; }
+@media (min-width: 821px) {
+  .portfolio-links.full-line-b::after { display:none; }
+}
+.works-nav-tab:hover { background:#0d0d0d; color:#e8e8e4; }
 
 /* ── PROJECT ── */
 .project { padding:76px 48px; scroll-margin-top:24px; }
@@ -717,16 +726,16 @@ section.project.full-line-b::after,
 </div>
 
 <!-- WORKS NAV (PC only) -->
-<nav class="works-nav full-line-b">
-  <a href="#proj01" class="works-nav-tab">Nike Editorial</a>
-  <a href="#proj02" class="works-nav-tab">Coupon · Curation · Benefit</a>
-  <a href="#proj03" class="works-nav-tab">Promotion Event</a>
-  <a href="#proj04" class="works-nav-tab">Brand Promotion</a>
-  <a href="#proj05" class="works-nav-tab">99 Special Price</a>
-  <a href="#proj06" class="works-nav-tab">Template Guide</a>
-  <a href="#proj07" class="works-nav-tab">Brand Campaign</a>
-  <a href="#proj08" class="works-nav-tab">Weekly Style Curation</a>
-  <a href="#proj09" class="works-nav-tab">AI Redesign</a>
+<nav class="works-nav">
+  <a href="#proj01" class="works-nav-tab">01. Nike Editorial<span class="works-nav-arrow">→</span></a>
+  <a href="#proj02" class="works-nav-tab">02. Renewal Template Guide<span class="works-nav-arrow">→</span></a>
+  <a href="#proj03" class="works-nav-tab">03. Promotion Event<span class="works-nav-arrow">→</span></a>
+  <a href="#proj04" class="works-nav-tab">04. Brand Promotion<span class="works-nav-arrow">→</span></a>
+  <a href="#proj05" class="works-nav-tab">05. 99 Special Price<span class="works-nav-arrow">→</span></a>
+  <a href="#proj06" class="works-nav-tab">06. Template Guide<span class="works-nav-arrow">→</span></a>
+  <a href="#proj07" class="works-nav-tab">07. Brand Campaign<span class="works-nav-arrow">→</span></a>
+  <a href="#proj08" class="works-nav-tab">08. Weekly Style Curation<span class="works-nav-arrow">→</span></a>
+  <a href="#proj09" class="works-nav-tab">09. AI Redesign<span class="works-nav-arrow">→</span></a>
 </nav>
 
 <!-- WORKS HEADER -->
