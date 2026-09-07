@@ -249,7 +249,7 @@ section.project.full-line-b::after,
   transition:background .2s ease, color .2s ease;
 }
 .works-nav-tab:first-child { border-left:none; }
-.works-nav-arrow { font-family:'DK Crayon Crumble', cursive; font-size:12px; line-height:1; font-weight:600; }
+.works-nav-arrow { display:inline-block; font-family:'DK Crayon Crumble', cursive; font-size:12px; line-height:1; font-weight:600; transform:rotate(90deg); }
 @media (min-width: 821px) {
   .portfolio-links.full-line-b::after { display:none; }
 }
@@ -496,7 +496,12 @@ section.project.full-line-b::after,
   }
   .works-nav-tab {
     flex:0 0 auto;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:3px;
     white-space:nowrap;
+    text-align:center;
     padding:9px 10px;
     font-size:10px;
   }
