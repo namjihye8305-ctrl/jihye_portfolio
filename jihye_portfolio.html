@@ -59,7 +59,7 @@ section.project.full-line-b::after,
 .proj-ph.full-line-b::after { border-bottom-color:#444; }
 .proj-top.full-line-b::after { border-bottom-color:#7a7a77; }
 .hero {
-  padding:100px 48px 80px;
+  padding:100px 0 80px;
   display:flex; justify-content:space-between; align-items:flex-end; gap:40px;
 }
 
@@ -223,12 +223,12 @@ section.project.full-line-b::after,
 /* ── WORKS HEADER ── */
 .works-head {
   display:flex; justify-content:space-between; align-items:center;
-  padding:20px 48px;
+  padding:20px 0;
 }
 .works-head-l { font-size:12px; letter-spacing:.18em; color:#fff; }
 .works-head-r { font-size:12px; letter-spacing:.1em; color:#fff; }
 
-/* ── WORKS NAV (PC only) ── */
+/* ── WORKS NAV ── */
 .works-nav {
   width:100vw; margin-left:calc(50% - 50vw);
   position:sticky; top:0; z-index:100;
@@ -237,7 +237,7 @@ section.project.full-line-b::after,
 .works-nav-inner {
   display:flex;
   max-width:1920px; margin:0 auto;
-  padding:0 48px;
+  padding:0;
 }
 .works-nav-tab {
   flex:1; display:flex; justify-content:space-between; align-items:center;
@@ -256,7 +256,7 @@ section.project.full-line-b::after,
 .works-nav-tab:hover, .works-nav-tab.active { background:#0d0d0d; color:#fff; }
 
 /* ── PROJECT ── */
-.project { padding:76px 48px; scroll-margin-top:24px; }
+.project { padding:76px 0; scroll-margin-top:24px; }
 
 .proj-top {
   display:flex; align-items:baseline; gap:20px;
@@ -482,8 +482,18 @@ section.project.full-line-b::after,
 
 /* --- Responsive: 모바일에서 PC/모바일 뷰가 세로로 쌓이도록 처리 --- */
 @media (max-width: 820px) {
-  .works-nav {
+  .works-nav-inner {
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    padding:0 12px;
+  }
+  .works-nav-inner::-webkit-scrollbar {
     display:none;
+  }
+  .works-nav-tab {
+    flex:0 0 auto;
+    white-space:nowrap;
   }
   .wrap {
     padding:0 12px;
