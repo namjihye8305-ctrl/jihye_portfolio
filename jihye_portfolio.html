@@ -263,7 +263,7 @@ section.project.full-line-b::after,
 .portfolio-links .portfolio-links-title { color:#111; -webkit-text-stroke:.5px currentColor; }
 .portfolio-links .pl-list { color:#1c1c1c; }
 .portfolio-links .pl-period { color:#1c1c1c; }
-.portfolio-links .pl-link { color:#1c1c1c; border-bottom-color:#b8b8b8; }
+.portfolio-links .pl-link { color:#111; border-bottom-color:#999; animation:hsShake .32s ease-in-out infinite; } /* 호버 효과(진한 색·흔들림)를 항상 적용 */
 .portfolio-links .pl-link:hover { color:#111; border-color:#999; }
 .works-nav { background:#fff; }
 /* 상단 링크 영역 종이색을 네비 밑으로 2px 겹쳐 틈(어두운 선) 방지 */
@@ -492,7 +492,9 @@ section.project.full-line-b::after,
 /* 하단 링크 · About: 히어로와 같은 종이색 테마 (About의 ::before는 상단 가로선이라 텍스처는 ::after에) */
 .portfolio-links:not(.full-line-b), .about { position:relative; clip-path:inset(-2px -100vmax 0); }
 .about.full-line-t::before { border-top-color:#aeaca6; }
-.about .about-name { color:#111; font-family:'DK Crayon Crumble', cursive; letter-spacing:.01em; font-size:clamp(40px,6vw,110px); line-height:1; white-space:nowrap; }
+.about .about-name { color:#111; font-family:'DK Crayon Crumble', cursive; letter-spacing:.01em; font-size:clamp(40px,5vw,96px); line-height:.9; white-space:nowrap; }
+/* 이름을 오른쪽 소개 3줄(Contents Web Designer ~ TMON) 높이에 맞춰 위쪽 정렬 */
+.about.full-line-t { align-items:flex-start; }
 .about .about-contacts a { color:#1c1c1c; border-bottom-color:#ccc; }
 .about .about-contacts a:hover { color:#111; }
 .about .about-right { color:#555; }
@@ -502,6 +504,7 @@ section.project.full-line-b::after,
 .proj-light .pp-t,
 .proj-light .colors-label,
 .proj-light .sw-name { color:#555; }
+.proj-light .v-label { color:#1c1c1c; }
 .proj-light .kv-v { color:#444; }
 .proj-light .pp-n { color:#111; }
 .proj-light .case-divider { color:#1c1c1c; border-top-color:#c2c0ba; }
