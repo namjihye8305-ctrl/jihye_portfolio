@@ -59,7 +59,7 @@ section.project.full-line-b::after,
 .proj-ph.full-line-b::after { border-bottom-color:#444; }
 .proj-top.full-line-b::after { border-bottom-color:#7a7a77; }
 .hero {
-  padding:100px 50px 80px;
+  padding:110px 50px; /* 위아래 여백 110px 통일 */
   display:flex; justify-content:space-between; align-items:flex-end; gap:40px;
   background:#f4f3ef; box-shadow:0 0 0 100vmax #f4f3ef; clip-path:inset(0 -100vmax);
 }
@@ -267,16 +267,16 @@ section.project.full-line-b::after,
 .portfolio-links .pl-link:hover { color:#1c1c1c; border-color:#999; }
 .works-nav { background:#fff; }
 /* 상단 링크 영역 종이색을 네비 밑으로 2px 겹쳐 틈(어두운 선) 방지 */
-.hero + .portfolio-links { clip-path:inset(0 -100vmax -2px); padding-top:80px; padding-bottom:80px; }
+.hero + .portfolio-links { clip-path:inset(0 -100vmax -2px); padding-top:110px; padding-bottom:110px; }
 /* 히어로 ↔ 링크 ↔ 네비 ↔ 첫 프로젝트: PC 80px / 모바일 48px 간격으로 통일 */
-.works-nav + .project.proj-light { padding-top:80px; clip-path:inset(-2px -100vmax 0); } /* 종이색을 네비 밑으로 2px 겹쳐 네비 아래 어두운 선(틈) 제거 */
+.works-nav + .project.proj-light { padding-top:110px; clip-path:inset(-2px -100vmax 0); } /* 종이색을 네비 밑으로 2px 겹쳐 네비 아래 어두운 선(틈) 제거 */
 /* SELECTED WORKS 줄 삭제: 네비 바로 아래 어두운 여백이 생기지 않도록 여백 제거 (첫 프로젝트 상단 여백이 간격 역할) */
 .works-nav { margin-bottom:0; }
 .works-nav-tab { background:transparent; color:#111; border-left-color:#aeaca6; }
-.works-nav-tab:hover, .works-nav-tab.active { background-color:#f4f3ef; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E"); background-blend-mode:multiply; color:#111; } /* 종이색 영역과 같은 노이즈 */
+.works-nav-tab:hover { background-color:#f4f3ef; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E"); background-blend-mode:multiply; color:#111; } /* 종이색 영역과 같은 노이즈 */
 
 /* ── PROJECT ── */
-.project { padding:76px 50px; scroll-margin-top:24px; }
+.project { padding:110px 50px; scroll-margin-top:24px; } /* 위아래 여백 110px 통일 */
 
 .proj-top {
   display:flex; align-items:baseline; gap:20px;
@@ -527,7 +527,9 @@ section.project.full-line-b::after,
   transition:transform .5s cubic-bezier(.65,.05,.36,1);
   pointer-events:none;
 }
-.works-nav-tab.active::after { transform:scaleX(1); }
+.works-nav-tab.active::after { transform:scaleX(1); filter:invert(1); } /* 현재 탭 밑줄은 흰색 */
+/* 클릭한(현재 보고 있는) 탭: 히어로 타이틀 색 배경에 흰 글자 */
+.works-nav-tab.active, .works-nav-tab.active:hover { background:#111; color:#fff; }
 
 /* ── 모션 ⑤: 크레용 별 마우스 커서 (마우스 쓰는 기기만) ── */
 .star-cursor {
@@ -688,6 +690,61 @@ section.project.full-line-b::after,
 }
 @media (prefers-reduced-motion: reduce) { .label-ring path { animation:none; stroke-dashoffset:0; } }
 
+/* ── 툴 아이콘: 마우스를 올리면 살짝 확대 + 스킬 박스 모양 말풍선에 툴 이름 ── */
+.tool-hover { position:relative; display:inline-flex; }
+.tool-hover .tool-icon { transition:transform .28s cubic-bezier(.34,1.56,.64,1); }
+.tool-hover:hover .tool-icon { transform:scale(1.28); }
+.tool-hover .sw-tip { bottom:calc(100% + 12px); }
+.tool-hover:hover .sw-tip { opacity:1; transform:translate(-50%, 0); }
+@media (prefers-reduced-motion: reduce) { .tool-hover .tool-icon { transition:none; } }
+
+/* ── 01 AI 키비주얼 영상 옆 크레용 글씨 "AI KEY VISUAL" (한 글자씩 써진 뒤 "Click!"과 같은 크레용 화살표가 영상을 가리킴) ── */
+.kv-motion { position:relative; width:100%; }
+.kv-motion-title {
+  position:absolute; left:calc(100% + 28px); top:50%; transform:translateY(-50%);
+  width:380px; margin:0;
+  font-family:'DK Crayon Crumble', cursive; /* "Click!" 라벨과 같은 크레용 폰트 */
+  font-size:46px; line-height:1.15; color:#111; letter-spacing:.01em;
+  filter:url(#crayon-line);
+  pointer-events:none;
+}
+/* 오른쪽에 자리가 없으면(좁은 화면·모바일) 영상 위로 */
+.kv-motion.is-stacked .kv-motion-title {
+  position:static; transform:none; width:auto; margin:0 0 14px;
+  font-size:clamp(30px, 6vw, 42px);
+}
+.kv-motion-title .kv-ch {
+  display:inline-block; white-space:pre;
+  clip-path:inset(-20% 100% -20% 0);
+}
+.kv-motion-title.is-writing .kv-ch {
+  animation:kvWrite .22s steps(4, end) forwards;
+  animation-delay:calc(var(--i) * 120ms);
+}
+.kv-motion-title .click-arrow { margin-left:6px; vertical-align:middle; }
+.kv-motion-title .click-arrow path { transition-delay:0s; }
+.kv-motion-title.is-arrow .click-arrow path { stroke-dashoffset:0; transition:stroke-dashoffset .5s cubic-bezier(.65,.05,.36,1); }
+.kv-motion:not(.is-stacked) .kv-motion-title .click-arrow { position:absolute; left:-44px; top:50%; margin:-15px 0 0; transform:scaleX(-1) rotate(-50deg); }
+@keyframes kvWrite { to { clip-path:inset(-20% -10% -20% 0); } }
+@media (prefers-reduced-motion: reduce) {
+  .kv-motion-title .kv-ch { clip-path:none; animation:none; }
+}
+
+/* ── 히어로 타이틀: 마우스 가까운 글자일수록 부드럽게 확대 (돋보기처럼 주변 글자도 살짝, JS가 --mag 계산) ── */
+.hero-left h1 .letter { transform-origin:50% 80%; scale:var(--mag, 1); transition:scale .45s cubic-bezier(.22,1,.36,1); }
+
+/* ── 프로젝트 이미지 사이 위아래 간격 70px 통일 (라벨·케이스 제목과 바로 아래 이미지는 30px) ── */
+.proj-light .device-wrap .v-pc, .proj-light .device-wrap .v-mo { gap:0; }
+.proj-light .device-wrap :is(.v-pc, .v-mo) > * { margin-top:0 !important; margin-bottom:0 !important; }
+.proj-light .device-wrap :is(.v-pc, .v-mo) > * + * { margin-top:70px !important; }
+.proj-light .device-wrap :is(.v-pc, .v-mo) > :is(.v-label, .case-divider) + * { margin-top:30px !important; } /* 라벨·제목과 아래 이미지 간격 30px */
+.proj-light .ai09-cases { row-gap:80px; } /* AI 리디자인 케이스(이미지) 사이 80px */
+.proj-light .proj-grid + .proj-grid { margin-top:70px !important; }
+
+/* 이미지 사이 케이스 제목의 얇은 가로선 제거(간격은 위 70px 규칙 유지), 제목과 바로 아래 라벨 두 줄 사이는 40px */
+.proj-light .device-wrap .case-divider { border-top:0 !important; padding-top:0 !important; }
+.proj-light .device-wrap :is(.v-pc, .v-mo) > .case-divider + .v-label { margin-top:40px !important; }
+
 /* ── 노이즈: 종이색 영역(히어로 · 링크 · 프로젝트 · About)에 고운 노이즈만 얹음 ──
    화면 양끝까지 채우기 위해 box-shadow 단색 대신 100vw 폭 ::before 배경으로 깔아줌 */
 .hero, .hero + .portfolio-links, .project.proj-light, .portfolio-links, .about { background:transparent; box-shadow:none; }
@@ -743,8 +800,10 @@ section.project.full-line-b::after,
 }
 
 /* ── 배경 ②: 히어로 여백의 연한 크레용 낙서 (스크롤하면 본문보다 느리게 움직이는 시차) ── */
-.hero-doodles { position:absolute; inset:0; pointer-events:none; z-index:0; }
+.hero-doodles { position:absolute; top:0; bottom:0; left:calc(50% - 50vw); width:100vw; pointer-events:none; z-index:0; } /* 화면 양끝까지 넓게 */
+.hero-doodles .doodle { scale:.8; } /* 낙서 크기 살짝 작게 (스크롤 시차 transform과 별도) */
 .hero-left { position:relative; z-index:1; }
+.portfolio-links-top { position:relative; z-index:1; } /* 상단 링크 영역 낙서 위로 */
 .doodle {
   position:absolute; overflow:visible; opacity:.14;
   will-change:transform;
@@ -798,7 +857,7 @@ section.project.full-line-b::after,
 .ph-right { font-size:10px; letter-spacing:.1em; color:#333; }
 
 /* ── PORTFOLIO LINKS ── */
-.portfolio-links { padding:64px 50px; }
+.portfolio-links { padding:110px 50px; }
 .portfolio-links-title { font-size:30px; letter-spacing:.02em; color:#fff; margin-bottom:18px; font-family:'DK Crayon Crumble', cursive; }
 .pl-emoji { font-size:19px; position:relative; top:-2px; }
 .pl-list { display:grid; grid-template-columns:auto auto 1fr; column-gap:10px; row-gap:12px; align-items:baseline; font-size:15px; color:#888; }
@@ -826,7 +885,7 @@ section.project.full-line-b::after,
 
 /* ── ABOUT ── */
 .about {
-  padding:72px 50px;
+  padding:110px 50px;
   display:flex; justify-content:space-between; align-items:flex-end;
 }
 .about-name { font-size:clamp(32px,4vw,64px); font-weight:300; letter-spacing:-.04em; color:#444; line-height:.92; }
@@ -1036,6 +1095,7 @@ section.project.full-line-b::after,
   .v-pc,
   .proj-info {
     width:100%;
+    margin-top:90px; /* 모바일: 이미지 아래 여백 110px (그리드 간격 20px + 90px) */
     min-width:0;
   }
   .v-pc img,
@@ -1097,6 +1157,13 @@ section.project.full-line-b::after,
 
 <!-- PORTFOLIO LINKS (TOP) -->
 <div class="portfolio-links full-line-b">
+  <div class="hero-doodles" aria-hidden="true">
+    <svg class="doodle" data-speed="0.12" style="left:1.5%; top:14%; width:40px; height:40px" viewBox="0 0 40 40"><path d="M20 3 C 22 14, 26 18, 37 20 C 26 22, 22 26, 20 37 C 18 26, 14 22, 3 20 C 14 18, 18 14, 20 3 Z"/></svg>
+    <svg class="doodle d-hide-mo" data-speed="0.08" style="left:52%; top:10%; width:120px; height:34px" viewBox="0 0 120 34"><path d="M3 24 C 20 24, 26 6, 36 8 C 46 10, 38 28, 30 24 C 22 20, 44 4, 60 14 S 84 30, 96 18 S 112 8, 117 12"/></svg>
+    <svg class="doodle" data-speed="0.1" style="right:3%; top:10%; width:26px; height:26px" viewBox="0 0 26 26"><path d="M5 5 L 21 21 M 21 5 L 5 21"/></svg>
+    <svg class="doodle d-hide-mo" data-speed="0.14" style="left:36%; bottom:12%; width:60px; height:56px" viewBox="0 0 60 56"><path d="M34 4 C 50 6, 57 19, 54 32 C 51 47, 37 53, 24 51 C 10 48, 3 36, 5 23 C 8 11, 19 3, 33 5 L 38 8"/></svg>
+    <svg class="doodle d-hide-mo" data-speed="0.09" style="right:22%; bottom:14%; width:90px; height:40px" viewBox="0 0 90 40"><path d="M3 22 C 12 8, 20 36, 30 20 S 48 6, 58 22 S 78 34, 87 16"/></svg>
+  </div>
   <div class="portfolio-links-top">
     <div>
       <p class="portfolio-links-title"><span class="pl-emoji">🔎</span> Full Portfolio Links</p>
@@ -1165,9 +1232,12 @@ section.project.full-line-b::after,
           <img src="01/pc_01.jpg" alt="Nike Editorial PC 01">
           <img src="01/pc_02.jpg" alt="Nike Editorial PC 02">
           <p class="v-label">AI 키비주얼 모션디자인</p>
-          <video autoplay loop muted playsinline style="width:100%; display:block; border-radius:2px;">
-            <source src="01/ai_keyvisual_motion.mp4" type="video/mp4">
-          </video>
+          <div class="kv-motion">
+            <video autoplay loop muted playsinline style="width:100%; display:block; border-radius:2px;">
+              <source src="01/ai_keyvisual_motion.mp4" type="video/mp4">
+            </video>
+            <p class="kv-motion-title" aria-label="Ai Key Visual">Ai Key Visual</p>
+          </div>
         </div>
         <div class="v-mo">
           <p class="v-label v-device">MO</p>
@@ -1210,6 +1280,8 @@ section.project.full-line-b::after,
         <div class="tool-icons">
           <div class="tool-icon ps" title="Photoshop">Ps</div>
           <div class="tool-icon dw" title="Dreamweaver">Dw</div>
+          <div class="tool-icon gpt" title="ChatGPT"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5152 2.9004A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.0202 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4947 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.5963 3.8558L13.1038 8.3945l2.0201-1.1638a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.3927-.6879zm2.0107-3.0231-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.0201-1.1638a.0708.0708 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.4592a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.6069 1.4997-2.602-1.4997Z"/></svg></div>
+          <div class="tool-icon seedance" title="Seedance">Sd</div>
         </div>
       </div>
     </div>
@@ -2038,9 +2110,6 @@ section.project.full-line-b::after,
             </div>
           </div>
         </div>
-        <div style="width:100%; text-align:center; padding:50px 20px 30px; border-top:1px solid #333; margin-top:40px;">
-          <p style="font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; font-weight:300; font-size:26px; letter-spacing:normal; color:rgba(232,232,228,0.3);">프로젝트 추가 업데이트 예정</p>
-        </div>
       </div>
     </div>
     <div class="proj-info">
@@ -2267,6 +2336,10 @@ section.project.full-line-b::after,
       </div>
 
     </div>
+  </div>
+  <!-- 추가 업데이트 안내: 이미지 영역 밖에 두어 이미지 아래 여백을 다른 프로젝트와 동일하게 (110px) -->
+  <div class="proj-update-note" style="width:100%; text-align:center; padding:50px 20px 0; border-top:1px solid #333; margin-top:110px;">
+    <p style="font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; font-weight:300; font-size:26px; letter-spacing:normal; color:rgba(232,232,228,0.3);">프로젝트 추가 업데이트 예정</p>
   </div>
 </section>
 
@@ -2532,12 +2605,13 @@ section.project.full-line-b::after,
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var hero = document.querySelector('.hero');
   var items = Array.prototype.slice.call(document.querySelectorAll('.hero-doodles .doodle'));
+  var links = document.querySelector('.hero + .portfolio-links');
   if (!hero || !items.length) return;
   var ticking = false;
   function update() {
     ticking = false;
     var y = window.scrollY;
-    if (y > hero.offsetHeight * 1.5) return;
+    if (y > hero.offsetHeight + (links ? links.offsetHeight : 0) + 400) return;
     items.forEach(function (el) {
       var sp = parseFloat(el.getAttribute('data-speed')) || 0.2;
       el.style.transform = 'translate3d(0,' + (y * sp).toFixed(1) + 'px,0) rotate(' + (y * sp * 0.04).toFixed(2) + 'deg)';
@@ -2594,6 +2668,102 @@ document.querySelectorAll('.portfolio-links .pl-link').forEach(function (a) {
     el.appendChild(wrap);
     wrap.style.setProperty('--rd', (-(i * 0.7) % 3.6).toFixed(2) + 's');
     wrap.insertAdjacentHTML('beforeend', '<svg viewBox="0 0 200 50" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M112 4 C 160 3, 197 12, 196 26 C 195 41, 150 47, 100 46 C 48 45, 4 40, 4 25 C 4 11, 46 4, 96 5 L 124 8"/></svg>');
+  });
+})();
+</script>
+<script>
+/* 프로젝트 툴 아이콘: 확대 + 툴 이름 말풍선 */
+(function () {
+  var names = { ps:'Photoshop', ai:'Illustrator', dw:'Dreamweaver', figma:'Figma', gpt:'ChatGPT', gemini:'Gemini',
+    claude:'Claude', vscode:'VS Code', seedance:'Seedance', kling:'Kling AI', mj:'Midjourney', pollo:'Pollo AI' };
+  document.querySelectorAll('.proj-light .tool-icons .tool-icon').forEach(function (icon) {
+    var key = Array.prototype.filter.call(icon.classList, function (c) { return names[c]; })[0];
+    if (!key) return;
+    var wrap = document.createElement('span');
+    wrap.className = 'tool-hover';
+    icon.parentNode.insertBefore(wrap, icon);
+    wrap.appendChild(icon);
+    wrap.insertAdjacentHTML('beforeend',
+      '<span class="sw-tip">' + names[key] + '</span>');
+  });
+})();
+</script>
+<script>
+/* 01 AI 키비주얼 손글씨: 글자 나누기 · 자리 판단 · 화면에 들어오면 한 글자씩 써짐 */
+(function () {
+  var box = document.querySelector('.kv-motion');
+  var title = box && box.querySelector('.kv-motion-title');
+  if (!title) return;
+  var text = title.textContent;
+  title.textContent = '';
+  Array.prototype.forEach.call(text, function (ch, i) {
+    var sp = document.createElement('span');
+    sp.className = 'kv-ch';
+    sp.setAttribute('aria-hidden', 'true');
+    sp.style.setProperty('--i', i);
+    sp.textContent = ch;
+    title.appendChild(sp);
+  });
+  var mo = box.closest('.device-wrap') && box.closest('.device-wrap').querySelector('.v-mo');
+  function place() {
+    var stacked = true;
+    if (mo && window.innerWidth > 820) {
+      var v = box.getBoundingClientRect(), m = mo.getBoundingClientRect();
+      stacked = m.bottom + 40 > v.top;          // MO 이미지가 영상 옆을 차지하고 있으면 위로
+    }
+    box.classList.toggle('is-stacked', stacked);
+  }
+  window.addEventListener('load', place);
+  window.addEventListener('resize', place);
+  place();
+  if (!('IntersectionObserver' in window)) { title.classList.add('is-writing'); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      title.classList.add('is-writing');
+      io.disconnect();
+    });
+  }, { rootMargin: '0px 0px -20% 0px', threshold: 0 });
+  io.observe(title);
+  // 화살표 추가 (Click! 화살표와 같은 경로)
+  title.insertAdjacentHTML('beforeend', '<svg class="click-arrow" viewBox="0 0 34 30" aria-hidden="true"><path pathLength="1" d="M4 6 C 16 4, 26 10, 27 24 M 21 19 L 27 25 L 31 18"/></svg>');
+  var last = title.querySelectorAll('.kv-ch').length;
+  var mo2 = new MutationObserver(function () {
+    if (!title.classList.contains('is-writing')) return;
+    mo2.disconnect();
+    setTimeout(function () { title.classList.add('is-arrow'); }, last * 120 + 250);
+  });
+  mo2.observe(title, { attributes: true, attributeFilter: ['class'] });
+  if (title.classList.contains('is-writing')) setTimeout(function () { title.classList.add('is-arrow'); }, last * 120 + 250);
+})();
+</script>
+<script>
+/* 히어로 타이틀 돋보기 확대: 마우스와 글자 거리로 확대 정도 계산 (반경 안에서 부드럽게 줄어듦) */
+(function () {
+  if (window.matchMedia && (matchMedia('(prefers-reduced-motion: reduce)').matches || !matchMedia('(hover: hover)').matches)) return;
+  var h1 = document.querySelector('.hero-left h1');
+  if (!h1) return;
+  var letters = Array.prototype.slice.call(h1.querySelectorAll('.letter'));
+  var R = 140, MAX = 0.2, raf = null, mx = 0, my = 0, active = false;
+  function apply() {
+    raf = null;
+    letters.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      var d = Math.hypot(mx - cx, (my - cy) * 1.4);
+      var k = active ? Math.max(0, 1 - d / R) : 0;
+      k = k * k * (3 - 2 * k);                 // smoothstep: 가장자리는 아주 완만하게
+      el.style.setProperty('--mag', (1 + MAX * k).toFixed(3));
+    });
+  }
+  var zone = document.querySelector('.hero-left') || h1;
+  zone.addEventListener('mousemove', function (e) {
+    mx = e.clientX; my = e.clientY; active = true;
+    if (!raf) raf = requestAnimationFrame(apply);
+  });
+  zone.addEventListener('mouseleave', function () {
+    active = false;
+    if (!raf) raf = requestAnimationFrame(apply);
   });
 })();
 </script>
