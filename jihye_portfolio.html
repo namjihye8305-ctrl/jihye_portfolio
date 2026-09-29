@@ -52,7 +52,7 @@ body {
 }
 .full-line-b::after { bottom:0; border-bottom:1px solid #555; }
 .full-line-t::before { top:0; border-top:1px solid #555; }
-.hero.full-line-b::after { border-bottom-color:#b5b3ad; }
+.hero.full-line-b::after { border-bottom:1px solid #111; }
 .portfolio-links.full-line-b::after { border-bottom-color:#7a7a77; }
 .works-head.full-line-b::after { border-bottom-color:#444; }
 section.project.full-line-b::after,
@@ -153,7 +153,7 @@ section.project.full-line-b::after,
   position:absolute;
   top:-3px; left:-3px;
   width:6px; height:6px;
-  background:#fff;
+  background:#111;
   border:1px solid #111;
 }
 /* 하나씩 순식간에 등장(샤라락, 페이드는 빠르고 뜨는 건 천천히) → 다같이 3초 유지 → 등장한 순서 그대로 천천히 아래로 가라앉으며 사라짐 → 대기 후 반복 (6.5s 주기, 8개 박스) */
@@ -260,11 +260,11 @@ section.project.full-line-b::after,
 .hero + .portfolio-links {
   background:#f4f3ef; box-shadow:0 0 0 100vmax #f4f3ef; clip-path:inset(0 -100vmax);
 }
-.hero + .portfolio-links .portfolio-links-title { color:#111; }
-.hero + .portfolio-links .pl-list { color:#1c1c1c; }
-.hero + .portfolio-links .pl-period { color:#1c1c1c; }
-.hero + .portfolio-links .pl-link { color:#1c1c1c; border-bottom-color:#ccc; }
-.hero + .portfolio-links .pl-link:hover { color:#111; border-color:#999; }
+.portfolio-links .portfolio-links-title { color:#111; -webkit-text-stroke:.5px currentColor; }
+.portfolio-links .pl-list { color:#1c1c1c; }
+.portfolio-links .pl-period { color:#1c1c1c; }
+.portfolio-links .pl-link { color:#1c1c1c; border-bottom-color:#ccc; }
+.portfolio-links .pl-link:hover { color:#111; border-color:#999; }
 .works-nav { background:#fff; }
 /* 상단 링크 영역 종이색을 네비 밑으로 2px 겹쳐 틈(어두운 선) 방지 */
 .hero + .portfolio-links { clip-path:inset(0 -100vmax -2px); padding-top:80px; padding-bottom:80px; }
@@ -468,24 +468,33 @@ section.project.full-line-b::after,
 .proj-light .proj-title span { color:#555 !important; }
 .proj-light .proj-tag { color:#777; border-color:#ccc; }
 .proj-light .proj-meta-sep { background:#aaa; }
-.proj-light .device-wrap { background:#fff; }
+/* 이미지 뒤 박스/프레임 없음: 안쪽 여백(20px)을 없애고 그만큼 이미지 최대 폭도 같은 비율(약 1.026배)로 키움 */
+.proj-light .device-wrap { background:transparent; padding:0; }
+.proj-light .v-pc img, .proj-light .proj-video-frame { max-width:1152px; }
+.proj-light .v-mo img { max-width:410px; }
 
-/* ── 종이 텍스처: 종이색 영역(히어로 · 상단 링크 · 프로젝트)에 노이즈 + 은은한 얼룩 레이어 ──
+/* ── 노이즈: 종이색 영역(히어로 · 링크 · 프로젝트 · About)에 고운 노이즈만 얹음 ──
    화면 양끝까지 채우기 위해 box-shadow 단색 대신 100vw 폭 ::before 배경으로 깔아줌 */
-.hero, .hero + .portfolio-links, .project.proj-light { background:transparent; box-shadow:none; }
-.hero::before, .hero + .portfolio-links::before, .project.proj-light::before {
+.hero, .hero + .portfolio-links, .project.proj-light, .portfolio-links, .about { background:transparent; box-shadow:none; }
+.hero::before, .hero + .portfolio-links::before, .project.proj-light::before, .portfolio-links::before, .about::after {
   content:'';
   position:absolute;
-  top:-2px; bottom:-2px; left:50%;
-  width:100vw; transform:translateX(-50%);
+  top:-2px; bottom:-2px; left:calc(50% - 50vw);
+  width:100vw;
   z-index:-1;
   pointer-events:none;
   background-color:#f4f3ef;
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)' opacity='.10'/%3E%3C/svg%3E");
-  background-blend-mode:multiply, multiply;
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+  background-blend-mode:multiply;
 }
+/* 하단 링크 · About: 히어로와 같은 종이색 테마 (About의 ::before는 상단 가로선이라 텍스처는 ::after에) */
+.portfolio-links:not(.full-line-b), .about { position:relative; clip-path:inset(-2px -100vmax 0); }
+.about.full-line-t::before { border-top-color:#b5b3ad; }
+.about .about-name { color:#111; }
+.about .about-contacts a { color:#1c1c1c; border-bottom-color:#ccc; }
+.about .about-contacts a:hover { color:#111; }
+.about .about-right { color:#555; }
 .proj-light .v-label,
 .proj-light .proj-desc,
 .proj-light .kv-k,
@@ -856,6 +865,10 @@ section.project.full-line-b::after,
           <p class="v-label">PC</p>
           <img src="01/pc_01.jpg" alt="Nike Editorial PC 01">
           <img src="01/pc_02.jpg" alt="Nike Editorial PC 02">
+          <p class="v-label">AI 키비주얼 모션디자인</p>
+          <video autoplay loop muted playsinline style="width:100%; display:block; border-radius:2px;">
+            <source src="01/ai_keyvisual_motion.mp4" type="video/mp4">
+          </video>
         </div>
         <div class="v-mo">
           <p class="v-label">MO</p>
@@ -1979,11 +1992,6 @@ section.project.full-line-b::after,
 <section class="about full-line-t">
   <div>
     <div class="about-name">Nam<br>Ji Hye.</div>
-    <div class="about-contacts">
-      <a href="mailto:your@email.com">Email</a>
-      <a href="#">Instagram</a>
-      <a href="#">Notion</a>
-    </div>
   </div>
   <div class="about-right">
     Contents Web Designer<br>
