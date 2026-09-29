@@ -709,9 +709,10 @@ section.project.full-line-b::after,
   pointer-events:none;
 }
 /* 오른쪽에 자리가 없으면(좁은 화면·모바일) 영상 위로 */
-.kv-motion.is-stacked .kv-motion-title {
-  position:static; transform:none; width:auto; margin:0 0 14px;
-  font-size:clamp(30px, 6vw, 42px);
+.kv-motion.is-stacked { display:flex; flex-direction:column; }
+.kv-motion.is-stacked .kv-motion-title { order:-1; /* 좁은 화면·모바일: 영상 바로 위 오른쪽, 작게 */
+  position:static; transform:none; width:auto; margin:0 0 8px; text-align:right;
+  font-size:clamp(20px, 4.2vw, 28px);
 }
 .kv-motion-title .kv-ch {
   display:inline-block; white-space:pre;
@@ -1048,6 +1049,7 @@ section.project.full-line-b::after,
     flex-wrap:wrap;
     align-items:baseline; /* 모바일: 번호와 타이틀을 한 줄에, 설명(meta)은 다음 줄 */
     gap:50px 10px; /* 타이틀 줄과 Selected Projects 줄 사이 약 3배 */
+    margin-bottom:18px; padding-bottom:10px; /* 타이틀 영역과 아래 이미지 사이 56px → 28px */
   }
   .proj-meta {
     gap:4px;
