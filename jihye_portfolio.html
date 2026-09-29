@@ -741,6 +741,7 @@ section.project.full-line-b::after,
 .proj-light .device-wrap :is(.v-pc, .v-mo) > :is(.v-label, .case-divider) + * { margin-top:30px !important; } /* 라벨·제목과 아래 이미지 간격 30px */
 .proj-light .ai09-cases { row-gap:80px; } /* AI 리디자인 케이스(이미지) 사이 80px */
 .proj-light .proj-grid + .proj-grid { margin-top:70px !important; }
+@media (max-width:820px) { /* 모바일: 이미지 위아래 간격 70px → 40px (AI 케이스 80px → 48px) */  .proj-light .device-wrap :is(.v-pc, .v-mo) > * + * { margin-top:40px !important; }  .proj-light .device-wrap :is(.v-pc, .v-mo) > :is(.v-label, .case-divider) + * { margin-top:30px !important; }  .proj-light .device-wrap :is(.v-pc, .v-mo) > .case-divider + .v-label { margin-top:40px !important; }  .proj-light .ai09-cases { row-gap:48px; }  .proj-light .proj-grid + .proj-grid { margin-top:40px !important; }}
 
 /* 이미지 사이 케이스 제목의 얇은 가로선 제거(간격은 위 70px 규칙 유지), 제목과 바로 아래 라벨 두 줄 사이는 40px */
 .proj-light .device-wrap .case-divider { border-top:0 !important; padding-top:0 !important; }
