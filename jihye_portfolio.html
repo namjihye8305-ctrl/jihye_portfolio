@@ -468,9 +468,24 @@ section.project.full-line-b::after,
 .proj-light .proj-title span { color:#555 !important; }
 .proj-light .proj-tag { color:#777; border-color:#ccc; }
 .proj-light .proj-meta-sep { background:#aaa; }
-.proj-light .device-wrap { background:#fff; border:0.5px solid #111; }
-/* 일반(1배율) 화면은 0.5px이 1px로 반올림되므로 색을 연하게 해서 얇아 보이게 */
-@media (max-resolution:1.49dppx) { .proj-light .device-wrap { border:1px solid rgba(17,17,17,.45); } }
+.proj-light .device-wrap { background:#fff; }
+
+/* ── 종이 텍스처: 종이색 영역(히어로 · 상단 링크 · 프로젝트)에 노이즈 + 은은한 얼룩 레이어 ──
+   화면 양끝까지 채우기 위해 box-shadow 단색 대신 100vw 폭 ::before 배경으로 깔아줌 */
+.hero, .hero + .portfolio-links, .project.proj-light { background:transparent; box-shadow:none; }
+.hero::before, .hero + .portfolio-links::before, .project.proj-light::before {
+  content:'';
+  position:absolute;
+  top:-2px; bottom:-2px; left:50%;
+  width:100vw; transform:translateX(-50%);
+  z-index:-1;
+  pointer-events:none;
+  background-color:#f4f3ef;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)' opacity='.10'/%3E%3C/svg%3E");
+  background-blend-mode:multiply, multiply;
+}
 .proj-light .v-label,
 .proj-light .proj-desc,
 .proj-light .kv-k,
