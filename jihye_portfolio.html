@@ -727,6 +727,7 @@ section.project.full-line-b::after,
 .kv-motion-title.is-arrow .click-arrow path { stroke-dashoffset:0; transition:stroke-dashoffset .5s cubic-bezier(.65,.05,.36,1); }
 .kv-motion:not(.is-stacked) .kv-motion-title .click-arrow { position:absolute; left:-44px; top:50%; margin:-15px 0 0; transform:scaleX(-1) rotate(-50deg); }
 @keyframes kvWrite { to { clip-path:inset(-20% -10% -20% 0); } }
+@media (max-width:820px) { .kv-motion-title { display:none; } } /* 모바일에서는 "Ai Key Visual" 글씨 숨김 */
 @media (prefers-reduced-motion: reduce) {
   .kv-motion-title .kv-ch { clip-path:none; animation:none; }
 }
@@ -741,7 +742,7 @@ section.project.full-line-b::after,
 .proj-light .device-wrap :is(.v-pc, .v-mo) > :is(.v-label, .case-divider) + * { margin-top:30px !important; } /* 라벨·제목과 아래 이미지 간격 30px */
 .proj-light .ai09-cases { row-gap:80px; } /* AI 리디자인 케이스(이미지) 사이 80px */
 .proj-light .proj-grid + .proj-grid { margin-top:70px !important; }
-@media (max-width:820px) { /* 모바일: 이미지 위아래 간격 70px → 40px (AI 케이스 80px → 48px) */  .proj-light .device-wrap :is(.v-pc, .v-mo) > * + * { margin-top:40px !important; }  .proj-light .device-wrap :is(.v-pc, .v-mo) > :is(.v-label, .case-divider) + * { margin-top:30px !important; }  .proj-light .device-wrap :is(.v-pc, .v-mo) > .case-divider + .v-label { margin-top:40px !important; }  .proj-light .ai09-cases { row-gap:48px; }  .proj-light .proj-grid + .proj-grid { margin-top:40px !important; }}
+@media (max-width:820px) { .proj-light .device-wrap { gap:70px; } } /* 모바일: PC 이미지 묶음 → MO 이미지 묶음도 70px */
 
 /* 이미지 사이 케이스 제목의 얇은 가로선 제거(간격은 위 70px 규칙 유지), 제목과 바로 아래 라벨 두 줄 사이는 40px */
 .proj-light .device-wrap .case-divider { border-top:0 !important; padding-top:0 !important; }
@@ -1050,7 +1051,7 @@ section.project.full-line-b::after,
     flex-wrap:wrap;
     align-items:baseline; /* 모바일: 번호와 타이틀을 한 줄에, 설명(meta)은 다음 줄 */
     gap:50px 10px; /* 타이틀 줄과 Selected Projects 줄 사이 약 3배 */
-    margin-bottom:18px; padding-bottom:10px; /* 타이틀 영역과 아래 이미지 사이 56px → 28px */
+    margin-bottom:0; padding-bottom:40px; /* 모바일: 타이틀 묶음 아래 → 첫 라벨(PC 등)까지 40px */
   }
   .proj-meta {
     gap:4px;
@@ -1093,11 +1094,13 @@ section.project.full-line-b::after,
     grid-column:1;
     grid-row:auto;
   }
+  .proj-info {
+    margin-top:90px; /* 모바일: 이미지 아래 여백 110px (그리드 간격 20px + 90px) */
+  }
   .v-mo,
   .v-pc,
   .proj-info {
     width:100%;
-    margin-top:90px; /* 모바일: 이미지 아래 여백 110px (그리드 간격 20px + 90px) */
     min-width:0;
   }
   .v-pc img,
