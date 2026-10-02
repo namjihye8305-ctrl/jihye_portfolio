@@ -61,7 +61,7 @@ section.project.full-line-b::after,
 .hero {
   padding:90px 50px; /* 위아래 여백 90px 통일 */
   display:flex; justify-content:space-between; align-items:flex-end; gap:40px;
-  background:#f3f3f3; box-shadow:0 0 0 100vmax #f3f3f3; clip-path:inset(0 -100vmax);
+  background:#fff; box-shadow:0 0 0 100vmax #fff; clip-path:inset(0 -100vmax);
 }
 
 .sub-text {
@@ -252,28 +252,31 @@ section.project.full-line-b::after,
   transition:background .2s ease, color .2s ease;
 }
 .works-nav-tab:first-child { border-left:none; }
-.works-nav-arrow { display:inline-block; font-family:'DK Crayon Crumble', cursive; font-size:12px; line-height:1; font-weight:600; transform:rotate(90deg); }
+.works-nav-arrow { display:inline-flex; width:14px; height:14px; line-height:1; flex-shrink:0; }
+/* 맨 위로 가기 버튼과 같은 크레용 화살표(아래 방향), 글자색을 따라감 */
+.works-nav-arrow svg { width:100%; height:100%; overflow:visible; }
+.works-nav-arrow svg path { fill:none; stroke:currentColor; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; filter:url(#crayon-line); }
 .portfolio-links.full-line-b::after { display:none; }
 .works-nav-tab:hover, .works-nav-tab.active { background:#0d0d0d; color:#fff; }
 
 /* ── 상단 링크 · 네비: 히어로와 같은 밝은 종이색 테마 ── */
 .hero + .portfolio-links {
-  background:#f3f3f3; box-shadow:0 0 0 100vmax #f3f3f3; clip-path:inset(0 -100vmax);
+  background:#fff; box-shadow:0 0 0 100vmax #fff; clip-path:inset(0 -100vmax);
 }
 .portfolio-links .portfolio-links-title { color:#111; -webkit-text-stroke:.5px currentColor; }
 .portfolio-links .pl-list { color:#1c1c1c; }
 .portfolio-links .pl-period { color:#1c1c1c; }
-.portfolio-links .pl-link { color:#1c1c1c; border-bottom-color:#999; animation:hsShake .32s ease-in-out infinite; font-weight:400; -webkit-text-stroke:.3px currentColor; } /* 호버 효과(진한 색·흔들림)를 항상 적용 */
-.portfolio-links .pl-link:hover { color:#1c1c1c; border-color:#999; }
-.works-nav { background:#fff; }
+.portfolio-links .pl-link { color:#111; border-bottom-color:#999; animation:hsShake .32s ease-in-out infinite; font-weight:400; -webkit-text-stroke:.3px currentColor; } /* 호버 효과(진한 색·흔들림)를 항상 적용 */
+.portfolio-links .pl-link:hover { color:#111; border-color:#999; }
+.works-nav { background:#fff; box-shadow:inset 0 1px 0 #111, inset 0 -1px 0 #111; } /* 네비: 화이트 + #111 테두리 */
 /* 상단 링크 영역 종이색을 네비 밑으로 2px 겹쳐 틈(어두운 선) 방지 */
 .hero + .portfolio-links { clip-path:inset(0 -100vmax -2px); padding-top:90px; padding-bottom:90px; }
 /* 히어로 ↔ 링크 ↔ 네비 ↔ 첫 프로젝트: PC 80px / 모바일 48px 간격으로 통일 */
 .works-nav + .project.proj-light { padding-top:90px; clip-path:inset(-2px -100vmax 0); } /* 종이색을 네비 밑으로 2px 겹쳐 네비 아래 어두운 선(틈) 제거 */
 /* SELECTED WORKS 줄 삭제: 네비 바로 아래 어두운 여백이 생기지 않도록 여백 제거 (첫 프로젝트 상단 여백이 간격 역할) */
 .works-nav { margin-bottom:0; }
-.works-nav-tab { background:transparent; color:#111; border-left-color:#aeaca6; }
-.works-nav-tab:hover { background-color:#f3f3f3; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E"); background-blend-mode:multiply; color:#111; } /* 종이색 영역과 같은 노이즈 */
+.works-nav-tab { background:transparent; color:#111; border-left-color:#111; box-shadow:inset 0 1px 0 #111, inset 0 -1px 0 #111; } /* 호버·클릭 배경이 위아래 테두리를 가리지 않도록 탭에도 테두리 */
+.works-nav-tab:hover { background:#f9f9f9; color:#111; } /* 호버: 홀수 프로젝트와 같은 연그레이 */
 
 /* ── PROJECT ── */
 .project { padding:90px 50px; scroll-margin-top:24px; } /* 위아래 여백 90px 통일 */
@@ -480,7 +483,7 @@ section.project.full-line-b::after,
 
 /* ── 홀수 프로젝트(01·03·05·07·09): 히어로와 같은 밝은 종이색 테마 ── */
 .project.proj-light {
-  background:#f3f3f3; box-shadow:0 0 0 100vmax #f3f3f3; clip-path:inset(-2px -100vmax 0); /* 위쪽 2px 겹쳐 프로젝트 사이 틈(얇은 어두운 선) 방지 */
+  background:#f9f9f9; box-shadow:0 0 0 100vmax #f9f9f9; clip-path:inset(-2px -100vmax 0); /* 위쪽 2px 겹쳐 프로젝트 사이 틈(얇은 어두운 선) 방지 */
 }
 .project.proj-light.full-line-b::after { display:none; } /* 프로젝트 사이 긴 가로선 제거 */
 .proj-light .proj-top.full-line-b::after { display:none; } /* 프로젝트 타이틀 아래 얇은 가로선 제거 */
@@ -540,7 +543,7 @@ section.project.full-line-b::after,
 }
 .works-nav-tab.active::after { transform:scaleX(1); filter:invert(1); } /* 현재 탭 밑줄은 흰색 */
 /* 클릭한(현재 보고 있는) 탭: 히어로 타이틀 색 배경에 흰 글자 */
-.works-nav-tab.active, .works-nav-tab.active:hover { background:#111; color:#fff; }
+.works-nav-tab.active, .works-nav-tab.active:hover { background:#111; color:#fff; } /* 클릭한(현재) 탭: #111 */
 
 /* ── 모션 ⑤: 크레용 별 마우스 커서 (마우스 쓰는 기기만) ── */
 .star-cursor {
@@ -565,11 +568,11 @@ section.project.full-line-b::after,
 /* ── 모션 ⑥: 맨 위로 가기 버튼 (히어로 스킬 박스 스타일 + 크레용 화살표) ── */
 .to-top {
   position:fixed; right:28px; bottom:28px; z-index:900;
-  width:52px; height:52px;
+  width:60px; height:60px; padding:0;
   display:flex; align-items:center; justify-content:center;
   background:#fff; border:none; border-radius:2px;
   box-shadow:inset 0 0 0 1px #8e8c87;
-  color:#111; font-family:'DK Crayon Crumble', cursive; font-size:26px; line-height:1;
+  color:#111;
   cursor:pointer; opacity:0; visibility:hidden; transform:translateY(12px);
   transition:opacity .3s ease, transform .3s ease, visibility .3s;
 }
@@ -577,11 +580,14 @@ section.project.full-line-b::after,
   content:''; position:absolute; top:-2.5px; left:-2.5px;
   width:6px; height:6px; background:#111; border:1px solid #111;
 }
-.to-top span { display:inline-block; transform:rotate(-90deg) translateX(-2px); }
+/* 크레용 위쪽 화살표(SVG): 글꼴 여백 영향 없이 네모 정가운데 */
+.to-top svg { display:block; width:26px; height:26px; overflow:visible; }
+.to-top svg path { fill:none; stroke:#111; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; filter:url(#crayon-line); }
 .to-top.is-visible { opacity:1; visibility:visible; transform:none; }
-.to-top:hover span { animation:hsShake .32s ease-in-out infinite; }
+.to-top:hover svg { animation:hsShake .32s ease-in-out infinite; }
 @media (max-width:820px) {
-  .to-top { right:16px; bottom:16px; width:44px; height:44px; font-size:22px; }
+  .to-top { right:16px; bottom:16px; width:50px; height:50px; }
+  .to-top svg { width:22px; height:22px; }
   .scroll-progress { display:none; } /* 모바일은 스크롤 진행 바 없음 */
 }
 @media (prefers-reduced-motion: reduce) {
@@ -769,15 +775,39 @@ section.project.full-line-b::after,
   width:100vw;
   z-index:-1;
   pointer-events:none;
-  background-color:#f3f3f3;
+  background-color:#fff; /* 기본 배경(상단·하단 링크, About 등) 화이트 */
   background-image:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
   background-blend-mode:multiply;
 }
 
 
-/* ── 배경 ③: 짝수 프로젝트(02·04·06·08)는 패턴 없이 종이색만 살짝 어둡게 (#f3f3f3 → #ebebeb) ── */
-#proj02::before, #proj04::before, #proj06::before, #proj08::before { background-color:#ebebeb; }
+/* ── 배경 ③: 짝수 프로젝트(02·04·06·08)는 패턴 없이 종이색만 살짝 어둡게 (#f7f7f7 → #f0f0f0) ── */
+#proj02::before, #proj04::before, #proj06::before, #proj08::before { background-color:#fff; } /* 짝수 프로젝트: 화이트 */
+#proj01::before, #proj03::before, #proj05::before, #proj07::before, #proj09::before { background-color:#f9f9f9; } /* 홀수 프로젝트: 아주 연한 그레이 */
+.hero::before { background-color:#fff; } /* 히어로: 화이트 */
+/* 상단(히어로·Full Portfolio Links)과 짝수 프로젝트: 노이즈 없이 네비와 같은 순수 화이트 + 연한 모눈 */
+html .hero + .portfolio-links::before,
+html .portfolio-links:not(.full-line-b)::before, html .about::after, /* 맨 아래 링크 · 푸터도 히어로처럼 */
+html #proj02::before, html #proj04::before, html #proj06::before, html #proj08::before {
+  background-color:#fff;
+  background-image:
+    linear-gradient(to right, rgba(17,17,17,.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17,17,17,.03) 1px, transparent 1px);
+  background-size:28px 28px, 28px 28px;
+  background-position:center top, center top;
+  background-blend-mode:normal;
+}
+/* 히어로는 가로 모눈선을 아래 기준으로 맞춰 히어로 아래 가로선과 겹치게 */
+html .hero::before {
+  background-color:#fff;
+  background-image:
+    linear-gradient(to right, rgba(17,17,17,.03) 1px, transparent 1px),
+    linear-gradient(to top, rgba(17,17,17,.03) 1px, transparent 1px);
+  background-size:28px 28px, 28px 28px;
+  background-position:center top, center bottom 2px;
+  background-blend-mode:normal;
+}
 
 /* ── 프로젝트가 나뉘는 경계(02~09 위쪽)에 크레용으로 그은 긴 가로선 (거친 가장자리 + 입자 + 덧칠) ── */
 .project.proj-light + .project.proj-light.full-line-b::after {
@@ -828,7 +858,7 @@ section.project.full-line-b::after,
 }
 /* 히어로·상단 링크 낙서를 흰색으로 (밝은 종이색 위에서 보이도록 진하기 올림) */
 .hero-doodles .doodle { opacity:1; }
-.hero-doodles .doodle path { stroke:#fff; stroke-width:2.6; }
+.hero-doodles .doodle path { stroke:#e6e6e6; stroke-width:2.6; } /* 화이트 배경 위에서 은은하게 보이는 연그레이 */
 @media (max-width:820px) { .hero-doodles .doodle { opacity:1; } }
 @media (max-width:820px) {
   .doodle { opacity:.1; transform-origin:center; }
@@ -860,7 +890,7 @@ section.project.full-line-b::after,
 .proj-light .tool-label { border-color:#c2c0ba; }
 .proj-light .sw[style*="border"] { border-color:#c9c7c1 !important; }
 .proj-light div[style*="border-top"] { border-top-color:#c2c0ba !important; }
-.proj-light div[style*="border-top"] p { color:rgba(28,28,28,.5) !important; font-weight:400 !important; -webkit-text-stroke:.15px currentColor; }
+.proj-light div[style*="border-top"] p { color:rgba(28,28,28,.5) !important; font-weight:300 !important; -webkit-text-stroke:0; }
 
 /* ── PLACEHOLDER ── */
 .proj-ph {
@@ -936,7 +966,7 @@ section.project.full-line-b::after,
     font-size:11px;
   }
   .works-nav-arrow {
-    font-size:13px;
+    width:13px; height:13px;
   }
   .wrap {
     padding:0 12px;
@@ -1222,15 +1252,15 @@ section.project.full-line-b::after,
 <!-- WORKS NAV (PC only) -->
 <nav class="works-nav">
 <div class="works-nav-inner">
-  <a href="#proj01" class="works-nav-tab">01. Nike Editorial<span class="works-nav-arrow">&gt;</span></a>
-  <a href="#proj02" class="works-nav-tab">02. Renewal Guide<span class="works-nav-arrow">&gt;</span></a>
-  <a href="#proj03" class="works-nav-tab">03. Promotion Event<span class="works-nav-arrow">&gt;</span></a>
-  <a href="#proj04" class="works-nav-tab">04. Brand Promotion<span class="works-nav-arrow">&gt;</span></a>
-  <a href="#proj05" class="works-nav-tab">05. 99 Special Price<span class="works-nav-arrow">&gt;</span></a>
-  <a href="#proj06" class="works-nav-tab">06. Template Guide<span class="works-nav-arrow">&gt;</span></a>
-  <a href="#proj07" class="works-nav-tab">07. Brand Campaign<span class="works-nav-arrow">&gt;</span></a>
-  <a href="#proj08" class="works-nav-tab">08. Style Curation<span class="works-nav-arrow">&gt;</span></a>
-  <a href="#proj09" class="works-nav-tab">09. AI Redesign<span class="works-nav-arrow">&gt;</span></a>
+  <a href="#proj01" class="works-nav-tab">Nike Editorial<span class="works-nav-arrow"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M13 3.5 L 13 22 M 5 14.5 L 13 22.5 L 21 14.5"/></svg></span></a>
+  <a href="#proj02" class="works-nav-tab">Renewal Guide<span class="works-nav-arrow"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M13 3.5 L 13 22 M 5 14.5 L 13 22.5 L 21 14.5"/></svg></span></a>
+  <a href="#proj03" class="works-nav-tab">Promotion Event<span class="works-nav-arrow"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M13 3.5 L 13 22 M 5 14.5 L 13 22.5 L 21 14.5"/></svg></span></a>
+  <a href="#proj04" class="works-nav-tab">Brand Promotion<span class="works-nav-arrow"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M13 3.5 L 13 22 M 5 14.5 L 13 22.5 L 21 14.5"/></svg></span></a>
+  <a href="#proj05" class="works-nav-tab">99 Special Price<span class="works-nav-arrow"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M13 3.5 L 13 22 M 5 14.5 L 13 22.5 L 21 14.5"/></svg></span></a>
+  <a href="#proj06" class="works-nav-tab">Template Guide<span class="works-nav-arrow"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M13 3.5 L 13 22 M 5 14.5 L 13 22.5 L 21 14.5"/></svg></span></a>
+  <a href="#proj07" class="works-nav-tab">Brand Campaign<span class="works-nav-arrow"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M13 3.5 L 13 22 M 5 14.5 L 13 22.5 L 21 14.5"/></svg></span></a>
+  <a href="#proj08" class="works-nav-tab">Style Curation<span class="works-nav-arrow"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M13 3.5 L 13 22 M 5 14.5 L 13 22.5 L 21 14.5"/></svg></span></a>
+  <a href="#proj09" class="works-nav-tab">AI Redesign<span class="works-nav-arrow"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M13 3.5 L 13 22 M 5 14.5 L 13 22.5 L 21 14.5"/></svg></span></a>
 </div>
 </nav>
 
@@ -2517,7 +2547,7 @@ section.project.full-line-b::after,
   btn.className = 'to-top';
   btn.type = 'button';
   btn.setAttribute('aria-label', '맨 위로 가기');
-  btn.innerHTML = '<span>&gt;</span>';
+  btn.innerHTML = '<svg viewBox="0 0 26 26" aria-hidden="true"><path d="M13 22.5 L 13 4 M 5 11.5 L 13 3.5 L 21 11.5"/></svg>';
   document.body.appendChild(btn);
   btn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
   function onScroll() { btn.classList.toggle('is-visible', window.scrollY > 700); }
