@@ -54,9 +54,9 @@ body {
 .full-line-t::before { top:0; border-top:1px solid #555; }
 .hero.full-line-b::after { display:none; } /* 히어로 아래 선은 아래 링크 영역 맨 위에 크레용선으로 그림 */
 .hero + .portfolio-links.full-line-b::after {
-  display:block; content:''; position:absolute; top:-4px; bottom:auto; left:calc(50% - 50vw); width:100vw; height:8px; /* 히어로 아래 크레용선 */
+  display:block; content:''; position:absolute; top:-5px; bottom:auto; left:calc(50% - 50vw); width:100vw; height:10px; /* 히어로 아래 크레용선 */
   border:0; transform:none; z-index:2; pointer-events:none;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 16' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-2%' y='-150%' width='104%' height='400%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.015 .5' numOctaves='2' seed='13' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='4' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.6 1.6' numOctaves='2' seed='29' result='j'/%3E%3CfeDisplacementMap in='d' in2='j' scale='2.5' xChannelSelector='R' yChannelSelector='G' result='r'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9 2.2' seed='5' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.3 1.45' result='m'/%3E%3CfeComposite in='r' in2='m' operator='in'/%3E%3C/filter%3E%3Cg fill='none' stroke='%231c1c1c' stroke-linecap='round' filter='url(%23c)'%3E%3Cpath d='M4 8.5 C 180 6, 330 11, 520 7.5 S 820 10, 996 7' stroke-width='4.2'/%3E%3Cpath d='M14 9.5 C 200 8.5, 360 10.5, 560 8.8 S 840 9.4, 986 8.4' stroke-width='2' stroke-opacity='.55'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / 100% 100%;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 16' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-2%' y='-150%' width='104%' height='400%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.015 .5' numOctaves='2' seed='13' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='4' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.6 1.6' numOctaves='2' seed='29' result='j'/%3E%3CfeDisplacementMap in='d' in2='j' scale='2.5' xChannelSelector='R' yChannelSelector='G' result='r'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9 2.2' seed='5' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.6 1.4' result='m'/%3E%3CfeComposite in='r' in2='m' operator='in'/%3E%3C/filter%3E%3Cg fill='none' stroke='%231c1c1c' stroke-linecap='round' filter='url(%23c)'%3E%3Cpath d='M4 8.5 C 180 6, 330 11, 520 7.5 S 820 10, 996 7' stroke-width='4.2'/%3E%3Cpath d='M14 9.5 C 200 8.5, 360 10.5, 560 8.8 S 840 9.4, 986 8.4' stroke-width='2' stroke-opacity='.55'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / 100% 100%;
 } /* 히어로 아래: 프로젝트 사이와 같은 크레용 가로선, 경계 가운데 */
 html .hero + .portfolio-links { clip-path:inset(-8px -100vmax -2px); } /* 크레용선 위 절반이 잘리지 않게 */ /* transform 없이 배치해 선이 픽셀에 딱 맞게(번짐 방지) */ /* 프로젝트 타이틀 아래 선과 같은 굵기·색 */
 .portfolio-links.full-line-b::after { border-bottom-color:#7a7a77; }
@@ -65,7 +65,7 @@ section.project.full-line-b::after,
 .proj-ph.full-line-b::after { border-bottom-color:#444; }
 .proj-top.full-line-b::after { border-bottom-color:#7a7a77; }
 .hero {
-  padding:90px 50px; /* 위아래 여백 90px 통일 */
+  padding:100px 50px; /* 히어로 위아래 여백 100px */
   display:flex; justify-content:space-between; align-items:flex-end; gap:40px;
   background:#fff; box-shadow:0 0 0 100vmax #fff; clip-path:inset(0 -100vmax);
 }
@@ -83,7 +83,7 @@ section.project.full-line-b::after,
 .hero-left .hero-title { font-size:clamp(84px,7.9vw,172px); /* PC 타이틀 약 10% 크게 */   display: block;
   position: relative;
   left: -6px; letter-spacing: 0.01em;
-  font-family: 'DK Crayon Crumble', cursive; line-height: 0.7;}
+  font-family: 'DK Crayon Crumble', cursive; line-height: 0.64;} /* 두 줄 행간 아주 살짝 좁게 (0.7 → 0.64) */
 .hero-left .hero-line2 { display:inline-block; font-size:clamp(68px,6.8vw,146px); position:relative; top:0px; }
 .hero-left p { font-size:16px; color:#1c1c1c; line-height:2; letter-spacing:.02em; max-width:none; -webkit-text-stroke:.3px currentColor; }
 .hero-left p .sub-text { -webkit-text-stroke:0; }
@@ -277,7 +277,7 @@ section.project.full-line-b::after,
 .works-nav { background:#fff; } /* 네비: 화이트, 위아래는 크레용선 */
 .works-nav::before, .works-nav::after {
   content:''; position:absolute; left:0; right:0; height:4px; z-index:3; pointer-events:none; /* 네비 크레용선 얇게 */
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 16' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-2%' y='-150%' width='104%' height='400%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.015 .5' numOctaves='2' seed='13' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='4' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.6 1.6' numOctaves='2' seed='29' result='j'/%3E%3CfeDisplacementMap in='d' in2='j' scale='2.5' xChannelSelector='R' yChannelSelector='G' result='r'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9 2.2' seed='5' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.3 1.45' result='m'/%3E%3CfeComposite in='r' in2='m' operator='in'/%3E%3C/filter%3E%3Cg fill='none' stroke='%231c1c1c' stroke-linecap='round' filter='url(%23c)'%3E%3Cpath d='M4 8.5 C 180 6, 330 11, 520 7.5 S 820 10, 996 7' stroke-width='4.2'/%3E%3Cpath d='M14 9.5 C 200 8.5, 360 10.5, 560 8.8 S 840 9.4, 986 8.4' stroke-width='2' stroke-opacity='.55'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / 100% 100%;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 16' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-2%' y='-150%' width='104%' height='400%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.015 .5' numOctaves='2' seed='13' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='4' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.6 1.6' numOctaves='2' seed='29' result='j'/%3E%3CfeDisplacementMap in='d' in2='j' scale='2.5' xChannelSelector='R' yChannelSelector='G' result='r'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9 2.2' seed='5' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.6 1.4' result='m'/%3E%3CfeComposite in='r' in2='m' operator='in'/%3E%3C/filter%3E%3Cg fill='none' stroke='%231c1c1c' stroke-linecap='round' filter='url(%23c)'%3E%3Cpath d='M4 8.5 C 180 6, 330 11, 520 7.5 S 820 10, 996 7' stroke-width='4.2'/%3E%3Cpath d='M14 9.5 C 200 8.5, 360 10.5, 560 8.8 S 840 9.4, 986 8.4' stroke-width='2' stroke-opacity='.55'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / 100% 100%;
 }
 .works-nav::before { top:-2px; }
 .works-nav::after { bottom:-2px; }
@@ -291,13 +291,13 @@ section.project.full-line-b::after,
 /* 탭 사이 세로선도 크레용선 */
 .works-nav-tab + .works-nav-tab::before {
   content:''; position:absolute; left:-2px; top:0; bottom:0; width:4px; z-index:2; /* 가로선과 같은 두께 */ pointer-events:none;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 100' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-150%' y='-5%' width='400%' height='110%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.5 .05' numOctaves='2' seed='19' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='2.2' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.2 .9' seed='5' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.3 1.45' result='m'/%3E%3CfeComposite in='d' in2='m' operator='in'/%3E%3C/filter%3E%3Cpath d='M5 2 C 4.4 30, 5.6 60, 5 98' fill='none' stroke='%23111' stroke-width='2.6' stroke-linecap='round' filter='url(%23c)'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 100' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-150%' y='-5%' width='400%' height='110%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.5 .05' numOctaves='2' seed='19' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='2.2' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.2 .9' seed='5' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.6 1.4' result='m'/%3E%3CfeComposite in='d' in2='m' operator='in'/%3E%3C/filter%3E%3Cpath d='M5 2 C 4.4 30, 5.6 60, 5 98' fill='none' stroke='%23111' stroke-width='2.6' stroke-linecap='round' filter='url(%23c)'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
 }
 /* 네비 양끝(1920px 콘텐츠 폭의 양끝)에도 같은 크레용 세로선 */
 .works-nav-inner { position:relative; }
 .works-nav-inner::before, .works-nav-inner::after {
   content:''; position:absolute; top:0; bottom:0; width:4px; z-index:2; pointer-events:none;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 100' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-150%' y='-5%' width='400%' height='110%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.5 .05' numOctaves='2' seed='19' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='2.2' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.2 .9' seed='5' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.3 1.45' result='m'/%3E%3CfeComposite in='d' in2='m' operator='in'/%3E%3C/filter%3E%3Cpath d='M5 2 C 4.4 30, 5.6 60, 5 98' fill='none' stroke='%23111' stroke-width='2.6' stroke-linecap='round' filter='url(%23c)'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 100' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-150%' y='-5%' width='400%' height='110%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.5 .05' numOctaves='2' seed='19' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='2.2' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.2 .9' seed='5' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.6 1.4' result='m'/%3E%3CfeComposite in='d' in2='m' operator='in'/%3E%3C/filter%3E%3Cpath d='M5 2 C 4.4 30, 5.6 60, 5 98' fill='none' stroke='%23111' stroke-width='2.6' stroke-linecap='round' filter='url(%23c)'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
 }
 .works-nav-inner::before { left:0; }
 .works-nav-inner::after { right:0; }
@@ -844,9 +844,9 @@ html .hero::before {
 /* ── 프로젝트가 나뉘는 경계(02~09 위쪽)에 크레용으로 그은 긴 가로선 (거친 가장자리 + 입자 + 덧칠) ── */
 .project.proj-light + .project.proj-light.full-line-b::after {
   display:block;
-  top:-5px; bottom:auto; /* 10px 선의 가운데를 두 프로젝트 경계에 정확히 맞춤 */ left:calc(50% - 50vw); transform:none;
-  width:100vw; height:10px; border:0;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 16' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-2%' y='-150%' width='104%' height='400%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.015 .5' numOctaves='2' seed='13' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='4' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.6 1.6' numOctaves='2' seed='29' result='j'/%3E%3CfeDisplacementMap in='d' in2='j' scale='2.5' xChannelSelector='R' yChannelSelector='G' result='r'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9 2.2' seed='5' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.3 1.45' result='m'/%3E%3CfeComposite in='r' in2='m' operator='in'/%3E%3C/filter%3E%3Cg fill='none' stroke='%231c1c1c' stroke-linecap='round' filter='url(%23c)'%3E%3Cpath d='M4 8.5 C 180 6, 330 11, 520 7.5 S 820 10, 996 7' stroke-width='4.2'/%3E%3Cpath d='M14 9.5 C 200 8.5, 360 10.5, 560 8.8 S 840 9.4, 986 8.4' stroke-width='2' stroke-opacity='.55'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / 100% 100%;
+  top:-6px; bottom:auto; /* 12px 선의 가운데를 두 프로젝트 경계에 정확히 맞춤 */ left:calc(50% - 50vw); transform:none;
+  width:100vw; height:12px; border:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 16' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-2%' y='-150%' width='104%' height='400%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.015 .5' numOctaves='2' seed='13' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='4' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.6 1.6' numOctaves='2' seed='29' result='j'/%3E%3CfeDisplacementMap in='d' in2='j' scale='2.5' xChannelSelector='R' yChannelSelector='G' result='r'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9 2.2' seed='5' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.6 1.4' result='m'/%3E%3CfeComposite in='r' in2='m' operator='in'/%3E%3C/filter%3E%3Cg fill='none' stroke='%231c1c1c' stroke-linecap='round' filter='url(%23c)'%3E%3Cpath d='M4 8.5 C 180 6, 330 11, 520 7.5 S 820 10, 996 7' stroke-width='4.2'/%3E%3Cpath d='M14 9.5 C 200 8.5, 360 10.5, 560 8.8 S 840 9.4, 986 8.4' stroke-width='2' stroke-opacity='.55'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / 100% 100%;
   pointer-events:none;
   z-index:1;
 }
@@ -1007,7 +1007,7 @@ html .hero::before {
     display:none;
   }
   .hero {
-    padding:90px 0; /* 모바일 위아래 여백 90px 통일 */
+    padding:100px 0; /* 모바일 히어로 위아래 여백 100px */
     flex-direction:column;
     align-items:flex-start;
     gap:30px;
