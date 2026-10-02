@@ -54,7 +54,7 @@ body {
 .full-line-t::before { top:0; border-top:1px solid #555; }
 .hero.full-line-b::after { display:none; } /* 히어로 아래 선은 아래 링크 영역 맨 위에 크레용선으로 그림 */
 .hero + .portfolio-links.full-line-b::after {
-  display:block; content:''; position:absolute; top:-3px; bottom:auto; left:calc(50% - 50vw); width:100vw; height:6px; /* 더 얇게 */
+  display:block; content:''; position:absolute; top:-4px; bottom:auto; left:calc(50% - 50vw); width:100vw; height:8px; /* 히어로 아래 크레용선 */
   border:0; transform:none; z-index:2; pointer-events:none;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 16' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-2%' y='-150%' width='104%' height='400%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.015 .5' numOctaves='2' seed='13' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='4' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.6 1.6' numOctaves='2' seed='29' result='j'/%3E%3CfeDisplacementMap in='d' in2='j' scale='2.5' xChannelSelector='R' yChannelSelector='G' result='r'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9 2.2' seed='5' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.3 1.45' result='m'/%3E%3CfeComposite in='r' in2='m' operator='in'/%3E%3C/filter%3E%3Cg fill='none' stroke='%231c1c1c' stroke-linecap='round' filter='url(%23c)'%3E%3Cpath d='M4 8.5 C 180 6, 330 11, 520 7.5 S 820 10, 996 7' stroke-width='4.2'/%3E%3Cpath d='M14 9.5 C 200 8.5, 360 10.5, 560 8.8 S 840 9.4, 986 8.4' stroke-width='2' stroke-opacity='.55'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / 100% 100%;
 } /* 히어로 아래: 프로젝트 사이와 같은 크레용 가로선, 경계 가운데 */
@@ -143,7 +143,7 @@ section.project.full-line-b::after,
   transform:translateZ(0);
 }
 .hero-skill:hover .hs-inner {
-  opacity:.38; /* 호버 시 더 밝게 */
+  opacity:.3; /* 호버 시 박스 톤 더 밝게 */
   color:#1c1c1c;
   box-shadow:inset 0 0 0 1px #1c1c1c;
   animation:hsShake .32s ease-in-out infinite;
@@ -272,7 +272,7 @@ section.project.full-line-b::after,
 .portfolio-links .portfolio-links-title { color:#111; -webkit-text-stroke:.5px currentColor; }
 .portfolio-links .pl-list { color:#1c1c1c; }
 .portfolio-links .pl-period { color:#1c1c1c; }
-.portfolio-links .pl-link { color:#111; border-bottom:0; padding-bottom:5px; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 8' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-3%' y='-150%' width='106%' height='400%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.06 .8' numOctaves='2' seed='23' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='2.2' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9 2.4' seed='7' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.2 1.4' result='m'/%3E%3CfeComposite in='d' in2='m' operator='in'/%3E%3C/filter%3E%3Cpath d='M2 4.5 C 60 3.5, 130 5.5, 198 4' fill='none' stroke='%23111' stroke-width='2.2' stroke-linecap='round' filter='url(%23c)'/%3E%3C/svg%3E") no-repeat left bottom / 100% 6px; animation:hsShake .32s ease-in-out infinite; font-weight:400; -webkit-text-stroke:.3px currentColor; } /* 호버 효과(진한 색·흔들림)를 항상 적용 */
+.portfolio-links .pl-link { color:#111; border-bottom:0; padding-bottom:5px; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 8' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-3%' y='-150%' width='106%' height='400%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.06 .8' numOctaves='2' seed='23' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='2.2' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9 2.4' seed='7' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.2 1.4' result='m'/%3E%3CfeComposite in='d' in2='m' operator='in'/%3E%3C/filter%3E%3Cpath d='M2 4.5 C 60 3.5, 130 5.5, 198 4' fill='none' stroke='%23111' stroke-width='2.2' stroke-linecap='round' filter='url(%23c)'/%3E%3C/svg%3E") no-repeat left bottom / 100% 4px; animation:hsShake .32s ease-in-out infinite; font-weight:400; -webkit-text-stroke:.3px currentColor; } /* 호버 효과(진한 색·흔들림)를 항상 적용 */
 .portfolio-links .pl-link:hover { color:#111; }
 .works-nav { background:#fff; } /* 네비: 화이트, 위아래는 크레용선 */
 .works-nav::before, .works-nav::after {
@@ -293,6 +293,15 @@ section.project.full-line-b::after,
   content:''; position:absolute; left:-2px; top:0; bottom:0; width:4px; z-index:2; /* 가로선과 같은 두께 */ pointer-events:none;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 100' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-150%' y='-5%' width='400%' height='110%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.5 .05' numOctaves='2' seed='19' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='2.2' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.2 .9' seed='5' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.3 1.45' result='m'/%3E%3CfeComposite in='d' in2='m' operator='in'/%3E%3C/filter%3E%3Cpath d='M5 2 C 4.4 30, 5.6 60, 5 98' fill='none' stroke='%23111' stroke-width='2.6' stroke-linecap='round' filter='url(%23c)'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
 }
+/* 네비 양끝(1920px 콘텐츠 폭의 양끝)에도 같은 크레용 세로선 */
+.works-nav-inner { position:relative; }
+.works-nav-inner::before, .works-nav-inner::after {
+  content:''; position:absolute; top:0; bottom:0; width:4px; z-index:2; pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 100' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-150%' y='-5%' width='400%' height='110%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.5 .05' numOctaves='2' seed='19' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='2.2' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.2 .9' seed='5' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.3 1.45' result='m'/%3E%3CfeComposite in='d' in2='m' operator='in'/%3E%3C/filter%3E%3Cpath d='M5 2 C 4.4 30, 5.6 60, 5 98' fill='none' stroke='%23111' stroke-width='2.6' stroke-linecap='round' filter='url(%23c)'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+}
+.works-nav-inner::before { left:0; }
+.works-nav-inner::after { right:0; }
+@media (max-width:820px) { .works-nav-inner::before, .works-nav-inner::after { display:none; } } /* 모바일은 가로 스크롤 탭이라 생략 */
 .works-nav-tab:hover { background:#f2f2f2; color:rgba(28,28,28,.38); } /* 호버: 히어로 스킬 박스 호버처럼 탭 전체가 흐려진 톤(연그레이 바탕 + 흐린 글자) */
 
 /* ── PROJECT ── */
@@ -835,8 +844,8 @@ html .hero::before {
 /* ── 프로젝트가 나뉘는 경계(02~09 위쪽)에 크레용으로 그은 긴 가로선 (거친 가장자리 + 입자 + 덧칠) ── */
 .project.proj-light + .project.proj-light.full-line-b::after {
   display:block;
-  top:-4px; bottom:auto; /* 8px 선의 가운데를 두 프로젝트 경계에 정확히 맞춤 */ left:calc(50% - 50vw); transform:none;
-  width:100vw; height:8px; border:0; /* 더 얇게 */
+  top:-5px; bottom:auto; /* 10px 선의 가운데를 두 프로젝트 경계에 정확히 맞춤 */ left:calc(50% - 50vw); transform:none;
+  width:100vw; height:10px; border:0;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 16' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-2%' y='-150%' width='104%' height='400%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.015 .5' numOctaves='2' seed='13' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='4' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.6 1.6' numOctaves='2' seed='29' result='j'/%3E%3CfeDisplacementMap in='d' in2='j' scale='2.5' xChannelSelector='R' yChannelSelector='G' result='r'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9 2.2' seed='5' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.3 1.45' result='m'/%3E%3CfeComposite in='r' in2='m' operator='in'/%3E%3C/filter%3E%3Cg fill='none' stroke='%231c1c1c' stroke-linecap='round' filter='url(%23c)'%3E%3Cpath d='M4 8.5 C 180 6, 330 11, 520 7.5 S 820 10, 996 7' stroke-width='4.2'/%3E%3Cpath d='M14 9.5 C 200 8.5, 360 10.5, 560 8.8 S 840 9.4, 986 8.4' stroke-width='2' stroke-opacity='.55'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / 100% 100%;
   pointer-events:none;
   z-index:1;
@@ -868,7 +877,7 @@ html .hero::before {
 
 /* ── 배경 ②: 히어로 여백의 연한 크레용 낙서 (스크롤하면 본문보다 느리게 움직이는 시차) ── */
 .hero-doodles { position:absolute; top:0; bottom:0; left:calc(50% - 50vw); width:100vw; pointer-events:none; z-index:0; } /* 화면 양끝까지 넓게 */
-.hero-doodles .doodle { scale:.7; } /* 낙서 크기 작게 (PC·모바일 모두) */
+.hero-doodles .doodle { scale:.85; } /* 낙서 크기 (PC·모바일 모두) */
 .hero-left { position:relative; z-index:1; }
 .portfolio-links-top { position:relative; z-index:1; } /* 상단 링크 영역 낙서 위로 */
 .doodle {
@@ -881,7 +890,7 @@ html .hero::before {
 }
 /* 히어로·상단 링크 낙서를 흰색으로 (밝은 종이색 위에서 보이도록 진하기 올림) */
 .hero-doodles .doodle { opacity:1; }
-.hero-doodles .doodle path { stroke:#111; stroke-width:2.6; } /* 화이트 배경 위에서 은은하게 보이는 연그레이 */
+.hero-doodles .doodle path { stroke:#1c1c1c; stroke-width:3.4; } /* 히어로 아래 크레용선과 같은 색 */ /* 화이트 배경 위에서 은은하게 보이는 연그레이 */
 @media (max-width:820px) { .hero-doodles .doodle { opacity:1; } }
 @media (max-width:820px) {
   .doodle { opacity:.1; transform-origin:center; }
@@ -1200,9 +1209,7 @@ html .hero::before {
 <section class="hero full-line-b">
   <div class="hero-doodles" aria-hidden="true">
     <svg class="doodle" data-speed="0.25" style="left:3%; top:6%; width:90px; height:40px" viewBox="0 0 90 40"><path d="M3 22 C 12 8, 20 36, 30 20 S 48 6, 58 22 S 78 34, 87 16"/></svg>
-    <svg class="doodle d-hide-mo" data-speed="0.12" style="left:56%; top:9%; width:46px; height:46px" viewBox="0 0 46 46"><path d="M23 4 L 23 42 M 6 14 L 40 32 M 6 32 L 40 14"/></svg>
     <svg class="doodle" data-speed="0.35" style="right:6%; top:48%; width:70px; height:66px" viewBox="0 0 70 66"><path d="M40 5 C 58 7, 67 22, 64 38 C 61 55, 44 63, 29 60 C 12 57, 3 42, 6 27 C 9 13, 22 4, 38 6 L 44 10"/></svg>
-    <svg class="doodle d-hide-mo" data-speed="0.18" style="left:40%; top:74%; width:120px; height:26px" viewBox="0 0 120 26"><path d="M3 14 C 20 4, 30 24, 46 13 S 72 3, 88 14 S 110 22, 117 10"/></svg>
     <svg class="doodle" data-speed="0.3" style="left:88%; top:8%; width:26px; height:26px" viewBox="0 0 26 26"><path d="M5 5 L 21 21 M 21 5 L 5 21"/></svg>
     <svg class="doodle d-hide-mo" data-speed="0.22" style="left:24%; top:88%; width:40px; height:40px" viewBox="0 0 40 40"><path d="M20 3 C 22 14, 26 18, 37 20 C 26 22, 22 26, 20 37 C 18 26, 14 22, 3 20 C 14 18, 18 14, 20 3 Z"/></svg>
   </div>
@@ -1233,11 +1240,10 @@ html .hero::before {
 <!-- PORTFOLIO LINKS (TOP) -->
 <div class="portfolio-links full-line-b">
   <div class="hero-doodles" aria-hidden="true">
-    <svg class="doodle" data-speed="0.12" style="left:1.5%; top:14%; width:40px; height:40px" viewBox="0 0 40 40"><path d="M20 3 C 22 14, 26 18, 37 20 C 26 22, 22 26, 20 37 C 18 26, 14 22, 3 20 C 14 18, 18 14, 20 3 Z"/></svg>
-    <svg class="doodle d-hide-mo" data-speed="0.08" style="left:52%; top:10%; width:120px; height:34px" viewBox="0 0 120 34"><path d="M3 24 C 20 24, 26 6, 36 8 C 46 10, 38 28, 30 24 C 22 20, 44 4, 60 14 S 84 30, 96 18 S 112 8, 117 12"/></svg>
-    <svg class="doodle" data-speed="0.1" style="right:3%; top:10%; width:26px; height:26px" viewBox="0 0 26 26"><path d="M5 5 L 21 21 M 21 5 L 5 21"/></svg>
-    <svg class="doodle d-hide-mo" data-speed="0.14" style="left:36%; bottom:12%; width:60px; height:56px" viewBox="0 0 60 56"><path d="M34 4 C 50 6, 57 19, 54 32 C 51 47, 37 53, 24 51 C 10 48, 3 36, 5 23 C 8 11, 19 3, 33 5 L 38 8"/></svg>
-    <svg class="doodle d-hide-mo" data-speed="0.09" style="right:22%; bottom:14%; width:90px; height:40px" viewBox="0 0 90 40"><path d="M3 22 C 12 8, 20 36, 30 20 S 48 6, 58 22 S 78 34, 87 16"/></svg>
+    <!-- 상단 낙서는 모양이 겹치지 않게: 히어로(물결·동그라미·X·별) / 링크 영역(나선·세모·지그재그) -->
+    <svg class="doodle" data-speed="0.12" style="left:1.5%; top:14%; width:44px; height:44px" viewBox="0 0 44 44"><path d="M22 22 C 22 19, 26 19, 26 22 C 26 27, 18 27, 17 22 C 16 15, 28 13, 30 21 C 32 30, 20 35, 14 29 C 7 22, 12 9, 23 8 C 35 7, 40 18, 37 27"/></svg>
+    <svg class="doodle" data-speed="0.1" style="right:3%; top:10%; width:40px; height:36px" viewBox="0 0 40 36"><path d="M20 4 C 26 14, 31 23, 36 32 C 26 32.5, 14 32, 4 32.5 C 9 23, 14 13, 21 3"/></svg>
+    <svg class="doodle d-hide-mo" data-speed="0.14" style="left:64%; bottom:12%; width:96px; height:28px" viewBox="0 0 96 28"><path d="M3 20 L 14 7 L 25 21 L 37 6 L 48 21 L 60 7 L 71 20 L 83 6 L 93 18"/></svg>
   </div>
   <div class="portfolio-links-top">
     <div>
