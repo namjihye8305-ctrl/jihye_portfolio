@@ -904,12 +904,12 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
 .hero-doodles .doodle { opacity:1; }
 .hero-doodles .doodle path { stroke:#111; stroke-width:3.4; }
 @media (max-width:820px) { .hero-doodles .doodle { opacity:1; } }
-/* 페이지 전체 낙서: 히어로~푸터 전체 높이, 최대 1920px 안의 좌우 가장자리에만 듬성듬성 */
+/* 페이지 전체 낙서: 첫 프로젝트~푸터, 최대 1920px 안의 빈자리에 자동 배치 */
 .wrap { position:relative; }
 .page-doodles { position:absolute; inset:0; pointer-events:none; z-index:1; overflow:hidden; }
 .page-doodles .doodle { opacity:1; }
 .page-doodles .doodle path { stroke:#111; stroke-width:3.4; }
-@media (max-width:1280px) { .page-doodles { display:none; } } /* 좌우 여백이 좁은 화면에서는 콘텐츠와 겹치므로 숨김 */
+@media (max-width:820px) { .page-doodles { display:none; } } /* 모바일은 콘텐츠가 화면을 꽉 채워 낙서 숨김 */
 @media (max-width:820px) {
   .doodle { opacity:.1; transform-origin:center; }
   .doodle.d-hide-mo { display:none; }
@@ -2487,31 +2487,8 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
   </div>
 </section>
 
-<!-- 페이지 전체 낙서: 히어로부터 푸터까지 좌우 여백에 듬성듬성 (콘텐츠와 겹치지 않게 양끝 가장자리에만) -->
-<div class="page-doodles" aria-hidden="true">
-  <svg class="doodle" data-speed="0.06" style="right:2%; top:11%; width:56px; height:53px" viewBox="0 0 70 66"><path d="M40 5 C 58 7, 67 22, 64 38 C 61 55, 44 63, 29 60 C 12 57, 3 42, 6 27 C 9 13, 22 4, 38 6 L 44 10"/></svg>
-  <svg class="doodle" data-speed="0.08" style="left:1.5%; top:20%; width:36px; height:36px" viewBox="0 0 40 40"><path d="M20 3 C 22 14, 26 18, 37 20 C 26 22, 22 26, 20 37 C 18 26, 14 22, 3 20 C 14 18, 18 14, 20 3 Z"/></svg>
-  <svg class="doodle" data-speed="0.05" style="right:1.5%; top:31%; width:80px; height:23px" viewBox="0 0 120 34"><path d="M3 24 C 20 24, 26 6, 36 8 C 46 10, 38 28, 30 24 C 22 20, 44 4, 60 14 S 84 30, 96 18 S 112 8, 117 12"/></svg>
-  <svg class="doodle" data-speed="0.07" style="left:2%; top:42%; width:24px; height:24px" viewBox="0 0 26 26"><path d="M5 5 L 21 21 M 21 5 L 5 21"/></svg>
-  <svg class="doodle" data-speed="0.06" style="right:2.5%; top:53%; width:38px; height:38px" viewBox="0 0 46 46"><path d="M23 4 L 23 42 M 6 14 L 40 32 M 6 32 L 40 14"/></svg>
-  <svg class="doodle" data-speed="0.05" style="left:1%; top:64%; width:72px; height:21px" viewBox="0 0 120 26"><path d="M3 14 C 20 4, 30 24, 46 13 S 72 3, 88 14 S 110 22, 117 10"/></svg>
-  <svg class="doodle" data-speed="0.08" style="right:1.5%; top:75%; width:34px; height:34px" viewBox="0 0 40 40"><path d="M20 3 C 22 14, 26 18, 37 20 C 26 22, 22 26, 20 37 C 18 26, 14 22, 3 20 C 14 18, 18 14, 20 3 Z"/></svg>
-  <svg class="doodle" data-speed="0.06" style="left:2%; top:86%; width:50px; height:47px" viewBox="0 0 70 66"><path d="M40 5 C 58 7, 67 22, 64 38 C 61 55, 44 63, 29 60 C 12 57, 3 42, 6 27 C 9 13, 22 4, 38 6 L 44 10"/></svg>
-  <svg class="doodle" data-speed="0.05" style="right:3%; top:96%; width:72px; height:32px" viewBox="0 0 90 40"><path d="M3 22 C 12 8, 20 36, 30 20 S 48 6, 58 22 S 78 34, 87 16"/></svg>
-  <!-- 추가: 프로젝트 영역 사이사이 -->
-  <svg class="doodle" data-speed="0.07" style="left:3%; top:15.5%; width:22px; height:22px" viewBox="0 0 26 26"><path d="M5 5 L 21 21 M 21 5 L 5 21"/></svg>
-  <svg class="doodle" data-speed="0.05" style="right:3%; top:25.5%; width:68px; height:30px" viewBox="0 0 90 40"><path d="M3 22 C 12 8, 20 36, 30 20 S 48 6, 58 22 S 78 34, 87 16"/></svg>
-  <svg class="doodle" data-speed="0.06" style="left:1.5%; top:36%; width:46px; height:43px" viewBox="0 0 70 66"><path d="M40 5 C 58 7, 67 22, 64 38 C 61 55, 44 63, 29 60 C 12 57, 3 42, 6 27 C 9 13, 22 4, 38 6 L 44 10"/></svg>
-  <svg class="doodle" data-speed="0.08" style="right:2%; top:47%; width:30px; height:30px" viewBox="0 0 40 40"><path d="M20 3 C 22 14, 26 18, 37 20 C 26 22, 22 26, 20 37 C 18 26, 14 22, 3 20 C 14 18, 18 14, 20 3 Z"/></svg>
-  <svg class="doodle" data-speed="0.05" style="left:2.5%; top:58%; width:76px; height:22px" viewBox="0 0 120 34"><path d="M3 24 C 20 24, 26 6, 36 8 C 46 10, 38 28, 30 24 C 22 20, 44 4, 60 14 S 84 30, 96 18 S 112 8, 117 12"/></svg>
-  <svg class="doodle" data-speed="0.07" style="right:3%; top:69%; width:22px; height:22px" viewBox="0 0 26 26"><path d="M5 5 L 21 21 M 21 5 L 5 21"/></svg>
-  <svg class="doodle" data-speed="0.06" style="left:2.5%; top:80%; width:36px; height:36px" viewBox="0 0 46 46"><path d="M23 4 L 23 42 M 6 14 L 40 32 M 6 32 L 40 14"/></svg>
-  <svg class="doodle" data-speed="0.05" style="right:2%; top:91%; width:70px; height:20px" viewBox="0 0 120 26"><path d="M3 14 C 20 4, 30 24, 46 13 S 72 3, 88 14 S 110 22, 117 10"/></svg>
-  <!-- 추가: 푸터(하단 링크 · About) -->
-  <svg class="doodle" data-speed="0.04" style="left:46%; bottom:70px; width:34px; height:34px" viewBox="0 0 40 40"><path d="M20 3 C 22 14, 26 18, 37 20 C 26 22, 22 26, 20 37 C 18 26, 14 22, 3 20 C 14 18, 18 14, 20 3 Z"/></svg>
-  <svg class="doodle" data-speed="0.04" style="right:4%; bottom:230px; width:52px; height:49px" viewBox="0 0 70 66"><path d="M40 5 C 58 7, 67 22, 64 38 C 61 55, 44 63, 29 60 C 12 57, 3 42, 6 27 C 9 13, 22 4, 38 6 L 44 10"/></svg>
-  <svg class="doodle" data-speed="0.04" style="left:2%; bottom:160px; width:24px; height:24px" viewBox="0 0 26 26"><path d="M5 5 L 21 21 M 21 5 L 5 21"/></svg>
-</div>
+<!-- 페이지 전체 낙서: 첫 프로젝트부터 푸터까지, 빈자리를 찾아 스크립트로 자동 배치 -->
+<div class="page-doodles" aria-hidden="true"></div>
 
 </div><!-- /wrap -->
 
@@ -2759,39 +2736,98 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
   window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
   update();
 })();
-/* 페이지 전체 낙서: 화면 가운데와의 거리만큼 살짝 어긋나게 움직이는 은은한 시차 */
+/* 페이지 전체 낙서: 첫 프로젝트부터 푸터까지, 이미지·글자가 없는 빈자리를 찾아 한 화면에 하나꼴로 자동 배치 (최대 1920px 안) */
 (function () {
-  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var items = Array.prototype.slice.call(document.querySelectorAll('.page-doodles .doodle'));
-  if (!items.length) return;
-  var bases = [], ticking = false;
   var layer = document.querySelector('.page-doodles'), first = document.getElementById('proj01');
-  function measure() {
-    /* 낙서 영역을 첫 프로젝트 시작점부터 푸터 끝까지로 (히어로·상단 링크에는 낙서 없음) */
-    if (layer && first) layer.style.top = (first.getBoundingClientRect().top - layer.parentNode.getBoundingClientRect().top) + 'px';
-    if (reduce) return;
-    items.forEach(function (el, i) {
-      el.style.transform = '';
+  if (!layer || !first) return;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var SHAPES = [ /* [viewBox 가로, 세로, 기본 너비, path] */
+    [90, 40, 84, 'M3 22 C 12 8, 20 36, 30 20 S 48 6, 58 22 S 78 34, 87 16'],
+    [70, 66, 60, 'M40 5 C 58 7, 67 22, 64 38 C 61 55, 44 63, 29 60 C 12 57, 3 42, 6 27 C 9 13, 22 4, 38 6 L 44 10'],
+    [26, 26, 28, 'M5 5 L 21 21 M 21 5 L 5 21'],
+    [40, 40, 40, 'M20 3 C 22 14, 26 18, 37 20 C 26 22, 22 26, 20 37 C 18 26, 14 22, 3 20 C 14 18, 18 14, 20 3 Z'],
+    [46, 46, 42, 'M23 4 L 23 42 M 6 14 L 40 32 M 6 32 L 40 14'],
+    [120, 34, 100, 'M3 24 C 20 24, 26 6, 36 8 C 46 10, 38 28, 30 24 C 22 20, 44 4, 60 14 S 84 30, 96 18 S 112 8, 117 12'],
+    [120, 26, 92, 'M3 14 C 20 4, 30 24, 46 13 S 72 3, 88 14 S 110 22, 117 10']
+  ];
+  var CONTENT = 'img, video, iframe, canvas, picture, p, h1, h2, h3, h4, li, a, button, .sw, .proj-video-frame, .v-label, .case-divider, .kv-row, .proj-tag, .proj-num, .proj-title, .proj-meta-title, .proj-meta-desc, .tool-icon, .pp-t, .pp-n, .about-name, .about-right, .portfolio-links-title, .pl-list';
+  var CELL = 20, PAD = 28, items = [], ticking = false;
+  function rnd(i) { var x = Math.sin(i * 12.9898 + 78.233) * 43758.5453; return x - Math.floor(x); } /* 매번 같은 배치가 나오도록 고정 난수 */
+  function build() {
+    layer.innerHTML = ''; items = [];
+    if (getComputedStyle(layer).display === 'none') return;
+    var wrap = layer.parentNode, wr = wrap.getBoundingClientRect();
+    var top0 = first.getBoundingClientRect().top - wr.top;
+    layer.style.top = top0 + 'px';
+    var W = layer.clientWidth, H = layer.clientHeight;
+    if (!W || !H) return;
+    var cols = Math.ceil(W / CELL), rows = Math.ceil(H / CELL);
+    var occ = new Uint8Array(cols * rows), lr = layer.getBoundingClientRect();
+    /* 콘텐츠가 있는 칸 표시 */
+    Array.prototype.forEach.call(wrap.querySelectorAll(CONTENT), function (el) {
+      if (layer.contains(el) || el.closest(".works-nav")) return; /* 상단 고정 네비는 제외 */
       var r = el.getBoundingClientRect();
-      bases[i] = r.top + window.scrollY + r.height / 2;
+      if (r.width < 2 || r.height < 2) return;
+      var c0 = Math.max(0, Math.floor((r.left - lr.left - PAD) / CELL)), c1 = Math.min(cols - 1, Math.floor((r.right - lr.left + PAD) / CELL));
+      var r0 = Math.max(0, Math.floor((r.top - lr.top - PAD) / CELL)), r1 = Math.min(rows - 1, Math.floor((r.bottom - lr.top + PAD) / CELL));
+      for (var y = r0; y <= r1; y++) occ.fill(1, y * cols + c0, y * cols + c1 + 1);
     });
+    /* 빈칸 여부를 빠르게 확인하기 위한 누적합 */
+    var S = new Uint32Array((cols + 1) * (rows + 1));
+    for (var y = 0; y < rows; y++) for (var x = 0, run = 0; x < cols; x++) {
+      run += occ[y * cols + x];
+      S[(y + 1) * (cols + 1) + x + 1] = S[y * (cols + 1) + x + 1] + run;
+    }
+    function free(px, py, w, h) {
+      var x0 = Math.floor(px / CELL), y0 = Math.floor(py / CELL), x1 = Math.ceil((px + w) / CELL), y1 = Math.ceil((py + h) / CELL);
+      if (x0 < 0 || y0 < 0 || x1 > cols || y1 > rows) return false;
+      return S[y1 * (cols + 1) + x1] - S[y0 * (cols + 1) + x1] - S[y1 * (cols + 1) + x0] + S[y0 * (cols + 1) + x0] === 0;
+    }
+    /* 한 화면(약 900px)마다 하나씩, 왼쪽·오른쪽·가운데를 번갈아 빈자리 탐색 */
+    var STEP = 900, n = 0, frag = document.createDocumentFragment();
+    for (var ty = 60, i = 0; ty < H - 40; ty += STEP, i++) {
+      var sh = SHAPES[i % SHAPES.length], sc = i === 0 ? 0.75 : 0.85 + rnd(i) * 0.4;
+      var w = Math.round(sh[2] * sc), h = Math.round(w * sh[1] / sh[0]);
+      var zone = i % 3, placed = null;
+      for (var t = 0; t < 140 && !placed; t++) {
+        var dy = i === 0 ? 28 - ty + rnd(i * 31 + t) * 6 : (rnd(i * 31 + t) - 0.5) * STEP * 0.9; /* 첫 낙서는 01 프로젝트 맨 위 여백에 */
+        var fx = rnd(i * 57 + t * 3);
+        var px = zone === 0 ? fx * W * 0.35 : zone === 1 ? W * 0.65 + fx * (W * 0.35 - w) : W * 0.2 + fx * W * 0.6;
+        if (t > 70) px = fx * (W - w); /* 못 찾으면 가로 전체에서 */
+        var py = ty + dy;
+        if (free(px, py, w, h)) placed = [px, py];
+      }
+      if (!placed) continue;
+      var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('class', 'doodle');
+      svg.setAttribute('viewBox', '0 0 ' + sh[0] + ' ' + sh[1]);
+      svg.style.cssText = 'left:' + Math.round(placed[0]) + 'px; top:' + Math.round(placed[1]) + 'px; width:' + w + 'px; height:' + h + 'px';
+      svg.innerHTML = '<path d="' + sh[3] + '"/>';
+      frag.appendChild(svg);
+      items.push({ el: svg, base: lr.top + window.scrollY + placed[1] + h / 2, rot: (rnd(i * 7) - 0.5) * 30, sp: 0.03 + rnd(i * 11) * 0.03 });
+      n++;
+    }
+    layer.appendChild(frag);
     update();
   }
+  /* 은은한 시차: 화면 가운데와의 거리만큼 최대 ±14px만 움직여 콘텐츠와 겹치지 않게 */
   function update() {
     ticking = false;
     var mid = window.scrollY + window.innerHeight / 2;
-    items.forEach(function (el, i) {
-      var d = mid - bases[i];
+    items.forEach(function (it) {
+      var d = mid - it.base;
       if (Math.abs(d) > window.innerHeight * 1.5) return;
-      var sp = parseFloat(el.getAttribute('data-speed')) || 0.06;
-      el.style.transform = 'translate3d(0,' + (d * sp).toFixed(1) + 'px,0) rotate(' + (d * sp * 0.04).toFixed(2) + 'deg)';
+      var off = reduce ? 0 : Math.max(-14, Math.min(14, d * it.sp));
+      it.el.style.transform = 'translate3d(0,' + off.toFixed(1) + 'px,0) rotate(' + (it.rot + off * 0.3).toFixed(2) + 'deg)';
     });
   }
+  var timer;
+  function rebuild() { clearTimeout(timer); timer = setTimeout(build, 150); }
   if (!reduce) window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-  window.addEventListener('resize', measure);
-  window.addEventListener('load', measure);
-  if (window.ResizeObserver && layer) new ResizeObserver(measure).observe(layer.parentNode); /* 이미지 로딩 등으로 페이지 높이가 바뀌면 다시 맞춤 */
-  measure();
+  window.addEventListener('resize', rebuild);
+  window.addEventListener('load', rebuild);
+  if (window.ResizeObserver) { var lastH = 0; new ResizeObserver(function () { var h = layer.parentNode.offsetHeight; if (h !== lastH) { lastH = h; rebuild(); } }).observe(layer.parentNode); } /* 이미지 로딩으로 높이가 바뀌면 다시 배치 */
+  build();
 })();
 </script>
 <script>
