@@ -513,7 +513,7 @@ section.project.full-line-b::after,
 
 /* ── 홀수 프로젝트(01·03·05·07·09): 히어로와 같은 밝은 종이색 테마 ── */
 .project.proj-light {
-  background:#f9f9f9; box-shadow:0 0 0 100vmax #f9f9f9; clip-path:inset(-2px -100vmax 0); /* 위쪽 2px 겹쳐 프로젝트 사이 틈(얇은 어두운 선) 방지 */
+  background:#fff; box-shadow:0 0 0 100vmax #fff; clip-path:inset(-2px -100vmax 0); /* 위쪽 2px 겹쳐 프로젝트 사이 틈(얇은 어두운 선) 방지 */
 }
 .project.proj-light.full-line-b::after { display:none; } /* 프로젝트 사이 긴 가로선 제거 */
 .proj-light .proj-top.full-line-b::after { display:none; } /* 프로젝트 타이틀 아래 얇은 가로선 제거 */
@@ -820,7 +820,8 @@ section.project.full-line-b::after,
 
 /* ── 배경 ③: 짝수 프로젝트(02·04·06·08)는 패턴 없이 종이색만 살짝 어둡게 (#f7f7f7 → #f0f0f0) ── */
 #proj02::before, #proj04::before, #proj06::before, #proj08::before { background-color:#fff; } /* 짝수 프로젝트: 화이트 */
-#proj01::before, #proj03::before, #proj05::before, #proj07::before, #proj09::before { background-color:#f9f9f9; } /* 홀수 프로젝트: 아주 연한 그레이 */
+#proj01::before, #proj03::before, #proj05::before, #proj07::before, #proj09::before { background-color:#fff; } /* 홀수 프로젝트: 화이트 */
+html #proj01::before, html #proj03::before, html #proj05::before, html #proj07::before, html #proj09::before { background-color:#fff; background-image:none; } /* 홀수 프로젝트: 노이즈 없이 순수 화이트 */
 .hero::before { background-color:#fff; } /* 히어로: 화이트 */
 /* 상단(히어로·Full Portfolio Links)과 짝수 프로젝트: 노이즈 없이 네비와 같은 순수 화이트 + 연한 모눈 */
 html .hero + .portfolio-links::before,
@@ -887,7 +888,7 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
 }
 
 /* ── 배경 ②: 히어로 여백의 연한 크레용 낙서 (스크롤하면 본문보다 느리게 움직이는 시차) ── */
-.hero-doodles { position:absolute; top:0; bottom:0; left:calc(50% - 50vw); width:100vw; pointer-events:none; z-index:0; } /* 화면 양끝까지 넓게 */
+.hero-doodles { position:absolute; top:0; bottom:0; left:calc(50% - min(50vw, 960px)); width:min(100vw, 1920px); pointer-events:none; z-index:0; } /* 화면 폭에 맞추되 최대 1920px 안에 */
 .hero-doodles .doodle { scale:.85; } /* 낙서 크기 (PC·모바일 모두) */
 .hero-left { position:relative; z-index:1; }
 .portfolio-links-top { position:relative; z-index:1; } /* 상단 링크 영역 낙서 위로 */
@@ -901,7 +902,7 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
 }
 /* 히어로·상단 링크 낙서를 흰색으로 (밝은 종이색 위에서 보이도록 진하기 올림) */
 .hero-doodles .doodle { opacity:1; }
-.hero-doodles .doodle path { stroke:#1c1c1c; stroke-width:3.4; } /* 히어로 아래 크레용선과 같은 색 */ /* 화이트 배경 위에서 은은하게 보이는 연그레이 */
+.hero-doodles .doodle path { stroke:#111; stroke-width:3.4; }
 @media (max-width:820px) { .hero-doodles .doodle { opacity:1; } }
 @media (max-width:820px) {
   .doodle { opacity:.1; transform-origin:center; }
