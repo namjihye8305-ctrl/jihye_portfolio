@@ -3064,11 +3064,11 @@ document.querySelectorAll('.portfolio-links .pl-link').forEach(function (a) {
 })();
 </script>
 <script>
-/* 확대 가능한 이미지 호버: 커서를 따라다니는 "전체 이미지 보기" 박스 */
+/* 확대 가능한 이미지 호버: 커서를 따라다니는 "View Full Image" 박스 */
 (function () {
   if (!window.matchMedia || !matchMedia('(hover:hover)').matches) return;
   var tip = document.createElement('div');
-  tip.className = 'zoom-tip'; tip.setAttribute('aria-hidden', 'true'); tip.textContent = '전체 이미지 보기';
+  tip.className = 'zoom-tip'; tip.setAttribute('aria-hidden', 'true'); tip.textContent = 'View Full Image';
   document.body.appendChild(tip);
   function move(e) { tip.style.transform = 'translate(' + (e.clientX + 18) + 'px,' + (e.clientY + 20) + 'px)'; }
   document.addEventListener('mouseover', function (e) {
