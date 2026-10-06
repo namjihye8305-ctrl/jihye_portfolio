@@ -1225,10 +1225,6 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
 
 <!-- HERO -->
 <section class="hero full-line-b">
-  <div class="hero-doodles" aria-hidden="true">
-    <svg class="doodle" data-speed="0.25" style="left:3%; top:6%; width:90px; height:40px" viewBox="0 0 90 40"><path d="M3 22 C 12 8, 20 36, 30 20 S 48 6, 58 22 S 78 34, 87 16"/></svg>
-    <svg class="doodle" data-speed="0.3" style="left:88%; top:8%; width:26px; height:26px" viewBox="0 0 26 26"><path d="M5 5 L 21 21 M 21 5 L 5 21"/></svg>
-  </div>
   <div class="hero-left">
     <h1><span class="hero-title"><span class="hero-star star-left"><span class="letter crayon-star" style="--ld:0ms"><img src="소스/01.png" class="crayon-star-img" alt=""></span></span><span class="hero-word"><span class="letter" style="--ld:0ms">C</span><span class="letter" style="--ld:45ms">o</span><span class="letter" style="--ld:90ms">n</span><span class="letter" style="--ld:135ms">t</span><span class="letter" style="--ld:180ms">e</span><span class="letter" style="--ld:225ms">n</span><span class="letter" style="--ld:270ms">t</span></span> <span class="hero-word"><span class="letter" style="--ld:360ms">D</span><span class="letter" style="--ld:405ms">e</span><span class="letter" style="--ld:450ms">s</span><span class="letter" style="--ld:495ms">i</span><span class="letter" style="--ld:540ms">g</span><span class="letter" style="--ld:585ms">n</span><span class="letter" style="--ld:630ms">e</span><span class="letter" style="--ld:675ms">r</span></span></span>
       <span class="hero-line2"><span class="letter" style="--ld:720ms">W</span><span class="letter" style="--ld:765ms">e</span><span class="letter" style="--ld:810ms">b</span> <span class="letter" style="--ld:855ms">P</span><span class="letter" style="--ld:900ms">o</span><span class="letter" style="--ld:945ms">r</span><span class="letter" style="--ld:990ms">t</span><span class="letter" style="--ld:1035ms">f</span><span class="letter" style="--ld:1080ms">o</span><span class="letter" style="--ld:1125ms">l</span><span class="letter" style="--ld:1170ms">i</span><span class="letter" style="--ld:1215ms">o</span><span class="letter" style="--ld:1260ms">.</span><span class="hero-star star-right"><span class="letter crayon-star" style="--ld:1305ms"><img src="소스/02.png" class="crayon-star-img" alt=""></span></span></span></h1>
@@ -1255,10 +1251,6 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
 
 <!-- PORTFOLIO LINKS (TOP) -->
 <div class="portfolio-links full-line-b">
-  <div class="hero-doodles" aria-hidden="true">
-    <!-- 링크 영역 낙서: 별표 ✳ 하나만 (나머지는 페이지 전체 낙서로 옮김) -->
-    <svg class="doodle" data-speed="0.12" style="left:1.5%; top:14%; width:44px; height:44px" viewBox="0 0 46 46"><path d="M23 4 L 23 42 M 6 14 L 40 32 M 6 32 L 40 14"/></svg>
-  </div>
   <div class="portfolio-links-top">
     <div>
       <p class="portfolio-links-title"><img src="소스/01.png" class="pl-star" alt=""> Full Portfolio Links</p>
@@ -2769,11 +2761,15 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
 })();
 /* 페이지 전체 낙서: 화면 가운데와의 거리만큼 살짝 어긋나게 움직이는 은은한 시차 */
 (function () {
-  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var items = Array.prototype.slice.call(document.querySelectorAll('.page-doodles .doodle'));
   if (!items.length) return;
   var bases = [], ticking = false;
+  var layer = document.querySelector('.page-doodles'), first = document.getElementById('proj01');
   function measure() {
+    /* 낙서 영역을 첫 프로젝트 시작점부터 푸터 끝까지로 (히어로·상단 링크에는 낙서 없음) */
+    if (layer && first) layer.style.top = (first.getBoundingClientRect().top - layer.parentNode.getBoundingClientRect().top) + 'px';
+    if (reduce) return;
     items.forEach(function (el, i) {
       el.style.transform = '';
       var r = el.getBoundingClientRect();
@@ -2791,9 +2787,10 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
       el.style.transform = 'translate3d(0,' + (d * sp).toFixed(1) + 'px,0) rotate(' + (d * sp * 0.04).toFixed(2) + 'deg)';
     });
   }
-  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  if (!reduce) window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
   window.addEventListener('resize', measure);
   window.addEventListener('load', measure);
+  if (window.ResizeObserver && layer) new ResizeObserver(measure).observe(layer.parentNode); /* 이미지 로딩 등으로 페이지 높이가 바뀌면 다시 맞춤 */
   measure();
 })();
 </script>
