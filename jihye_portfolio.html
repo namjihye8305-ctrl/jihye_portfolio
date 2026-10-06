@@ -2783,10 +2783,10 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
       if (x0 < 0 || y0 < 0 || x1 > cols || y1 > rows) return false;
       return S[y1 * (cols + 1) + x1] - S[y0 * (cols + 1) + x1] - S[y1 * (cols + 1) + x0] + S[y0 * (cols + 1) + x0] === 0;
     }
-    /* 한 화면(약 900px)마다 하나씩, 왼쪽·오른쪽·가운데를 번갈아 빈자리 탐색 */
-    var STEP = 900, n = 0, frag = document.createDocumentFragment();
+    /* 약 1400px마다 하나씩, 왼쪽·오른쪽·가운데를 번갈아 빈자리 탐색 */
+    var STEP = 1400, n = 0, frag = document.createDocumentFragment();
     for (var ty = 60, i = 0; ty < H - 40; ty += STEP, i++) {
-      var sh = SHAPES[i % SHAPES.length], sc = i === 0 ? 0.75 : 0.85 + rnd(i) * 0.4;
+      var sh = SHAPES[i % SHAPES.length], sc = i === 0 ? 0.6 : 0.6 + rnd(i) * 0.25; /* 크기 작게 */
       var w = Math.round(sh[2] * sc), h = Math.round(w * sh[1] / sh[0]);
       var zone = i % 3, placed = null;
       for (var t = 0; t < 140 && !placed; t++) {
@@ -2794,6 +2794,7 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
         var fx = rnd(i * 57 + t * 3);
         var px = zone === 0 ? fx * W * 0.35 : zone === 1 ? W * 0.65 + fx * (W * 0.35 - w) : W * 0.2 + fx * W * 0.6;
         if (t > 70) px = fx * (W - w); /* 못 찾으면 가로 전체에서 */
+        if (i === 0) px = W * 0.62 + fx * W * 0.3; /* 01 프로젝트 맨 위 낙서는 오른쪽에 */
         var py = ty + dy;
         if (free(px, py, w, h)) placed = [px, py];
       }
