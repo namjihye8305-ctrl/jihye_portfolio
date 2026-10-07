@@ -1276,8 +1276,8 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
   .hero-skill .hs-inner::before { display:none; }
   .hero-grid-probe { position:absolute; top:-2px; bottom:-2px; left:calc(50% - 50vw); width:100vw; visibility:hidden; pointer-events:none; }
   .hero-skill::after { /* 오른쪽 위 모서리 작은 네모 */
-    content:''; position:absolute; top:-2px; right:-2px; z-index:1; box-sizing:border-box;
-    width:5px; height:5px; background:transparent; border:1px solid #111; /* 채우기 없이 선(스트로크)만 */
+    content:''; position:absolute; top:-1.5px; right:-1.5px; z-index:1;
+    width:4px; height:4px; background:#111; /* 작게 (6px+테두리 → 4px) */
   }
   /* 모눈 칸(28px)에 딱 맞는 크기: 높이 1칸, 너비는 칸 단위 (위치·너비는 아래 스크립트가 모눈 선에 맞춤) */
   .hero-skill .hs-inner { box-sizing:border-box; height:29px; line-height:29px; padding:0 14px; text-align:center; }
