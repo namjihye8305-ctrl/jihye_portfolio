@@ -714,24 +714,12 @@ section.project.full-line-b::after,
 .pl-link:hover .pl-ring path { stroke-dashoffset:0; }
 @media (prefers-reduced-motion: reduce) { .pl-ring path { transition:none; } }
 
-/* ── 링크 🔗 → 마우스를 올리면 크레용 화살표로 바뀌며 오른쪽 위로 튀어나감 (외부 사이트 이동 느낌) ── */
-.pl-icon { position:relative; display:inline-block; width:1.15em; text-align:center; }
-.pl-icon .pl-emoji-ic { display:inline-block; transition:opacity .2s ease, transform .25s ease; }
-.pl-icon svg {
-  position:absolute; left:50%; top:50%; width:1.1em; height:1.1em; margin:-.55em 0 0 -.55em;
-  overflow:visible; opacity:0;
-  transition:opacity .15s ease, transform .35s cubic-bezier(.34,1.56,.64,1);
-}
-.pl-icon svg path {
-  fill:none; stroke:#111; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round;
-  filter:url(#crayon-line);
-  stroke-dasharray:1; stroke-dashoffset:1;
-  transition:stroke-dashoffset .35s ease .05s;
-}
-.pl-link:hover .pl-emoji-ic { opacity:0; transform:scale(.4) rotate(-20deg); }
-.pl-link:hover .pl-icon svg { opacity:1; transform:translate(3px,-3px); }
-.pl-link:hover .pl-icon svg path { stroke-dashoffset:0; }
-@media (prefers-reduced-motion: reduce) { .pl-icon svg, .pl-icon svg path, .pl-icon .pl-emoji-ic { transition:none; } }
+/* ── 바로가기 링크: 글자 오른쪽 크레용 화살표(→), 마우스를 올리면 오른쪽으로 살짝 밀려남 ── */
+.pl-arrow { display:inline-block; width:.95em; height:.95em; margin-left:.3em; vertical-align:-.12em; transition:transform .3s cubic-bezier(.34,1.56,.64,1); }
+.pl-arrow svg { width:100%; height:100%; overflow:visible; display:block; }
+.pl-arrow svg path { fill:none; stroke:currentColor; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; filter:url(#crayon-line); }
+.pl-link:hover .pl-arrow { transform:translateX(4px); }
+@media (prefers-reduced-motion: reduce) { .pl-arrow { transition:none; } }
 
 /* ── 이미지 위 라벨·케이스 제목(PC/MO 제외): 크레용 동그라미가 저절로 그려졌다 지워지기를 반복 ── */
 .label-ring { position:relative; display:inline-block; }
@@ -1363,12 +1351,12 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
         <div class="pl-item">
           <span class="pl-period">[ 2021 - 2026 ]</span>
           <span>W컨셉, Indong F&N <br class="mo-break">감도 높은 브랜드 비주얼</span>
-          <a href="https://www.behance.net/namjihye1022" class="pl-link" target="_blank" rel="noopener">🔗 Behance <br class="mo-break">바로가기</a>
+          <a href="https://www.behance.net/namjihye1022" class="pl-link" target="_blank" rel="noopener">Behance <br class="mo-break">바로가기</a>
         </div>
         <div class="pl-item">
           <span class="pl-period">[ 2015 - 2021 ]</span>
           <span>SSG, S.I VILLAGE, TMON <br class="mo-break">탄탄한 커머스 프로젝트</span>
-          <a href="https://namjihye.creatorlink.net/" class="pl-link" target="_blank" rel="noopener">🔗 Creatorlink <br class="mo-break">바로가기</a>
+          <a href="https://namjihye.creatorlink.net/" class="pl-link" target="_blank" rel="noopener">Creatorlink <br class="mo-break">바로가기</a>
         </div>
       </div>
     </div>
@@ -2539,12 +2527,12 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
     <div class="pl-item">
       <span class="pl-period">[ 2021 - 2026 ]</span>
       <span>W컨셉, Indong F&N <br class="mo-break">감도 높은 브랜드 비주얼</span>
-      <a href="https://www.behance.net/namjihye1022" class="pl-link" target="_blank" rel="noopener">🔗 Behance <br class="mo-break">바로가기</a>
+      <a href="https://www.behance.net/namjihye1022" class="pl-link" target="_blank" rel="noopener">Behance <br class="mo-break">바로가기</a>
     </div>
     <div class="pl-item">
       <span class="pl-period">[ 2015 - 2021 ]</span>
       <span>SSG, S.I VILLAGE, TMON <br class="mo-break">탄탄한 커머스 프로젝트</span>
-      <a href="https://namjihye.creatorlink.net/" class="pl-link" target="_blank" rel="noopener">🔗 Creatorlink <br class="mo-break">바로가기</a>
+      <a href="https://namjihye.creatorlink.net/" class="pl-link" target="_blank" rel="noopener">Creatorlink <br class="mo-break">바로가기</a>
     </div>
   </div>
 </div>
@@ -2935,12 +2923,9 @@ document.querySelectorAll('.portfolio-links .pl-link').forEach(function (a) {
 });
 </script>
 <script>
-/* 링크 🔗 아이콘을 감싸고 크레용 화살표(↗) 추가 */
+/* 바로가기 링크 오른쪽에 크레용 화살표(→) */
 document.querySelectorAll('.portfolio-links .pl-link').forEach(function (a) {
-  var t = a.firstChild;
-  if (!t || t.nodeType !== 3 || t.nodeValue.indexOf('\uD83D\uDD17') !== 0) return;
-  t.nodeValue = t.nodeValue.slice(2);
-  a.insertAdjacentHTML('afterbegin', '<span class="pl-icon" aria-hidden="true"><span class="pl-emoji-ic">\uD83D\uDD17</span><svg viewBox="0 0 20 20"><path pathLength="1" d="M4 16 C 8 12, 11 9, 15.5 4.5 M 8 4 L 16 4 L 16 12"/></svg></span>');
+  a.insertAdjacentHTML('beforeend', '<span class="pl-arrow" aria-hidden="true"><svg viewBox="0 0 26 26"><path d="M3 13 L 22 13 M 15 6 L 22 13 L 15 20"/></svg></span>');
 });
 </script>
 <script>
