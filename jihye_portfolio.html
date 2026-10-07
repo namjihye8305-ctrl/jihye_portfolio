@@ -1251,7 +1251,7 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
    되돌리려면 <html> 태그의 theme-invert 클래스만 지우면 됨 */
 html.theme-invert { filter:invert(1) contrast(.9296) brightness(1.108); } /* 화이트 → #0a0a0a(전체 배경 통일), #111 → 화이트 */
 html.theme-invert :is(img, video, iframe, canvas, .sw, .tool-icon, .proj-video-frame):not(.crayon-star-img):not(.pl-star) { filter:brightness(.9025) contrast(1.0757) invert(1); }
-html.theme-invert .tool-icon img { filter:none; } /* 툴 아이콘 안 이미지는 아이콘에서 이미 되돌림 */
+html.theme-invert .tool-icon img:not(.crayon-star-img):not(.pl-star) { filter:none; } /* 툴 아이콘 안 이미지는 아이콘에서 이미 되돌림 */
 /* 프로토타입 영상 박스: 박스째 원래 색(영상 배경과 같은 #ededed→#f5f5f5)으로, 안의 영상은 박스에서 이미 되돌렸으니 그대로 · 블러 테두리 유지 */
 html.theme-invert .proj-video-frame video:not(.blur-overlay):not(.crayon-star-img):not(.pl-star) { filter:none; }
 html.theme-invert .proj-video-frame video.blur-overlay:not(.crayon-star-img):not(.pl-star) { filter:blur(28px); }
