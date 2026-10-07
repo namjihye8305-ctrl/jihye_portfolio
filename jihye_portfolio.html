@@ -1255,6 +1255,20 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
 }
 
 
+/* ── 블러 별: 레퍼런스처럼 흐린 별(멀리)과 선명한 별(가까이)을 섞어 깊이감, 아주 느리게 회전 ── */
+.blur-stars { position:absolute; top:0; bottom:0; left:calc(50% - min(50vw, 960px)); width:min(100vw, 1920px); pointer-events:none; z-index:0; }
+.blur-star { position:absolute; overflow:visible; animation:blurStarSpin 60s linear infinite; }
+.blur-star path { fill:none; stroke:#111; stroke-width:11; stroke-linecap:round; }
+.blur-star.bs-blur-lg { filter:blur(14px); animation-duration:80s; }
+.blur-star.bs-blur-md { filter:blur(9px); animation-direction:reverse; }
+.blur-star.bs-sharp { animation-duration:40s; }
+@keyframes blurStarSpin { to { transform:rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .blur-star { animation:none; } }
+@media (max-width:820px) {
+  .blur-star { scale:.6; }
+  .blur-star.bs-hide-mo { display:none; }
+}
+
 /* ── 반전 테마 미리보기: <html class="theme-invert"> 이면 화이트 ↔ #111 반전 ──
    페이지 전체를 반전(화이트 → #111, #111 → 화이트)하고, 사진·영상·컬러칩·툴 아이콘은 다시 반전해 원래 색 유지.
    되돌리려면 <html> 태그의 theme-invert 클래스만 지우면 됨 */
@@ -1283,6 +1297,12 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
 
 <!-- HERO -->
 <section class="hero full-line-b">
+  <!-- 블러 별: 흐린 큰 별 + 선명한 작은 별로 깊이감 (화면 가장자리에 반쯤 걸치게) -->
+  <div class="blur-stars" aria-hidden="true">
+    <svg class="blur-star bs-blur-lg" style="left:31%; top:-78px; width:170px; height:170px;" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 10V90M10 50H90M22 22L78 78M78 22L22 78"/></svg>
+    <svg class="blur-star bs-sharp bs-hide-mo" style="right:17%; top:24%; width:46px; height:46px;" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 10V90M10 50H90M22 22L78 78M78 22L22 78"/></svg>
+    <svg class="blur-star bs-blur-lg" style="left:-46px; bottom:-120px; width:210px; height:210px;" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 10V90M10 50H90M22 22L78 78M78 22L22 78"/></svg>
+  </div>
   <div class="hero-left">
     <h1><span class="hero-title"><span class="hero-star star-left"><span class="letter crayon-star" style="--ld:0ms"><img src="소스/01.png" class="crayon-star-img" alt=""></span></span><span class="hero-word"><span class="letter" style="--ld:0ms">C</span><span class="letter" style="--ld:45ms">o</span><span class="letter" style="--ld:90ms">n</span><span class="letter" style="--ld:135ms">t</span><span class="letter" style="--ld:180ms">e</span><span class="letter" style="--ld:225ms">n</span><span class="letter" style="--ld:270ms">t</span></span> <span class="hero-word"><span class="letter" style="--ld:360ms">D</span><span class="letter" style="--ld:405ms">e</span><span class="letter" style="--ld:450ms">s</span><span class="letter" style="--ld:495ms">i</span><span class="letter" style="--ld:540ms">g</span><span class="letter" style="--ld:585ms">n</span><span class="letter" style="--ld:630ms">e</span><span class="letter" style="--ld:675ms">r</span></span></span>
       <span class="hero-line2"><span class="letter" style="--ld:720ms">W</span><span class="letter" style="--ld:765ms">e</span><span class="letter" style="--ld:810ms">b</span> <span class="letter" style="--ld:855ms">P</span><span class="letter" style="--ld:900ms">o</span><span class="letter" style="--ld:945ms">r</span><span class="letter" style="--ld:990ms">t</span><span class="letter" style="--ld:1035ms">f</span><span class="letter" style="--ld:1080ms">o</span><span class="letter" style="--ld:1125ms">l</span><span class="letter" style="--ld:1170ms">i</span><span class="letter" style="--ld:1215ms">o</span><span class="letter" style="--ld:1260ms">.</span><span class="hero-star star-right"><span class="letter crayon-star" style="--ld:1305ms"><img src="소스/02.png" class="crayon-star-img" alt=""></span></span></span></h1>
@@ -1309,6 +1329,9 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
 
 <!-- PORTFOLIO LINKS (TOP) -->
 <div class="portfolio-links full-line-b">
+  <div class="blur-stars" aria-hidden="true">
+    <svg class="blur-star bs-blur-md" style="left:60%; top:22%; width:130px; height:130px;" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 10V90M10 50H90M22 22L78 78M78 22L22 78"/></svg>
+  </div>
   <div class="portfolio-links-top">
     <div>
       <p class="portfolio-links-title"><img src="소스/01.png" class="pl-star" alt=""> Full Portfolio Links</p>
