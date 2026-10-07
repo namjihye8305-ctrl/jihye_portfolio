@@ -1273,13 +1273,10 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
     clip-path:polygon(9px 0, 100% 0, 100% calc(100% - 9px), calc(100% - 9px) 100%, 0 100%, 0 9px);
   }
   .hero-skill .hs-inner::before { display:none; }
-  .hero-skill::before { /* 기존 박스의 작은 네모를 잘린 왼쪽 위 모서리 자리에 */
-    content:''; position:absolute; top:-2.5px; left:-2.5px; z-index:1;
-    width:6px; height:6px; background:#111; border:1px solid #111;
-  }
-  .hero-skill .hs-glass-line { display:none; } /* 유리 조각 테두리 선 없이 */
-  .hero-skill .hs-glass-line polygon { fill:none; stroke:rgba(140,140,140,.95); stroke-width:1; vector-effect:non-scaling-stroke; }
-  .hero-skill:hover .hs-inner { box-shadow:none; }
+  .hero-skill .hs-glass-line { position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none; }
+  .hero-skill .hs-glass-line polygon { fill:none; stroke:rgba(140,140,140,.5); stroke-width:1; vector-effect:non-scaling-stroke; } /* 테두리 연하게 */
+  .hero-skill:hover .hs-inner { box-shadow:none; opacity:1; background:rgba(28,28,28,.88); color:#fff; } /* 호버: 유리 조각 모양 그대로 밝은 색으로 채워짐 */
+  .hero-skill .hs-inner { transition:opacity .3s ease, background .25s ease, color .25s ease; }
 }
 
 /* 프로젝트~하단 링크의 블러 별은 이미지·글자 뒤(배경 바로 위)에 깔림 */
