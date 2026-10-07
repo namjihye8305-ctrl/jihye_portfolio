@@ -1263,6 +1263,19 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
 .blur-star.bs-blur-md { filter:blur(7px); animation-direction:reverse; }
 .blur-star.bs-sharp { animation-duration:40s; }
 @keyframes blurStarSpin { to { transform:rotate(360deg); } }
+/* ── 유리 조각: 모서리가 사선으로 잘린 반투명 패널이 이미지 가장자리에 살짝 걸쳐, 아래 이미지가 흐리게 비침 ── */
+.proj-visual { position:relative; }
+.glass-shard { position:absolute; z-index:4; pointer-events:none; will-change:transform; }
+.glass-shard .gs-fill {
+  position:absolute; inset:0;
+  background:rgba(214,214,214,.42);
+  -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
+  clip-path:var(--gs-clip);
+}
+.glass-shard svg { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+.glass-shard svg polygon { fill:none; stroke:rgba(150,150,150,.9); stroke-width:1; vector-effect:non-scaling-stroke; }
+@media (max-width:820px) { .glass-shard { scale:.6; transform-origin:left top; } .glass-shard.gs-hide-mo { display:none; } }
+
 /* 프로젝트~하단 링크의 블러 별은 이미지·글자 뒤(배경 바로 위)에 깔림 */
 .project > .blur-stars, .portfolio-links:not(.full-line-b) > .blur-stars { z-index:-1; }
 @media (prefers-reduced-motion: reduce) { .blur-star { animation:none; } }
@@ -1303,7 +1316,7 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
   <div class="blur-stars" aria-hidden="true">
     <svg class="blur-star bs-blur-lg" style="left:30%; top:-215px; width:330px; height:330px;" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 10V90M10 50H90M22 22L78 78M78 22L22 78"/></svg>
     <svg class="blur-star bs-sharp bs-hide-mo" style="right:17%; top:24%; width:34px; height:34px;" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 10V90M10 50H90M22 22L78 78M78 22L22 78"/></svg>
-    <svg class="blur-star bs-blur-lg" style="left:-70px; bottom:-150px; width:270px; height:270px;" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 10V90M10 50H90M22 22L78 78M78 22L22 78"/></svg>
+    <svg class="blur-star bs-blur-lg" style="left:-55px; bottom:-115px; width:200px; height:200px;" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 10V90M10 50H90M22 22L78 78M78 22L22 78"/></svg>
   </div>
   <div class="hero-left">
     <h1><span class="hero-title"><span class="hero-star star-left"><span class="letter crayon-star" style="--ld:0ms"><img src="소스/01.png" class="crayon-star-img" alt=""></span></span><span class="hero-word"><span class="letter" style="--ld:0ms">C</span><span class="letter" style="--ld:45ms">o</span><span class="letter" style="--ld:90ms">n</span><span class="letter" style="--ld:135ms">t</span><span class="letter" style="--ld:180ms">e</span><span class="letter" style="--ld:225ms">n</span><span class="letter" style="--ld:270ms">t</span></span> <span class="hero-word"><span class="letter" style="--ld:360ms">D</span><span class="letter" style="--ld:405ms">e</span><span class="letter" style="--ld:450ms">s</span><span class="letter" style="--ld:495ms">i</span><span class="letter" style="--ld:540ms">g</span><span class="letter" style="--ld:585ms">n</span><span class="letter" style="--ld:630ms">e</span><span class="letter" style="--ld:675ms">r</span></span></span>
@@ -3168,6 +3181,47 @@ document.querySelectorAll('.portfolio-links .pl-link').forEach(function (a) {
   });
   document.addEventListener('mousemove', function (e) { if (tip.classList.contains('is-on')) move(e); }, { passive: true });
   document.addEventListener('click', function () { tip.classList.remove('is-on'); }); /* 클릭해 확대 보기가 열리면 숨김 */
+})();
+</script>
+<script>
+/* 유리 조각 배치: [프로젝트, 위치(px), 크기(px), 잘린 모서리 크기(px), 잘린 모서리 방향] — 이미지 가장자리에 10~20%만 걸치게 */
+(function () {
+  var list = [
+    ['#proj01', { left: -40, top: 330 }, [230, 150], 30, 'tl-br'],
+    ['#proj04', { left: -45, top: 640 }, [190, 250], 34, 'tr-bl'],
+    ['#proj07', { left: -45, top: 1250 }, [250, 170], 30, 'tl-br', 'gs-hide-mo']
+  ];
+  list.forEach(function (g) {
+    var host = document.querySelector(g[0] + ' .proj-visual');
+    if (!host) return;
+    var w = g[2][0], h = g[2][1], c = g[3];
+    var pts = g[4] === 'tl-br'
+      ? [[c, 0], [w, 0], [w, h - c], [w - c, h], [0, h], [0, c]]
+      : [[0, 0], [w - c, 0], [w, c], [w, h], [c, h], [0, h - c]];
+    var el = document.createElement('div');
+    el.className = 'glass-shard' + (g[5] ? ' ' + g[5] : '');
+    el.setAttribute('aria-hidden', 'true');
+    for (var k in g[1]) el.style[k] = g[1][k] + 'px';
+    el.style.width = w + 'px'; el.style.height = h + 'px';
+    el.style.setProperty('--gs-clip', 'polygon(' + pts.map(function (p) { return p[0] + 'px ' + p[1] + 'px'; }).join(',') + ')');
+    el.innerHTML = '<div class="gs-fill"></div><svg viewBox="0 0 ' + w + ' ' + h + '"><polygon points="' + pts.map(function (p) { return p.join(','); }).join(' ') + '"/></svg>';
+    host.appendChild(el);
+  });
+  /* 스크롤할 때 이미지보다 살짝 늦게 움직여 위에 떠 있는 느낌 */
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var shards = [].slice.call(document.querySelectorAll('.glass-shard')), tick = false;
+  function upd() {
+    tick = false;
+    var mid = innerHeight / 2;
+    shards.forEach(function (el) {
+      var r = el.parentNode.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > innerHeight + 200) return;
+      var d = (el.offsetTop + r.top + el.offsetHeight / 2) - mid;
+      el.style.transform = 'translate3d(0,' + Math.max(-30, Math.min(30, d * -0.06)).toFixed(1) + 'px,0)';
+    });
+  }
+  addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(upd); } }, { passive: true });
+  upd();
 })();
 </script>
 <script src="scripts/interactions.js?v=20261006a"></script>
