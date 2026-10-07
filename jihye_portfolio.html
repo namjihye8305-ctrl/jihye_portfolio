@@ -755,6 +755,8 @@ section.project.full-line-b::after,
   100% { stroke-dashoffset:-1; }
 }
 @media (prefers-reduced-motion: reduce) { .label-ring path { animation:none; stroke-dashoffset:0; } }
+/* AI 프로젝트(02): 동그라미 대신 글자 아래 크레용 밑줄이 그려졌다 지워지기를 반복 */
+.label-ring.label-line svg { left:-3px; top:auto; bottom:-9px; width:calc(100% + 6px); height:10px; }
 
 /* ── 툴 아이콘: 마우스를 올리면 살짝 확대 + 스킬 박스 모양 말풍선에 툴 이름 ── */
 .tool-hover { position:relative; display:inline-flex; }
@@ -2864,6 +2866,11 @@ document.querySelectorAll('.portfolio-links .pl-link').forEach(function (a) {
     while (el.firstChild) wrap.appendChild(el.firstChild);
     el.appendChild(wrap);
     wrap.style.setProperty('--rd', (-(i * 0.7) % 3.6).toFixed(2) + 's');
+    if (el.closest('#proj02')) { /* AI 프로젝트는 밑줄 */
+      wrap.classList.add('label-line');
+      wrap.insertAdjacentHTML('beforeend', '<svg viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 6 C 45 3, 95 8, 140 5 S 185 3, 197 5"/></svg>');
+      return;
+    }
     wrap.insertAdjacentHTML('beforeend', '<svg viewBox="0 0 200 50" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M112 4 C 160 3, 197 12, 196 26 C 195 41, 150 47, 100 46 C 48 45, 4 40, 4 25 C 4 11, 46 4, 96 5 L 124 8"/></svg>');
   });
 })();
