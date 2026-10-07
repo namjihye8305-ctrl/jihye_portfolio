@@ -1263,22 +1263,6 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
 .blur-star.bs-blur-md { filter:blur(7px); animation-direction:reverse; }
 .blur-star.bs-sharp { animation-duration:40s; }
 @keyframes blurStarSpin { to { transform:rotate(360deg); } }
-/* ── 히어로 2015 - 2026: 레퍼런스처럼 원형으로 도는 글자 + 가운데 크레용 화살표 (누르면 첫 프로젝트로) ── */
-.hero-right .year-badge {
-  position:relative; display:inline-block; width:150px; height:150px;
-  font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
-  font-size:0; line-height:0; color:#1c1c1c; text-decoration:none;
-}
-.year-badge .yb-ring { width:100%; height:100%; overflow:visible; animation:ybSpin 22s linear infinite; }
-.year-badge .yb-ring text { fill:currentColor; font-size:15px; letter-spacing:.14em; font-weight:400; }
-.year-badge .yb-arrow { position:absolute; left:50%; top:50%; width:34px; height:34px; margin:-17px 0 0 -17px; overflow:visible; animation:ybBob 2.4s ease-in-out infinite; }
-.year-badge .yb-arrow path { fill:none; stroke:currentColor; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; filter:url(#crayon-line); }
-.year-badge:hover .yb-ring { animation-duration:8s; }
-@keyframes ybSpin { to { transform:rotate(360deg); } }
-@keyframes ybBob { 0%, 100% { transform:translateY(-3px); } 50% { transform:translateY(4px); } }
-@media (prefers-reduced-motion: reduce) { .year-badge .yb-ring, .year-badge .yb-arrow { animation:none; } }
-@media (max-width:820px) { .hero-right .year-badge { width:112px; height:112px; } }
-
 /* ── 히어로 스킬 박스: 유리 조각 스타일 (PC) — 사선으로 잘린 모서리 + 반투명 + 뒤 배경 흐림 + 얇은 테두리 ── */
 @media (min-width:821px) {
   .hero-skill { will-change:transform; } /* opacity를 will-change에서 빼야 뒤 배경 흐림이 보임 */
@@ -1359,10 +1343,7 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
         ="hs-inner">Interaction</span></span>
       <span class="hero-skill hs-7"><span class="hs-inner">Motion Design</span></span>
     </div>
-    <a class="hero-year year-badge" href="#proj01" aria-label="2015 - 2026, 첫 프로젝트로 이동">
-      <svg class="yb-ring" viewBox="0 0 160 160" aria-hidden="true"><defs><path id="yb-circle" d="M80,80 m-62,0 a62,62 0 1,1 124,0 a62,62 0 1,1 -124,0"/></defs><text><textPath href="#yb-circle" textLength="386" lengthAdjust="spacing">2015 • 2026 • CONTENT DESIGN • </textPath></text></svg>
-      <svg class="yb-arrow" viewBox="0 0 26 26" aria-hidden="true"><path d="M13 3.5 L 13 22 M 5 14.5 L 13 22.5 L 21 14.5"/></svg>
-    </a>
+    <div class="hero-year">2015 - 2026</div>
   </div>
 </section>
 
