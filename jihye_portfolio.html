@@ -755,8 +755,15 @@ section.project.full-line-b::after,
   100% { stroke-dashoffset:-1; }
 }
 @media (prefers-reduced-motion: reduce) { .label-ring path { animation:none; stroke-dashoffset:0; } }
-/* AI 프로젝트(02): 동그라미 대신 글자 아래 크레용 밑줄이 그려졌다 지워지기를 반복 */
-.label-ring.label-line svg { left:-3px; top:auto; bottom:-9px; width:calc(100% + 6px); height:10px; }
+/* AI 프로젝트(02): 동그라미 대신 프로젝트 번호 밑줄과 같은 크레용 밑줄 — 글자 길이만큼, 화면에 들어오면 한 번 그어짐 */
+.label-ring.label-line svg { left:-4px; top:auto; bottom:-13px; width:calc(100% + 6px); height:16px; }
+.label-ring.label-line path {
+  stroke-width:3.2; stroke-linejoin:round; vector-effect:none;
+  animation:none; stroke-dashoffset:1;
+  transition:stroke-dashoffset .9s cubic-bezier(.65,.05,.36,1) .15s;
+}
+.label-ring.label-line.is-drawn path { stroke-dashoffset:0; }
+@media (prefers-reduced-motion: reduce) { .label-ring.label-line path { transition:none; stroke-dashoffset:0; } }
 
 /* ── 툴 아이콘: 마우스를 올리면 살짝 확대 + 스킬 박스 모양 말풍선에 툴 이름 ── */
 .tool-hover { position:relative; display:inline-flex; }
@@ -2857,6 +2864,7 @@ document.querySelectorAll('.portfolio-links .pl-link').forEach(function (a) {
 /* 이미지 위 라벨·케이스 제목(PC/MO 제외) 둘레에 무한 반복 크레용 동그라미 */
 (function () {
   var sel = '.proj-light .device-wrap .v-label:not(.v-device), .proj-light .device-wrap .case-divider';
+  var lines = [];
   document.querySelectorAll(sel).forEach(function (el, i) {
     // 라벨 두 개가 연달아 있으면(예: Case 제목 바로 아래 라벨) 위의 것만 동그라미
     var prev = el.previousElementSibling;
@@ -2868,11 +2876,20 @@ document.querySelectorAll('.portfolio-links .pl-link').forEach(function (a) {
     wrap.style.setProperty('--rd', (-(i * 0.7) % 3.6).toFixed(2) + 's');
     if (el.closest('#proj02')) { /* AI 프로젝트는 밑줄 */
       wrap.classList.add('label-line');
-      wrap.insertAdjacentHTML('beforeend', '<svg viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 6 C 45 3, 95 8, 140 5 S 185 3, 197 5"/></svg>');
+      var wob = [[2, 9, 6, 11], [3, 10, 5, 8], [1, 8, 7, 10]][i % 3]; /* 프로젝트 번호 밑줄과 같은 손그림 곡선 */
+      wrap.insertAdjacentHTML('beforeend', '<svg viewBox="0 0 100 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 ' + wob[1] + ' C 25 ' + wob[0] + ', 55 ' + wob[3] + ', 98 ' + wob[2] + '"/></svg>');
+      lines.push(wrap);
       return;
     }
     wrap.insertAdjacentHTML('beforeend', '<svg viewBox="0 0 200 50" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M112 4 C 160 3, 197 12, 196 26 C 195 41, 150 47, 100 46 C 48 45, 4 40, 4 25 C 4 11, 46 4, 96 5 L 124 8"/></svg>');
   });
+  /* 밑줄: 화면에 들어오면 한 번 그어짐 */
+  if ('IntersectionObserver' in window) {
+    var lio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-drawn'); lio.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -12% 0px' });
+    lines.forEach(function (w) { lio.observe(w); });
+  } else lines.forEach(function (w) { w.classList.add('is-drawn'); });
 })();
 </script>
 <script>
