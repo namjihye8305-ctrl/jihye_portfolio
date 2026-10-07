@@ -1274,6 +1274,13 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
     clip-path:polygon(9px 0, 100% 0, 100% calc(100% - 9px), calc(100% - 9px) 100%, 0 100%, 0 9px);
   }
   .hero-skill .hs-inner::before { display:none; }
+  .hero-grid-probe { position:absolute; top:-2px; bottom:-2px; left:calc(50% - 50vw); width:100vw; visibility:hidden; pointer-events:none; }
+  .hero-skill::after { /* 오른쪽 위 모서리 작은 네모 */
+    content:''; position:absolute; top:-2.5px; right:-2.5px; z-index:1;
+    width:6px; height:6px; background:#111; border:1px solid #111;
+  }
+  /* 모눈 칸(28px)에 딱 맞는 크기: 높이 1칸, 너비는 칸 단위 (위치·너비는 아래 스크립트가 모눈 선에 맞춤) */
+  .hero-skill .hs-inner { box-sizing:border-box; height:29px; line-height:29px; padding:0 14px; text-align:center; }
   .hero-skill .hs-glass-line { display:none; position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none; }
   .hero-skill .hs-glass-line polygon { fill:none; stroke:rgba(140,140,140,.5); stroke-width:1; vector-effect:non-scaling-stroke; } /* 테두리 연하게 */
   .hero-skill:hover .hs-inner { box-shadow:none; opacity:1; background:rgba(28,28,28,.88); color:#fff; } /* 호버: 유리 조각 모양 그대로 밝은 색으로 채워짐 */
@@ -3184,6 +3191,39 @@ document.querySelectorAll('.portfolio-links .pl-link').forEach(function (a) {
   });
   document.addEventListener('mousemove', function (e) { if (tip.classList.contains('is-on')) move(e); }, { passive: true });
   document.addEventListener('click', function () { tip.classList.remove('is-on'); }); /* 클릭해 확대 보기가 열리면 숨김 */
+})();
+</script>
+<script>
+/* 히어로 모션 박스를 모눈 선에 맞춤 (PC): 박스 너비를 28px 칸 단위로, 왼쪽 위 모서리를 가장 가까운 모눈 교차점에 */
+(function () {
+  var hero = document.querySelector('.hero'), G = 28;
+  if (!hero) return;
+  function snap() {
+    var boxes = [].slice.call(document.querySelectorAll('.hero-skill'));
+    boxes.forEach(function (b) { b.style.left = b.style.top = b.style.right = ''; var i = b.querySelector('.hs-inner'); if (i) i.style.width = ''; });
+    if (innerWidth <= 820) return;
+    /* 모눈 배경(::before)과 똑같은 크기의 보이지 않는 측정용 요소로 실제 위치를 잼 */
+    var probe = hero.querySelector('.hero-grid-probe');
+    if (!probe) { probe = document.createElement('div'); probe.className = 'hero-grid-probe'; probe.setAttribute('aria-hidden', 'true'); hero.appendChild(probe); }
+    var pr = probe.getBoundingClientRect();
+    var bl = pr.left, bt = pr.top, bw = pr.width, bh = pr.height;
+    var x0 = bl + (bw - G) / 2, y0 = bt + bh - 3; /* 세로선: 가운데 기준 / 가로선: 아래 기준 (히어로 모눈 설정과 동일) */
+    boxes.forEach(function (b) {
+      var inner = b.querySelector('.hs-inner'); if (!inner) return;
+      inner.style.width = (Math.ceil((inner.offsetWidth - 1) / G) * G + 1) + 'px';
+      var p = b.offsetParent.getBoundingClientRect();
+      var x = p.left + b.offsetLeft, y = p.top + b.offsetTop;
+      var sx = x0 + Math.round((x - x0) / G) * G, sy = y0 + Math.round((y - y0) / G) * G;
+      b.style.right = 'auto';
+      b.style.left = (sx - p.left) + 'px';
+      b.style.top = (sy - p.top) + 'px';
+    });
+  }
+  snap();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(snap);
+  addEventListener('load', snap);
+  addEventListener('resize', snap);
+  if (window.ResizeObserver) { var lw = 0, lh = 0; new ResizeObserver(function () { var w = hero.offsetWidth, h = hero.offsetHeight; if (w !== lw || h !== lh) { lw = w; lh = h; snap(); } }).observe(hero); } /* 스크롤바·글꼴 로딩으로 히어로 크기가 바뀌어도 다시 맞춤 */
 })();
 </script>
 <script>
