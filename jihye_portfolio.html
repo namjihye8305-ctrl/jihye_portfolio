@@ -80,11 +80,11 @@ section.project.full-line-b::after,
   color:#111; margin-bottom:32px;
   font-family: 'DK Crayon Crumble', cursive;
 }
-.hero-left .hero-title { font-size:clamp(77px,7.25vw,158px); /* PC 타이틀 (기존보다 약 8% 작게) */   display: block;
+.hero-left .hero-title { font-size:clamp(80px,calc(7.25vw + 2px),160px); font-size:round(clamp(80px,calc(7.25vw + 2px),160px), 2px); /* PC 타이틀: 화면 비율 + 2px, 짝수 정수 px로 반올림 (round 미지원 브라우저는 앞 줄 값) */   display: block;
   position: relative;
   left: -6px; letter-spacing: 0.01em;
   font-family: 'DK Crayon Crumble', cursive; line-height: 0.64;} /* 두 줄 행간 아주 살짝 좁게 (0.7 → 0.64) */
-.hero-left .hero-line2 { display:inline-block; font-size:clamp(63px,6.25vw,134px); position:relative; top:0px; }
+.hero-left .hero-line2 { display:inline-block; font-size:clamp(66px,calc(6.25vw + 2px),136px); font-size:round(clamp(66px,calc(6.25vw + 2px),136px), 2px); position:relative; top:0px; }
 .hero-left p { font-size:18px; color:#1c1c1c; line-height:2; letter-spacing:.02em; max-width:none; -webkit-text-stroke:.3px currentColor; }
 .hero-left p .sub-text { -webkit-text-stroke:0; }
 @keyframes titleLetterIn {
