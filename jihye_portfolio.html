@@ -71,7 +71,7 @@ section.project.full-line-b::after,
 }
 
 .sub-text {
-  font-size: 16px;
+  font-size: 18px;
   color: #555;
 }
 .hero-left h1 {
@@ -85,7 +85,7 @@ section.project.full-line-b::after,
   left: -6px; letter-spacing: 0.01em;
   font-family: 'DK Crayon Crumble', cursive; line-height: 0.64;} /* 두 줄 행간 아주 살짝 좁게 (0.7 → 0.64) */
 .hero-left .hero-line2 { display:inline-block; font-size:clamp(63px,6.25vw,134px); position:relative; top:0px; }
-.hero-left p { font-size:16px; color:#1c1c1c; line-height:2; letter-spacing:.02em; max-width:none; -webkit-text-stroke:.3px currentColor; }
+.hero-left p { font-size:18px; color:#1c1c1c; line-height:2; letter-spacing:.02em; max-width:none; -webkit-text-stroke:.3px currentColor; }
 .hero-left p .sub-text { -webkit-text-stroke:0; }
 @keyframes titleLetterIn {
   0% { opacity:0; transform: translateY(28px) rotate(-6deg) scale(.7); }
@@ -251,15 +251,15 @@ section.project.full-line-b::after,
 }
 .works-nav-tab {
   flex:1; display:flex; justify-content:space-between; align-items:center;
-  text-align:left; padding:14px 20px;
+  text-align:left; padding:14px 14px; gap:8px;
   font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
-  font-size:13px; letter-spacing:.08em; color:#111; font-weight:600;
+  font-size:15px; letter-spacing:.04em; color:#111; font-weight:600;
   background:#fff;
   text-decoration:none; border-left:1px solid #7a7a77;
   transition:background .2s ease, color .2s ease;
 }
 .works-nav-tab:first-child { border-left:none; }
-.works-nav-arrow { display:inline-flex; width:14px; height:14px; line-height:1; flex-shrink:0; }
+.works-nav-arrow { display:inline-flex; width:16px; height:16px; line-height:1; flex-shrink:0; }
 /* 맨 위로 가기 버튼과 같은 크레용 화살표(아래 방향), 글자색을 따라감 */
 .works-nav-arrow svg { width:100%; height:100%; overflow:visible; }
 .works-nav-arrow svg path { fill:none; stroke:currentColor; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; filter:url(#crayon-line); }
@@ -318,13 +318,13 @@ section.project.full-line-b::after,
 .proj-tags { display:flex; gap:6px; flex-shrink:0; }
 .proj-tag { font-size:12px; letter-spacing:.07em; color:#888; border:1px solid #333; padding:3px 10px; border-radius:20px; }
 .proj-meta { flex-shrink:1; min-width:0; text-align:right; display:flex; align-items:center; gap:16px; flex-wrap:wrap; justify-content:flex-end; }
-.proj-meta-title, .proj-meta-desc { font-size:14px; letter-spacing:.1em; color:#e8e8e4; font-weight:400; min-width:0; overflow-wrap:break-word; }
-.proj-meta-desc { color:#e8e8e4; letter-spacing:.02em; } /* 우측 "프로젝트 목적" 소제목과 같은 크기·자간(14px, .02em) */
-.proj-meta-sep { display:inline-block; width:1px; height:14px; background:#555; }
+.proj-meta-title, .proj-meta-desc { font-size:16px; letter-spacing:.1em; color:#e8e8e4; font-weight:400; min-width:0; overflow-wrap:break-word; }
+.proj-meta-desc { color:#e8e8e4; letter-spacing:.02em; } /* 우측 "프로젝트 목적" 소제목과 같은 크기·자간(16px, .02em) */
+.proj-meta-sep { display:inline-block; width:1px; height:16px; background:#555; }
 .proj-meta-desc strong { font-weight:400; }
 .proj-meta-title, .proj-meta-desc, .pp-section-title, .case-divider { -webkit-text-stroke:.3px currentColor; }
 .proj-meta-desc { -webkit-text-stroke:.3px currentColor; } /* "프로젝트 목적" 소제목과 같은 굵기 */
-.proj-meta .proj-meta-title { font-family:'DK Crayon Crumble', cursive; font-size:22px; }
+.proj-meta .proj-meta-title { font-family:'DK Crayon Crumble', cursive; font-size:24px; }
 
 .proj-grid { display:grid; grid-template-columns:1fr 220px; gap:40px; align-items:start; }
 
@@ -982,9 +982,9 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
 
 /* ── PORTFOLIO LINKS ── */
 .portfolio-links { padding:90px 50px; }
-.portfolio-links-title { font-size:30px; letter-spacing:.02em; color:#fff; margin-bottom:18px; font-family:'DK Crayon Crumble', cursive; }
+.portfolio-links-title { font-size:32px; letter-spacing:.02em; color:#fff; margin-bottom:18px; font-family:'DK Crayon Crumble', cursive; }
 .pl-emoji { font-size:19px; position:relative; top:-2px; }
-.pl-list { display:grid; grid-template-columns:auto auto 1fr; column-gap:10px; row-gap:12px; align-items:baseline; font-size:15px; color:#888; }
+.pl-list { display:grid; grid-template-columns:auto auto 1fr; column-gap:10px; row-gap:12px; align-items:baseline; font-size:17px; color:#888; }
 .pl-item { display:contents; }
 .pl-period { color:#666; }
 .pl-link { justify-self:start; display:inline-block; color:#e8e8e4; text-decoration:none; border-bottom:1px solid #333; padding-bottom:1px; padding-right:3px; margin-left:10px; transition:color .2s, border-color .2s; backface-visibility:hidden; transform:translateZ(0); }
@@ -1039,10 +1039,10 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
     white-space:nowrap;
     text-align:center;
     padding:9px 10px;
-    font-size:11px;
+    font-size:13px;
   }
   .works-nav-arrow {
-    width:13px; height:13px;
+    width:15px; height:15px;
   }
   .wrap {
     padding:0 12px;
@@ -1135,7 +1135,7 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
     height:11.4px;
   }
   .portfolio-links-title {
-    font-size:25px;
+    font-size:27px;
     margin-bottom:14px;
   }
   .pl-emoji {
