@@ -228,7 +228,7 @@ section.project.full-line-b::after,
 .hero-skill.hs-7 { top:40%; left:1%;animation-name:heroSkillLoop7; }
 .hero-skill.hs-8 { top:83%; left:35%; animation-name:heroSkillLoop8; }
 .hero-year { font-size:13px; color:#1c1c1c !important; letter-spacing:.1em; line-height:2; }
-.hero-right .hero-year { font-family:'DK Crayon Crumble', cursive; font-size:24px; line-height:1.4; position:relative; z-index:1; } /* 히어로 타이틀과 같은 크레용 폰트 */
+.hero-right .hero-year { font-family:'DK Crayon Crumble', cursive; font-size:24px; line-height:1.4; } /* 히어로 타이틀과 같은 크레용 폰트 */
 
 /* ── WORKS HEADER ── */
 .works-head {
@@ -1314,7 +1314,7 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
   <div class="blur-stars" aria-hidden="true">
     <svg class="blur-star bs-blur-lg" style="left:30%; top:-215px; width:330px; height:330px;" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 10V90M10 50H90M22 22L78 78M78 22L22 78"/></svg>
     <svg class="blur-star bs-sharp bs-hide-mo" style="right:17%; top:24%; width:34px; height:34px;" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 10V90M10 50H90M22 22L78 78M78 22L22 78"/></svg>
-    <svg class="blur-star bs-blur-lg" style="right:-100px; bottom:-225px; width:440px; height:440px; filter:blur(28px);" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 10V90M10 50H90M22 22L78 78M78 22L22 78"/></svg>
+    <svg class="blur-star bs-blur-lg" style="right:-40px; bottom:-225px; width:440px; height:440px; filter:blur(28px);" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 10V90M10 50H90M22 22L78 78M78 22L22 78"/></svg>
   </div>
   <div class="hero-left">
     <h1><span class="hero-title"><span class="hero-star star-left"><span class="letter crayon-star" style="--ld:0ms"><img src="소스/01.png" class="crayon-star-img" alt=""></span></span><span class="hero-word"><span class="letter" style="--ld:0ms">C</span><span class="letter" style="--ld:45ms">o</span><span class="letter" style="--ld:90ms">n</span><span class="letter" style="--ld:135ms">t</span><span class="letter" style="--ld:180ms">e</span><span class="letter" style="--ld:225ms">n</span><span class="letter" style="--ld:270ms">t</span></span> <span class="hero-word"><span class="letter" style="--ld:360ms">D</span><span class="letter" style="--ld:405ms">e</span><span class="letter" style="--ld:450ms">s</span><span class="letter" style="--ld:495ms">i</span><span class="letter" style="--ld:540ms">g</span><span class="letter" style="--ld:585ms">n</span><span class="letter" style="--ld:630ms">e</span><span class="letter" style="--ld:675ms">r</span></span></span>
@@ -1328,15 +1328,14 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
     <div class="hero-skills">
       <span class="hero-skill hs-1"><span class="hs-inner">Editorial Design</span></span>
       <span class="hero-skill hs-2"><span class="hs-inner">Branding</span></span>
-      <span class="hero-skill hs-8"><span class="hs-inner">AI Design</span></span>
+      <span class="hero-skill hs-8" data-grid-dy="-1"><span class="hs-inner">AI Design</span></span>
       <span class="hero-skill hs-3"><span class="hs-inner">Web Publishing</span></span>
       <span class="hero-skill hs-4"><span class="hs-inner">Graphic Design</span></span>
-      <span class="hero-skill hs-5"><span class="hs-inner">Social Media</span></span>
+      <span class="hero-skill hs-5" data-grid-dy="-1"><span class="hs-inner">Social Media</span></span>
       <span class="hero-skill hs-6"><span class
         ="hs-inner">Interaction</span></span>
       <span class="hero-skill hs-7"><span class="hs-inner">Motion Design</span></span>
     </div>
-    <div class="hero-year">2015 - 2026</div>
   </div>
 </section>
 
@@ -3198,7 +3197,7 @@ document.querySelectorAll('.portfolio-links .pl-link').forEach(function (a) {
       inner.style.width = (Math.ceil((inner.offsetWidth - 1) / G) * G + 1) + 'px';
       var p = b.offsetParent.getBoundingClientRect();
       var x = p.left + b.offsetLeft, y = p.top + b.offsetTop;
-      var sx = x0 + Math.round((x - x0) / G) * G, sy = y0 + Math.round((y - y0) / G) * G;
+      var sx = x0 + Math.round((x - x0) / G) * G, sy = y0 + (Math.round((y - y0) / G) + (+b.dataset.gridDy || 0)) * G; /* data-grid-dy: 모눈 칸 단위로 위아래 이동 */
       b.style.right = 'auto';
       b.style.left = (sx - p.left) + 'px';
       b.style.top = (sy - p.top) + 'px';
