@@ -1255,6 +1255,7 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
 .hero-skill .hs-glass-line { display:none; } /* 모바일: 기존 박스 그대로 (유리 테두리 없음) */
 @media (min-width:821px) {
   .hero-skill { will-change:transform; } /* opacity를 will-change에서 빼야 뒤 배경 흐림이 보임 */
+  .hero-skill { transition-property:border-color, color, background-color !important; } /* interactions.js의 transition:all 때문에 모눈 맞춤(top/left) 때 박스가 미끄러지며 위치가 밀리던 것 방지 */
   .hero-skill .hs-inner {
     background:rgba(214,214,214,.38);
     -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
