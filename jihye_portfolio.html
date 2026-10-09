@@ -253,7 +253,7 @@ section.project.full-line-b::after,
   flex:1; display:flex; justify-content:space-between; align-items:center;
   text-align:left; padding:14px 14px; gap:8px;
   font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
-  font-size:15px; letter-spacing:.04em; color:#111; font-weight:600;
+  font-size:14px; letter-spacing:.04em; color:#111; font-weight:600;
   background:#fff;
   text-decoration:none; border-left:1px solid #7a7a77;
   transition:background .2s ease, color .2s ease;
@@ -501,7 +501,7 @@ section.project.full-line-b::after,
 .colors-label { font-size:15px; letter-spacing:.04em; color:#aaa; margin-bottom:10px; }
 .swatches { display:flex; gap:8px; }
 .sw-wrap { text-align:center; }
-.sw { width:24px; height:24px; border-radius:50%; margin:0 auto 4px; }
+.sw { width:24px; height:24px; border-radius:50%; margin:0 auto; }
 .sw-name { font-size:13px; color:#aaa; }
 .tool-label { margin-top:20px; padding-top:20px; border-top:1px solid #333; }
 .tool-icons { display:flex; gap:10px; }
@@ -1039,7 +1039,7 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
     white-space:nowrap;
     text-align:center;
     padding:9px 10px;
-    font-size:13px;
+    font-size:12px;
   }
   .works-nav-arrow {
     width:15px; height:15px;
@@ -1120,6 +1120,7 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
   .site-tools {
     text-align:left;
   }
+  .hero-right > .site-tools { margin-top:20px; } /* 모바일: 툴 아이콘은 히어로 모션박스 아래 (아래 스크립트가 옮김) */
   .site-tools-icons {
     grid-template-columns:repeat(10, auto);
     justify-content:start;
@@ -1142,6 +1143,7 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
     font-size:17px;
   }
   .pl-list {
+    font-size:15px; /* 모바일: PC(17px)보다 작게 — 연도·링크가 줄바꿈되지 않도록 */
     align-items:center;
     row-gap:8px;
   }
@@ -1456,10 +1458,10 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
       <div class="proj-colors">
         <p class="colors-label">COLOR</p>
         <div class="swatches">
-          <div class="sw-wrap"><div class="sw" style="background:#C0392B;"></div><div class="sw-name">Red</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div><div class="sw-name">Black</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#F5F5F0;border:1px solid #444;"></div><div class="sw-name">White</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#4A90D9;"></div><div class="sw-name">Blue</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#C0392B;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#F5F5F0;border:1px solid #444;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#4A90D9;"></div></div>
         </div>
         <p class="colors-label tool-label">TOOL</p>
         <div class="tool-icons">
@@ -1591,9 +1593,9 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
       <div class="proj-colors">
         <p class="colors-label">COLOR</p>
         <div class="swatches">
-          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div><div class="sw-name">Black</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#808080;"></div><div class="sw-name">Grey</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#F5F5F0;border:1px solid #444;"></div><div class="sw-name">White</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#808080;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#F5F5F0;border:1px solid #444;"></div></div>
         </div>
         <p class="colors-label tool-label">TOOL</p>
         <div class="tool-icons">
@@ -1683,10 +1685,10 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
       <div class="proj-colors">
         <p class="colors-label">COLOR</p>
         <div class="swatches">
-          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div><div class="sw-name">Black</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#C0392B;"></div><div class="sw-name">Red</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#F5F5F0;border:1px solid #444;"></div><div class="sw-name">White</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#D9D9D4;"></div><div class="sw-name">Light Grey</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#C0392B;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#F5F5F0;border:1px solid #444;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#D9D9D4;"></div></div>
         </div>
         <p class="colors-label tool-label">TOOL</p>
         <div class="tool-icons">
@@ -1751,10 +1753,10 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
       <div class="proj-colors">
         <p class="colors-label">COLOR</p>
         <div class="swatches">
-          <div class="sw-wrap"><div class="sw" style="background:#C81B21;"></div><div class="sw-name">Red</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#1B4332;"></div><div class="sw-name">Green</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#F0E6D2;border:1px solid #444;"></div><div class="sw-name">Ivory</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#F5F5F0;border:1px solid #444;"></div><div class="sw-name">White</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#C81B21;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#1B4332;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#F0E6D2;border:1px solid #444;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#F5F5F0;border:1px solid #444;"></div></div>
         </div>
         <p class="colors-label tool-label">TOOL</p>
         <div class="tool-icons">
@@ -1823,9 +1825,9 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
       <div class="proj-colors">
         <p class="colors-label">COLOR</p>
         <div class="swatches">
-          <div class="sw-wrap"><div class="sw" style="background:#BFFF3C;"></div><div class="sw-name">Green</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div><div class="sw-name">Black</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#F5F5F0;border:1px solid #444;"></div><div class="sw-name">White</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#BFFF3C;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#F5F5F0;border:1px solid #444;"></div></div>
         </div>
         <p class="colors-label tool-label">TOOL</p>
         <div class="tool-icons">
@@ -1891,9 +1893,9 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
       <div class="proj-colors">
         <p class="colors-label">COLOR</p>
         <div class="swatches">
-          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div><div class="sw-name">Black</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#808080;"></div><div class="sw-name">Grey</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#F5F5F0;border:1px solid #444;"></div><div class="sw-name">White</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#808080;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#F5F5F0;border:1px solid #444;"></div></div>
         </div>
         <p class="colors-label tool-label">TOOL</p>
         <div class="tool-icons">
@@ -1925,9 +1927,9 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
       <div class="proj-colors">
         <p class="colors-label">COLOR</p>
         <div class="swatches">
-          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div><div class="sw-name">Black</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#808080;"></div><div class="sw-name">Grey</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#F5F5F0;border:1px solid #444;"></div><div class="sw-name">White</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#808080;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#F5F5F0;border:1px solid #444;"></div></div>
         </div>
         <p class="colors-label tool-label">TOOL</p>
         <div class="tool-icons">
@@ -2002,10 +2004,10 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
       <div class="proj-colors">
         <p class="colors-label">COLOR</p>
         <div class="swatches">
-          <div class="sw-wrap"><div class="sw" style="background:#F2A8C9;"></div><div class="sw-name">Pink</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#86BEEA;"></div><div class="sw-name">Blue</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div><div class="sw-name">Black</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#F5F5F0;border:1px solid #444;"></div><div class="sw-name">White</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#F2A8C9;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#86BEEA;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#F5F5F0;border:1px solid #444;"></div></div>
         </div>
         <p class="colors-label tool-label">TOOL</p>
         <div class="tool-icons">
@@ -2039,9 +2041,9 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
       <div class="proj-colors">
         <p class="colors-label">COLOR</p>
         <div class="swatches">
-          <div class="sw-wrap"><div class="sw" style="background:#4A3222;"></div><div class="sw-name">Brown</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#C19A6B;"></div><div class="sw-name">Camel</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#EDE0D0;border:1px solid #444;"></div><div class="sw-name">Cream Beige</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#4A3222;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#C19A6B;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#EDE0D0;border:1px solid #444;"></div></div>
         </div>
         <p class="colors-label tool-label">TOOL</p>
         <div class="tool-icons">
@@ -2112,11 +2114,11 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
       <div class="proj-colors">
         <p class="colors-label">COLOR</p>
         <div class="swatches">
-          <div class="sw-wrap"><div class="sw" style="background:#F7C6D9;"></div><div class="sw-name">Pink</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#FCEBA8;"></div><div class="sw-name">Yellow</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#B8DFF5;"></div><div class="sw-name">Blue</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#D8C6F0;"></div><div class="sw-name">Purple</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#A9E8CE;"></div><div class="sw-name">Mint</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#F7C6D9;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#FCEBA8;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#B8DFF5;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#D8C6F0;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#A9E8CE;"></div></div>
         </div>
         <p class="colors-label tool-label">TOOL</p>
         <div class="tool-icons">
@@ -2150,12 +2152,12 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
       <div class="proj-colors">
         <p class="colors-label">COLOR</p>
         <div class="swatches">
-          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div><div class="sw-name">Black</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#F2A6A6;"></div><div class="sw-name">Red</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#A9D4F0;"></div><div class="sw-name">Blue</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#B8E0A0;"></div><div class="sw-name">Green</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#D3BEF0;"></div><div class="sw-name">Purple</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#EAC7A0;"></div><div class="sw-name">Brown</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#F2A6A6;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#A9D4F0;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#B8E0A0;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#D3BEF0;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#EAC7A0;"></div></div>
         </div>
         <p class="colors-label tool-label">TOOL</p>
         <div class="tool-icons">
@@ -2221,9 +2223,9 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
       <div class="proj-colors">
         <p class="colors-label">COLOR</p>
         <div class="swatches">
-          <div class="sw-wrap"><div class="sw" style="background:#1B2A4A;"></div><div class="sw-name">Navy</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#8FC6E8;"></div><div class="sw-name">Sky Blue</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#FCEBA0;"></div><div class="sw-name">Light Yellow</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#1B2A4A;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#8FC6E8;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#FCEBA0;"></div></div>
         </div>
         <p class="colors-label tool-label">TOOL</p>
         <div class="tool-icons">
@@ -2358,9 +2360,9 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
       <div class="proj-colors">
         <p class="colors-label">COLOR</p>
         <div class="swatches">
-          <div class="sw-wrap"><div class="sw" style="background:#B8241F;"></div><div class="sw-name">Vintage Red</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div><div class="sw-name">Black</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#EDE8DD;border:1px solid #444;"></div><div class="sw-name">Ivory</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#B8241F;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#EDE8DD;border:1px solid #444;"></div></div>
         </div>
         <p class="colors-label tool-label">TOOL</p>
         <div class="tool-icons">
@@ -2393,9 +2395,9 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
       <div class="proj-colors">
         <p class="colors-label">COLOR</p>
         <div class="swatches">
-          <div class="sw-wrap"><div class="sw" style="background:#B97A66;"></div><div class="sw-name">Nude Rose</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#E4D2B8;"></div><div class="sw-name">Warm Beige</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div><div class="sw-name">Black</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#B97A66;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#E4D2B8;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div></div>
         </div>
         <p class="colors-label tool-label">TOOL</p>
         <div class="tool-icons">
@@ -2428,9 +2430,9 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
       <div class="proj-colors">
         <p class="colors-label">COLOR</p>
         <div class="swatches">
-          <div class="sw-wrap"><div class="sw" style="background:#EE9AA2;"></div><div class="sw-name">Rose Pink</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#C8102E;"></div><div class="sw-name">Collagen Red</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#C9CBCF;"></div><div class="sw-name">Silver</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#EE9AA2;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#C8102E;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#C9CBCF;"></div></div>
         </div>
         <p class="colors-label tool-label">TOOL</p>
         <div class="tool-icons">
@@ -2462,9 +2464,9 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
       <div class="proj-colors">
         <p class="colors-label">COLOR</p>
         <div class="swatches">
-          <div class="sw-wrap"><div class="sw" style="background:#DCE6F2;border:1px solid #444;"></div><div class="sw-name">Lavender Blue</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#C9E11F;"></div><div class="sw-name">Lime</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div><div class="sw-name">Black</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#DCE6F2;border:1px solid #444;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#C9E11F;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#1a1a1a;border:1px solid #333;"></div></div>
         </div>
         <p class="colors-label tool-label">TOOL</p>
         <div class="tool-icons">
@@ -2497,9 +2499,9 @@ html.theme-invert .stat-highlight.stat-highlight-lightgrey { background-image:ur
       <div class="proj-colors">
         <p class="colors-label">COLOR</p>
         <div class="swatches">
-          <div class="sw-wrap"><div class="sw" style="background:#2A2825;border:1px solid #333;"></div><div class="sw-name">Charcoal</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#BEE6F5;"></div><div class="sw-name">Sky Blue</div></div>
-          <div class="sw-wrap"><div class="sw" style="background:#D9C9B0;"></div><div class="sw-name">Beige</div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#2A2825;border:1px solid #333;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#BEE6F5;"></div></div>
+          <div class="sw-wrap"><div class="sw" style="background:#D9C9B0;"></div></div>
         </div>
         <p class="colors-label tool-label">TOOL</p>
         <div class="tool-icons">
@@ -3226,6 +3228,21 @@ document.querySelectorAll('.portfolio-links .pl-link').forEach(function (a) {
   draw();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
   window.addEventListener('resize', draw);
+})();
+</script>
+<script>
+/* 모바일: 툴 아이콘을 상단 링크 영역에서 히어로 모션박스 아래로 옮기고, PC로 돌아오면 원래 자리로 */
+(function () {
+  var tools = document.querySelector('.portfolio-links-top .site-tools');
+  var heroRight = document.querySelector('.hero-right');
+  if (!tools || !heroRight || !window.matchMedia) return;
+  var home = tools.parentNode, mq = matchMedia('(max-width:820px)');
+  function place() {
+    if (mq.matches) { if (tools.parentNode !== heroRight) heroRight.appendChild(tools); }
+    else if (tools.parentNode !== home) home.appendChild(tools);
+  }
+  place();
+  if (mq.addEventListener) mq.addEventListener('change', place); else mq.addListener(place);
 })();
 </script>
 <script src="scripts/interactions.js?v=20261006a"></script>
