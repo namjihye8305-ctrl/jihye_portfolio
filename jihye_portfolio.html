@@ -444,8 +444,8 @@ section.project.full-line-b::after,
   background-image:linear-gradient(rgba(200,27,33,.62), rgba(200,27,33,.62));
   background-repeat:no-repeat;
   background-position:0 100%;
-  background-size:0% 8px;
-  padding:0 0 6px; /* 밑줄이 글자와 겹치지 않도록 글자 아래에 살짝 띄움 */
+  background-size:0% 10px;
+  padding:0 0 8px; /* 밑줄이 글자와 겹치지 않도록 글자 아래에 살짝 띄움 */
   position:relative; z-index:-1;
   -webkit-box-decoration-break:clone;
   box-decoration-break:clone;
@@ -477,26 +477,26 @@ section.project.full-line-b::after,
   background-image:linear-gradient(rgba(200,200,200,.5), rgba(200,200,200,.5));
 }
 /* 형광펜 대신 라임색 얇은 크레용 밑줄: 프로젝트 번호·네비 밑줄과 같은 결(살짝 휘고 거친 획), 색 구분 없이 모두 같은 라임 */
-.stat-highlight.stat-highlight { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 12' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-5%' y='-100%' width='110%' height='300%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.05 .3' numOctaves='2' seed='5' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='3' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' seed='11' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -.6 1.4' result='m'/%3E%3CfeComposite in='d' in2='m' operator='in'/%3E%3C/filter%3E%3Cpath d='M4 7 C 70 4, 180 9, 296 5' fill='none' stroke='rgb(191,255,60)' stroke-width='3.4' stroke-linecap='round' filter='url(%23c)'/%3E%3C/svg%3E"); }
+.stat-highlight.stat-highlight { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 12' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-5%' y='-100%' width='110%' height='300%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.05 .3' numOctaves='2' seed='5' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='3' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' seed='11' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -.6 1.4' result='m'/%3E%3CfeComposite in='d' in2='m' operator='in'/%3E%3C/filter%3E%3Cpath d='M4 7 C 70 4, 180 9, 296 5' fill='none' stroke='rgb(191,255,60)' stroke-width='3.6' stroke-linecap='round' filter='url(%23c)'/%3E%3C/svg%3E"); }
 
 @keyframes highlightDraw {
-  from { background-size:0% 8px; }
-  to { background-size:100% 8px; }
+  from { background-size:0% 10px; }
+  to { background-size:100% 10px; }
 }
 @keyframes highlightLoop {
-  0% { background-size:0% 8px; background-position:0 100%; }
-  30%, 78% { background-size:100% 8px; background-position:0 100%; }
-  78.01% { background-size:100% 8px; background-position:100% 100%; }
-  100% { background-size:0% 8px; background-position:100% 100%; } /* 그은 방향 그대로 왼쪽부터 지워짐 */
+  0% { background-size:0% 10px; background-position:0 100%; }
+  30%, 78% { background-size:100% 10px; background-position:0 100%; }
+  78.01% { background-size:100% 10px; background-position:100% 100%; }
+  100% { background-size:0% 10px; background-position:100% 100%; } /* 그은 방향 그대로 왼쪽부터 지워짐 */
 }
 @media (prefers-reduced-motion: reduce) {
-  .stat-highlight, .stat-highlight.is-visible { animation:none; background-size:100% 8px; }
+  .stat-highlight, .stat-highlight.is-visible { animation:none; background-size:100% 10px; }
 }
 @keyframes highlightSweep {
-  0% { background-size:0% 8px; }
-  40% { background-size:100% 8px; }
-  60% { background-size:100% 8px; }
-  100% { background-size:0% 8px; }
+  0% { background-size:0% 10px; }
+  40% { background-size:100% 10px; }
+  60% { background-size:100% 10px; }
+  100% { background-size:0% 10px; }
 }
 
 .proj-colors { padding-top:20px; border-top:1px solid #333; }
@@ -1300,7 +1300,7 @@ html.theme-invert .star-cursor img { filter:brightness(0); } /* 별 커서는 �
 
 /* 반전 테마: 밑줄은 라임 컬러(반전 후 라임이 되도록 미리 계산한 색), 밑줄 위 글자는 화이트 */
 html.theme-invert .stat-highlight { color:#000 !important; } /* 반전되어 흰 글자로 보임 */
-html.theme-invert .stat-highlight[class] { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 12' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-5%' y='-100%' width='110%' height='300%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.05 .3' numOctaves='2' seed='5' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='3' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' seed='11' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -.6 1.4' result='m'/%3E%3CfeComposite in='d' in2='m' operator='in'/%3E%3C/filter%3E%3Cpath d='M4 7 C 70 4, 180 9, 296 5' fill='none' stroke='rgb(79,17,207)' stroke-width='3.4' stroke-linecap='round' filter='url(%23c)'/%3E%3C/svg%3E"); }
+html.theme-invert .stat-highlight[class] { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 12' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-5%' y='-100%' width='110%' height='300%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.05 .3' numOctaves='2' seed='5' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='3' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' seed='11' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -.6 1.4' result='m'/%3E%3CfeComposite in='d' in2='m' operator='in'/%3E%3C/filter%3E%3Cpath d='M4 7 C 70 4, 180 9, 296 5' fill='none' stroke='rgb(79,17,207)' stroke-width='3.6' stroke-linecap='round' filter='url(%23c)'/%3E%3C/svg%3E"); }
 </style>
 </head>
 <body>
