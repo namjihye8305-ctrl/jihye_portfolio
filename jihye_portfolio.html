@@ -630,7 +630,7 @@ section.project.full-line-b::after,
 
 /* ── 모션 ⑦: 스크롤 진행 크레용 선 (네비 바로 아래, 내린 만큼 왼쪽→오른쪽으로 그려짐) ── */
 .scroll-progress {
-  position:absolute; left:0; right:0; bottom:-7px; height:9px;
+  position:absolute; left:0; right:0; bottom:-9px; height:13px; /* 선 두께 약 1.4배 (9px → 13px), 가운데 위치는 그대로 */
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 12' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-2%' y='-150%' width='104%' height='400%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.015 .5' numOctaves='2' seed='3' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='3.5' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.6 1.6' numOctaves='2' seed='31' result='j'/%3E%3CfeDisplacementMap in='d' in2='j' scale='2.5' xChannelSelector='R' yChannelSelector='G' result='r'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.08 2.4' seed='7' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.6 1.55' result='m'/%3E%3CfeComposite in='r' in2='m' operator='in'/%3E%3C/filter%3E%3Cg fill='none' stroke='%23111' stroke-linecap='round' filter='url(%23c)'%3E%3Cpath d='M4 6.5 C 250 5, 500 8, 750 5.5 S 950 7, 996 6' stroke-width='6.5'/%3E%3Cpath d='M10 7.5 C 260 6.8, 520 8.6, 760 6.6 S 950 7.8, 990 7' stroke-width='2.4' stroke-opacity='.5'/%3E%3C/g%3E%3C/svg%3E") no-repeat left center / 100% 100%;
   clip-path:inset(0 calc(100% - var(--p, 0) * 100%) 0 0);
   pointer-events:none;
