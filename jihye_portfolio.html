@@ -1314,7 +1314,8 @@ html.theme-invert .stat-highlight[class] { background-image:url("data:image/svg+
 .index-title { font-family:'DK Crayon Crumble', cursive; font-weight:700; -webkit-text-stroke:.6px currentColor; font-size:33px; line-height:1; letter-spacing:.12em; color:#1c1c1c; margin:0 0 56px; } /* 프로젝트 넘버링(01. 02.)과 같은 크기 */
 .index-grid { /* 한 줄 가로 스와이프 (PC는 마우스로 끌어서도 넘김), 다음 썸네일이 살짝 보이게 */
   display:flex; gap:16px; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
-  scroll-snap-type:x mandatory; margin:0 -50px; padding:0 50px; scroll-padding:0 50px;
+  scroll-snap-type:x mandatory; scroll-padding:0;
+  margin-right:calc(-50px - max(0px, (100vw - 1920px) / 2)); padding-right:calc(50px + max(0px, (100vw - 1920px) / 2)); /* 왼쪽은 제목 선에 맞추고, 오른쪽만 화면 끝까지 (1920px 넘는 화면도) */
 }
 .index-grid::-webkit-scrollbar { display:none; }
 .index-grid.is-dragging { scroll-snap-type:none; cursor:grabbing; }
@@ -1375,7 +1376,7 @@ html.theme-invert .stat-highlight[class] { background-image:url("data:image/svg+
 @media (min-width:821px) { /* PC: 히어로 높이를 바꾸지 않도록 띄워서 배치 (스킬 태그 % 배치 유지) */
   .intro-trigger { position:absolute; right:50px; bottom:100px; z-index:2; margin-top:0; } /* 오른쪽 큰 블러 별 위, 왼쪽 소개 문구 두 줄과 같은 높이 (히어로 아래 여백 100px = 소개 문구 아래 끝) */
   .intro-trigger-label { position:absolute; right:0; bottom:calc(100% + 10px); z-index:1; } /* Play Intro 박스: 썸네일 위쪽, 오른쪽 끝 맞춤 */
-  .intro-trigger-thumb { width:140px; }
+  .intro-trigger-thumb { width:150px; }
 }
 @media (max-width:820px) {
   .intro-trigger { gap:12px; margin-top:22px; align-self:center; } /* 모바일: 썸네일 + 박스 묶음 가운데 정렬 */
