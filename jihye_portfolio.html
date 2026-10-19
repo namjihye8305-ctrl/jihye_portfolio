@@ -3887,8 +3887,18 @@ document.querySelectorAll('.portfolio-links .pl-link').forEach(function (a) {
   /* 페이지에 들어오면 바로 인트로(영상 → 프로필) 팝업을 띄움, X(또는 ESC·바깥 클릭)로 닫음 */
   document.addEventListener('play', function (e) { if (isOpen && e.target !== video && e.target.tagName === 'VIDEO') { e.target.pause(); if (pausedVideos.indexOf(e.target) < 0) pausedVideos.push(e.target); } }, true); /* 팝업이 떠 있는 동안 뒤에서 자동 재생되려는 영상은 잠시 멈춤 */
   if (window.matchMedia('(min-width:821px)').matches) { /* 모바일은 자동으로 띄우지 않음 */
+    var heroEl = document.querySelector('.hero'), leftHero = false;
+    var inHero = function () { /* 히어로가 화면에 보이는 상태(맨 위 근처)인지 */
+      if (!heroEl) return window.scrollY < 200;
+      var r = heroEl.getBoundingClientRect();
+      return r.top > -r.height * 0.5 && r.top < window.innerHeight * 0.5;
+    };
+    if (location.hash && location.hash !== '#') leftHero = true; /* 프로젝트 링크(#proj..)로 바로 들어온 경우는 띄우지 않음 */
+    var onScrollAway = function () { if (!inHero()) { leftHero = true; window.removeEventListener('scroll', onScrollAway); } };
+    window.addEventListener('scroll', onScrollAway, { passive: true });
     setTimeout(function () {
-      if (isOpen) return;
+      window.removeEventListener('scroll', onScrollAway);
+      if (isOpen || leftHero || !inHero()) return; /* 처음 진입해 히어로 화면에 있을 때만 띄움, 그 전에 벗어났으면 띄우지 않음 */
       var box = trigger.querySelector('.intro-trigger-label');
       var go = function () { if (!isOpen) { autoOpened = true; open(); } };
       if (box && box.animate && !reduced()) box.animate([{ transform: 'scale(1)' }, { transform: 'scale(.88)' }, { transform: 'scale(1.06)' }, { transform: 'scale(1)' }], { duration: 380, easing: 'ease-out' }).onfinish = go; /* 박스가 눌리듯 톡 */
