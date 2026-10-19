@@ -3551,6 +3551,7 @@ document.querySelectorAll('.portfolio-links .pl-link').forEach(function (a) {
     if (opener === this) autoOpened = false;
     if (isOpen) return;
     isOpen = true;
+    var fromRect = trigger.offsetParent ? trigger.querySelector('.intro-trigger-box').getBoundingClientRect() : null; /* 스크롤 잠금 전에 박스 위치 기억 */
     savedY = window.scrollY;
     var sbw = window.innerWidth - document.documentElement.clientWidth;
     document.documentElement.classList.add('intro-lock');
@@ -3565,8 +3566,20 @@ document.querySelectorAll('.portfolio-links .pl-link').forEach(function (a) {
     modal.hidden = false;
     void modal.offsetWidth; modal.classList.add('is-open');
     start();
+    growFrom(fromRect); /* start()가 진행 중 애니메이션을 정리하므로 그 다음에 */
     if (autoOpened) dialog.focus({ preventScroll: true }); /* 자동으로 열 때는 버튼에 포커스 테두리가 생기지 않게 팝업 자체에 포커스 */
     else closeBtn.focus({ preventScroll: true });
+  }
+  /* 팝업이 View Profile 박스 자리에서 커지며 화면 가운데로 나오는 효과 */
+  function growFrom(r) {
+    if (!r || !dialog.animate || reduced()) return;
+    if (r.bottom < 0 || r.top > window.innerHeight || r.width === 0) return; /* 박스가 화면에 안 보이면 생략 */
+    var d = dialog.getBoundingClientRect();
+    var dx = (r.left + r.width / 2) - (d.left + d.width / 2), dy = (r.top + r.height / 2) - (d.top + d.height / 2);
+    anims.push(dialog.animate([
+      { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + (r.width / d.width) + ',' + (r.height / d.height) + ')', opacity: 0.2 },
+      { transform: 'none', opacity: 1 }
+    ], { duration: 650, easing: 'cubic-bezier(.2,.8,.2,1)' }));
   }
   function close() {
     if (!isOpen) return;
@@ -3616,7 +3629,15 @@ document.querySelectorAll('.portfolio-links .pl-link').forEach(function (a) {
   else window.addEventListener('resize', function () { if (isOpen) layoutLinks(); });
   /* 페이지에 들어오면 바로 인트로(영상 → 프로필) 팝업을 띄움, X(또는 ESC·바깥 클릭)로 닫음 */
   document.addEventListener('play', function (e) { if (isOpen && e.target !== video && e.target.tagName === 'VIDEO') { e.target.pause(); if (pausedVideos.indexOf(e.target) < 0) pausedVideos.push(e.target); } }, true); /* 팝업이 떠 있는 동안 뒤에서 자동 재생되려는 영상은 잠시 멈춤 */
-  if (window.matchMedia('(min-width:821px)').matches) { autoOpened = true; open(); } /* 모바일은 자동으로 띄우지 않음 */
+  if (window.matchMedia('(min-width:821px)').matches) { /* 모바일은 자동으로 띄우지 않음 */
+    setTimeout(function () {
+      if (isOpen) return;
+      var box = trigger.querySelector('.intro-trigger-label');
+      var go = function () { if (!isOpen) { autoOpened = true; open(); } };
+      if (box && box.animate && !reduced()) box.animate([{ transform: 'scale(1)' }, { transform: 'scale(.88)' }, { transform: 'scale(1.06)' }, { transform: 'scale(1)' }], { duration: 380, easing: 'ease-out' }).onfinish = go; /* 박스가 눌리듯 톡 */
+      else go();
+    }, 900); /* 진입 후 박스가 먼저 보이도록 잠깐 기다림 */
+  }
 })();
 </script>
 </body>
