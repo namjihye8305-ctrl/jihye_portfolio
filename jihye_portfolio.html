@@ -1313,7 +1313,7 @@ html.theme-invert .stat-highlight[class] { background-image:url("data:image/svg+
 @media (max-width:820px) { .index-sec::before { background-size:16px 16px, 16px 16px; } }
 .index-title { font-family:'DK Crayon Crumble', cursive; font-weight:700; -webkit-text-stroke:.6px currentColor; font-size:33px; line-height:1; letter-spacing:.12em; color:#1c1c1c; margin:0 0 56px; } /* 프로젝트 넘버링(01. 02.)과 같은 크기 */
 .index-grid { /* 한 줄 가로 스와이프 (PC는 마우스로 끌어서도 넘김), 다음 썸네일이 살짝 보이게 */
-  display:flex; gap:16px; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
+  display:flex; gap:20px; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
   scroll-snap-type:x mandatory; scroll-padding:0;
   margin-right:calc(-50px - max(0px, (100vw - 1920px) / 2)); padding-right:calc(50px + max(0px, (100vw - 1920px) / 2)); /* 왼쪽은 제목 선에 맞추고, 오른쪽만 화면 끝까지 (1920px 넘는 화면도) */
 }
@@ -1331,14 +1331,14 @@ html.theme-invert .stat-highlight[class] { background-image:url("data:image/svg+
 @media (min-width:821px) { /* PC Index: 썸네일 줄 10px 위로, 작업명 대문자, 썸네일 10% 작게 */
   .index-title { margin-bottom:46px; }
   .index-name { text-transform:uppercase; letter-spacing:.06em; }
-  .index-item { flex-basis:calc((100% - 100px - 64px) / 4.4 * .9); }
+  .index-item { flex-basis:calc((100% - 100px - 64px) / 4.4 * .63); } /* 동그라미 30% 작게 (.9 × .7) */
 }
-@media (min-width:821px) and (max-width:1280px) { .index-item { flex-basis:calc((100% - 100px - 32px) / 2.6 * .9); } }
+@media (min-width:821px) and (max-width:1280px) { .index-item { flex-basis:calc((100% - 100px - 32px) / 2.6 * .63); } }
 @media (max-width:820px) {
   .index-sec { padding:90px 20px; } /* 모바일 히어로와 같은 위아래 여백 */
   .index-title { margin-bottom:28px; }
-  .index-grid { gap:10px; margin:0 -32px; padding:0 32px; scroll-padding:0 32px; } /* 화면 양끝까지 스와이프 (모바일 좌우 여백 12+20px), 첫 썸네일은 제목과 같은 선 */
-  .index-item { flex-basis:64%; }
+  .index-grid { gap:14px; margin:0 -32px; padding:0 32px; scroll-padding:0 32px; } /* 화면 양끝까지 스와이프 (모바일 좌우 여백 12+20px), 첫 썸네일은 제목과 같은 선 */
+  .index-item { flex-basis:44.8%; } /* 동그라미 30% 작게 */
   .index-name { white-space:normal; }
 }
 
