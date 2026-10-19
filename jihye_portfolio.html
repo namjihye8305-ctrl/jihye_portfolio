@@ -1422,9 +1422,12 @@ html.intro-lock { overflow:hidden; }
 .scene-film { width:100%; max-width:1152px; }
 .scene-film-frame { position:relative; width:100%; aspect-ratio:16/9; background:#fff; overflow:hidden; border-radius:2px; }
 .scene-film-frame video { width:100%; height:100%; object-fit:contain; display:block; }
-.scene-film-play { position:absolute; left:50%; top:50%; width:64px; height:64px; margin:-32px 0 0 -32px; border-radius:50%; border:1px solid rgba(0,0,0,.7); background:rgba(255,255,255,.45); color:#000; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:transform .25s ease, opacity .25s ease; }
+.scene-film-play { position:absolute; left:50%; top:50%; width:64px; height:64px; margin:-32px 0 0 -32px; border-radius:50%; border:0; background:rgba(255,255,255,.45); color:#000; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:transform .25s ease, opacity .25s ease; }
 .scene-film-play svg { width:26px; height:26px; fill:currentColor; margin-left:3px; }
 .scene-film-play:hover { transform:scale(1.08); }
+.scene-film-play .i-replay { display:none; width:28px; height:28px; margin:0; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+.scene-film.is-ended .scene-film-play .i-play { display:none; }
+.scene-film.is-ended .scene-film-play .i-replay { display:block; } /* 영상이 끝나면 다시 재생 아이콘 */
 .scene-film-play[hidden] { display:none; }
 .scene-film-bar { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:12px; }
 .scene-film-label { font-size:14px; letter-spacing:.04em; color:#1c1c1c; }
@@ -1749,7 +1752,7 @@ html.intro-lock { overflow:hidden; }
           <div class="scene-film">
             <div class="scene-film-frame">
               <video id="scene-film-video" muted playsinline preload="none" poster="scene/scene_film_poster.jpg" aria-label="SCENE. 캠페인 영상"></video>
-              <button type="button" class="scene-film-play" id="scene-film-play" aria-label="영상 재생"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></button>
+              <button type="button" class="scene-film-play" id="scene-film-play" aria-label="영상 재생"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="i-replay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v5h-5"/></svg></button>
             </div>
             <div class="scene-film-bar">
               <span class="scene-film-label">SCENE. Campaign Film</span>
@@ -2950,6 +2953,8 @@ html.intro-lock { overflow:hidden; }
   function sync() {
     var playing = !v.paused && !v.ended;
     wrap.classList.toggle('is-playing', playing);
+    wrap.classList.toggle('is-ended', v.ended);
+    bigPlay.setAttribute('aria-label', v.ended ? '처음부터 다시 재생' : '영상 재생');
     bigPlay.hidden = playing;
     toggle.setAttribute('aria-label', playing ? '일시정지' : '영상 재생');
   }
