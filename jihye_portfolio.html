@@ -1541,6 +1541,9 @@ html.intro-lock { overflow:hidden; }
 .scene-motion-btn:focus-visible { outline:2px solid #1c1c1c; outline-offset:6px; }
 /* 워크 플로우 확대: View Profile 영상 창과 같은 크기 */
 .lightbox.is-wide img { width:min(1720px, 100%, calc((100vh - 120px) * 16 / 9)); max-width:none; max-height:calc(100vh - 64px); height:auto; object-fit:contain; }
+.case-sub { margin-left:18px; padding:0; background:none; border:0; font:inherit; font-size:17px; font-weight:300; color:#888; cursor:pointer; letter-spacing:0; text-transform:none; vertical-align:baseline; transition:color .2s ease; }
+.case-sub:hover { color:#1c1c1c; }
+.case-sub:focus-visible { outline:2px solid #1c1c1c; outline-offset:3px; }
 /* 세로로 긴 이미지 확대: 확대창 안에서 스크롤 */
 .lightbox.is-scroll { align-items:flex-start; overflow-y:auto; }
 .lightbox.is-scroll img { max-height:none; width:min(1200px, 100%); height:auto; }
@@ -1730,7 +1733,7 @@ html .portfolio-links:not(.full-line-b), html .about { padding-top:110px; paddin
       </div>
       <div class="proj-points">
         <div class="pp-section-title"><span class="cr-check" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M3.5 10.5 L 8 15 L 16.5 4.5"/></svg></span>프로젝트 목적</div>
-        <div class="proj-point"><span class="pp-n">·</span><span class="pp-t">나이키의 스포티함과 <strong>'릴체리'의 힙한 무드를 결합한 에디토리얼 비주얼</strong></span></div>
+        <div class="proj-point"><span class="pp-n">·</span><span class="pp-t"><strong><span class="stat-highlight stat-highlight-red">나이키의 스포티함과 '릴체리'의 힙한 무드를 결합한 에디토리얼 비주얼</span></strong></span></div>
         <div class="proj-point"><span class="pp-n">·</span><span class="pp-t">실험적인 화보 무드 속 상품 디테일을 살려 구매 욕구 자극</span></div>
 
         <div class="pp-section-title"><span class="cr-check" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M3.5 10.5 L 8 15 L 16.5 4.5"/></svg></span>담당 역할 및 기여도</div>
@@ -1802,7 +1805,7 @@ html .portfolio-links:not(.full-line-b), html .about { padding-top:110px; paddin
               </div>
             </div>
           </div>
-          <p class="case-divider">AI Creative Process</p>
+          <p class="case-divider">AI Creative Process<button type="button" class="case-sub scene-wf-open">AI 워크플로우 보기 <span aria-hidden="true">↗</span></button></p>
           <div class="scene-process">
             <p class="scene-process-desc">기준 모델과 장소별 비주얼 방향을 설정하고, 이미지 생성·보정, 영상 연출, 웹 적용으로 작업을 확장했습니다.</p>
             <div class="scene-wf-row">
@@ -3053,6 +3056,7 @@ document.addEventListener('DOMContentLoaded', function () { /* 확대창 요소�
       lb.scrollTop = 0;
     }, 0);
   });
+  document.querySelectorAll('.scene-wf-open').forEach(function (bt) { bt.addEventListener('click', function () { var im = document.querySelector('.scene-wf-row img'); if (im) im.click(); }); }); /* AI 워크플로우 보기 → 첫 워크플로우 이미지 확대 */
   /* 기존 확대창은 이미지만 클릭해도 닫히므로, 스크롤형에서는 이미지 클릭으로 닫히지 않게 (닫기 버튼·바깥·ESC) */
   lbImg.addEventListener('click', function (e) { if (lb.classList.contains('is-scroll')) e.stopImmediatePropagation(); }, true);
   new MutationObserver(function () { if (!lb.classList.contains('is-open') && (lb.classList.contains('is-scroll') || lb.classList.contains('is-wide'))) lb.classList.remove('is-scroll', 'is-wide'); /* 있을 때만 지워야 감시가 반복되지 않음 */ }).observe(lb, { attributes: true, attributeFilter: ['class'] });
@@ -3488,6 +3492,7 @@ document.querySelectorAll('.portfolio-links .pl-link').forEach(function (a) {
     wrap.className = 'label-ring';
     while (el.firstChild) wrap.appendChild(el.firstChild);
     el.appendChild(wrap);
+    Array.prototype.forEach.call(wrap.querySelectorAll('.case-sub'), function (sub) { el.appendChild(sub); }); /* 한글 보조 문구는 동그라미 밖으로 */
     wrap.style.setProperty('--rd', (-(i * 0.7) % 3.6).toFixed(2) + 's');
     if (el.closest('#proj10')) { /* AI 프로젝트는 밑줄 */
       wrap.classList.add('label-line');
