@@ -1364,12 +1364,9 @@ html.theme-invert .stat-highlight[class] { background-image:url("data:image/svg+
 }
 .intro-trigger:focus-visible { outline:2px solid #1c1c1c; outline-offset:6px; }
 @media (min-width:821px) { /* PC: 히어로 높이를 바꾸지 않도록 띄워서 배치 (스킬 태그 % 배치 유지) */
-  .intro-trigger { position:absolute; right:90px; bottom:100px; z-index:2; margin-top:0; } /* 오른쪽 큰 블러 별 위, 왼쪽 소개 문구 두 줄과 같은 높이 (히어로 아래 여백 100px = 소개 문구 아래 끝) */
-  .intro-trigger-label { position:absolute; right:calc(100% - 40px); top:50%; margin-top:-14.5px; z-index:1; } /* Play Intro 박스를 썸네일 왼쪽 가장자리에 겹쳐 올림 (높이는 그대로), 썸네일은 오른쪽에 붙음 */
+  .intro-trigger { position:absolute; right:50px; bottom:100px; z-index:2; margin-top:0; } /* 오른쪽 큰 블러 별 위, 왼쪽 소개 문구 두 줄과 같은 높이 (히어로 아래 여백 100px = 소개 문구 아래 끝) */
+  .intro-trigger-label { position:absolute; right:0; bottom:calc(100% + 10px); z-index:1; } /* Play Intro 박스: 썸네일 위쪽, 오른쪽 끝 맞춤 */
   .intro-trigger-thumb { width:128px; }
-}
-@media (min-width:821px) and (max-width:1200px) {
-  .intro-trigger { right:16px; } /* 좁은 PC: Social Media 태그와 겹치지 않게 오른쪽 끝으로 */
 }
 @media (max-width:820px) {
   .intro-trigger { gap:12px; margin-top:22px; }
