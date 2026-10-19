@@ -3635,7 +3635,7 @@ document.querySelectorAll('.portfolio-links .pl-link').forEach(function (a) {
    기본은 OFF, 버튼으로 ON 하면 화면에 60% 이상 보일 때만 소리가 나고 벗어나면 음소거.
    소리가 실제로 나는지에 따라 버튼에 ON / OFF 표시 */
 (function () {
-  var ids = ['ai-case02-sound-video', 'case01-video'];
+  var ids = ['case01-video']; /* AMUSE 키비주얼 영상은 소리 버튼 없이 항상 무음 */
   var vids = ids.map(function (id) { return document.getElementById(id); }).filter(Boolean);
   if (!vids.length) return;
   var ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5 H 7.5 L 12 5.5 V 18.5 L 7.5 14.5 H 4 Z"/>' +
