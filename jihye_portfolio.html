@@ -1317,8 +1317,8 @@ html.theme-invert .stat-highlight[class] { background-image:url("data:image/svg+
 .index-name { font-size:14px; line-height:1.4; margin:0 0 10px; color:#111; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .index-name span { font-weight:400; color:#777; }
 .index-thumb { position:relative; overflow:hidden; aspect-ratio:16/9; background:#eee; }
-.index-thumb img, .index-thumb video { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; transform:scale(1.1); transition:transform .5s cubic-bezier(.2,.7,.2,1); } /* 기본 1.1배 확대 */
-.index-item:hover .index-thumb img, .index-item:hover .index-thumb video { transform:scale(1.21); } /* 마우스 올리면 거기서 1.1배 더 */
+.index-thumb img, .index-thumb video { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; transform:scale(var(--z, 1.1)); transition:transform .5s cubic-bezier(.2,.7,.2,1); } /* 기본 1.1배 확대 (항목별 --z로 조정) */
+.index-item:hover .index-thumb img, .index-item:hover .index-thumb video { transform:scale(var(--zh, calc(var(--z, 1.1) * 1.1))); } /* 마우스 올리면 거기서 1.1배 더 */
 @media (max-width:1280px) { .index-grid { grid-template-columns:repeat(3, minmax(0,1fr)); } }
 @media (max-width:820px) {
   .index-sec { padding:90px 20px; } /* 모바일 히어로와 같은 위아래 여백 */
@@ -1509,7 +1509,7 @@ html.intro-lock { overflow:hidden; }
       <p class="index-name">Promotion Event</p>
       <div class="index-thumb"><img src="03/pc_01.jpg" alt="Promotion Event" loading="lazy"></div>
     </a>
-    <a href="#proj04" class="index-item">
+    <a href="#proj04" class="index-item" style="--z:1; --zh:1.05;">
       <p class="index-name">Brand Promotion</p>
       <div class="index-thumb"><img src="04/pc.jpg" alt="Brand Promotion" loading="lazy"></div>
     </a>
@@ -1529,11 +1529,11 @@ html.intro-lock { overflow:hidden; }
       <p class="index-name">Template Guide</p>
       <div class="index-thumb"><img src="06/new_pc.jpg" alt="Template Guide" loading="lazy"></div>
     </a>
-    <a href="#proj09" class="index-item">
+    <a href="#proj09" class="index-item" style="--z:1.5;">
       <p class="index-name">Style Curation</p>
       <div class="index-thumb"><img src="08/pc.jpg" alt="Style Curation" loading="lazy"></div>
     </a>
-    <a href="#proj10" class="index-item">
+    <a href="#proj10" class="index-item" style="--z:1; --zh:1.05;">
       <p class="index-name">AI Redesign</p>
       <div class="index-thumb"><video src="09/피치덴/pc_피치덴.mp4" autoplay loop muted playsinline preload="metadata"></video></div>
     </a>
