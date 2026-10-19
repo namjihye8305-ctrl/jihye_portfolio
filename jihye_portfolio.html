@@ -1468,6 +1468,31 @@ html.intro-lock { overflow:hidden; }
 .scene-prompt-list dt { font-size:14px; font-weight:600; color:#1c1c1c; }
 .scene-prompt-list dd { margin:0; font-size:14px; line-height:1.6; color:#666; }
 .scene-prompt-note { margin:14px 0 0; font-size:13px; line-height:1.6; color:#888; }
+/* SCENE. 배치: PC 시안(다른 PC 이미지 크기) → 흐름·사이트 버튼(시안 아래, 작게) → AI 과정(영역 꽉 차게) → 캠페인 필름(영역 꽉 차게) */
+.tool-icon.newtake { background:#1f1f1f; color:#f2f2f2; }
+.scene-pc { display:block; width:100%; max-width:1152px; }
+.scene-pc-meta { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px 24px; margin-top:18px; }
+.scene-pc-meta .scene-flow { display:flex; flex-wrap:wrap; border-top:0; }
+.scene-pc-meta .scene-flow li { display:flex; align-items:baseline; gap:6px; padding:0 14px; border-bottom:0; border-left:1px solid #7a7a77; }
+.scene-pc-meta .scene-flow li:first-child { padding-left:0; border-left:0; }
+.scene-pc-meta .scene-flow-n { font-size:12px; }
+.scene-pc-meta .scene-flow-t { font-size:14px; }
+.scene-pc-meta .scene-flow-d { font-size:12px; text-align:left; }
+.scene-pc-meta .scene-site-btn { padding:11px 18px; font-size:14px; }
+.scene-process, .scene-film { max-width:none; }
+.scene-wf-fig, .scene-core-fig { margin:0; }
+.scene-core-fig { margin-top:56px; }
+.scene-wf-fig figcaption { margin-top:10px; }
+.scene-zoom-link { padding:0; background:none; border:0; font:inherit; font-size:14px; font-weight:600; color:#1c1c1c; cursor:pointer; text-decoration:underline; text-underline-offset:4px; }
+.scene-zoom-link:focus-visible { outline:2px solid #1c1c1c; outline-offset:3px; }
+.scene-process > .scene-core-notes { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:28px; margin-top:32px; }
+.scene-process > .scene-prompt { margin-top:40px; }
+@media (max-width:820px) {
+  .scene-pc-meta { flex-direction:column; align-items:flex-start; }
+  .scene-pc-meta .scene-flow li { padding:4px 10px; }
+  .scene-process > .scene-core-notes { grid-template-columns:minmax(0, 1fr); gap:20px; }
+  .scene-core-fig { margin-top:40px; }
+}
 /* 세로로 긴 이미지 확대: 확대창 안에서 스크롤 */
 .lightbox.is-scroll { align-items:flex-start; overflow-y:auto; }
 .lightbox.is-scroll img { max-height:none; width:min(1200px, 100%); height:auto; }
@@ -1680,27 +1705,10 @@ html.intro-lock { overflow:hidden; }
     <div class="proj-visual">
       <div class="device-wrap">
         <div class="v-pc">
-          <p class="v-label">CAMPAIGN FILM</p>
-          <div class="scene-film">
-            <div class="scene-film-frame">
-              <video id="scene-film-video" muted playsinline preload="none" poster="scene/scene_film_poster.jpg" aria-label="SCENE. 캠페인 영상"></video>
-              <button type="button" class="scene-film-play" id="scene-film-play" aria-label="영상 재생"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></button>
-            </div>
-            <div class="scene-film-bar">
-              <span class="scene-film-label">SCENE. Campaign Film</span>
-              <div class="scene-film-ctrls">
-                <button type="button" class="scene-film-btn" id="scene-film-toggle" aria-label="영상 재생"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg></button>
-                <button type="button" class="scene-film-btn" id="scene-film-replay" aria-label="처음부터 다시 재생"><svg class="i-line" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v5h-5"/></svg></button>
-                <button type="button" class="scene-film-btn" id="scene-film-sound" aria-label="소리 켜기" aria-pressed="false"><svg class="i-line i-muted" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg><svg class="i-line i-sound" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button>
-              </div>
-            </div>
-          </div>
-          <p class="v-label">PC · CAMPAIGN → EDITORIAL → RUNWAY → SHOP THE LOOK</p>
+          <p class="v-label">PC</p>
           <div class="scene-pc">
-            <div class="scene-pc-shot">
-              <img class="scene-pc-img" src="scene/scene_pc.jpg" data-zoom-full="scene/scene_pc_full.jpg" data-zoom-tall alt="SCENE. PC 메인 화면 전체: 캠페인 Seoul in Motion, 에디토리얼 Seongsu in Rain, 런웨이, Shop the Look, About SCENE." width="1440" height="3716" loading="lazy" decoding="async">
-            </div>
-            <div class="scene-pc-side">
+            <img class="scene-pc-img" src="scene/scene_pc.jpg" data-zoom-full="scene/scene_pc_full.jpg" data-zoom-tall alt="SCENE. PC 메인 화면 전체: 캠페인 Seoul in Motion, 에디토리얼 Seongsu in Rain, 런웨이, Shop the Look, About SCENE." width="1440" height="3716" loading="lazy" decoding="async">
+            <div class="scene-pc-meta">
               <ol class="scene-flow">
                 <li><span class="scene-flow-n">01</span><span class="scene-flow-t">Campaign</span><span class="scene-flow-d">Seoul in Motion</span></li>
                 <li><span class="scene-flow-n">02</span><span class="scene-flow-t">Editorial</span><span class="scene-flow-d">Seongsu in Rain</span></li>
@@ -1713,22 +1721,19 @@ html.intro-lock { overflow:hidden; }
           <p class="case-divider">AI Creative Process</p>
           <div class="scene-process">
             <p class="scene-process-desc">기준 모델과 장소별 비주얼 방향을 설정하고, 이미지 생성·보정, 영상 연출, 웹 적용으로 작업을 확장했습니다.</p>
-            <div class="scene-core">
-              <figure class="scene-core-fig">
-                <img src="scene/scene_workflow_2.jpg" alt="성수 기준 컷 S01–S05가 스토리보드 비디오 생성 단계로 연결되는 작업 화면" width="2170" height="1171" loading="lazy" decoding="async">
-                <figcaption>핵심 과정 · 성수 기준 컷(S01–S05) → 스토리보드 비디오 생성</figcaption>
-              </figure>
+            <figure class="scene-wf-fig">
+              <img src="scene/scene_workflow_1.jpg" alt="워크 플로우: 성수·을지로·한남 장소별 작업과 이미지·영상 보정 단계" width="2040" height="1225" loading="lazy" decoding="async">
+              <figcaption><button type="button" class="scene-zoom-link" data-zoom-target=".scene-wf-fig img">워크 플로우 보기 <span aria-hidden="true">↗</span></button></figcaption>
+            </figure>
+            <figure class="scene-core-fig">
+              <img src="scene/scene_workflow_2.jpg" alt="성수 기준 컷 S01–S05가 스토리보드 비디오 생성 단계로 연결되는 작업 화면" width="2170" height="1171" loading="lazy" decoding="async">
+              <figcaption>핵심 과정 · 성수 기준 컷(S01–S05) → 스토리보드 비디오 생성</figcaption>
+            </figure>
               <div class="scene-core-notes">
                 <div class="scene-note"><p class="scene-note-t">인물 일관성</p><p class="scene-note-d">기준 모델의 얼굴·헤어와 각 룩의 의상을 참조하며 컷을 확장하고, 결과물을 비교·선별해 시각적 일관성을 조정했습니다.</p></div>
                 <div class="scene-note"><p class="scene-note-t">장소별 디렉팅</p><p class="scene-note-d">성수는 젖은 밤거리와 레더의 광택, 을지로는 붉은 네온과 어두운 골목, 한남은 밝은 석재 배경과 아이보리 룩으로 분위기를 구분했습니다.</p></div>
                 <div class="scene-note"><p class="scene-note-t">영상 연출</p><p class="scene-note-d">컷별 구도와 카메라 이동, 빛, 인물의 움직임을 지정하고 생성 결과를 선별·편집해 하나의 캠페인 영상으로 연결했습니다.</p></div>
               </div>
-            </div>
-            <div class="scene-sub">
-              <figure class="scene-sub-fig">
-                <img src="scene/scene_workflow_1_preview.jpg" data-zoom-full="scene/scene_workflow_1.jpg" alt="전체 제작 흐름: 성수·을지로·한남 장소별 작업과 이미지·영상 보정 단계" width="1000" height="420" loading="lazy" decoding="async">
-                <figcaption>전체 제작 흐름 보기 <span aria-hidden="true">↗</span></figcaption>
-              </figure>
               <div class="scene-prompt">
                 <p class="scene-prompt-title">프롬프트 설계 의도</p>
                 <dl class="scene-prompt-list">
@@ -1738,6 +1743,20 @@ html.intro-lock { overflow:hidden; }
                   <div><dt>빛·전환</dt><dd>젖은 바닥의 반사광과 빛 번짐을 활용한 장면 연결</dd></div>
                 </dl>
                 <p class="scene-prompt-note">영상 모션 프롬프트에 작성한 연출 지시를 요약한 것으로, 최종 영상에는 선별·편집을 거쳐 반영했습니다.</p>
+              </div>
+          </div>
+          <p class="v-label">CAMPAIGN FILM</p>
+          <div class="scene-film">
+            <div class="scene-film-frame">
+              <video id="scene-film-video" muted playsinline preload="none" poster="scene/scene_film_poster.jpg" aria-label="SCENE. 캠페인 영상"></video>
+              <button type="button" class="scene-film-play" id="scene-film-play" aria-label="영상 재생"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></button>
+            </div>
+            <div class="scene-film-bar">
+              <span class="scene-film-label">SCENE. Campaign Film</span>
+              <div class="scene-film-ctrls">
+                <button type="button" class="scene-film-btn" id="scene-film-toggle" aria-label="영상 재생"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg></button>
+                <button type="button" class="scene-film-btn" id="scene-film-replay" aria-label="처음부터 다시 재생"><svg class="i-line" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v5h-5"/></svg></button>
+                <button type="button" class="scene-film-btn" id="scene-film-sound" aria-label="소리 켜기" aria-pressed="false"><svg class="i-line i-muted" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg><svg class="i-line i-sound" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button>
               </div>
             </div>
           </div>
@@ -1769,6 +1788,7 @@ html.intro-lock { overflow:hidden; }
         </div>
         <p class="colors-label tool-label">TOOL</p>
         <div class="tool-icons">
+          <div class="tool-icon newtake" title="뉴테이크">Nt</div>
           <div class="tool-icon figma" title="Figma"><img src="05/figma.webp" alt="Figma"></div>
           <div class="tool-icon gpt" title="ChatGPT"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5152 2.9004A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.0202 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4947 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.5963 3.8558L13.1038 8.3945l2.0201-1.1638a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.3927-.6879zm2.0107-3.0231-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.0201-1.1638a.0708.0708 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.4592a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.6069 1.4997-2.602-1.4997Z"/></svg></div>
         </div>
@@ -2973,8 +2993,7 @@ document.addEventListener('DOMContentLoaded', function () { /* 확대창 요소�
   /* 기존 확대창은 이미지만 클릭해도 닫히므로, 스크롤형에서는 이미지 클릭으로 닫히지 않게 (닫기 버튼·바깥·ESC) */
   lbImg.addEventListener('click', function (e) { if (lb.classList.contains('is-scroll')) e.stopImmediatePropagation(); }, true);
   new MutationObserver(function () { if (!lb.classList.contains('is-open') && lb.classList.contains('is-scroll')) lb.classList.remove('is-scroll'); /* 있을 때만 지워야 감시가 반복되지 않음 */ }).observe(lb, { attributes: true, attributeFilter: ['class'] });
-  /* 확대 이미지 위 커서 문구 */
-  document.querySelectorAll('.scene-sub-fig img').forEach(function (im) { im.setAttribute('title', '전체 제작 흐름 보기'); });
+  document.querySelectorAll('.scene-zoom-link').forEach(function (bt) { bt.addEventListener('click', function () { var im = document.querySelector(bt.getAttribute('data-zoom-target')); if (im) im.click(); }); });
 });
 </script>
 <!-- 인트로 팝업 (히어로 PLAY INTRO 버튼으로 열림) -->
