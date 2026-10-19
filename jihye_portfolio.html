@@ -1422,6 +1422,8 @@ html.intro-lock { overflow:hidden; }
 }
 .intro-btn:hover { background:rgba(17,17,17,.12); }
 .intro-btn:focus-visible { outline:2px solid #111; outline-offset:3px; }
+.intro-btn-icon { width:36px; height:36px; padding:0; display:inline-flex; align-items:center; justify-content:center; } /* 아이콘만 있는 정사각형 버튼 */
+.intro-btn-icon svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
 .intro-stage { position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; background:#fff; /* 반전 → 검정 */ }
 .intro-screen { position:absolute; inset:0; transform-origin:50% 50%; }
 .intro-screen video, .intro-profile { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; display:block; }
@@ -2850,8 +2852,8 @@ html.intro-lock { overflow:hidden; }
   <div class="intro-dialog" role="dialog" aria-modal="true" aria-labelledby="intro-title">
     <h2 class="intro-sr" id="intro-title">남지혜 포트폴리오 인트로</h2>
     <div class="intro-bar">
-      <button type="button" class="intro-btn" id="intro-replay">↻ REPLAY</button>
-      <button type="button" class="intro-btn" id="intro-close" aria-label="인트로 닫기">CLOSE ✕</button>
+      <button type="button" class="intro-btn intro-btn-icon" id="intro-replay" aria-label="처음부터 다시 재생" title="다시 재생"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v5h-5"/></svg></button>
+      <button type="button" class="intro-btn intro-btn-icon" id="intro-close" aria-label="인트로 닫기" title="닫기"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
     <div class="intro-stage" id="intro-stage">
       <div class="intro-screen" id="intro-screen">
