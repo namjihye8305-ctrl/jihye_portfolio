@@ -1312,23 +1312,26 @@ html.theme-invert .stat-highlight[class] { background-image:url("data:image/svg+
 }
 @media (max-width:820px) { .index-sec::before { background-size:16px 16px, 16px 16px; } }
 .index-title { font-family:'DK Crayon Crumble', cursive; font-weight:700; -webkit-text-stroke:.6px currentColor; font-size:33px; line-height:1; letter-spacing:.12em; color:#1c1c1c; margin:0 0 56px; } /* 프로젝트 넘버링(01. 02.)과 같은 크기 */
-.index-grid { display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); column-gap:16px; row-gap:44px; }
+.index-grid { /* 한 줄 가로 스와이프 (PC는 마우스로 끌어서도 넘김), 다음 썸네일이 살짝 보이게 */
+  display:flex; gap:16px; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
+  scroll-snap-type:x mandatory; margin:0 -50px; padding:0 50px; scroll-padding:0 50px;
+}
+.index-grid::-webkit-scrollbar { display:none; }
+.index-grid.is-dragging { scroll-snap-type:none; cursor:grabbing; }
+.index-grid.is-dragging .index-item { pointer-events:none; }
+.index-item { flex:0 0 calc((100% - 100px - 64px) / 4.4); scroll-snap-align:start; } /* 한 화면에 약 4.4개 */
 .index-item { display:block; text-decoration:none; color:#111; text-align:center; }
 .index-name { font-size:14px; line-height:1.4; margin:0 0 10px; color:#111; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .index-name span { font-weight:400; color:#777; }
 .index-thumb { position:relative; overflow:hidden; aspect-ratio:16/9; background:#eee; }
 .index-thumb img, .index-thumb video { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; transform:scale(var(--z, 1.1)); transition:transform .5s cubic-bezier(.2,.7,.2,1); } /* 기본 1.1배 확대 (항목별 --z로 조정) */
 .index-item:hover .index-thumb img, .index-item:hover .index-thumb video { transform:scale(var(--zh, calc(var(--z, 1.1) * 1.1))); } /* 마우스 올리면 거기서 1.1배 더 */
-@media (max-width:1280px) { .index-grid { grid-template-columns:repeat(3, minmax(0,1fr)); } }
+@media (max-width:1280px) { .index-item { flex-basis:calc((100% - 100px - 32px) / 2.6); } }
 @media (max-width:820px) {
   .index-sec { padding:90px 20px; } /* 모바일 히어로와 같은 위아래 여백 */
   .index-title { margin-bottom:28px; }
-  .index-grid { /* 모바일: 네비처럼 한 줄 가로 스와이프 */
-    display:flex; gap:10px; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
-    scroll-snap-type:x mandatory; margin:0 -32px; padding:0 32px; scroll-padding:0 32px; /* 화면 양끝까지 스와이프 (모바일 좌우 여백 12+20px), 첫 썸네일은 제목과 같은 선 */
-  }
-  .index-grid::-webkit-scrollbar { display:none; }
-  .index-item { flex:0 0 64%; scroll-snap-align:start; }
+  .index-grid { gap:10px; margin:0 -32px; padding:0 32px; scroll-padding:0 32px; } /* 화면 양끝까지 스와이프 (모바일 좌우 여백 12+20px), 첫 썸네일은 제목과 같은 선 */
+  .index-item { flex-basis:64%; }
   .index-name { white-space:normal; }
 }
 
@@ -1339,7 +1342,7 @@ html.theme-invert .stat-highlight[class] { background-image:url("data:image/svg+
   background:none; border:0; color:#1c1c1c; font:inherit; text-align:left; cursor:pointer;
 }
 .intro-trigger-thumb { position:relative; display:block; width:168px; aspect-ratio:16/9; flex-shrink:0; }
-.intro-trigger-media { position:absolute; inset:0; overflow:hidden; border:1px solid #1c1c1c; } /* 테두리 1px */
+.intro-trigger-media { position:absolute; inset:0; overflow:hidden; }
 .intro-trigger-thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s cubic-bezier(.2,.7,.2,1); }
 .intro-trigger:hover .intro-trigger-thumb img { transform:scale(1.06); }
 .intro-trigger-label { position:relative; display:inline-block; }
@@ -2789,6 +2792,37 @@ html.intro-lock { overflow:hidden; }
 
 </div><!-- /wrap -->
 
+<script>
+/* Index 한 줄 썸네일: 마우스로 끌어서 좌우로 넘기기 (터치는 기본 스와이프) */
+(function () {
+  var g = document.querySelector('.index-grid');
+  if (!g) return;
+  var down = false, moved = false, sx = 0, sl = 0;
+  g.addEventListener('pointerdown', function (e) {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    down = true; moved = false; sx = e.clientX; sl = g.scrollLeft;
+  });
+  window.addEventListener('pointermove', function (e) {
+    if (!down) return;
+    var dx = e.clientX - sx;
+    if (!moved && Math.abs(dx) > 5) { moved = true; g.classList.add('is-dragging'); }
+    if (moved) { g.scrollLeft = sl - dx; e.preventDefault(); }
+  });
+  window.addEventListener('pointerup', function () {
+    if (!down) return;
+    down = false;
+    if (moved) {
+      g.classList.remove('is-dragging');
+      /* 끌기를 놓으면 가장 가까운 썸네일에 맞춰 멈춤 */
+      var items = g.querySelectorAll('.index-item'), pad = parseFloat(getComputedStyle(g).paddingLeft) || 0, best = 0, bd = Infinity;
+      Array.prototype.forEach.call(items, function (it) { var d = Math.abs(it.offsetLeft - pad - g.scrollLeft); if (d < bd) { bd = d; best = it.offsetLeft - pad; } });
+      g.scrollTo({ left: best, behavior: 'smooth' });
+    }
+  });
+  g.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+  g.addEventListener('dragstart', function (e) { e.preventDefault(); }); /* 이미지 끌기(고스트) 방지 */
+})();
+</script>
 <!-- 인트로 팝업 (히어로 PLAY INTRO 버튼으로 열림) -->
 <div class="intro-modal" id="intro-modal" hidden>
   <div class="intro-dialog" role="dialog" aria-modal="true" aria-labelledby="intro-title">
