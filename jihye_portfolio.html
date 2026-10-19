@@ -1303,7 +1303,7 @@ html.theme-invert .stat-highlight { color:#000 !important; } /* 반전되어 흰
 html.theme-invert .stat-highlight[class] { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 12' preserveAspectRatio='none'%3E%3Cfilter id='c' x='-5%' y='-150%' width='110%' height='400%'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.04 .5' numOctaves='2' seed='5' result='w'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w' scale='3.5' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.6 1.6' numOctaves='2' seed='31' result='j'/%3E%3CfeDisplacementMap in='d' in2='j' scale='2.5' xChannelSelector='R' yChannelSelector='G' result='r'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.2 2.4' seed='7' result='g'/%3E%3CfeColorMatrix in='g' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.3 1.5' result='m'/%3E%3CfeComposite in='r' in2='m' operator='in'/%3E%3C/filter%3E%3Cg fill='none' stroke='rgb(79,17,207)' stroke-linecap='round' filter='url(%23c)'%3E%3Cpath d='M4 6.5 C 70 4.5, 180 8.5, 296 5.5' stroke-width='4.4'/%3E%3Cpath d='M9 7.6 C 80 6.4, 190 9, 290 6.8' stroke-width='1.8'/%3E%3C/g%3E%3C/svg%3E"); }
 
 /* ── INDEX: 네비 위 프로젝트 썸네일 미리보기 (클릭하면 해당 프로젝트로 이동) ── */
-.index-sec { padding:140px 50px; position:relative; isolation:isolate; } /* 모눈 바탕(::before)이 이 영역 안에 깔리도록 */
+.index-sec { padding:100px 50px; /* 히어로와 같은 위아래 여백 */ position:relative; isolation:isolate; } /* 모눈 바탕(::before)이 이 영역 안에 깔리도록 */
 .index-sec::before { /* 프로젝트와 같은 흰 바탕 + 연한 모눈 */
   content:''; position:absolute; top:-2px; bottom:-2px; left:calc(50% - 50vw); width:100vw; z-index:-1; pointer-events:none;
   background-color:#fff;
@@ -1322,7 +1322,7 @@ html.theme-invert .stat-highlight[class] { background-image:url("data:image/svg+
 .index-tags { font-size:14px; line-height:1.4; margin:8px 0 0; color:#888; }
 @media (max-width:1280px) { .index-grid { grid-template-columns:repeat(3, minmax(0,1fr)); } }
 @media (max-width:820px) {
-  .index-sec { padding:48px 20px; }
+  .index-sec { padding:90px 20px; } /* 모바일 히어로와 같은 위아래 여백 */
   .index-title { margin-bottom:28px; }
   .index-grid { grid-template-columns:repeat(2, minmax(0,1fr)); column-gap:10px; row-gap:24px; }
   .index-name { white-space:normal; }
