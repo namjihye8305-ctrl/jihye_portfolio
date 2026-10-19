@@ -285,7 +285,7 @@ section.project.full-line-b::after,
 /* 상단 링크 영역 종이색을 네비 밑으로 2px 겹쳐 틈(어두운 선) 방지 */
 .hero + .portfolio-links { clip-path:inset(0 -100vmax -2px); padding-top:90px; padding-bottom:90px; }
 /* 히어로 ↔ 링크 ↔ 네비 ↔ 첫 프로젝트: PC 80px / 모바일 48px 간격으로 통일 */
-.works-nav + .project.proj-light { padding-top:90px; clip-path:inset(-2px -100vmax 0); } /* 종이색을 네비 밑으로 2px 겹쳐 네비 아래 어두운 선(틈) 제거 */
+.works-nav + .project.proj-light { padding-top:110px; clip-path:inset(-2px -100vmax 0); } /* 종이색을 네비 밑으로 2px 겹쳐 네비 아래 어두운 선(틈) 제거 */
 /* SELECTED WORKS 줄 삭제: 네비 바로 아래 어두운 여백이 생기지 않도록 여백 제거 (첫 프로젝트 상단 여백이 간격 역할) */
 .works-nav { margin-bottom:0; }
 .works-nav-tab { background:transparent; color:#111; border-left:0; }
@@ -306,7 +306,7 @@ section.project.full-line-b::after,
 .works-nav-tab:hover { background:#f2f2f2; color:rgba(28,28,28,.38); } /* 호버: 히어로 스킬 박스 호버처럼 탭 전체가 흐려진 톤(연그레이 바탕 + 흐린 글자) */
 
 /* ── PROJECT ── */
-.project { padding:90px 50px; scroll-margin-top:24px; } /* 위아래 여백 90px 통일 */
+.project { padding:110px 50px; scroll-margin-top:24px; } /* 위아래 여백 90px 통일 */
 
 .proj-top {
   display:flex; align-items:baseline; gap:20px;
@@ -1162,10 +1162,10 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
     padding:70px 0 20px;
   }
   .project {
-    padding:90px 0;
+    padding:110px 0;
   }
   .works-nav + .project.proj-light {
-    padding-top:90px;
+    padding-top:110px;
   }
   .proj-grid {
     padding:0;
