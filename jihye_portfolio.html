@@ -1388,14 +1388,14 @@ html.theme-invert .stat-highlight[class] { background-image:url("data:image/svg+
 .intro-inline { display:none; }
 @media (min-width:821px) {
   .intro-trigger { display:none; } /* PC는 썸네일 대신 히어로 아래 영상 */
-  .intro-inline { display:block; position:relative; z-index:1; max-width:1720px; margin:0 auto 90px; } /* 최대 1720px 가운데 정렬 */
-  .intro-inline-bar { position:absolute; right:0; bottom:calc(100% + 10px); display:flex; gap:8px; }
+  .intro-inline { display:block; position:relative; z-index:1; max-width:1920px; margin:0 auto; } /* 맨 위 1920px 풀폭 */
+  .intro-inline-bar { position:absolute; right:24px; bottom:24px; z-index:2; display:flex; gap:8px; } /* 영상 안 오른쪽 아래 빈 곳 (프로필 글씨 안 가림) */
 }
 @media (max-width:820px) {
   .intro-trigger { display:none; } /* 모바일은 썸네일·Play Intro 대신 히어로 맨 위 풀폭 영상 */
   .intro-mo-hero {
     display:block; order:-1; position:relative; z-index:1;
-    width:calc(100% + 24px); margin:-90px -12px 10px; padding:0; /* 히어로 위 여백(90px)·좌우 여백(12px)까지 꽉 채움 */
+    width:calc(100% + 24px); margin:-90px -12px 60px; padding:0; /* 히어로 위 여백(90px)·좌우 여백(12px)까지 꽉 채움, 아래는 히어로 gap 30px과 합쳐 다른 영역과 같은 90px */
     aspect-ratio:16/9; background:#fff; pointer-events:none; /* 클릭 효과 없음 */
   }
   .intro-mo-hero video { width:100%; height:100%; object-fit:cover; display:block; }
@@ -1444,6 +1444,23 @@ html.intro-lock { overflow:hidden; }
 
 
 <!-- HERO -->
+<!-- PC 전용: 페이지 맨 위 1920px 풀폭 커버 영상 (보이면 자동 재생 → 화면 꺼짐 → 암전 → 프로필), 히어로는 그 아래 -->
+<div class="intro-inline" id="intro-inline">
+  <div class="intro-inline-bar"><button type="button" class="intro-btn" id="intro-inline-replay">↻ REPLAY</button></div>
+  <div class="intro-stage" id="intro-inline-stage">
+    <div class="intro-screen" id="intro-inline-screen">
+      <video id="intro-inline-video" muted playsinline preload="none" poster="intro/intro_thumb.jpg" aria-label="포트폴리오 커버 영상"></video>
+    </div>
+    <img class="intro-profile" id="intro-inline-profile" alt="남지혜 프로필. Contents Web Designer, namjihye8305@gmail.com. 학력, 경력(인동 F&amp;N, W컨셉, CTTD, SSG.COM, 티몬), 자격증, 포트폴리오, 사용 툴 정보" decoding="async">
+    <div class="intro-links" id="intro-inline-links" hidden>
+      <a class="intro-link" style="left:69.86%; top:59.14%; width:7.64%; height:1.98%;" href="https://namjihye8305-ctrl.github.io/jihye_portfolio/jihye_portfolio.html" target="_blank" rel="noopener noreferrer" aria-label="WEB 포트폴리오 (새 탭)"></a>
+      <a class="intro-link" style="left:77.71%; top:59.14%; width:8.26%; height:1.98%;" href="https://www.behance.net/namjihye1022" target="_blank" rel="noopener noreferrer" aria-label="비핸스 포트폴리오 (새 탭)"></a>
+      <!-- AI WEB 프로젝트 (left:69.86%; top:61.11%; width:7.92%; height:1.98%): 연결할 주소 확인 전이라 비활성 -->
+      <a class="intro-link" style="left:69.86%; top:63.09%; width:12.01%; height:1.98%;" href="https://namjihye.creatorlink.net/" target="_blank" rel="noopener noreferrer" aria-label="SSG.COM, 티몬 포트폴리오 (새 탭)"></a>
+      </div>
+    <p class="intro-error" id="intro-inline-error" role="alert" hidden></p>
+  </div>
+</div>
 <section class="hero full-line-b">
   <!-- 모바일 전용: 히어로 맨 위 풀폭 커버 영상 (무음 무한 자동재생, PC에서는 숨김·로드 안 함) -->
   <div class="intro-mo-hero" id="intro-mo-hero"><video id="intro-mo-video" muted loop playsinline preload="none" poster="intro/intro_thumb.jpg" aria-label="포트폴리오 커버 영상"></video></div>
@@ -1484,23 +1501,6 @@ html.intro-lock { overflow:hidden; }
 <div class="portfolio-links full-line-b">
   <div class="blur-stars" aria-hidden="true">
     <svg class="blur-star bs-blur-md" style="left:calc(66% - 10px); top:calc(48% - 14px); width:96px; height:96px; filter:blur(4px);" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 10V90M15.36 30L84.64 70M15.36 70L84.64 30"/></svg>
-  </div>
-  <!-- PC 전용: 히어로 아래 커버 영상 (스크롤로 보이면 자동 재생 → 화면 꺼짐 → 암전 → 프로필) -->
-  <div class="intro-inline" id="intro-inline">
-    <div class="intro-inline-bar"><button type="button" class="intro-btn" id="intro-inline-replay">↻ REPLAY</button></div>
-    <div class="intro-stage" id="intro-inline-stage">
-      <div class="intro-screen" id="intro-inline-screen">
-        <video id="intro-inline-video" muted playsinline preload="none" poster="intro/intro_thumb.jpg" aria-label="포트폴리오 커버 영상"></video>
-      </div>
-      <img class="intro-profile" id="intro-inline-profile" alt="남지혜 프로필. Contents Web Designer, namjihye8305@gmail.com. 학력, 경력(인동 F&amp;N, W컨셉, CTTD, SSG.COM, 티몬), 자격증, 포트폴리오, 사용 툴 정보" decoding="async">
-      <div class="intro-links" id="intro-inline-links" hidden>
-        <a class="intro-link" style="left:69.86%; top:59.14%; width:7.64%; height:1.98%;" href="https://namjihye8305-ctrl.github.io/jihye_portfolio/jihye_portfolio.html" target="_blank" rel="noopener noreferrer" aria-label="WEB 포트폴리오 (새 탭)"></a>
-        <a class="intro-link" style="left:77.71%; top:59.14%; width:8.26%; height:1.98%;" href="https://www.behance.net/namjihye1022" target="_blank" rel="noopener noreferrer" aria-label="비핸스 포트폴리오 (새 탭)"></a>
-        <!-- AI WEB 프로젝트 (left:69.86%; top:61.11%; width:7.92%; height:1.98%): 연결할 주소 확인 전이라 비활성 -->
-        <a class="intro-link" style="left:69.86%; top:63.09%; width:12.01%; height:1.98%;" href="https://namjihye.creatorlink.net/" target="_blank" rel="noopener noreferrer" aria-label="SSG.COM, 티몬 포트폴리오 (새 탭)"></a>
-        </div>
-      <p class="intro-error" id="intro-inline-error" role="alert" hidden></p>
-    </div>
   </div>
   <div class="portfolio-links-top">
     <div>
@@ -3084,7 +3084,8 @@ html.intro-lock { overflow:hidden; }
       bar.style.setProperty('--p', max > 0 ? Math.min(1, y / max).toFixed(4) : 0);
     }
     if (!reduce && hero && letters.length) {
-      var p = Math.max(0, Math.min(1, y / (hero.offsetHeight * 0.85)));
+      var hy = Math.max(0, y - (hero.getBoundingClientRect().top + y)); /* 히어로 위치 기준 스크롤 양 */
+      var p = Math.max(0, Math.min(1, hy / (hero.offsetHeight * 0.85)));
       h1.style.opacity = (1 - p * 0.85).toFixed(3);
       letters.forEach(function (el, i) {
         var d = dirs[i];
@@ -3195,7 +3196,7 @@ html.intro-lock { overflow:hidden; }
   var ticking = false;
   function update() {
     ticking = false;
-    var y = window.scrollY;
+    var y = Math.max(0, window.scrollY - (hero.getBoundingClientRect().top + window.scrollY)); /* 히어로 위치 기준 */
     if (y > hero.offsetHeight + (links ? links.offsetHeight : 0) + 400) return;
     items.forEach(function (el) {
       var sp = parseFloat(el.getAttribute('data-speed')) || 0.2;
