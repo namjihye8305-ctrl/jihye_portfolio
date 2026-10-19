@@ -444,7 +444,7 @@ section.project.full-line-b::after,
   background-image:linear-gradient(rgba(200,27,33,.62), rgba(200,27,33,.62));
   background-repeat:no-repeat;
   background-position:0 100%;
-  background-size:0% 10px;
+  background-size:0% var(--hl-h, 10px);
   padding:0 0 8px; /* 밑줄이 글자와 겹치지 않도록 글자 아래에 살짝 띄움 */
   position:relative; z-index:-1;
   -webkit-box-decoration-break:clone;
@@ -484,13 +484,13 @@ section.project.full-line-b::after,
   to { background-size:100% 10px; }
 }
 @keyframes highlightLoop {
-  0% { background-size:0% 10px; background-position:0 100%; }
-  30%, 78% { background-size:100% 10px; background-position:0 100%; }
-  78.01% { background-size:100% 10px; background-position:100% 100%; }
-  100% { background-size:0% 10px; background-position:100% 100%; } /* 그은 방향 그대로 왼쪽부터 지워짐 */
+  0% { background-size:0% var(--hl-h, 10px); background-position:0 100%; }
+  30%, 78% { background-size:100% var(--hl-h, 10px); background-position:0 100%; }
+  78.01% { background-size:100% var(--hl-h, 10px); background-position:100% 100%; }
+  100% { background-size:0% var(--hl-h, 10px); background-position:100% 100%; } /* 그은 방향 그대로 왼쪽부터 지워짐 */
 }
 @media (prefers-reduced-motion: reduce) {
-  .stat-highlight, .stat-highlight.is-visible { animation:none; background-size:100% 10px; }
+  .stat-highlight, .stat-highlight.is-visible { animation:none; background-size:100% var(--hl-h, 10px); }
 }
 @keyframes highlightSweep {
   0% { background-size:0% 10px; }
@@ -1573,6 +1573,9 @@ html .sound-toggle { font-size:14px; } /* 아래쪽 스타일보다 우선 */
 .scene-prompt-list dt, .scene-prompt-list dd { font-size:16px; }
 .scene-prompt-note { font-size:15px; }
 @media (max-width:820px) { html .sound-toggle { font-size:14px; } }
+
+/* ── 오른쪽 정보 칸 강조: 라임 크레용 밑줄 → 형광펜 (글자 아래쪽에 반투명 라임 띠, 가장자리 살짝 거칠게) ── */
+html.theme-invert .proj-info .stat-highlight[class] { background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20300%2024'%20preserveAspectRatio%3D'none'%3E%3Cfilter%20id%3D'm'%20x%3D'-5%25'%20y%3D'-30%25'%20width%3D'110%25'%20height%3D'160%25'%3E%3CfeTurbulence%20type%3D'fractalNoise'%20baseFrequency%3D'.03%20.35'%20numOctaves%3D'2'%20seed%3D'3'%20result%3D'w'%2F%3E%3CfeDisplacementMap%20in%3D'SourceGraphic'%20in2%3D'w'%20scale%3D'4'%20xChannelSelector%3D'R'%20yChannelSelector%3D'G'%2F%3E%3C%2Ffilter%3E%3Cpath%20filter%3D'url(%23m)'%20d%3D'M3%204%20L%20297%202%20L%20298%2021%20L%202%2022%20Z'%20fill%3D'rgb(79%2C17%2C207)'%20fill-opacity%3D'.82'%2F%3E%3C%2Fsvg%3E"); --hl-h:100%; padding:1px 3px; color:#fff !important; } /* 반전 테마: 칠 색은 반대색으로, 글자는 #fff → 검정으로 보임 */
 </style>
 </head>
 <body>
@@ -3498,7 +3501,7 @@ document.querySelectorAll('.portfolio-links .pl-link').forEach(function (a) {
 /* 프로젝트 툴 아이콘: 확대 + 툴 이름 말풍선 */
 (function () {
   var names = { ps:'Photoshop', ai:'Illustrator', dw:'Dreamweaver', figma:'Figma', gpt:'ChatGPT', gemini:'Gemini',
-    claude:'Claude', vscode:'VS Code', seedance:'Seedance', kling:'Kling AI', mj:'Midjourney', pollo:'Pollo AI' };
+    claude:'Claude', vscode:'VS Code', seedance:'Seedance', kling:'Kling AI', mj:'Midjourney', pollo:'Pollo AI', newtake:'Newtake' };
   document.querySelectorAll('.proj-light .tool-icons .tool-icon').forEach(function (icon) {
     var key = Array.prototype.filter.call(icon.classList, function (c) { return names[c]; })[0];
     if (!key) return;
