@@ -1530,6 +1530,17 @@ html.intro-lock { overflow:hidden; }
   .scene-wf-row { grid-template-columns:minmax(0, 1fr); gap:12px; }
   .scene-pc-side { margin-top:28px; }
 }
+/* SCENE. 사이트 보기: View Profile과 같은 모션 박스 */
+.scene-motion-btn { align-self:flex-start; display:inline-block; text-decoration:none; color:#1c1c1c; }
+.scene-motion-btn .intro-trigger-box { font-size:16px; }
+.scene-motion-btn:hover .intro-trigger-box, .scene-motion-btn:focus-visible .intro-trigger-box { background:rgba(28,28,28,.88); color:#fff; }
+.scene-motion-btn:hover .intro-trigger-label { animation:hsShake .32s ease-in-out infinite; }
+.scene-motion-btn:hover .intro-trigger-box::before { animation:none; opacity:0; }
+.scene-motion-btn:hover .intro-trigger-dot, .scene-motion-btn:hover .intro-trigger-dot::after { background:#fff; }
+.scene-motion-btn:hover .intro-trigger-arrow { animation:none; transform:translate(2px,-2px); }
+.scene-motion-btn:focus-visible { outline:2px solid #1c1c1c; outline-offset:6px; }
+/* 워크 플로우 확대: View Profile 영상 창과 같은 크기 */
+.lightbox.is-wide img { width:min(1720px, 100%, calc((100vh - 120px) * 16 / 9)); max-width:none; max-height:calc(100vh - 64px); height:auto; object-fit:contain; }
 /* 세로로 긴 이미지 확대: 확대창 안에서 스크롤 */
 .lightbox.is-scroll { align-items:flex-start; overflow-y:auto; }
 .lightbox.is-scroll img { max-height:none; width:min(1200px, 100%); height:auto; }
@@ -1774,7 +1785,7 @@ html .sound-toggle { font-size:14px; } /* 아래쪽 스타일보다 우선 */
                 <li><span class="scene-flow-n">03</span><span class="scene-flow-t">Runway</span><span class="scene-flow-d">Look 01</span></li>
                 <li><span class="scene-flow-n">04</span><span class="scene-flow-t">Shop the Look</span><span class="scene-flow-d">상품 탐색으로 연결</span></li>
               </ol>
-                <a class="scene-site-btn" href="https://scene-editorial.vercel.app/" target="_blank" rel="noopener noreferrer">SCENE. 사이트 보기 <span aria-hidden="true">↗</span></a>
+                <a class="scene-motion-btn" href="https://scene-editorial.vercel.app/" target="_blank" rel="noopener noreferrer"><span class="intro-trigger-label"><span class="intro-trigger-box"><span class="intro-trigger-dot" aria-hidden="true"></span>SCENE. 사이트 보기 <span class="intro-trigger-arrow" aria-hidden="true">↗</span></span></span></a>
               </div>
             </div>
           </div>
@@ -1782,8 +1793,8 @@ html .sound-toggle { font-size:14px; } /* 아래쪽 스타일보다 우선 */
           <div class="scene-process">
             <p class="scene-process-desc">기준 모델과 장소별 비주얼 방향을 설정하고, 이미지 생성·보정, 영상 연출, 웹 적용으로 작업을 확장했습니다.</p>
             <div class="scene-wf-row">
-              <figure class="scene-wf-fig"><img src="scene/scene_workflow_1.jpg" alt="워크 플로우: 성수·을지로·한남 장소별 작업과 이미지·영상 보정 단계" width="2040" height="1225" loading="lazy" decoding="async"></figure>
-              <figure class="scene-wf-fig"><img src="scene/scene_workflow_2.jpg" alt="성수 기준 컷 S01–S05가 스토리보드 비디오 생성 단계로 연결되는 작업 화면" width="2170" height="1171" loading="lazy" decoding="async"></figure>
+              <figure class="scene-wf-fig"><img src="scene/scene_workflow_1.jpg" data-zoom-full="scene/scene_workflow_1.jpg" data-zoom-wide alt="워크 플로우: 성수·을지로·한남 장소별 작업과 이미지·영상 보정 단계" width="2040" height="1225" loading="lazy" decoding="async"></figure>
+              <figure class="scene-wf-fig"><img src="scene/scene_workflow_2.jpg" data-zoom-full="scene/scene_workflow_2.jpg" data-zoom-wide alt="성수 기준 컷 S01–S05가 스토리보드 비디오 생성 단계로 연결되는 작업 화면" width="2170" height="1171" loading="lazy" decoding="async"></figure>
             </div>
             <div class="scene-core-notes">
                 <div class="scene-note"><p class="scene-note-t">인물 일관성</p><p class="scene-note-d">기준 모델의 얼굴·헤어와 각 룩의 의상을 참조하며 컷을 확장하고, 결과물을 비교·선별해 시각적 일관성을 조정했습니다.</p></div>
@@ -3025,12 +3036,13 @@ document.addEventListener('DOMContentLoaded', function () { /* 확대창 요소�
       if (!lb.classList.contains('is-open')) return;
       lbImg.src = img.getAttribute('data-zoom-full');
       lb.classList.toggle('is-scroll', img.hasAttribute('data-zoom-tall'));
+      lb.classList.toggle('is-wide', img.hasAttribute('data-zoom-wide'));
       lb.scrollTop = 0;
     }, 0);
   });
   /* 기존 확대창은 이미지만 클릭해도 닫히므로, 스크롤형에서는 이미지 클릭으로 닫히지 않게 (닫기 버튼·바깥·ESC) */
   lbImg.addEventListener('click', function (e) { if (lb.classList.contains('is-scroll')) e.stopImmediatePropagation(); }, true);
-  new MutationObserver(function () { if (!lb.classList.contains('is-open') && lb.classList.contains('is-scroll')) lb.classList.remove('is-scroll'); /* 있을 때만 지워야 감시가 반복되지 않음 */ }).observe(lb, { attributes: true, attributeFilter: ['class'] });
+  new MutationObserver(function () { if (!lb.classList.contains('is-open') && (lb.classList.contains('is-scroll') || lb.classList.contains('is-wide'))) lb.classList.remove('is-scroll', 'is-wide'); /* 있을 때만 지워야 감시가 반복되지 않음 */ }).observe(lb, { attributes: true, attributeFilter: ['class'] });
 });
 </script>
 <!-- 인트로 팝업 (히어로 PLAY INTRO 버튼으로 열림) -->
