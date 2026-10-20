@@ -1575,6 +1575,7 @@ html.intro-lock { overflow:hidden; }
 .img-link .click-label { font-size:clamp(24px, calc(2.6vw + 2px), 36px); }
 .kv-motion-title { font-size:48px; }
 .kv-motion.kv-motion-top.is-stacked .kv-motion-title { font-size:42px; margin:0 0 14px; } /* BanilaCo Campaign: 영상 위 오른쪽 */
+.kv-motion.kv-motion-top .kv-motion-title .click-arrow { margin:0 10px 0 0; transform:scaleX(-1); } /* 화살표는 글자 왼쪽, 영상 쪽(아래)으로 */
 html .sound-toggle { font-size:14px; } /* 아래쪽 스타일보다 우선 */
 .scene-pc-meta .scene-flow-n, .scene-pc-meta .scene-flow-d { font-size:14px; }
 .scene-pc-meta .scene-flow-t, .scene-pc-meta .scene-site-btn, .scene-film-label { font-size:16px; }
@@ -2963,10 +2964,6 @@ html.theme-invert .project span[style*="left:8px; bottom:8px"] { background:rgba
       </div>
     </div>
   </div>
-  <!-- 추가 업데이트 안내: 이미지 영역 밖에 두어 이미지 아래 여백을 다른 프로젝트와 동일하게 (90px) -->
-  <div class="proj-update-note" style="width:100%; text-align:center; padding:50px 20px 0; border-top:1px solid #333; margin-top:90px;">
-    <p style="font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; font-weight:300; font-size:26px; letter-spacing:normal; color:rgba(232,232,228,0.3);">프로젝트 추가 업데이트 예정</p>
-  </div>
 </section>
 
 <!-- PORTFOLIO LINKS -->
@@ -3571,7 +3568,7 @@ document.querySelectorAll('.kv-motion').forEach(function (box) {
   }, { rootMargin: '0px 0px -20% 0px', threshold: 0 });
   io.observe(title);
   // 화살표 추가 (Click! 화살표와 같은 경로)
-  title.insertAdjacentHTML('beforeend', '<svg class="click-arrow" viewBox="0 0 34 30" aria-hidden="true"><path pathLength="1" d="M4 6 C 16 4, 26 10, 27 24 M 21 19 L 27 25 L 31 18"/></svg>');
+  title.insertAdjacentHTML(box.classList.contains('kv-motion-top') ? 'afterbegin' : 'beforeend', '<svg class="click-arrow" viewBox="0 0 34 30" aria-hidden="true"><path pathLength="1" d="M4 6 C 16 4, 26 10, 27 24 M 21 19 L 27 25 L 31 18"/></svg>');
   var last = title.querySelectorAll('.kv-ch').length;
   var mo2 = new MutationObserver(function () {
     if (!title.classList.contains('is-writing')) return;
