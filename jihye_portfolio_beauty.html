@@ -2792,7 +2792,7 @@ html.theme-invert .project span[style*="left:8px; bottom:8px"] { background:rgba
   </div>
   <div class="proj-top full-line-b">
     <span class="proj-num">09.</span>
-    <h2 class="proj-title">Personal Promotion &nbsp;<span style="font-weight:300; color:#aaa;">개인 프로모션 프로젝트</span></h2>
+    <h2 class="proj-title">Personal Promotion &nbsp;<span style="font-weight:300; color:#aaa;">다양한 타이포그래피를 활용한 가상의 프로젝트</span></h2>
     <div class="proj-meta">
       <span class="proj-meta-title">Selected Projects 09</span>
       <span class="proj-meta-sep"></span>
@@ -3064,6 +3064,27 @@ document.addEventListener('DOMContentLoaded', function () { /* 확대창 요소�
   lbImg.addEventListener('click', function (e) { if (lb.classList.contains('is-scroll')) e.stopImmediatePropagation(); }, true);
   new MutationObserver(function () { if (!lb.classList.contains('is-open') && (lb.classList.contains('is-scroll') || lb.classList.contains('is-wide'))) lb.classList.remove('is-scroll', 'is-wide'); /* 있을 때만 지워야 감시가 반복되지 않음 */ }).observe(lb, { attributes: true, attributeFilter: ['class'] });
 });
+</script>
+<script>
+/* 크레용 낙서·별이 이미지·영상 위에 올라가지 않게: 겹치면 숨김 (화면 크기·이미지 로딩이 바뀔 때마다 다시 확인) */
+(function () {
+  function overlap(a, b) { return a.right > b.left && a.left < b.right && a.bottom > b.top && a.top < b.bottom; }
+  function check() {
+    var media = Array.prototype.filter.call(document.querySelectorAll('.wrap img, .wrap video'), function (m) {
+      return m.offsetParent && !m.closest('.page-doodles, .hero-doodles, .tool-icon, .pl-star, .crayon-star-img');
+    }).map(function (m) { return m.getBoundingClientRect(); }).filter(function (r) { return r.width > 40 && r.height > 40; });
+    document.querySelectorAll('.page-doodles .doodle, .blur-star.bs-sharp, .hero-doodles .doodle').forEach(function (d) {
+      d.style.visibility = '';
+      var r = d.getBoundingClientRect();
+      if (r.width && media.some(function (m) { return overlap(r, m); })) d.style.visibility = 'hidden';
+    });
+  }
+  var t; function later() { clearTimeout(t); t = setTimeout(check, 400); }
+  window.addEventListener('load', later); window.addEventListener('resize', later);
+  document.addEventListener('load', function (e) { if (e.target && /^(IMG|VIDEO)$/.test(e.target.tagName)) later(); }, true);
+  if (window.MutationObserver) { var pd = document.querySelector('.page-doodles'); if (pd) new MutationObserver(later).observe(pd, { childList: true }); }
+  later();
+})();
 </script>
 <!-- 인트로 팝업 (히어로 PLAY INTRO 버튼으로 열림) -->
 <div class="intro-modal" id="intro-modal" hidden>
@@ -3448,6 +3469,8 @@ document.addEventListener('DOMContentLoaded', function () { /* 확대창 요소�
   if (!reduce) window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
   window.addEventListener('resize', rebuild);
   window.addEventListener('load', rebuild);
+  document.addEventListener('load', function (e) { if (e.target && /^(IMG|VIDEO)$/.test(e.target.tagName)) rebuild(); }, true); /* 이미지가 늦게 불러와져 자리가 바뀌면 낙서 다시 배치 */
+  document.addEventListener('loadedmetadata', function (e) { if (e.target && e.target.tagName === 'VIDEO') rebuild(); }, true);
   if (window.ResizeObserver) { var lastH = 0; new ResizeObserver(function () { var h = layer.parentNode.offsetHeight; if (h !== lastH) { lastH = h; rebuild(); } }).observe(layer.parentNode); } /* 이미지 로딩으로 높이가 바뀌면 다시 배치 */
   build();
 })();
