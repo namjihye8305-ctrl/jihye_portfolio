@@ -3698,13 +3698,13 @@ document.querySelectorAll('.kv-motion').forEach(function (box) {
     var blocked = function () { v.muted = true; v.play().catch(function () {}); render(v); };
     if (p && typeof p.then === 'function') p.then(done, blocked); else done();
   }
-  /* 첫 클릭·터치 이후에는 막혔던 소리를 다시 시도 */
-  ['pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
-    window.addEventListener(ev, function once(e) {
-      window.removeEventListener(ev, once);
+  /* 브라우저가 소리 자동재생을 막았으면, 사용자 동작(클릭·탭·키 입력)이 생길 때마다 다시 시도
+     (터치 시작·휠 스크롤은 브라우저가 허용 동작으로 보지 않아 touchend·click·pointerup·keydown에서 시도) */
+  ['pointerup', 'touchend', 'click', 'keydown'].forEach(function (ev) {
+    window.addEventListener(ev, function (e) {
       if (e.target.closest && e.target.closest('.sound-toggle')) return; /* 스피커 버튼 클릭은 버튼에서 처리 */
       setTimeout(function () { vids.forEach(function (v) { if (v.muted && v._want && inView.get(v)) apply(v); }); }, 0);
-    }, { passive: true });
+    }, { passive: true, capture: true });
   });
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
