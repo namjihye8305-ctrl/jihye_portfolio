@@ -3967,19 +3967,22 @@ document.querySelectorAll('.kv-motion').forEach(function (box) {
     var inHero = function () { /* 히어로가 화면에 보이는 상태(맨 위 근처)인지 */
       if (!heroEl) return window.scrollY < 200;
       var r = heroEl.getBoundingClientRect();
-      return r.top > -r.height * 0.5 && r.top < window.innerHeight * 0.5;
+      return r.top > -120 && r.top < window.innerHeight * 0.5; /* 히어로가 맨 위에 있을 때만 (조금이라도 내려가 벗어나면 X) */
     };
     if (location.hash && location.hash !== '#') leftHero = true; /* 프로젝트 링크(#proj..)로 바로 들어온 경우는 띄우지 않음 */
     var onScrollAway = function () { if (!inHero()) { leftHero = true; window.removeEventListener('scroll', onScrollAway); } };
     window.addEventListener('scroll', onScrollAway, { passive: true });
-    setTimeout(function () {
+    var decide = function () {
       window.removeEventListener('scroll', onScrollAway);
       if (isOpen || leftHero || !inHero()) return; /* 처음 진입해 히어로 화면에 있을 때만 띄움, 그 전에 벗어났으면 띄우지 않음 */
       var box = trigger.querySelector('.intro-trigger-label');
-      var go = function () { if (!isOpen) { autoOpened = true; open(); } };
+      var go = function () { if (!isOpen && !leftHero && inHero()) { autoOpened = true; open(); } };
       if (box && box.animate && !reduced()) box.animate([{ transform: 'scale(1)' }, { transform: 'scale(.88)' }, { transform: 'scale(1.06)' }, { transform: 'scale(1)' }], { duration: 380, easing: 'ease-out' }).onfinish = go; /* 박스가 눌리듯 톡 */
       else go();
-    }, 900); /* 진입 후 박스가 먼저 보이도록 잠깐 기다림 */
+    };
+    /* 페이지를 다 불러온 뒤(새로고침 시 브라우저가 이전 스크롤 위치를 복원한 뒤) 판단, 박스가 먼저 보이도록 0.9초 뒤 */
+    var schedule = function () { setTimeout(decide, 900); };
+    if (document.readyState === 'complete') schedule(); else window.addEventListener('load', schedule, { once: true });
   }
 })();
 </script>
