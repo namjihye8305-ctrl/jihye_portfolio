@@ -966,6 +966,7 @@ html .portfolio-links:not(.full-line-b) { clip-path:inset(-8px -100vmax 0); }
 .proj-light .kv-row,
 .proj-light .proj-colors,
 .proj-light .tool-label { border-color:#c2c0ba; }
+.proj-colors > .tool-label:first-child { margin-top:0; padding-top:0; border-top:0; } /* 컬러 없이 TOOL만 있는 칸: 위 구분선 1개만 */
 .proj-light .sw[style*="border"] { border-color:#c9c7c1 !important; }
 .proj-light div[style*="border-top"] { border-top-color:#c2c0ba !important; }
 .proj-light div[style*="border-top"] p { color:rgba(28,28,28,.5) !important; font-weight:300 !important; -webkit-text-stroke:0; }
@@ -3366,7 +3367,7 @@ document.addEventListener('DOMContentLoaded', function () { /* 확대창 요소�
     [120, 34, 100, 'M3 24 C 20 24, 26 6, 36 8 C 46 10, 38 28, 30 24 C 22 20, 44 4, 60 14 S 84 30, 96 18 S 112 8, 117 12'],
     [120, 26, 92, 'M3 14 C 20 4, 30 24, 46 13 S 72 3, 88 14 S 110 22, 117 10']
   ];
-  var CONTENT = 'img, video, iframe, canvas, picture, p, h1, h2, h3, h4, li, a, button, .sw, .proj-video-frame, .v-label, .case-divider, .kv-row, .proj-tag, .proj-num, .proj-title, .proj-meta-title, .proj-meta-desc, .tool-icon, .pp-t, .pp-n, .about-name, .about-right, .portfolio-links-title, .pl-list';
+  var CONTENT = 'img, video, iframe, canvas, picture, p, h1, h2, h3, h4, li, a, button, .guide-brand, .sw, .proj-video-frame, .v-label, .case-divider, .kv-row, .proj-tag, .proj-num, .proj-title, .proj-meta-title, .proj-meta-desc, .tool-icon, .pp-t, .pp-n, .about-name, .about-right, .portfolio-links-title, .pl-list';
   var CELL = 20, PAD = 28, items = [], ticking = false, drawnIdx = {}; /* 다시 배치해도 이미 그려진 낙서는 다시 그리지 않음 */
   function rnd(i) { var x = Math.sin(i * 12.9898 + 78.233) * 43758.5453; return x - Math.floor(x); } /* 매번 같은 배치가 나오도록 고정 난수 */
   function build() {
