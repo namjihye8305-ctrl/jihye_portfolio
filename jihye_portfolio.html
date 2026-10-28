@@ -594,26 +594,6 @@ section.project.full-line-b::after,
 /* 클릭한(현재 보고 있는) 탭: 히어로 타이틀 색 배경에 흰 글자 */
 .works-nav-tab.active, .works-nav-tab.active:hover { background:#111; color:#fff; } /* 클릭한(현재) 탭: #111 */
 
-/* ── 모션 ⑤: 크레용 별 마우스 커서 (마우스 쓰는 기기만) ── */
-.star-cursor {
-  position:fixed; left:0; top:0; z-index:2000;
-  width:24px; height:24px; margin:-12px 0 0 -12px;
-  pointer-events:none; opacity:0;
-  transition:opacity .2s ease;
-}
-.star-cursor img {
-  width:100%; height:100%; display:block; object-fit:contain;
-  filter:brightness(0);
-  transition:transform .3s cubic-bezier(.34,1.56,.64,1);
-}
-.star-cursor.is-visible { opacity:1; }
-.star-cursor.is-hover img { transform:scale(1.7) rotate(35deg); }
-.lightbox.is-open ~ .star-cursor img { filter:brightness(0) invert(1); } /* 어두운 확대 보기 위에서는 흰 별 */
-.lightbox.is-open ~ .star-cursor img { filter:brightness(0) invert(1); } /* 어두운 확대 보기 위에서는 흰 별 */
-@media (hover:hover) and (pointer:fine) {
-  html.has-star-cursor, html.has-star-cursor * { cursor:none !important; }
-}
-
 /* ── 모션 ⑥: 맨 위로 가기 버튼 (히어로 스킬 박스 스타일 + 크레용 화살표) ── */
 .to-top {
   position:fixed; right:28px; bottom:28px; z-index:900;
@@ -640,7 +620,7 @@ section.project.full-line-b::after,
   .scroll-progress { display:none; } /* 모바일은 스크롤 진행 바 없음 */
 }
 @media (prefers-reduced-motion: reduce) {
-  .works-nav-tab::after, .to-top, .star-cursor img { transition:none; }
+  .works-nav-tab::after, .to-top { transition:none; }
 }
 
 /* ── 모션 ⑦: 스크롤 진행 크레용 선 (네비 바로 아래, 내린 만큼 왼쪽→오른쪽으로 그려짐) ── */
@@ -1312,7 +1292,6 @@ html.theme-invert .tool-icon img:not(.crayon-star-img):not(.pl-star) { filter:no
 /* 프로토타입 영상 박스: 박스째 원래 색(영상 배경과 같은 #ededed→#f5f5f5)으로, 안의 영상은 박스에서 이미 되돌렸으니 그대로 · 블러 테두리 유지 */
 html.theme-invert .proj-video-frame video:not(.blur-overlay):not(.crayon-star-img):not(.pl-star) { filter:none; }
 html.theme-invert .proj-video-frame video.blur-overlay:not(.crayon-star-img):not(.pl-star) { filter:blur(28px); }
-html.theme-invert .star-cursor img { filter:brightness(0); } /* 별 커서는 반전 그대로(검은 별 → 흰 별) */
 
 /* 반전 테마: 밑줄은 라임 컬러(반전 후 라임이 되도록 미리 계산한 색), 밑줄 위 글자는 화이트 */
 html.theme-invert .stat-highlight { color:#000 !important; } /* 반전되어 흰 글자로 보임 */
@@ -3215,29 +3194,6 @@ document.addEventListener('DOMContentLoaded', function () { /* 확대창 요소�
     window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(updateActive); } }, { passive: true });
     window.addEventListener('load', updateActive);
     updateActive();
-  }
-
-  // ⑤ 크레용 별 커서 (마우스 쓰는 기기에서만)
-  if (!reduce && window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    var cur = document.createElement('div');
-    cur.className = 'star-cursor';
-    cur.innerHTML = '<img src="소스/01.png" alt="">';
-    document.body.appendChild(cur);
-    document.documentElement.classList.add('has-star-cursor');
-    var x = -100, y = -100, cx = -100, cy = -100, raf = null;
-    var hoverSel = 'a, button, img, video, .works-nav-tab, .hero-skill, .lightbox-zoomable, .lightbox-close';
-    function loop() {
-      cx += (x - cx) * 0.35; cy += (y - cy) * 0.35;
-      cur.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0)';
-      raf = (Math.abs(x - cx) > 0.1 || Math.abs(y - cy) > 0.1) ? requestAnimationFrame(loop) : null;
-    }
-    document.addEventListener('mousemove', function (e) {
-      x = e.clientX; y = e.clientY;
-      cur.classList.add('is-visible');
-      cur.classList.toggle('is-hover', !!(e.target.closest && e.target.closest(hoverSel)));
-      if (!raf) raf = requestAnimationFrame(loop);
-    });
-    document.addEventListener('mouseleave', function () { cur.classList.remove('is-visible'); });
   }
 
   // ⑥ 맨 위로 가기 버튼
