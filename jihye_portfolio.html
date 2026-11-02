@@ -1624,10 +1624,16 @@ html :is(#proj01, #proj02, #proj03, #proj04, #proj05, #proj06, #proj07, #proj08,
     linear-gradient(to right, rgba(17,17,17,.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(17,17,17,.03) 1px, transparent 1px);
 }
-.crayon-underline { opacity:.45; } /* 프로젝트 번호 밑줄 */
 .label-ring svg { opacity:.4; } /* 이미지 라벨 동그라미 · AI 프로젝트 밑줄 */
 .page-doodles .doodle { opacity:.35; } /* 페이지 낙서 */
 .project > .blur-stars { opacity:.45; } /* 프로젝트 뒤 블러 별 */
+/* ── 히어로 아래 · 네비 · 프로젝트 사이 선: 크레용 질감 없이 깔끔한 단색 선 (위치·두께 영역은 그대로) ── */
+.hero + .portfolio-links.full-line-b::after,
+.works-nav::before, .works-nav::after,
+.project.proj-light + .project.proj-light.full-line-b::after,
+.portfolio-links:not(.full-line-b)::after { background:linear-gradient(#111, #111) no-repeat center / 100% 2px; }
+.works-nav-tab + .works-nav-tab::before,
+.works-nav-inner::before, .works-nav-inner::after { background:linear-gradient(#111, #111) no-repeat center / 2px 100%; }
 </style>
 </head>
 <body>
