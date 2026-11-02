@@ -1622,6 +1622,18 @@ html.theme-invert .project span[style*="left:8px; bottom:8px"] { background:rgba
 .ai09-case-01 { grid-row:6; }
 .ai09-case-04, .ai09-case-05 { grid-row:7; }
 @media (max-width:820px) { .ai09-cases > .ai-group, .ai09-cases > .ai-group-next, .ai09-case-01, .ai09-case-02, .ai09-case-03, .ai09-case-04, .ai09-case-05, .ai09-case-06 { grid-column:1; grid-row:auto; } } /* 모바일은 문서 순서대로 */
+/* ── 프로젝트 영역 장식 약하게: 모눈 · 크레용 밑줄/경계선 · 낙서 · 블러 별 ── */
+html :is(#proj01, #proj02, #proj03, #proj04, #proj05, #proj06, #proj07, #proj08, #proj09, #proj10)::before {
+  background-image:
+    linear-gradient(to right, rgba(17,17,17,.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17,17,17,.03) 1px, transparent 1px);
+}
+.project.proj-light + .project.proj-light.full-line-b::after,
+.portfolio-links:not(.full-line-b)::after { opacity:.35; } /* 프로젝트 사이 크레용 가로선 */
+.crayon-underline { opacity:.45; } /* 프로젝트 번호 밑줄 */
+.label-ring svg { opacity:.4; } /* 이미지 라벨 동그라미 · AI 프로젝트 밑줄 */
+.page-doodles .doodle { opacity:.35; } /* 페이지 낙서 */
+.project > .blur-stars { opacity:.45; } /* 프로젝트 뒤 블러 별 */
 </style>
 </head>
 <body>
